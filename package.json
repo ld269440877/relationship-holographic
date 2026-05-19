@@ -1,0 +1,38 @@
+{
+  "name": "micro-relationship-holographic",
+  "version": "1.0.0",
+  "description": "微观关系动力学全息系统 - 全球最专业的两性关系动力学学习平台",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext .js,.vue",
+    "test": "jest",
+    "scheduler": "node src/scheduler/index.js",
+    "compare": "node src/compare/index.js",
+    "crawl": "node src/crawler/index.js",
+    "db:init": "node src/database/init.js",
+    "db:backup": "node src/database/backup.js"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^4.2.0",
+    "pinia": "^2.1.0",
+    "echarts": "^5.5.0",
+    "diff": "^5.2.0",
+    "idb": "^8.0.0",
+    "date-fns": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "@vitejs/plugin-vue": "^5.0.0",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

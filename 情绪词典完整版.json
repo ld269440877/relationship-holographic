@@ -1,0 +1,669 @@
+{
+  "metadata": {
+    "name": "微观关系动力学全息系统 - 情绪词典完整版",
+    "version": "1.0.0",
+    "description": "七大谱系 × 35+细粒度词 × 强度标尺 × 混合情绪 × 对比样本",
+    "lastUpdated": "2026-05-19",
+    "totalEmotions": 42,
+    "totalMixedEmotions": 12
+  },
+  
+  "emotionSpectra": {
+    "喜": {
+      "category": "喜",
+      "icon": "😊",
+      "color": "#48bb78",
+      "description": "积极正面的愉悦情绪，从轻微满足到极度狂喜",
+      "levels": [
+        {
+          "level": 1,
+          "name": "满足",
+          "intensity": "低",
+          "description": "基本满足感，没有特别的兴奋",
+          "synonyms": ["还行", "还好", "过得去", "凑合", "一般"],
+          "physicalSigns": ["放松", "平静", "嘴角微扬"],
+          "behaviorExamples": ["点头", "微笑", "点头"],
+          "responseStrategy": "简单回应即可，不需要过度热情"
+        },
+        {
+          "level": 2,
+          "name": "愉悦",
+          "intensity": "低-中",
+          "description": "比满足更进一步，心情明显变好",
+          "synonyms": ["开心", "高兴", "心情不错", "挺好的", "舒适"],
+          "physicalSigns": ["笑容", "眼神明亮", "身体放松"],
+          "behaviorExamples": ["主动微笑", "语气轻快", "愿意分享"],
+          "responseStrategy": "分享她的愉悦，同频共振"
+        },
+        {
+          "level": 3,
+          "name": "雀跃",
+          "intensity": "中",
+          "description": "轻快的开心，有明显的活力感",
+          "synonyms": ["兴奋", "心情好", "轻快", "活泼", "欢快"],
+          "physicalSigns": ["步伐轻快", "语速加快", "动作增多"],
+          "behaviorExamples": ["小跳", "主动说话", "分享趣事"],
+          "responseStrategy": "积极回应，表现出兴趣"
+        },
+        {
+          "level": 4,
+          "name": "兴奋",
+          "intensity": "高",
+          "description": "较强的积极情绪，有明显的期待",
+          "synonyms": ["很兴奋", "激动", "期待", "迫不及待", "热血沸腾"],
+          "physicalSigns": ["眼睛发亮", "脸红", "语速很快", "手舞足蹈"],
+          "behaviorExamples": ["连发消息", "主动约", "反复确认"],
+          "responseStrategy": "同频共振，表达期待"
+        },
+        {
+          "level": 5,
+          "name": "狂喜",
+          "intensity": "极高",
+          "description": "极度的快乐，达到情绪高峰",
+          "synonyms": ["太开心了", "幸福", "高潮", "乐疯了", "开心到飞起"],
+          "physicalSigns": ["可能流泪", "抱紧", "无法言语"],
+          "behaviorExamples": ["拥抱", "尖叫", "反复表达"],
+          "responseStrategy": "共同庆祝，真诚表达"
+        }
+      ]
+    },
+    
+    "怒": {
+      "category": "怒",
+      "icon": "😠",
+      "color": "#f56565",
+      "description": "消极负面的情绪，从轻微不满到极度愤怒",
+      "levels": [
+        {
+          "level": 1,
+          "name": "微烦",
+          "intensity": "低",
+          "description": "轻微的不悦，还没有明显情绪",
+          "synonyms": ["有点烦", "不太舒服", "小不爽", "闹心", "腻歪"],
+          "physicalSigns": ["眉头微皱", "叹气", "语速放慢"],
+          "behaviorExamples": ["简短回复", "不回消息", "态度冷淡"],
+          "responseStrategy": "可以忽略或轻问，不要过度关注"
+        },
+        {
+          "level": 2,
+          "name": "烦躁",
+          "intensity": "低-中",
+          "description": "明显的不耐烦，有一定的负面情绪",
+          "synonyms": ["烦", "闹心", "烦躁", "心烦", "窝火"],
+          "physicalSigns": ["叹气增多", "身体紧绷", "手指敲桌"],
+          "behaviorExamples": ["抱怨", "指责", "语气变冲"],
+          "responseStrategy": "安抚情绪，不要争辩"
+        },
+        {
+          "level": 3,
+          "name": "恼火",
+          "intensity": "中",
+          "description": "较强烈的不满，情绪明显外露",
+          "synonyms": ["很烦", "恼火", "生气", "气人", "讨厌"],
+          "physicalSigns": ["声音提高", "表情严肃", "可能出现沉默"],
+          "behaviorExamples": ["大声说话", "摔东西", "冷战"],
+          "responseStrategy": "先降强度，共情为主"
+        },
+        {
+          "level": 4,
+          "name": "愤怒",
+          "intensity": "高",
+          "description": "强烈的敌意，可能有攻击性",
+          "synonyms": ["愤怒", "火大", "气死了", "怒", "气炸了"],
+          "physicalSigns": ["脸涨红", "呼吸急促", "拳头紧握"],
+          "behaviorExamples": ["大声争吵", "说狠话", "可能摔门"],
+          "responseStrategy": "先稳定情绪，不解决问题"
+        },
+        {
+          "level": 5,
+          "name": "暴怒",
+          "intensity": "极高",
+          "description": "极度的愤怒，完全失去理性",
+          "synonyms": ["暴怒", "崩溃", "想打人", "疯了", "炸了"],
+          "physicalSigns": ["颤抖", "面部扭曲", "可能自伤"],
+          "behaviorExamples": ["砸东西", "伤害自己或他人", "完全失控"],
+          "responseStrategy": "完全稳定，确保安全，暂不沟通"
+        }
+      ]
+    },
+    
+    "哀": {
+      "category": "哀",
+      "icon": "😢",
+      "color": "#4299e1",
+      "description": "悲伤难过的情绪，从轻微失落到极度崩溃",
+      "levels": [
+        {
+          "level": 1,
+          "name": "失落",
+          "intensity": "低",
+          "description": "轻微的悲伤，没有太强烈的反应",
+          "synonyms": ["有点失落", "遗憾", "可惜", "美中不足", "小遗憾"],
+          "physicalSigns": ["叹气", "低头", "声音变轻"],
+          "behaviorExamples": ["沉默", "简短回应", "语气平淡"],
+          "responseStrategy": "轻问，不要追问"
+        },
+        {
+          "level": 2,
+          "name": "悲伤",
+          "intensity": "低-中",
+          "description": "明显的伤心，情绪明显低落",
+          "synonyms": ["难过", "伤心", "悲伤", "惆怅", "不爽"],
+          "physicalSigns": ["眼眶泛红", "声音哽咽", "动作放慢"],
+          "behaviorExamples": ["倾诉", "哭泣", "寻求安慰"],
+          "responseStrategy": "共情陪伴，不要给建议"
+        },
+        {
+          "level": 3,
+          "name": "沮丧",
+          "intensity": "中",
+          "description": "低落无力的感觉，看不到希望",
+          "synonyms": ["沮丧", "泄气", "灰心", "没劲", "没意思"],
+          "physicalSigns": ["肩膀下垂", "眼神暗淡", "动作迟缓"],
+          "behaviorExamples": ["不想动", "拒绝社交", "自责"],
+          "responseStrategy": "鼓励支持，不要施压"
+        },
+        {
+          "level": 4,
+          "name": "绝望",
+          "intensity": "高",
+          "description": "强烈的无助感，觉得没有出路",
+          "synonyms": ["绝望", "没希望", "完了", "彻底失败", "走投无路"],
+          "physicalSigns": ["蜷缩", "眼神空洞", "拒绝眼神接触"],
+          "behaviorExamples": ["不说话", "可能自伤", "放弃"],
+          "responseStrategy": "先稳定情绪，提供安全感"
+        },
+        {
+          "level": 5,
+          "name": "崩溃",
+          "intensity": "极高",
+          "description": "极度的悲伤，情绪完全失控",
+          "synonyms": ["崩溃", "哭", "无法承受", "彻底垮掉", "天塌了"],
+          "physicalSigns": ["大哭", "颤抖", "无法呼吸"],
+          "behaviorExamples": ["大哭", "抓住人", "无法自控"],
+          "responseStrategy": "完全陪伴，不解决问题，安全第一"
+        }
+      ]
+    },
+    
+    "惧": {
+      "category": "惧",
+      "icon": "😨",
+      "color": "#9f7aea",
+      "description": "害怕恐惧的情绪，从轻微紧张到极度恐慌",
+      "levels": [
+        {
+          "level": 1,
+          "name": "紧张",
+          "intensity": "低",
+          "description": "轻微的不安，还没有明显的恐惧",
+          "synonyms": ["有点紧张", "担心", "不安", "小紧张", "忐忑"],
+          "physicalSigns": ["手心出汗", "声音略颤", "来回走动"],
+          "behaviorExamples": ["反复确认", "提前准备", "话变多"],
+          "responseStrategy": "安抚，给确定性"
+        },
+        {
+          "level": 2,
+          "name": "焦虑",
+          "intensity": "低-中",
+          "description": "明显的不确定，担心可能发生的事",
+          "synonyms": ["焦虑", "不安", "担心", "心慌", "六神无主"],
+          "physicalSigns": ["坐立不安", "频繁看手机", "语速加快"],
+          "behaviorExamples": ["反复问问题", "寻求保证", "过度准备"],
+          "responseStrategy": "给确定性，不要敷衍"
+        },
+        {
+          "level": 3,
+          "name": "恐惧",
+          "intensity": "中",
+          "description": "较强的害怕，有明确的恐惧对象",
+          "synonyms": ["害怕", "恐惧", "担心会发生", "心里没底"],
+          "physicalSigns": ["发抖", "声音发抖", "脸色发白"],
+          "behaviorExamples": ["躲避", "抓紧东西", "寻求保护"],
+          "responseStrategy": "建立安全感，不嘲笑"
+        },
+        {
+          "level": 4,
+          "name": "惊恐",
+          "intensity": "高",
+          "description": "强烈的恐惧，接近恐慌状态",
+          "synonyms": ["惊恐", "慌张", "害怕极了", "魂飞魄散", "吓坏了"],
+          "physicalSigns": ["尖叫", "逃跑", "脸色苍白"],
+          "behaviorExamples": ["躲藏", "大声呼救", "僵住"],
+          "responseStrategy": "先稳定，保护安全"
+        },
+        {
+          "level": 5,
+          "name": "恐慌",
+          "intensity": "极高",
+          "description": "极度的恐惧，完全失去理智",
+          "synonyms": ["恐慌", "吓坏了", "完全失控", "魂不附体", "彻底吓到"],
+          "physicalSigns": ["瘫软", "大小便失禁", "意识模糊"],
+          "behaviorExamples": ["无法移动", "胡言乱语", "完全崩溃"],
+          "responseStrategy": "立即稳定，专业帮助"
+        }
+      ]
+    },
+    
+    "爱": {
+      "category": "爱",
+      "icon": "🥰",
+      "color": "#ed64a6",
+      "description": "喜欢爱慕的情绪，从轻微好感到极度痴迷",
+      "levels": [
+        {
+          "level": 1,
+          "name": "好感",
+          "intensity": "低",
+          "description": "基本的好感，还没有特别的感觉",
+          "synonyms": ["还行", "不错", "有好感", "不讨厌", "可以"],
+          "physicalSigns": ["微笑", "眼神接触", "态度友好"],
+          "behaviorExamples": ["愿意聊天", "不拒绝接触", "回应及时"],
+          "responseStrategy": "正向回应，保持友好"
+        },
+        {
+          "level": 2,
+          "name": "依恋",
+          "intensity": "低-中",
+          "description": "想要靠近的感觉，有明显的喜欢",
+          "synonyms": ["喜欢", "依恋", "想见", "惦记", "挂念"],
+          "physicalSigns": ["主动靠近", "找话题", "身体倾向"],
+          "behaviorExamples": ["主动发消息", "找借口见面", "关心对方"],
+          "responseStrategy": "表达在意，回应她的主动"
+        },
+        {
+          "level": 3,
+          "name": "温柔",
+          "intensity": "中",
+          "description": "柔和的情感，有温暖的感觉",
+          "synonyms": ["温柔", "心软", "心动", "暖暖的", "甜"],
+          "physicalSigns": ["眼神柔和", "声音变轻", "触摸增多"],
+          "behaviorExamples": ["关心对方", "照顾细节", "说甜蜜话"],
+          "responseStrategy": "温柔回应，同等付出"
+        },
+        {
+          "level": 4,
+          "name": "心动",
+          "intensity": "高",
+          "description": "心跳加速的感觉，有强烈的喜欢",
+          "synonyms": ["心动", "心跳", "小鹿乱撞", "脸红", "心跳加速"],
+          "physicalSigns": ["脸红", "心跳快", "呼吸加快", "语无伦次"],
+          "behaviorExamples": ["见面紧张", "反复看手机", "精心打扮"],
+          "responseStrategy": "浪漫回应，给她安全感"
+        },
+        {
+          "level": 5,
+          "name": "痴迷",
+          "intensity": "极高",
+          "description": "极度的喜欢，完全陷入感情",
+          "synonyms": ["痴迷", "疯狂", "完全沦陷", "爱死了", "非他不可"],
+          "physicalSigns": ["失去理智", "盲目", "完全围绕对方"],
+          "behaviorExamples": ["24小时想", "放弃自我", "为爱疯狂"],
+          "responseStrategy": "真诚表达，提醒保持理性"
+        }
+      ]
+    },
+    
+    "惊": {
+      "category": "惊",
+      "icon": "😲",
+      "color": "#ed8936",
+      "description": "惊讶震惊的情绪，从轻微意外到极度惊骇",
+      "levels": [
+        {
+          "level": 1,
+          "name": "意外",
+          "intensity": "低",
+          "description": "轻微的惊讶，没有太强烈的反应",
+          "synonyms": ["有点意外", "没想到", "意外", "出乎意料"],
+          "physicalSigns": ["眼睛微微睁大", "停顿一下"],
+          "behaviorExamples": ["问一下", "确认信息", "继续原来的话题"],
+          "responseStrategy": "正常回应，说明情况"
+        },
+        {
+          "level": 2,
+          "name": "惊讶",
+          "intensity": "低-中",
+          "description": "明显的意外，有明显的反应",
+          "synonyms": ["惊讶", "没想到", "吃惊", "意外", "没想到会这样"],
+          "physicalSigns": ["眼睛睁大", "嘴巴张开", "声音提高"],
+          "behaviorExamples": ["追问", "表达惊讶", "要求解释"],
+          "responseStrategy": "共情惊讶，解释原因"
+        },
+        {
+          "level": 3,
+          "name": "震惊",
+          "intensity": "中",
+          "description": "较强的冲击，需要时间消化",
+          "synonyms": ["震惊", "惊呆了", "不敢相信", "太意外了"],
+          "physicalSigns": ["说不出话", "身体僵硬", "反复确认"],
+          "behaviorExamples": ["沉默", "要求再说一遍", "需要时间"],
+          "responseStrategy": "给时间消化，不要追问"
+        },
+        {
+          "level": 4,
+          "name": "目瞪口呆",
+          "intensity": "高",
+          "description": "非常震惊，完全没想到",
+          "synonyms": ["目瞪口呆", "彻底震惊", "震惊到说不出话", "惊掉下巴"],
+          "physicalSigns": ["嘴巴大张", "无法反应", "身体僵住"],
+          "behaviorExamples": ["长时间沉默", "需要人提醒", "反复确认"],
+          "responseStrategy": "先稳定，等她消化"
+        },
+        {
+          "level": 5,
+          "name": "惊骇",
+          "intensity": "极高",
+          "description": "极度的震惊，接近恐惧",
+          "synonyms": ["惊骇", "彻底吓到了", "完全吓坏", "魂飞魄散"],
+          "physicalSigns": ["瘫软", "无法站立", "可能昏厥"],
+          "behaviorExamples": ["尖叫", "逃跑", "无法言语"],
+          "responseStrategy": "完全稳定，安全第一"
+        }
+      ]
+    },
+    
+    "羞": {
+      "category": "羞",
+      "icon": "😳",
+      "color": "#ed64a6",
+      "description": "害羞尴尬的情绪，从轻微不好意思到极度羞耻",
+      "levels": [
+        {
+          "level": 1,
+          "name": "不好意思",
+          "intensity": "低",
+          "description": "轻微的尴尬，还没有太强烈的感觉",
+          "synonyms": ["有点不好意思", "尴尬", "怪不好意思的", "害羞"],
+          "physicalSigns": ["脸红", "低头", "说话变小声"],
+          "behaviorExamples": ["笑一下", "找借口", "轻微回避"],
+          "responseStrategy": "忽略，或轻松化解"
+        },
+        {
+          "level": 2,
+          "name": "惭愧",
+          "intensity": "低-中",
+          "description": "有些不好意思，有轻微的自我否定",
+          "synonyms": ["惭愧", "不好意思", "脸红", "过意不去", "不好意思"],
+          "physicalSigns": ["脸红明显", "眼神闪躲", "声音变小"],
+          "behaviorExamples": ["道歉", "解释", "找理由"],
+          "responseStrategy": "安慰，不要追究"
+        },
+        {
+          "level": 3,
+          "name": "羞耻",
+          "intensity": "中",
+          "description": "较强的尴尬感，有明显的自我意识",
+          "synonyms": ["羞耻", "丢脸", "不好意思", "太丢人了", "脸红到耳根"],
+          "physicalSigns": ["捂脸", "躲避目光", "声音颤抖"],
+          "behaviorExamples": ["躲避", "不说话", "找借口离开"],
+          "responseStrategy": "共情接纳，不要嘲笑"
+        },
+        {
+          "level": 4,
+          "name": "无地自容",
+          "intensity": "高",
+          "description": "非常尴尬，恨不得找个地洞钻进去",
+          "synonyms": ["无地自容", "太丢人了", "恨不得找个洞", "想消失"],
+          "physicalSigns": ["可能哭", "浑身发抖", "无法面对"],
+          "behaviorExamples": ["逃跑", "长时间不说话", "需要独处"],
+          "responseStrategy": "完全接纳，给空间"
+        },
+        {
+          "level": 5,
+          "name": "羞辱",
+          "intensity": "极高",
+          "description": "极度的羞耻，完全崩溃",
+          "synonyms": ["羞辱", "彻底崩溃", "无脸见人", "想死"],
+          "physicalSigns": ["大哭", "可能自伤", "完全封闭"],
+          "behaviorExamples": ["拒绝沟通", "可能拉黑", "严重自我否定"],
+          "responseStrategy": "完全接纳，专业帮助"
+        }
+      ]
+    }
+  },
+  
+  "mixedEmotions": {
+    "酸楚": {
+      "name": "酸楚",
+      "components": ["羡慕", "委屈"],
+      "description": "看到别人有自己没有时的复杂感受",
+      "scenarios": [
+        "看到别人成功自己还在原地",
+        "看到别人拥有自己想要的",
+        "对比同龄人的成就",
+        "看到前任有了新欢"
+      ],
+      "identificationTips": [
+        "语气中有酸意",
+        "可能会对比",
+        "表情复杂"
+      ],
+      "responseApproach": "先共情「这确实让人难受」，不要比较或否定她的感受"
+    },
+    "纠结": {
+      "name": "纠结",
+      "components": ["想要", "害怕"],
+      "description": "面临选择时的矛盾心理",
+      "scenarios": [
+        "两个选项各有利弊",
+        "想分手又舍不得",
+        "想表白又怕被拒绝",
+        "想改变又怕风险"
+      ],
+      "identificationTips": [
+        "反复说「但是」",
+        "问同一个问题多次",
+        "无法做决定"
+      ],
+      "responseApproach": "帮她理清「你想要什么？害怕什么？」，不要替她做决定"
+    },
+    "释然": {
+      "name": "释然",
+      "components": ["放下", "轻松"],
+      "description": "终于结束一段关系或放下某事后的感受",
+      "scenarios": [
+        "分手后终于释怀",
+        "完成一件大事后",
+        "结束一段长期压力",
+        "放下一个执念"
+      ],
+      "identificationTips": [
+        "语气轻松",
+        "主动提起",
+        "表情放松"
+      ],
+      "responseApproach": "陪伴但不追问，表达理解她的感受"
+    },
+    "心酸": {
+      "name": "心酸",
+      "components": ["心疼", "无奈"],
+      "description": "看到在乎的人受苦时的感受",
+      "scenarios": [
+        "看到亲人受苦",
+        "看到爱人受委屈",
+        "无法帮助在乎的人",
+        "看到孩子受欺负"
+      ],
+      "identificationTips": [
+        "眼眶泛红",
+        "声音哽咽",
+        "无能为力的感觉"
+      ],
+      "responseApproach": "先陪伴「我在这」，然后再了解情况"
+    },
+    "忐忑": {
+      "name": "忐忑",
+      "components": ["期待", "不安"],
+      "description": "等待重要结果时的复杂心情",
+      "scenarios": [
+        "等面试结果",
+        "等表白回应",
+        "等考试成绩",
+        "等医生诊断"
+      ],
+      "identificationTips": [
+        "反复看手机",
+        "语速加快",
+        "话题跳跃"
+      ],
+      "responseApproach": "给安慰「无论结果如何我都在」，不要施加压力"
+    },
+    "五味杂陈": {
+      "name": "五味杂陈",
+      "components": ["多种情绪混合"],
+      "description": "复杂情绪交织，无法用单一情绪描述",
+      "scenarios": [
+        "收到前任婚礼邀请",
+        "突然收到裁员通知",
+        "多年未见的朋友突然联系",
+        "收到意外的好消息和坏消息"
+      ],
+      "identificationTips": [
+        "说不出具体感受",
+        "叹气多",
+        "表情复杂"
+      ],
+      "responseApproach": "给空间「慢慢来，想说就说」，不要追问细节"
+    },
+    "百感交集": {
+      "name": "百感交集",
+      "components": ["喜", "悲", "怒"],
+      "description": "重大事件后的复杂感受",
+      "scenarios": [
+        "婚礼当天",
+        "葬礼上",
+        "离别/重逢",
+        "人生转折点"
+      ],
+      "identificationTips": [
+        "表情复杂",
+        "可能哭又可能笑",
+        "欲言又止"
+      ],
+      "responseApproach": "陪伴「我理解这很复杂」，让她按自己的节奏表达"
+    },
+    "患得患失": {
+      "name": "患得患失",
+      "components": ["渴望", "恐惧失去"],
+      "description": "在乎对方时的不确定感",
+      "scenarios": [
+        "恋爱初期不确定对方心意",
+        "表白后等回应",
+        "冷战期间担心分手",
+        "对方忽冷忽热时"
+      ],
+      "identificationTips": [
+        "反复确认",
+        "过度解读对方行为",
+        "情绪随对方反应波动"
+      ],
+      "responseApproach": "给安全感「我在」，不要嘲笑或否定她的担心"
+    },
+    "进退两难": {
+      "name": "进退两难",
+      "components": ["想进", "怕退"],
+      "description": "想进一步又怕退一步的困境",
+      "scenarios": [
+        "想表白但怕失去朋友",
+        "想辞职又怕没收入",
+        "想沟通又怕吵架",
+        "想亲热又怕被拒绝"
+      ],
+      "identificationTips": [
+        "说「但是」很多次",
+        "反复权衡利弊",
+        "寻求你的意见"
+      ],
+      "responseApproach": "帮她分析但不替她决定，支持她的选择"
+    },
+    "爱恨交织": {
+      "name": "爱恨交织",
+      "components": ["爱", "恨"],
+      "description": "对同一个人既有爱又有恨",
+      "scenarios": [
+        "被伤害过但还爱着",
+        "家暴但离不开",
+        "前任让自己受伤但还放不下",
+        "爱人的某些行为让自己恨"
+      ],
+      "identificationTips": [
+        "一边抱怨一边维护",
+        "情绪在爱和恨之间切换",
+        "说狠话又舍不得"
+      ],
+      "responseApproach": "不评判，让她表达，理解她的矛盾"
+    },
+    "既期待又害怕": {
+      "name": "既期待又害怕",
+      "components": ["期待", "害怕"],
+      "description": "对即将发生的事既期待又恐惧",
+      "scenarios": [
+        "第一次约会前",
+        "面试前",
+        "表白前",
+        "旅行出发前"
+      ],
+      "identificationTips": [
+        "既兴奋又紧张",
+        "反复确认安排",
+        "身体语言矛盾"
+      ],
+      "responseApproach": "给支持和安抚，分享自己类似的经历"
+    },
+    "欲罢不能": {
+      "name": "欲罢不能",
+      "components": ["想要", "无法停止"],
+      "description": "明知道不好但停不下来",
+      "scenarios": [
+        "明知该分手但做不到",
+        "明知不该联系但忍不住",
+        "明知道没结果但还爱着",
+        "明知该放手但放不下"
+      ],
+      "identificationTips": [
+        "自责但改不了",
+        "说狠话但做不到",
+        "反复道歉"
+      ],
+      "responseApproach": "不批评，理解她的挣扎，帮助她理清"
+    }
+  },
+  
+  "emotionIntensityScale": {
+    "description": "情绪强度标尺（1-10）",
+    "levels": [
+      { "range": "1-2", "label": "轻微", "description": "本人可能没意识到，外人也难以察觉", "strategy": "可忽略，或轻问确认" },
+      { "range": "3-4", "label": "轻度", "description": "本人能感知但能控制，对互动影响小", "strategy": "承认即可，不需要特别处理" },
+      { "range": "5-6", "label": "中度", "description": "影响表达和行为，需要回应和接住", "strategy": "需要回应，表达共情" },
+      { "range": "7-8", "label": "重度", "description": "明显影响互动，可能有爆发", "strategy": "先降情绪再聊事情" },
+      { "range": "9-10", "label": "极重度", "description": "几乎无法理性对话，可能失控", "strategy": "先稳定情绪，不解决问题" }
+    ]
+  },
+  
+  "emotionCombinations": {
+    "description": "常见情绪组合",
+    "combinations": [
+      { "primary": "愤怒", "secondary": "悲伤", "result": "暴躁+委屈", "name": "暴屈", "scenario": "被误解被委屈" },
+      { "primary": "愤怒", "secondary": "恐惧", "result": "暴怒+害怕", "name": "怒怕", "scenario": "感到被威胁" },
+      { "primary": "悲伤", "secondary": "愤怒", "result": "委屈+怨恨", "name": "怨哀", "scenario": "付出没被看见" },
+      { "primary": "悲伤", "secondary": "恐惧", "result": "绝望+无助", "name": "绝恐", "scenario": "失去重要东西" },
+      { "primary": "喜悦", "secondary": "悲伤", "result": "开心+遗憾", "name": "喜悲", "scenario": "离别时" },
+      { "primary": "喜悦", "secondary": "恐惧", "result": "兴奋+紧张", "name": "奋紧", "scenario": "重要时刻" },
+      { "primary": "惊讶", "secondary": "恐惧", "result": "震惊+害怕", "name": "惊惧", "scenario": "意外伤害" },
+      { "primary": "期待", "secondary": "焦虑", "result": "兴奋+不安", "name": "忐忑", "scenario": "等待结果" }
+    ]
+  },
+  
+  "emotionTransitions": {
+    "description": "情绪转换规律",
+    "transitions": [
+      { "from": "愤怒", "to": "悲伤", "trigger": "被理解", "description": "愤怒被接住后常转为委屈" },
+      { "from": "悲伤", "to": "愤怒", "trigger": "被否定", "description": "悲伤被否定后常转为愤怒" },
+      { "from": "恐惧", "to": "愤怒", "trigger": "感到被逼迫", "description": "恐惧被追问时可能转为愤怒" },
+      { "from": "愤怒", "to": "恐惧", "trigger": "对方沉默", "description": "愤怒时对方沉默可能引发恐惧" },
+      { "from": "期待", "to": "焦虑", "trigger": "时间延长", "description": "期待太久可能变成焦虑" },
+      { "from": "焦虑", "to": "恐惧", "trigger": "想象放大", "description": "焦虑太久可能变成恐惧" }
+    ]
+  }
+}

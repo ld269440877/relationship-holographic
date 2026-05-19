@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧭 从默认沉默到无话不谈 - 全息互动训练系统 v2.0</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+        :root {
+            --bg-base: #fafbfc;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f4f8;
+            --text-dark: #1a202c;
+            --text-body: #4a5568;
+            --text-light: #718096;
+            --text-muted: #a0aec0;
+            --border-light: #e2e8f0;
+            --border-medium: #cbd5e0;
+            --blue: #4299e1;
+            --blue-light: #bee3f8;
+            --green: #48bb78;
+            --green-light: #c6f6d5;
+            --purple: #9f7aea;
+            --purple-light: #e9d8fd;
+            --orange: #ed8936;
+            --orange-light: #feebc8;
+            --red: #f56565;
+            --red-light: #fed7d7;
+            --pink: #ed64a6;
+            --pink-light: #fbcce8;
+            --teal: #38b2ac;
+            --teal-light: #b2f5ea;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-base);
+            color: var(--text-body);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        /* 顶部学习路径指示器 */
+        .learning-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--border-light);
+            z-index: 1000;
+        }
+        
+        .learning-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--blue), var(--green), var(--purple));
+            transition: width 0.5s ease;
+        }
+        
+        /* 顶部导航 */
+        .top-nav {
+            position: fixed;
+            top: 4px;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+        }
+        
+        .top-nav-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .top-nav-steps {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+            margin-right: 24px;
+        }
+        
+        .step-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid transparent;
+        }
+        
+        .step-tab:hover {
+            background: var(--bg-hover);
+        }
+        
+        .step-tab.active {
+            background: var(--blue);
+            color: white;
+        }
+        
+        .step-tab.completed {
+            background: var(--green-light);
+            color: var(--green);
+        }
+        
+        /* 移动端菜单 */
+        .mobile-menu-btn {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 16px;
+        }
+        
+        /* 主容器 */
+        .main-container {
+            margin-top: 60px;
+            display: flex;
+            min-height: calc(100vh - 60px);
+        }
+        
+        /* 左侧菜单 */
+        .left-sidebar {
+            width: 260px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border-light);
+            position: sticky;
+            top: 60px;
+            height: calc(100vh - 60px);
+            overflow-y: auto;
+            flex-shrink: 0;
+            padding: 20px 0;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 16px;
+        }
+        
+        .sidebar-section-title {
+            padding: 8px 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.15s;
+            border-left: 3px solid transparent;
+            font-size: 14px;
+            color: var(--text-body);
+        }
+        
+        .sidebar-item:hover {
+            background: var(--bg-hover);
+        }
+        
+        .sidebar-item.active {
+            background: var(--blue-light);
+            border-left-color: var(--blue);
+            color: var(--blue);
+        }
+        
+        .sidebar-item-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .sidebar-item-badge {
+            margin-left: auto;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            background: var(--blue);
+            color: white;
+        }
+        
+        /* 主内容区 */
+        .content-area {
+            flex: 1;
+            padding: 32px 48px;
+            max-width: 1000px;
+        }
+        
+        /* 搜索框 */
+        .search-container {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-left: 48px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            background: var(--bg-card);
+            transition: all 0.2s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: var(--blue);
+            box-shadow: 0 0 0 3px var(--blue-light);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 18px;
+        }
+        
+        /* 统计卡片 */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--border-light);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--blue);
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+        
+        .stat-card:nth-child(2) .stat-number { color: var(--green); }
+        .stat-card:nth-child(3) .stat-number { color: var(--purple); }
+        .stat-card:nth-child(4) .stat-number { color: var(--orange); }
+        
+        /* 学习顺序引导 */
+        .learning-path-guide {
+            background: linear-gradient(135deg, var(--blue-light), var(--purple-light));
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .learning-path-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .learning-path-steps {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .path-step {
+            padding: 8px 16px;
+            background: white;
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--text-body);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .path-step:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .path-step-num {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--blue);
+            color: white;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 卡片容器 */
+        .card-container {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 20px;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        
+        .card-header:hover {
+            background: var(--bg-hover);
+        }
+        
+        .card-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .card-subtitle {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        
+        .card-toggle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: all 0.3s;
+            color: var(--text-light);
+        }
+        
+        .card-toggle.expanded {
+            transform: rotate(180deg);
+            background: var(--blue);
+            color: white;
+        }
+        
+        .card-body {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .card-body.expanded {
+            padding: 24px;
+            max-height: 10000px;
+        }
+        
+        /* 标签 */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .tag-blue { background: var(--blue-light); color: var(--blue); }
+        .tag-green { background: var(--green-light); color: var(--green); }
+        .tag-purple { background: var(--purple-light); color: var(--purple); }
+        .tag-orange { background: var(--orange-light); color: var(--orange); }
+        .tag-red { background: var(--red-light); color: var(--red); }
+        .tag-pink { background: var(--pink-light); color: var(--pink); }
+        .tag-teal { background: var(--teal-light); color: var(--teal); }
+        
+        /* 表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: 16px 0;
+        }
+        
+        .data-table th {
+            background: var(--bg-hover);
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-body);
+            border-bottom: 2px solid var(--border-light);
+        }
+        
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: top;
+        }
+        
+        .data-table tr:hover td {
+            background: var(--bg-hover);
+        }
+        
+        /* 进度条 */
+        .progress-container {
+            margin: 16px 0;
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        /* 阶段导航 */
+        .phase-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+            padding: 4px 0;
+        }
+        
+        .phase-btn {
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            background: var(--bg-hover);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .phase-btn:hover {
+            background: var(--border-light);
+        }
+        
+        .phase-btn.active {
+            background: var(--blue);
+            color: white;
+        }
+        
+        .phase-btn-num {
+            font-weight: 600;
+            font-size: 11px;
+        }
+        
+        /* 场景卡片 */
+        .scenario-card {
+            background: linear-gradient(135deg, #f7fafc, #edf2f7);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid var(--border-light);
+        }
+        
+        .scenario-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        
+        .scenario-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .scenario-content {
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: var(--radius-sm);
+        }
+        
+        .scenario-response {
+            display: none;
+        }
+        
+        .scenario-card.expanded .scenario-response {
+            display: block;
+        }
+        
+        .response-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+        
+        .response-item {
+            padding: 12px;
+            border-radius: var(--radius-sm);
+        }
+        
+        .response-wrong {
+            background: var(--red-light);
+        }
+        
+        .response-right {
+            background: var(--green-light);
+        }
+        
+        .response-label {
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        
+        .response-wrong .response-label { color: var(--red); }
+        .response-right .response-label { color: var(--green); }
+        
+        /* 层级图 */
+        .level-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .level-card {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .level-badge {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .level-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .level-desc {
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+        
+        .level-example {
+            background: white;
+            padding: 10px;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            color: var(--text-body);
+        }
+        
+        /* 工具箱网格 */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 16px 0;
+        }
+        
+        .tool-card {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .tool-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .tool-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .tool-desc {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        /* 复盘模板 */
+        .review-template {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+        
+        .review-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .review-label {
+            min-width: 80px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .review-input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+        }
+        
+        /* 迷你练习 */
+        .mini-exercise {
+            background: linear-gradient(135deg, #f0f4ff, #e8ecf7);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin: 12px 0;
+        }
+        
+        .mini-exercise-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .mini-exercise-content {
+            font-size: 14px;
+            color: var(--text-body);
+        }
+        
+        /* 人性分类 */
+        .human-category {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 16px 0;
+        }
+        
+        .human-card {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            border-left: 4px solid var(--blue);
+        }
+        
+        .human-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .human-desc {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        
+        .human-example {
+            font-size: 12px;
+            padding: 8px;
+            background: white;
+            border-radius: 6px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .top-nav-steps {
+                display: none;
+            }
+            
+            .left-sidebar {
+                position: fixed;
+                left: -280px;
+                top: 60px;
+                height: calc(100vh - 60px);
+                width: 280px;
+                z-index: 998;
+                transition: left 0.3s ease;
+            }
+            
+            .left-sidebar.open {
+                left: 0;
+            }
+            
+            .content-area {
+                padding: 20px;
+            }
+            
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .level-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .response-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .human-category {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+        
+        /* 新增：人性化样本分类 */
+        .sample-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .sample-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            cursor: pointer;
+            background: var(--bg-hover);
+            transition: all 0.2s;
+        }
+        
+        .sample-tab:hover {
+            background: var(--border-light);
+        }
+        
+        .sample-tab.active {
+            background: var(--blue);
+            color: white;
+        }
+        
+        /* 新增：转化流程图 */
+        .transform-flow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px;
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            margin: 12px 0;
+            overflow-x: auto;
+        }
+        
+        .transform-node {
+            padding: 12px 16px;
+            background: white;
+            border-radius: var(--radius-sm);
+            min-width: 100px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .transform-arrow {
+            color: var(--text-muted);
+            font-size: 18px;
+        }
+        
+        /* 新增：样本库 */
+        .sample-library {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin: 16px 0;
+        }
+        
+        .sample-category-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .sample-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .sample-item {
+            padding: 12px;
+            background: white;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .sample-item:hover {
+            transform: translateX(4px);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .sample-question {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+        
+        .sample-analysis {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        /* 新增：雷达图区域 */
+        .radar-chart {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 16px 0;
+        }
+        
+        .radar-item {
+            background: var(--bg-hover);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+        
+        .radar-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .radar-bar {
+            height: 8px;
+            background: var(--border-light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .radar-fill {
+            height: 100%;
+            background: var(--blue);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .radar-value {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- 顶部进度条 -->
+        <div class="learning-progress-bar">
+            <div class="learning-progress-fill" :style="{ width: progressPercent + '%' }"></div>
+        </div>
+        
+        <!-- 顶部导航 -->
+        <nav class="top-nav">
+            <button class="mobile-menu-btn" @click="sidebarOpen = !sidebarOpen">☰</button>
+            <div class="top-nav-title">🧭 微观关系动力学 v2.0</div>
+            <div class="top-nav-steps">
+                <div v-for="(step, i) in learningSteps" :key="i"
+                     class="step-tab"
+                     :class="{ active: currentStep === i, completed: i < currentStep }"
+                     @click="currentStep = i; scrollToSection(step.id)">
+                    {{ step.name }}
+                </div>
+            </div>
+        </nav>
+        
+        <!-- 主容器 -->
+        <div class="main-container">
+            <!-- 左侧菜单 -->
+            <aside class="left-sidebar" :class="{ open: sidebarOpen }">
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">📚 学习路径</div>
+                    <div v-for="(step, i) in learningSteps" :key="i"
+                         class="sidebar-item"
+                         :class="{ active: currentStep === i }"
+                         @click="currentStep = i; scrollToSection(step.id)">
+                        <span class="sidebar-item-icon">{{ step.icon }}</span>
+                        <span>{{ step.name }}</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">🛠️ 工具箱</div>
+                    <div class="sidebar-item" @click="scrollToSection('tools')">
+                        <span class="sidebar-item-icon">🔍</span>
+                        <span>侦探工具</span>
+                    </div>
+                    <div class="sidebar-item" @click="scrollToSection('tools')">
+                        <span class="sidebar-item-icon">🎨</span>
+                        <span>诗人工具</span>
+                    </div>
+                    <div class="sidebar-item" @click="scrollToSection('tools')">
+                        <span class="sidebar-item-icon">📋</span>
+                        <span>5W2H工具</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <div class="sidebar-section-title">🎮 训练场</div>
+                    <div class="sidebar-item" @click="scrollToSection('scenarios')">
+                        <span class="sidebar-item-icon">🎭</span>
+                        <span>场景练习</span>
+                    </div>
+                    <div class="sidebar-item" @click="scrollToSection('samples')">
+                        <span class="sidebar-item-icon">📚</span>
+                        <span>样本库</span>
+                    </div>
+                    <div class="sidebar-item" @click="scrollToSection('review')">
+                        <span class="sidebar-item-icon">📝</span>
+                        <span>复盘模板</span>
+                    </div>
+                </div>
+            </aside>
+            
+            <!-- 主内容区 -->
+            <main class="content-area">
+                
+                <!-- 搜索 -->
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" 
+                           class="search-input" 
+                           placeholder="搜索情绪词、工具、场景..." 
+                           v-model="searchQuery">
+                </div>
+                
+                <!-- 统计卡片 -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number">{{ stats.modules }}</div>
+                        <div class="stat-label">学习模块</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">{{ stats.concepts }}</div>
+                        <div class="stat-label">核心概念</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">{{ stats.tools }}</div>
+                        <div class="stat-label">工具数量</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">{{ stats.samples }}</div>
+                        <div class="stat-label">样本场景</div>
+                    </div>
+                </div>
+                
+                <!-- 学习路径引导 -->
+                <div class="learning-path-guide">
+                    <div class="learning-path-title">
+                        <span>🎯</span>
+                        <span>学习顺序：目标 → 路径 → 颗粒度 → 样本 → 训练</span>
+                    </div>
+                    <div class="learning-path-steps">
+                        <div v-for="(step, i) in learningPath" :key="i" 
+                             class="path-step"
+                             @click="scrollToSection(step.id)">
+                            <span class="path-step-num">{{ i + 1 }}</span>
+                            <span>{{ step.name }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ========== 第1章：全景快照 ========== -->
+                <section id="overview">
+                    <!-- 核心矛盾 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('core')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">🎯</div>
+                                <div>
+                                    <div class="card-title">核心矛盾：一句话总结</div>
+                                    <div class="card-subtitle">您的问题不在于"不懂"，而在于"感知不到"</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.core }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.core }">
+                            <div style="background: linear-gradient(135deg, #f0f4ff, #e8ecf7); border-radius: 12px; padding: 24px; margin-bottom: 20px;">
+                                <p style="font-size: 15px; line-height: 1.8; color: var(--text-dark);">
+                                    您拥有高度发达的<strong style="color: var(--blue);">「认知抽象」能力</strong>（跳过现象直达本质），但人际互动需要<strong style="color: var(--purple);">「感知具象」能力</strong>（沉浸于现象、收集细微线索）。
+                                </p>
+                                <p style="font-size: 14px; color: var(--text-body); margin-top: 12px; padding: 12px; background: white; border-radius: 8px;">
+                                    💡 <strong>导致的结果：</strong>您懂很多道理，但互动时大脑过载、感知钝化、没话题、不好奇。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 关键数字对比 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('metrics')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">📊</div>
+                                <div>
+                                    <div class="card-title">关键数字对比（典型互动节点）</div>
+                                    <div class="card-subtitle">量化差距 → 训练方向</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.metrics }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.metrics }">
+                            <!-- 雷达图 -->
+                            <div class="radar-chart">
+                                <div class="radar-item">
+                                    <div class="radar-title">🔇 回应前停顿时间</div>
+                                    <div class="radar-bar"><div class="radar-fill" :style="{ width: '30%', background: 'var(--red)' }"></div></div>
+                                    <div class="radar-value">
+                                        <span>您: 0.2-0.5秒</span>
+                                        <span>理想: 0.8-1.5秒</span>
+                                    </div>
+                                </div>
+                                <div class="radar-item">
+                                    <div class="radar-title">💭 情绪标签颗粒度</div>
+                                    <div class="radar-bar"><div class="radar-fill" :style="{ width: '15%', background: 'var(--red)' }"></div></div>
+                                    <div class="radar-value">
+                                        <span>您: 3-5个</span>
+                                        <span>理想: 30+个</span>
+                                    </div>
+                                </div>
+                                <div class="radar-item">
+                                    <div class="radar-title">👁️ 观察到的细微线索</div>
+                                    <div class="radar-bar"><div class="radar-fill" :style="{ width: '20%', background: 'var(--orange)' }"></div></div>
+                                    <div class="radar-value">
+                                        <span>您: 0-1个</span>
+                                        <span>理想: 3-5个</span>
+                                    </div>
+                                </div>
+                                <div class="radar-item">
+                                    <div class="radar-title">🧘 自我身体觉察</div>
+                                    <div class="radar-bar"><div class="radar-fill" :style="{ width: '20%', background: 'var(--orange)' }"></div></div>
+                                    <div class="radar-value">
+                                        <span>您: 0-1次/时</span>
+                                        <span>理想: 3-5次/时</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第2章：核心概念词典 ========== -->
+                <section id="concepts">
+                    <!-- 情绪系统 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('emotion')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">💫</div>
+                                <div>
+                                    <div class="card-title">情绪系统（Emotion）</div>
+                                    <div class="card-subtitle">七大谱系 × 35+细粒度词 × 混合情绪 × 强度标尺</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.emotion }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.emotion }">
+                            <!-- 七大谱系 -->
+                            <h4 style="font-size: 14px; margin-bottom: 12px;">🌈 七大谱系（强度1→5递增）</h4>
+                            <div v-for="(s, i) in emotionSpectra" :key="i" style="margin-bottom: 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                    <span class="tag" :class="s.tagClass" style="font-weight: 600;">{{ s.name }}</span>
+                                    <span style="font-size: 12px; color: var(--text-muted);">{{ s.desc }}</span>
+                                </div>
+                                <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                                    <span v-for="(word, j) in s.words" :key="j"
+                                          style="padding: 4px 8px; border-radius: 4px; font-size: 12px;"
+                                          :style="{
+                                              background: j < 2 ? 'var(--border-light)' : j < 4 ? 'var(--blue-light)' : '#b8d8f0',
+                                              color: j < 2 ? 'var(--text-light)' : j < 4 ? 'var(--blue)' : '#2266aa'
+                                          }">
+                                        {{ word }}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 混合情绪 -->
+                            <h4 style="font-size: 14px; margin: 20px 0 12px;">🔀 混合情绪（8种）</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                                <div v-for="(mix, i) in mixedEmotions" :key="i" 
+                                     style="background: var(--bg-hover); padding: 12px; border-radius: 8px;">
+                                    <div style="font-weight: 600; color: var(--purple); margin-bottom: 4px;">{{ mix.name }}</div>
+                                    <div style="font-size: 12px; color: var(--text-light);">{{ mix.components }}</div>
+                                    <div style="font-size: 12px; color: var(--text-body); margin-top: 6px; padding: 6px; background: white; border-radius: 4px;">
+                                        💬 "{{ mix.example }}"
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 强度标尺 -->
+                            <h4 style="font-size: 14px; margin: 20px 0 12px;">📊 情绪强度标尺（1-10）</h4>
+                            <div style="background: var(--bg-hover); padding: 16px; border-radius: 8px;">
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;">
+                                    <div style="text-align: center; padding: 8px; background: white; border-radius: 4px;">
+                                        <div style="font-weight: 600; font-size: 12px;">1-2</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">忽略/轻问</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 8px; background: white; border-radius: 4px;">
+                                        <div style="font-weight: 600; font-size: 12px;">3-4</div>
+                                        <div style="font-size: 11px; color: var(--text-muted);">承认即可</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 8px; background: var(--orange-light); border-radius: 4px;">
+                                        <div style="font-weight: 600; font-size: 12px;">5-6</div>
+                                        <div style="font-size: 11px; color: var(--orange);">需要回应</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 8px; background: var(--red-light); border-radius: 4px;">
+                                        <div style="font-weight: 600; font-size: 12px;">7-8</div>
+                                        <div style="font-size: 11px; color: var(--red);">先降情绪</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 8px; background: var(--red-light); border-radius: 4px;">
+                                        <div style="font-weight: 600; font-size: 12px;">9-10</div>
+                                        <div style="font-size: 11px; color: var(--red);">先稳定</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 看见 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('seeing')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">👁️</div>
+                                <div>
+                                    <div class="card-title">看见系统（Seeing）</div>
+                                    <div class="card-subtitle">L1行为 → L2情绪 → L3需求</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.seeing }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.seeing }">
+                            <div class="level-grid">
+                                <div v-for="(level, i) in seeingLevels" :key="i" class="level-card">
+                                    <div class="level-badge" :style="{ background: level.color }">{{ level.num }}</div>
+                                    <div class="level-name">{{ level.name }}</div>
+                                    <div class="level-desc">{{ level.desc }}</div>
+                                    <div class="level-example">
+                                        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 4px;">示例：</div>
+                                        {{ level.example }}
+                                    </div>
+                                    <div style="margin-top: 8px; font-size: 12px; color: var(--green);">
+                                        ✅ 她会：「{{ level.reaction }}」
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 欣赏 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('appreciation')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #f6d365, #fda085);">✨</div>
+                                <div>
+                                    <div class="card-title">欣赏系统（Appreciation）</div>
+                                    <div class="card-subtitle">五种类型 × 真诚反馈</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.appreciation }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.appreciation }">
+                            <div class="tool-grid">
+                                <div v-for="(type, i) in appreciationTypes" :key="i" class="tool-card">
+                                    <div style="font-size: 16px; font-weight: 600; color: var(--orange); margin-bottom: 4px;">{{ type.name }}</div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin-bottom: 8px;">{{ type.depth }}</div>
+                                    <div style="font-size: 12px; padding: 8px; background: white; border-radius: 4px; margin-bottom: 8px;">
+                                        「{{ type.example }}」
+                                    </div>
+                                    <div style="font-size: 11px; color: var(--green);">效果：{{ type.effect }}</div>
+                                </div>
+                            </div>
+                            
+                            <div style="background: var(--red-light); padding: 12px; border-radius: 8px; margin-top: 16px;">
+                                <p style="font-size: 13px; color: var(--red);">
+                                    ⚠️ <strong>警惕讨好：</strong>如果她觉得「你在拍马屁」或「有所图」，立刻停止！
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第3章：工具包 ========== -->
+                <section id="tools">
+                    <!-- 侦探工具 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('detective')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #2c3e50, #4a6572);">🔍</div>
+                                <div>
+                                    <div class="card-title">侦探工具包</div>
+                                    <div class="card-subtitle">线索分类细粒度表</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.detective }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.detective }">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>线索类型</th>
+                                        <th>子类型</th>
+                                        <th>观察点</th>
+                                        <th>可能含义</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(clue, i) in detectiveClues" :key="i">
+                                        <td><span class="tag" :class="clue.typeTag">{{ clue.type }}</span></td>
+                                        <td>{{ clue.subtype }}</td>
+                                        <td>{{ clue.point }}</td>
+                                        <td>{{ clue.meaning }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+                                <div style="background: var(--blue-light); padding: 16px; border-radius: 8px;">
+                                    <div style="font-weight: 600; color: var(--blue); margin-bottom: 8px;">🎯 假设生成框架</div>
+                                    <div style="font-size: 13px; color: var(--text-body);">
+                                        至少3个假设 + 概率排序 + 中性优先
+                                    </div>
+                                </div>
+                                <div style="background: var(--green-light); padding: 16px; border-radius: 8px;">
+                                    <div style="font-weight: 600; color: var(--green); margin-bottom: 8px;">✅ 验证设计</div>
+                                    <div style="font-size: 13px; color: var(--text-body);">
+                                        双选项：「是A还是B？」<br>
+                                        程度：「1-10，你的___是多少？」<br>
+                                        退路：「不方便说也没事」
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 诗人工具 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('poet')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #ffecd2, #fcb69f);">🎨</div>
+                                <div>
+                                    <div class="card-title">诗人工具包</div>
+                                    <div class="card-subtitle">感官开关 × 画面创造 × 情绪翻译</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.poet }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.poet }">
+                            <!-- 感官开关 -->
+                            <div style="background: linear-gradient(135deg, #ffeaa7, #fdcb6e); padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                                <h4 style="font-size: 14px; margin-bottom: 12px;">🎯 感官开关练习（每天3次）</h4>
+                                <div style="font-size: 14px; margin-bottom: 12px;">闭眼 → 听3种声音 → 看3种颜色 → 感觉3种触感</div>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <span v-for="s in ['👂 风扇声', '🎵 音乐', '💧 雨声', '👀 蓝绿色', '🌅 暖色', '🤲 柔软']" 
+                                          style="padding: 6px 12px; background: white; border-radius: 20px; font-size: 12px;">
+                                        {{ s }}
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- 画面创造 -->
+                            <h4 style="font-size: 14px; margin-bottom: 12px;">📝 画面创造公式</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div style="background: var(--purple-light); padding: 16px; border-radius: 8px;">
+                                    <div style="font-size: 12px; color: var(--purple); font-weight: 600; margin-bottom: 8px;">情绪词 + 比喻</div>
+                                    <div style="font-size: 15px;">「委屈像一本书被人合上」</div>
+                                </div>
+                                <div style="background: var(--pink-light); padding: 16px; border-radius: 8px;">
+                                    <div style="font-size: 12px; color: var(--pink); font-weight: 600; margin-bottom: 8px;">情绪词 + 感官词</div>
+                                    <div style="font-size: 15px;">「心里暖暖的，像晒太阳」</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 5W2H工具 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('5w2h')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #11998e, #38ef7d);">📋</div>
+                                <div>
+                                    <div class="card-title">5W2H工具包</div>
+                                    <div class="card-subtitle">结构化分析维度</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards['5w2h'] }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards['5w2h'] }">
+                            <div class="tool-grid">
+                                <div v-for="(dim, i) in fiveW2H" :key="i" class="tool-card">
+                                    <div style="font-size: 24px; margin-bottom: 8px;">{{ dim.icon }}</div>
+                                    <div style="font-weight: 600; font-size: 16px;">{{ dim.key }}</div>
+                                    <div style="font-size: 12px; color: var(--text-light); margin: 4px 0;">{{ dim.question }}</div>
+                                    <div style="font-size: 12px; color: var(--blue); margin-top: 8px; padding: 8px; background: white; border-radius: 4px;">
+                                        例：{{ dim.example }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第4章：八阶路径（增强版） ========== -->
+                <section id="path">
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('pathMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">🛤️</div>
+                                <div>
+                                    <div class="card-title">八阶路径（完整版）</div>
+                                    <div class="card-subtitle">输入 → 转化 → 输出 → 自检 → 升级</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.pathMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.pathMain }">
+                            <!-- 阶段导航 -->
+                            <div class="phase-nav">
+                                <div v-for="(phase, i) in phases" :key="i"
+                                     class="phase-btn"
+                                     :class="{ active: currentPhase === i }"
+                                     @click="currentPhase = i">
+                                    <span class="phase-btn-num">{{ phase.num }}</span>
+                                    <span>{{ phase.name }}</span>
+                                </div>
+                            </div>
+                            
+                            <!-- 阶段详情 -->
+                            <div v-for="(phase, pi) in phases" :key="'p' + pi" 
+                                 v-show="currentPhase === pi"
+                                 style="padding: 16px; background: var(--bg-hover); border-radius: 12px;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                                    <span class="tag" :class="phase.tagClass">{{ phase.num }}</span>
+                                    <span style="font-size: 18px; font-weight: 600;">{{ phase.name }}</span>
+                                    <span style="font-size: 13px; color: var(--text-light);">→ {{ phase.goal }}</span>
+                                </div>
+                                
+                                <!-- 转化流程 -->
+                                <div class="transform-flow">
+                                    <div class="transform-node">
+                                        <div style="font-size: 11px; color: var(--text-muted);">输入</div>
+                                        <div style="font-size: 12px;">{{ phase.input }}</div>
+                                    </div>
+                                    <span class="transform-arrow">→</span>
+                                    <div class="transform-node">
+                                        <div style="font-size: 11px; color: var(--text-muted);">转化</div>
+                                        <div style="font-size: 12px;">{{ phase.transform }}</div>
+                                    </div>
+                                    <span class="transform-arrow">→</span>
+                                    <div class="transform-node">
+                                        <div style="font-size: 11px; color: var(--text-muted);">输出</div>
+                                        <div style="font-size: 12px;">{{ phase.output }}</div>
+                                    </div>
+                                </div>
+                                
+                                <table class="data-table" style="margin: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th>操作</th>
+                                            <th>工具</th>
+                                            <th>示例</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(op, oi) in phase.operations" :key="oi">
+                                            <td>{{ op.action }}</td>
+                                            <td><span class="tag" :class="op.toolTag">{{ op.tool }}</span></td>
+                                            <td>「{{ op.example }}」</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px;">
+                                    <div style="background: var(--green-light); padding: 12px; border-radius: 8px;">
+                                        <div style="font-size: 12px; font-weight: 600; color: var(--green);">✅ 自检标准</div>
+                                        <div style="font-size: 13px; margin-top: 4px;">{{ phase.selfCheck }}</div>
+                                    </div>
+                                    <div style="background: var(--blue-light); padding: 12px; border-radius: 8px;">
+                                        <div style="font-size: 12px; font-weight: 600; color: var(--blue);">⬆️ 升级条件</div>
+                                        <div style="font-size: 13px; margin-top: 4px;">{{ phase.upgrade }}</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 每阶的迷你练习 -->
+                                <div class="mini-exercise">
+                                    <div class="mini-exercise-title">🎯 {{ phase.num }}练习</div>
+                                    <div class="mini-exercise-content">{{ phase.exercise }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第5章：样本库（新增） ========== -->
+                <section id="samples">
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('sampleMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">📚</div>
+                                <div>
+                                    <div class="card-title">样本库（扩展版）</div>
+                                    <div class="card-subtitle">她/他/自己/人性分类 × 50+场景</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.sampleMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.sampleMain }">
+                            <!-- 样本分类标签 -->
+                            <div class="sample-tabs">
+                                <div v-for="(tab, i) in sampleTabs" :key="i"
+                                     class="sample-tab"
+                                     :class="{ active: currentSampleTab === i }"
+                                     @click="currentSampleTab = i">
+                                    {{ tab.name }}
+                                </div>
+                            </div>
+                            
+                            <!-- 人性分类 -->
+                            <div class="human-category">
+                                <div v-for="(cat, i) in humanCategories" :key="i" class="human-card" :style="{ borderLeftColor: cat.color }">
+                                    <div class="human-title">{{ cat.name }}</div>
+                                    <div class="human-desc">{{ cat.desc }}</div>
+                                    <div class="human-example">{{ cat.example }}</div>
+                                </div>
+                            </div>
+                            
+                            <!-- 样本库 -->
+                            <div class="sample-library">
+                                <div v-for="(category, ci) in sampleCategories" :key="ci" style="margin-bottom: 20px;">
+                                    <div class="sample-category-title">
+                                        <span>{{ category.icon }}</span>
+                                        <span>{{ category.name }}</span>
+                                    </div>
+                                    <div class="sample-list">
+                                        <div v-for="(sample, si) in category.items" :key="si" class="sample-item">
+                                            <div class="sample-question">{{ sample.question }}</div>
+                                            <div class="sample-analysis">
+                                                <span class="tag tag-blue" style="margin-right: 4px;">情绪：{{ sample.emotion }}</span>
+                                                <span class="tag tag-purple">需求：{{ sample.need }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第6章：场景练习 ========== -->
+                <section id="scenarios">
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('scenarioMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">🎭</div>
+                                <div>
+                                    <div class="card-title">互动练习场</div>
+                                    <div class="card-subtitle">点击展开，原回应 vs 理想回应</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.scenarioMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.scenarioMain }">
+                            <div v-for="(s, i) in scenarios" :key="i" 
+                                 class="scenario-card"
+                                 :class="{ expanded: s.show }"
+                                 @click="s.show = !s.show">
+                                <div class="scenario-header">
+                                    <span class="scenario-label" :style="{ color: s.color }">{{ s.label }}</span>
+                                    <span style="font-size: 12px; color: var(--text-muted);">点击展开答案</span>
+                                </div>
+                                <div class="scenario-content">「{{ s.text }}」</div>
+                                <div class="scenario-response">
+                                    <div class="response-grid">
+                                        <div class="response-item response-wrong">
+                                            <div class="response-label">❌ 原回应</div>
+                                            <div>{{ s.original }}</div>
+                                        </div>
+                                        <div class="response-item response-right">
+                                            <div class="response-label">✅ 理想回应</div>
+                                            <div>{{ s.ideal }}</div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 12px; padding: 12px; background: var(--purple-light); border-radius: 6px;">
+                                        <div style="font-size: 12px; font-weight: 600; color: var(--purple);">💡 情感流动变化</div>
+                                        <div style="font-size: 13px; margin-top: 4px;">{{ s.flow }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- ========== 第7章：复盘模板 ========== -->
+                <section id="review">
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('reviewMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">📝</div>
+                                <div>
+                                    <div class="card-title">复盘模板（增强版）</div>
+                                    <div class="card-subtitle">场景 → 观察 → 假设 → 验证 → 学习</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.reviewMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.reviewMain }">
+                            <div class="review-template">
+                                <div class="review-row">
+                                    <div class="review-label">场景</div>
+                                    <input type="text" class="review-input" placeholder="发生了什么？">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">观察到的</div>
+                                    <input type="text" class="review-input" placeholder="你注意到了什么？（环境/行为/语言/语气）">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">情绪假设</div>
+                                    <input type="text" class="review-input" placeholder="你觉得她可能是___情绪？（3个假设）">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">验证方式</div>
+                                    <input type="text" class="review-input" placeholder="你用了什么问句验证？结果如何？">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">我的回应</div>
+                                    <input type="text" class="review-input" placeholder="我实际说了什么？">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">理想回应</div>
+                                    <input type="text" class="review-input" placeholder="如果重来，我会怎么说？">
+                                </div>
+                                <div class="review-row">
+                                    <div class="review-label">学到了</div>
+                                    <input type="text" class="review-input" placeholder="下次遇到类似情况，我会怎么做？">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-top: 16px; padding: 16px; background: var(--green-light); border-radius: 8px;">
+                                <p style="font-size: 13px; color: #276749;">
+                                    <strong>💡 复盘原则：</strong>不要评判自己，只记录事实。每一个「做得不好」都是学习的机会。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 30天训练计划 -->
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('planMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">📅</div>
+                                <div>
+                                    <div class="card-title">30天训练计划</div>
+                                    <div class="card-subtitle">知行合一进化路线图</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.planMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.planMain }">
+                            <div v-for="(week, i) in trainingPlan" :key="i" style="margin-bottom: 20px;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <span class="tag" :class="week.tagClass">第{{ week.week }}周</span>
+                                    <span style="font-size: 15px; font-weight: 600;">{{ week.theme }}</span>
+                                </div>
+                                <div style="background: var(--bg-hover); padding: 16px; border-radius: 8px;">
+                                    <div style="font-size: 13px; color: var(--text-body); margin-bottom: 8px;">
+                                        📝 <strong>每日任务：</strong>{{ week.task }}
+                                    </div>
+                                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+                                        <span class="tag tag-blue">{{ week.tools }}</span>
+                                        <span class="tag tag-purple">{{ week.focus }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 底部 -->
+                <div style="text-align: center; padding: 48px 0; color: var(--text-muted); font-size: 14px;">
+                    <p style="font-size: 18px; margin-bottom: 8px;">🧭 微观关系动力学全息 · v2.0</p>
+                    <p>从「默认沉默」到「无话不谈」，不需要成为另一个人，<br>只需要成为带着工具箱的、更好的自己。</p>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    sidebarOpen: false,
+                    currentStep: 0,
+                    currentPhase: 0,
+                    currentSampleTab: 0,
+                    searchQuery: '',
+                    progressPercent: 40,
+                    cards: {
+                        core: true,
+                        metrics: false,
+                        emotion: false,
+                        seeing: false,
+                        appreciation: false,
+                        detective: false,
+                        poet: false,
+                        '5w2h': false,
+                        pathMain: false,
+                        sampleMain: false,
+                        scenarioMain: false,
+                        reviewMain: false,
+                        planMain: false
+                    },
+                    stats: {
+                        modules: 7,
+                        concepts: 15,
+                        tools: 4,
+                        samples: 25
+                    },
+                    learningSteps: [
+                        { id: 'overview', name: '全景', icon: '🎯' },
+                        { id: 'concepts', name: '概念', icon: '📖' },
+                        { id: 'tools', name: '工具', icon: '🧰' },
+                        { id: 'path', name: '八阶', icon: '🛤️' },
+                        { id: 'samples', name: '样本', icon: '📚' },
+                        { id: 'scenarios', name: '练习', icon: '🎭' },
+                        { id: 'review', name: '复盘', icon: '📝' }
+                    ],
+                    learningPath: [
+                        { id: 'overview', name: '目标' },
+                        { id: 'concepts', name: '概念' },
+                        { id: 'tools', name: '工具' },
+                        { id: 'path', name: '路径' },
+                        { id: 'samples', name: '样本' },
+                        { id: 'review', name: '训练' }
+                    ],
+                    emotionSpectra: [
+                        { name: '喜', desc: '满足→狂喜', tagClass: 'tag-green', words: ['满足', '愉悦', '雀跃', '兴奋', '狂喜'] },
+                        { name: '怒', desc: '微烦→暴怒', tagClass: 'tag-red', words: ['微烦', '烦躁', '恼火', '愤怒', '暴怒'] },
+                        { name: '哀', desc: '失落→崩溃', tagClass: 'tag-blue', words: ['失落', '悲伤', '沮丧', '绝望', '崩溃'] },
+                        { name: '惧', desc: '紧张→恐慌', tagClass: 'tag-purple', words: ['紧张', '焦虑', '恐惧', '惊恐', '恐慌'] },
+                        { name: '爱', desc: '好感→痴迷', tagClass: 'tag-pink', words: ['好感', '依恋', '温柔', '心动', '痴迷'] },
+                        { name: '惊', desc: '意外→惊骇', tagClass: 'tag-orange', words: ['意外', '惊讶', '震惊', '目瞪口呆', '惊骇'] },
+                        { name: '羞', desc: '不好意思→羞辱', tagClass: 'tag-pink', words: ['不好意思', '惭愧', '羞耻', '无地自容', '羞辱'] }
+                    ],
+                    mixedEmotions: [
+                        { name: '酸楚', components: '羡慕 + 委屈', example: '看到别人有自己没有' },
+                        { name: '纠结', components: '想要 + 害怕', example: '面临选择时' },
+                        { name: '释然', components: '放下 + 轻松', example: '终于结束一段关系后' },
+                        { name: '心酸', components: '心疼 + 无奈', example: '看到在乎的人受苦' },
+                        { name: '忐忑', components: '期待 + 不安', example: '等待重要结果时' },
+                        { name: '五味杂陈', components: '多种混合', example: '复杂情绪交织时' },
+                        { name: '百感交集', components: '喜+悲+怒', example: '重大事件后' },
+                        { name: '患得患失', components: '渴望 + 恐惧失去', example: '在乎对方时' }
+                    ],
+                    seeingLevels: [
+                        { num: 'L1', name: '行为层', desc: '注意到动作、表情', color: 'var(--blue)', example: '你刚才抿了一下嘴', reaction: '哦，是吗' },
+                        { num: 'L2', name: '情绪层', desc: '说出没说的情绪', color: 'var(--purple)', example: '你虽然笑着，但我感觉你有点紧张', reaction: '嗯，有点' },
+                        { num: 'L3', name: '需求层', desc: '识别未说出口的需求', color: 'var(--green)', example: '你是不是希望被认可，但又不好意思说？', reaction: '眼睛睁大' }
+                    ],
+                    appreciationTypes: [
+                        { name: '欣赏外在', depth: '表层愉悦', example: '你今天这条围巾颜色很适合你', effect: '表层愉悦' },
+                        { name: '欣赏行为', depth: '强化行为', example: '你刚才帮陌生人指路，很温暖', effect: '强化行为' },
+                        { name: '欣赏特质', depth: '深度认同', example: '你有一种让人放松的能力', effect: '深度认同' },
+                        { name: '欣赏过程', depth: '认可努力', example: '我知道你为这个项目付出了很多', effect: '认可努力' },
+                        { name: '欣赏存在', depth: '无条件接纳', example: '你在，我就觉得很安心', effect: '无条件接纳' }
+                    ],
+                    detectiveClues: [
+                        { type: '环境', typeTag: 'tag-blue', subtype: '空间', point: '位置（角落/门口）', meaning: '角落→安全感；门口→想离开' },
+                        { type: '环境', typeTag: 'tag-blue', subtype: '物品', point: '杯子、手机', meaning: '手机倒扣→不想被打扰' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '面部', point: '眉毛、嘴角', meaning: '眉心微皱→困惑/烦躁' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '手部', point: '摸脖子、手指敲桌', meaning: '摸脖子→紧张；敲桌→不耐烦' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '躯干', point: '前倾/后仰', meaning: '后仰→防御' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语气', point: '音调、语速', meaning: '音调升高→兴奋/紧张' }
+                    ],
+                    fiveW2H: [
+                        { icon: '❓', key: 'Why', question: '为什么说？', example: '求认可还是求释放' },
+                        { icon: '💭', key: 'What', question: '什么情绪？', example: '委屈6+不甘3' },
+                        { icon: '📍', key: 'Where', question: '什么场景？', example: '线上易误解' },
+                        { icon: '⏰', key: 'When', question: '什么时机？', example: '刚发生需共情' },
+                        { icon: '👤', key: 'Who', question: '什么类型？', example: '焦虑型需 reassurance' },
+                        { icon: '📝', key: 'How', question: '如何表达？', example: '揉肩膀→身体疲惫' },
+                        { icon: '📏', key: 'How much', question: '程度多深？', example: '强度7，先降情绪' }
+                    ],
+                    phases: [
+                        { 
+                            num: '第零阶', name: '默认沉默', tagClass: 'tag-red', goal: '启动侦探模式',
+                            input: '没话题、注意力在自己',
+                            transform: '将注意力转向外部',
+                            output: '注意到3个细节',
+                            operations: [
+                                { action: '将注意力转向外部', tool: '侦探', toolTag: 'tag-blue', example: '先观察环境' }
+                            ],
+                            selfCheck: '能注意到3个细节',
+                            upgrade: '能主动说一句话',
+                            exercise: '走进一家咖啡店，列出你观察到的5个细节（物品位置、人的表情等）'
+                        },
+                        { 
+                            num: '第一阶', name: '信息', tagClass: 'tag-blue', goal: '交换基本信息',
+                            input: '不知道问什么',
+                            transform: '环境线索切入 + 开放式问题',
+                            output: '能交换5个以上事实',
+                            operations: [
+                                { action: '环境线索切入', tool: '侦探', toolTag: 'tag-blue', example: '你这个杯子很特别' },
+                                { action: '开放式事实问题', tool: '提问L1', toolTag: 'tag-green', example: '周末喜欢做什么？' },
+                                { action: '自我暴露', tool: '框架', toolTag: 'tag-purple', example: '我喜欢爬山' }
+                            ],
+                            selfCheck: '能交换5个以上事实，没有连续提问',
+                            upgrade: '能自然延续话题',
+                            exercise: '和朋友聊天时，尝试至少问3个开放式问题，并分享1件关于自己的事'
+                        },
+                        { 
+                            num: '第二阶', name: '情绪', tagClass: 'tag-purple', goal: '识别情绪标签并反射',
+                            input: '她说的话',
+                            transform: '找情绪词 + 多假设 + 双选项验证',
+                            output: '识别准确率>50%',
+                            operations: [
+                                { action: '找情绪词', tool: '侦探', toolTag: 'tag-blue', example: '她说「唉」→可能烦躁' },
+                                { action: '多假设', tool: '侦探', toolTag: 'tag-blue', example: '可能累/烦/委屈' },
+                                { action: '双选项验证', tool: '提问', toolTag: 'tag-green', example: '是身体累还是心里烦？' },
+                                { action: '诗人反射', tool: '诗人', toolTag: 'tag-orange', example: '听起来今天不是很顺' }
+                            ],
+                            selfCheck: '识别准确率>50%，她能说「对」',
+                            upgrade: '她主动分享情绪',
+                            exercise: '今天听到朋友叹气时，尝试猜测她的情绪，并用「听起来有点___？」确认'
+                        },
+                        { 
+                            num: '第三阶', name: '感受', tagClass: 'tag-green', goal: '让她感到「你和我在一起」',
+                            input: '她的情绪',
+                            transform: '接住不评判 + 命名感受 + 安静陪伴',
+                            output: '她主动说「对，就是这样」',
+                            operations: [
+                                { action: '接住不评判', tool: '共情', toolTag: 'tag-purple', example: '我听到了' },
+                                { action: '命名感受', tool: '诗人', toolTag: 'tag-orange', example: '那一定很委屈' },
+                                { action: '安静陪伴', tool: '诗人', toolTag: 'tag-orange', example: '沉默3-5秒' },
+                                { action: '给退路', tool: '提问', toolTag: 'tag-green', example: '想继续说吗？' }
+                            ],
+                            selfCheck: '她主动说「对，就是这样」',
+                            upgrade: '她愿意深入分享',
+                            exercise: '朋友向你倾诉时，不要给建议，先说「那一定很___」来命名她的感受'
+                        },
+                        { 
+                            num: '第四阶', name: '看见', tagClass: 'tag-orange', goal: '照出她未意识到的细微状态',
+                            input: '微表情/微行为',
+                            transform: '捕捉 + 形成假设 + 轻问验证',
+                            output: '她眼睛睁大（「你怎么知道」）',
+                            operations: [
+                                { action: '捕捉微表情', tool: '侦探', toolTag: 'tag-blue', example: '嘴角下拉了一下' },
+                                { action: '形成假设', tool: '侦探', toolTag: 'tag-blue', example: '可能压抑了' },
+                                { action: '轻问验证', tool: '提问', toolTag: 'tag-green', example: '是不是心里有事？' },
+                                { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '话到嘴边又咽回去' }
+                            ],
+                            selfCheck: '她眼睛睁大/呼吸变浅（「你怎么知道」）',
+                            upgrade: '她感到被深度理解',
+                            exercise: '观察一个人说话时的微表情（眉毛、嘴角），并说出你观察到的行为'
+                        },
+                        { 
+                            num: '第五阶', name: '欣赏', tagClass: 'tag-pink', goal: '用具体真诚的光照亮她',
+                            input: '她的优点/特质',
+                            transform: '观察欣赏点 + 选择具体类型',
+                            output: '她变得更有自信',
+                            operations: [
+                                { action: '观察欣赏点', tool: '侦探', toolTag: 'tag-blue', example: '她处理冲突很冷静' },
+                                { action: '选择具体行为/特质', tool: '欣赏类型', toolTag: 'tag-green', example: '你刚才那样说话，既表达了立场又没有伤人' },
+                                { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '你那种温柔但坚定的感觉，我很欣赏' }
+                            ],
+                            selfCheck: '每周3次以上，她不觉得讨好',
+                            upgrade: '她变得更有自信',
+                            exercise: '今天对一个人说出一件你具体欣赏的事（不是「你很好」而是「你___做得很好」）'
+                        },
+                        { 
+                            num: '第六阶', name: '理解', tagClass: 'tag-blue', goal: '建立她的内在模型，知道根源',
+                            input: '重复出现的行为模式',
+                            transform: '收集模式 + 来源假设 + 时机验证',
+                            output: '能准确预测她的1个需求',
+                            operations: [
+                                { action: '收集重复模式', tool: '侦探', toolTag: 'tag-blue', example: '每次提妈妈语速变快' },
+                                { action: '来源假设', tool: '5W2H(Why)', toolTag: 'tag-purple', example: '可能关系紧张' },
+                                { action: '时机验证', tool: '提问', toolTag: 'tag-green', example: '你提妈妈时好像有点激动？' },
+                                { action: '行动转化', tool: '框架', toolTag: 'tag-blue', example: '你讨厌被催，所以我不问进度' }
+                            ],
+                            selfCheck: '能准确预测她的1个需求',
+                            upgrade: '她觉得你是最懂她的人',
+                            exercise: '回忆一个反复出现的场景，思考「为什么她总是这样？」并列出3个可能原因'
+                        },
+                        { 
+                            num: '第七阶', name: '爱', tagClass: 'tag-red', goal: '稳定的行动，不忽冷忽热',
+                            input: '她的脆弱时刻',
+                            transform: '保持内核稳定 + 行动表达 + 脆弱陪伴',
+                            output: '她感到安全港湾',
+                            operations: [
+                                { action: '保持内核稳定', tool: '框架', toolTag: 'tag-blue', example: '不因她情绪波动而变' },
+                                { action: '行动表达', tool: '—', toolTag: 'tag-gray', example: '带她提过的零食' },
+                                { action: '脆弱时陪伴', tool: '共情', toolTag: 'tag-purple', example: '安静陪着，不说「别哭」' },
+                                { action: '需要空间时尊重', tool: '边界', toolTag: 'tag-green', example: '我就在隔壁' }
+                            ],
+                            selfCheck: '她脆弱时你能稳住，她不觉得压迫',
+                            upgrade: '她感到安全港湾',
+                            exercise: '今天做一件表达关心的小事（带她喜欢的东西、记住她说过的话）'
+                        },
+                        { 
+                            num: '第八阶', name: '被爱', tagClass: 'tag-green', goal: '安心接收并回馈爱的循环',
+                            input: '她表达的爱意',
+                            transform: '识别 + 接收 + 感受 + 回馈',
+                            output: '爱的流动自然循环',
+                            operations: [
+                                { action: '识别她的爱意', tool: '侦探', toolTag: 'tag-blue', example: '她记得我不吃香菜' },
+                                { action: '接收不推开', tool: '接纳', toolTag: 'tag-green', example: '谢谢而不是「不用」' },
+                                { action: '感受自己感受', tool: '诗人', toolTag: 'tag-orange', example: '我心里暖暖的' },
+                                { action: '自然回馈', tool: '—', toolTag: 'tag-gray', example: '带她喜欢的蛋糕' },
+                                { action: '表达被爱', tool: '诗人', toolTag: 'tag-orange', example: '你这样做，我觉得很幸福' }
+                            ],
+                            selfCheck: '能安心接收，不欠债感',
+                            upgrade: '爱的流动自然循环',
+                            exercise: '当有人对你好时，先说「谢谢」，而不是「不用这么麻烦」'
+                        }
+                    ],
+                    sampleTabs: [
+                        { name: '全部' },
+                        { name: '她/他' },
+                        { name: '自己' },
+                        { name: '人性' }
+                    ],
+                    humanCategories: [
+                        { name: '见人', desc: '观察对方的情绪和行为', color: 'var(--blue)', example: '她叹气时，可能是累了/烦了/委屈了' },
+                        { name: '见自己', desc: '观察自己的反应和感受', color: 'var(--purple)', example: '我听到她叹气时，我会有什么反应？' },
+                        { name: '见众生', desc: '理解普遍人性规律', color: 'var(--green)', example: '人在脆弱时都希望被理解' }
+                    ],
+                    sampleCategories: [
+                        {
+                            name: '她/他的情绪样本',
+                            icon: '💫',
+                            items: [
+                                { question: '她说「唉」', emotion: '烦躁/累/委屈', need: '被倾听' },
+                                { question: '她沉默', emotion: '可能压抑/思考', need: '给空间或轻问' },
+                                { question: '她突然客气', emotion: '可能在防御', need: '降低压力' },
+                                { question: '她问「在吗」', emotion: '有话想说', need: '给开口机会' }
+                            ]
+                        },
+                        {
+                            name: '自己的反应样本',
+                            icon: '🧘',
+                            items: [
+                                { question: '我急于给建议', emotion: '焦虑/想帮忙', need: '先倾听' },
+                                { question: '我沉默', emotion: '不知道说什么', need: '练习共情话术' },
+                                { question: '我反驳', emotion: '防御/被误解', need: '先确认再回应' }
+                            ]
+                        },
+                        {
+                            name: '人性规律样本',
+                            icon: '🔮',
+                            items: [
+                                { question: '人在脆弱时', emotion: '希望被理解', need: '不说「别哭」' },
+                                { question: '人在被否定时', emotion: '防御/攻击', need: '先共情再建议' },
+                                { question: '人在被认可时', emotion: '开心/自信', need: '具体欣赏' }
+                            ]
+                        }
+                    ],
+                    scenarios: [
+                        { label: '场景1：她说「今天好累」', color: 'var(--blue)', text: '今天好累啊…', show: false, original: '「那你早点休息」', ideal: '「听起来今天很耗你，想聊聊吗？」', flow: '她会说下去，情绪打开' },
+                        { label: '场景2：她迟到10分钟', color: 'var(--purple)', text: '（她迟到10分钟）', show: false, original: '「你怎么又迟到？」', ideal: '「路上堵了吧？没事，我也刚到。」', flow: '她放松，可能笑' },
+                        { label: '场景3：猜错情绪', color: 'var(--green)', text: '（你猜错了她的情绪）', show: false, original: '沉默或尴尬', ideal: '「哈哈，那我猜错了。那你当时是什么感觉？」', flow: '她愿意纠正并分享' },
+                        { label: '场景4：她说「我没事」', color: 'var(--orange)', text: '我没事（但明显不是）', show: false, original: '「哦，那好吧」', ideal: '「我听到你说没事，但感觉你有点不一样。想说就说，不想说也没关系。」', flow: '她可能开始说' },
+                        { label: '场景5：她抱怨工作', color: 'var(--red)', text: '这个老板真烦人', show: false, original: '「那你换个工作吧」', ideal: '「怎么了？他做了什么让你这么烦？」', flow: '她继续倾诉' },
+                        { label: '场景6：她分享好消息', color: 'var(--pink)', text: '我今天被表扬了！', show: false, original: '「哦，挺好的」', ideal: '「哇，发生了什么？你一定很开心吧！」', flow: '她感到被分享' }
+                    ],
+                    trainingPlan: [
+                        { week: 1, theme: '概念内化+侦探基础', tagClass: 'tag-blue', task: '每天学3个细粒度情绪词+观察1人写3个细节', tools: '侦探工具', focus: '信息阶+情绪阶' },
+                        { week: 2, theme: '诗人+看见', tagClass: 'tag-orange', task: '每天感官开关3次+1次细微看见验证', tools: '诗人+侦探', focus: '感受阶+看见阶' },
+                        { week: 3, theme: '5W2H+欣赏+理解', tagClass: 'tag-purple', task: '每天用5W2H分析1句话+1次具体欣赏+1次来源假设', tools: '5W2H+提问', focus: '欣赏阶+理解阶' },
+                        { week: 4, theme: '爱+被爱+整合', tagClass: 'tag-green', task: '每天1次爱的行动+接收练习+完整互动日志', tools: '全部工具', focus: '全部阶' }
+                    ]
+                };
+            },
+            methods: {
+                toggleCard(key) {
+                    this.cards[key] = !this.cards[key];
+                },
+                scrollToSection(id) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    this.sidebarOpen = false;
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
