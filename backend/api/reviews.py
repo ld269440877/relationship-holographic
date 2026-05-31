@@ -2,7 +2,7 @@
 复盘日记 API 路由
 """
 from datetime import date
-from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlmodel import Session, select
@@ -14,22 +14,22 @@ router = APIRouter(prefix="/api/reviews", tags=["复盘"])
 
 
 class DailyReviewCreate(BaseModel):
-    review_date: str
-    five_whys_json: Optional[str] = None
-    emotion_accuracy: Optional[float] = None
+    review_date: date
+    five_whys_json: str | None = None
+    emotion_accuracy: float | None = None
     highlight: str
-    improvement: Optional[str] = None
-    resource_used_id: Optional[int] = None
+    improvement: str | None = None
+    resource_used_id: int | None = None
 
 
 class DailyReviewOut(BaseModel):
     id: int
     review_date: str
-    five_whys_json: Optional[str]
-    emotion_accuracy: Optional[float]
+    five_whys_json: str | None
+    emotion_accuracy: float | None
     highlight: str
-    improvement: Optional[str]
-    resource_used_id: Optional[int]
+    improvement: str | None
+    resource_used_id: int | None
     emotions: list[str] = []
 
     class Config:
@@ -90,7 +90,7 @@ def _to_out(r: DailyReviewModel) -> dict:
             pass
     return {
         "id": r.id,
-        "review_date": r.review_date,
+        "review_date": r.review_date.isoformat(),
         "five_whys_json": r.five_whys_json,
         "emotion_accuracy": r.emotion_accuracy,
         "highlight": r.highlight,

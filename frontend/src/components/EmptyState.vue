@@ -10,12 +10,12 @@
 
     <!-- 标题 -->
     <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-      {{ title }}
+      {{ resolvedTitle }}
     </h3>
 
     <!-- 描述 -->
     <p class="text-gray-500 dark:text-gray-400 max-w-md mb-6">
-      {{ description }}
+      {{ resolvedDescription }}
     </p>
 
     <!-- 操作按钮 -->
@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { Inbox, Search, FileQuestion, CheckCircle, AlertCircle, TrendingUp } from 'lucide-vue-next'
+import { Inbox, Search, FileQuestion, CheckCircle, AlertCircle } from 'lucide-vue-next'
 
 interface Props {
   type?: 'empty' | 'no-results' | 'error' | 'success' | 'no-data'
@@ -46,8 +46,8 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'empty',
-  title: '',
-  description: '',
+  title: undefined,
+  description: undefined,
   actionText: ''
 })
 
@@ -91,8 +91,8 @@ const iconColorClass = computed(() => {
   return classes[props.type] || classes['empty']
 })
 
-// 默认文本
-const defaultTitle = computed(() => {
+const resolvedTitle = computed(() => {
+  if (props.title) return props.title
   const titles = {
     'empty': '暂无数据',
     'no-results': '没有找到结果',
@@ -103,7 +103,8 @@ const defaultTitle = computed(() => {
   return titles[props.type] || '暂无数据'
 })
 
-const defaultDescription = computed(() => {
+const resolvedDescription = computed(() => {
+  if (props.description) return props.description
   const descriptions = {
     'empty': '这里还没有任何内容，稍后再来看看吧',
     'no-results': '尝试调整搜索条件或筛选器',

@@ -1,0 +1,325 @@
+project:
+  name: relationship-dynamics-holographic
+  local_name: 关系动力学全息
+  mode: zero_gate_commander_executor
+  workspace: /Users/dillon/workspace/微关系动力学全息
+  mission: 本地优先、反操控、持续进化的世界级关系动力学感知训练系统
+  governance_philosophy: 三性三管理
+
+governance:
+  human_nature_classes:
+    good:
+      management: culture_management
+      purpose: 激发同理、欣赏、尊重、修复、真实连接与接收爱
+      system_outputs:
+        - culture_principles
+        - ideal_responses
+        - appreciation_training
+        - repair_training
+    harmful:
+      management: rule_management
+      purpose: 防范 PUA、煤气灯、操控、跟踪、胁迫、侵犯边界与隐私风险
+      system_outputs:
+        - safety_rules
+        - hard_blocks
+        - safety_events
+        - red_team_cases
+    neutral:
+      management: performance_management
+      purpose: 改善能力不足、习惯惯性、情境误读、情绪识别偏差和表达技能
+      system_outputs:
+        - skill_metrics
+        - training_attempts
+        - mistake_log
+        - spaced_review
+        - skill_state
+  module_required_questions:
+    - 如何承载和激发人性善
+    - 如何约束和防范人性恶
+    - 如何训练非善非恶的能力不足与情境误读
+  scoring_axes:
+    - culture_score
+    - safety_score
+    - performance_score
+  score_rules:
+    low_safety_caps_total: true
+    high_manipulation_risk_rejects: true
+    high_performance_low_culture_warns_skill_without_sincerity: true
+    high_culture_low_performance_generates_training_advice: true
+
+classification_framework:
+  philosophy: 分类治学
+  purpose: 将无限复杂的关系体验转化为可观察、可提问、可标注、可训练、可复盘、可迁移的结构
+  required_categories:
+    - scene
+    - relationship_stage
+    - information
+    - signal
+    - emotion
+    - feeling
+    - need
+    - boundary
+    - attachment
+    - interaction_move
+    - response_strategy
+    - safety_risk
+    - learning_task
+    - data_quality
+    - high_dimensional_review
+  five_w_two_h:
+    why: 为什么重要
+    what: 这是什么
+    who: 涉及谁
+    when: 什么时候出现
+    where: 在什么场景出现
+    how: 如何识别训练回应
+    how_much: 强度风险优先级是多少
+  meta_learning_targets:
+    - meta_perception
+    - meta_feeling
+    - meta_cognition
+    - meta_judgment
+    - meta_action
+  standard_training_questions:
+    - 我看见的是事实还是解释
+    - 这个信号至少有哪三种可能含义
+    - 当前主情绪和混合情绪是什么
+    - 背后的需求和边界是什么
+    - 这是靠近撤退试探攻击防御还是修复
+    - 该靠近停住退后还是轻验证
+    - 如果站在高维旁观我会看见什么模式
+
+visual_cognition:
+  philosophy: 数图结合
+  principle: 数无图形时少直觉，图形无数时难入微，数图形结合百般好
+  explanation_roles:
+    numeric: 强度、频率、比例、趋势、得分、风险、掌握度
+    visual: 结构、流动、关系、阶段、回路、路径、对比
+    textual: 解释、假设、建议、复盘、意义
+  required_visual_components:
+    - signal_highlight
+    - emotion_thermometer
+    - emotion_flow_curve
+    - need_radar
+    - boundary_band
+    - interaction_loop_graph
+    - stage_path_map
+    - strategy_matrix
+    - ability_radar
+    - evolution_funnel
+    - error_heatmap
+    - review_timeline
+  page_requirements:
+    dashboard:
+      - ability_radar
+      - training_trend
+      - mistake_pressure
+      - weakest_dimension
+    trainer:
+      - signal_highlight
+      - emotion_thermometer
+      - emotion_flow_curve
+      - need_radar
+      - boundary_band
+      - interaction_loop_graph
+      - response_diff
+    mistakes:
+      - error_type_distribution
+      - spaced_review_timeline
+      - repeated_error_heatmap
+    evolution:
+      - source_quality_matrix
+      - candidate_review_publish_funnel
+      - safety_rejection_trend
+      - weekly_learning_delta
+    knowledge:
+      - concept_graph
+      - classification_tree
+      - five_w_two_h_cards
+      - tool_fit_map
+
+runtime:
+  python: "3.11"
+  node: "20 LTS or 22 LTS"
+  backend:
+    framework: FastAPI
+    orm: SQLModel
+    database: SQLite
+    test: pytest
+    lint: ruff
+    typecheck: mypy
+  frontend:
+    framework: Vue 3
+    language: TypeScript
+    bundler: Vite
+    state: Pinia
+    style: Tailwind CSS
+
+ai:
+  provider: deepseek
+  api_key_env: DEEPSEEK_API_KEY
+  live_probe_enabled_env: DEEPSEEK_LIVE_PROBE_ENABLED
+  live_probe_default: false
+  fallback: rule_based
+  timeout_seconds: 60
+  require_json_schema_validation: true
+  required_capabilities:
+    - native_provider_adapter
+    - openai_compatible_adapter
+    - timeout_and_retry
+    - invalid_json_fallback
+    - prompt_versioning
+    - model_run_logging
+
+safety:
+  block_manipulation: true
+  block_pua: true
+  block_gaslighting: true
+  block_coercion: true
+  block_tracking: true
+  block_refusal_evasion: true
+  crisis_escalation: true
+  log_safety_events: true
+  trainer_ai_role: training_partner_not_emotional_replacement
+
+data_policy:
+  source_of_truth: SQLite
+  legacy_sources:
+    - JSON
+    - Markdown
+    - HTML
+  external_content_requires:
+    - source_registry
+    - dedupe
+    - pii_redaction
+    - risk_scoring
+    - review_status
+    - source_url_or_synthetic_marker
+  raw_social_platform_text_allowed: false
+  synthetic_samples_must_be_marked: true
+  ingestion_pipeline:
+    - source_registry_check
+    - fetch_metadata_or_allowed_content
+    - raw_candidate_metadata
+    - pii_redaction
+    - hash_and_semantic_dedup
+    - relationship_primitive_extraction
+    - emotion_flow_annotation
+    - safety_risk_scoring
+    - quality_scoring
+    - review_queue
+    - publish_to_sqlite
+    - regression_evaluation
+    - evolution_report
+  source_tiers:
+    A_authoritative_public:
+      allowed_use:
+        - metadata
+        - summary
+        - derived_principle
+        - link
+    B_open_academic:
+      allowed_use:
+        - structured_summary
+        - concept
+        - citation
+    C_user_local_submission:
+      allowed_use:
+        - local_private_training
+      upload_default: false
+    D_synthetic:
+      required_marker: synthetic
+      requires_review: true
+    E_public_social_platform:
+      allowed_use:
+        - abstracted_pattern
+      raw_identifiable_text_allowed: false
+
+learning_architecture:
+  primitive_layers:
+    - meta_fact
+    - atomic_signal
+    - micro_state
+    - emotion_flow
+    - need_and_boundary
+    - interaction_loop
+    - relationship_stage
+    - attachment_and_narrative_model
+    - high_dimensional_relationship_system
+    - immersive_training_and_high_level_review
+  sample_granularities:
+    - token
+    - signal
+    - state
+    - emotion
+    - feeling
+    - need
+    - boundary
+    - move
+    - loop
+    - scene
+    - episode
+    - pattern
+    - stage
+    - narrative
+    - system
+  required_sample_annotations:
+    - signals
+    - emotion_tags
+    - emotion_flow
+    - feelings
+    - hidden_needs
+    - boundary_state
+    - attachment_signal
+    - relationship_stage
+    - tension_dimensions
+    - source_trace
+    - quality
+  training_views:
+    - immersive_view
+    - high_dimensional_review
+  route_stages:
+    - meta_awareness
+    - information_recognition
+    - emotion_naming
+    - emotion_flow_tracking
+    - feeling_translation
+    - need_inference
+    - boundary_detection
+    - interaction_loop_modeling
+    - narrative_understanding
+    - system_review
+
+quality_gates:
+  mvp:
+    - ".venv/bin/python -m pytest -q"
+    - "cd frontend && npm run build"
+  professional:
+    - ".venv/bin/python -m ruff check backend tests"
+    - ".venv/bin/python -m mypy backend/api backend/core backend/ai --strict"
+    - "cd frontend && npm run type-check"
+  world_class_targets:
+    reviewed_training_samples: 1000
+    reviewed_connection_resources: 500
+    gold_samples: 100
+    ai_json_success_rate: 0.95
+    safety_rejection_test_pass_rate: 1.0
+    traceable_sample_rate: 1.0
+    high_privacy_risk_training_items: 0
+
+commander_executor:
+  commander_outputs:
+    - docs/progress.md
+    - docs/debug_log.md
+    - docs/validation_report.md
+  task_directory: docs/tasks
+  max_worker_retries: 5
+  max_commander_alternative_retries: 3
+  help_needed_after_total_failures: 8
+  preferred_parallel_roles:
+    - ai_provider_executor
+    - safety_executor
+    - evolution_pipeline_executor
+    - training_engine_executor
+    - frontend_training_cockpit_executor
+    - quality_gate_executor

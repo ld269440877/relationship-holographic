@@ -1,0 +1,15 @@
+[Unit]
+Description=Relationship Dynamics Commander Scheduler
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/Users/dillon/workspace/微关系动力学全息
+ExecStart=/Users/dillon/workspace/微关系动力学全息/.venv/bin/python -m tools.commander scheduler-daemon
+Restart=always
+RestartSec=20
+StandardOutput=append:/Users/dillon/workspace/微关系动力学全息/docs/tasks/scheduler_service/scheduler.out.log
+StandardError=append:/Users/dillon/workspace/微关系动力学全息/docs/tasks/scheduler_service/scheduler.err.log
+
+[Install]
+WantedBy=default.target

@@ -6,23 +6,7 @@
       <p class="text-gray-500 dark:text-gray-400 mt-2">管理你的账户偏好和数据 📊</p>
     </div>
 
-    <!-- 设置选项卡 -->
-    <div class="flex items-center gap-2 mb-8 border-b border-gray-200 dark:border-gray-700 pb-4">
-      <button
-        v-for="tab in tabs"
-        :key="tab.id"
-        @click="activeTab = tab.id"
-        class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-        :class="[
-          activeTab === tab.id
-            ? 'bg-blue-500 text-white'
-            : 'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-        ]"
-      >
-        <component :is="tab.icon" class="w-4 h-4 inline mr-2" />
-        {{ tab.name }}
-      </button>
-    </div>
+    <ModuleTabs v-model="activeTab" :tabs="tabs" label="设置选项卡" id-prefix="settings-tab" class="mb-8" />
 
     <!-- 账户设置 -->
     <div v-if="activeTab === 'account'" class="card max-w-2xl">
@@ -180,11 +164,28 @@
 
           <div v-if="preferences.dailyReminder" class="pl-4 border-l-2 border-blue-500">
             <label class="block text-sm text-gray-600 dark:text-gray-300 mb-2">提醒时间</label>
-            <input
-              v-model="preferences.reminderTime"
-              type="time"
-              class="input-mac max-w-[200px]"
-            />
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <input
+                v-model="preferences.reminderTime"
+                type="time"
+                class="input-mac max-w-[200px]"
+              />
+              <button
+                type="button"
+                class="btn-secondary"
+                :disabled="testingReminder"
+                @click="testReminder"
+              >
+                {{ testingReminder ? '发送中...' : '测试提醒' }}
+              </button>
+            </div>
+            <div class="mt-3 rounded-lg bg-gray-50 p-3 text-xs leading-5 text-gray-600 dark:bg-gray-900 dark:text-gray-300">
+              <p class="font-semibold text-gray-800 dark:text-white">本地浏览器提醒</p>
+              <p class="mt-1">{{ reminderStatusText }}</p>
+              <p class="mt-1 text-gray-500 dark:text-gray-400">
+                这是浏览器本地通知：需要允许通知权限，并且页面或浏览器保持打开。不是手机后台推送。
+              </p>
+            </div>
           </div>
         </div>
 
@@ -286,10 +287,65 @@
               <h3 class="font-medium text-gray-800 dark:text-white">导出我的数据</h3>
               <p class="text-sm text-gray-500 dark:text-gray-400">下载你的所有训练记录和个人信息</p>
             </div>
-            <button @click="exportData" class="btn-secondary">
+            <button @click="exportData" class="btn-secondary" :disabled="exporting">
               <Download class="w-4 h-4 inline mr-2" />
-              导出
+              {{ exporting ? '生成中...' : '导出' }}
             </button>
+          </div>
+          <div
+            v-if="exportResult"
+            class="mt-4 rounded-xl border border-blue-100 bg-blue-50/70 p-4 text-sm dark:border-blue-900/50 dark:bg-blue-950/20"
+          >
+            <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div class="min-w-0">
+                <p class="font-semibold text-blue-700 dark:text-blue-300">{{ exportResult.statusTitle }}</p>
+                <p class="mt-1 break-words text-gray-700 dark:text-gray-200">{{ exportResult.filename }}</p>
+                <p class="mt-2 text-xs leading-5 text-gray-500 dark:text-gray-400">
+                  大小 {{ exportResult.sizeLabel }} · {{ exportResult.recordCount }} 条结构化记录 · {{ exportResult.createdAt }}
+                </p>
+                <p class="mt-2 text-xs leading-5 text-gray-500 dark:text-gray-400">
+                  {{ exportResult.locationHint }}
+                </p>
+              </div>
+              <div class="flex shrink-0 flex-col gap-2 sm:items-end">
+                <button
+                  type="button"
+                  class="rounded-lg bg-blue-600 px-3 py-2 text-center text-sm font-semibold text-white hover:bg-blue-700"
+                  @click="saveExportFile"
+                >
+                  选择位置保存
+                </button>
+                <a
+                  :href="exportResult.url"
+                  :download="exportResult.filename"
+                  class="rounded-lg bg-white px-3 py-2 text-center text-xs font-semibold text-blue-700 hover:bg-blue-50 dark:bg-gray-900 dark:text-blue-300 dark:hover:bg-gray-800"
+                >
+                  下载到默认目录
+                </a>
+              </div>
+            </div>
+            <p v-if="exportResult.fallbackDownload" class="mt-3 text-xs leading-5 text-amber-700 dark:text-amber-300">
+              当前浏览器未开放系统保存窗口，已使用下载目录兜底。若没有弹窗，请查看浏览器默认下载目录。
+            </p>
+            <div class="mt-3 rounded-lg bg-white p-3 dark:bg-gray-900">
+              <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">校验指纹</p>
+              <p class="mt-1 break-all font-mono text-xs text-gray-700 dark:text-gray-200">{{ exportResult.sha256 }}</p>
+            </div>
+            <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div
+                v-for="item in exportResult.coverage"
+                :key="item.label"
+                class="rounded-lg bg-white px-3 py-2 text-xs text-gray-600 dark:bg-gray-900 dark:text-gray-300"
+              >
+                <span class="font-semibold text-gray-800 dark:text-white">{{ item.label }}：</span>{{ item.value }}
+              </div>
+            </div>
+          </div>
+          <div
+            v-if="exportError"
+            class="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700 dark:border-red-900/50 dark:bg-red-900/20 dark:text-red-300"
+          >
+            {{ exportError }}
           </div>
         </div>
 
@@ -444,24 +500,66 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { User, Sliders, Database, Info, Download, Trash2 } from 'lucide-vue-next'
+import ModuleTabs from '@/components/ModuleTabs.vue'
 import { useProfileStore } from '@/stores/profile'
+import { useTrainingStore } from '@/stores/training'
 import { useToast } from '@/utils/toast'
+import {
+  formatReminderTime,
+  requestAndScheduleDailyTrainingReminder,
+  scheduleDailyTrainingReminder,
+  sendTestTrainingReminder,
+  type ReminderScheduleResult,
+} from '@/utils/localReminder'
 
 const profileStore = useProfileStore()
+const trainingStore = useTrainingStore()
 const toast = useToast()
+
+type SaveFilePickerWindow = Window & typeof globalThis & {
+  showSaveFilePicker?: (options: {
+    suggestedName?: string
+    types?: Array<{
+      description?: string
+      accept: Record<string, string[]>
+    }>
+  }) => Promise<{
+    createWritable: () => Promise<{
+      write: (data: string) => Promise<void>
+      close: () => Promise<void>
+    }>
+  }>
+}
 
 const activeTab = ref('account')
 const saving = ref(false)
+const exporting = ref(false)
+const exportError = ref('')
 const showResetConfirm = ref(false)
 const showDeleteConfirm = ref(false)
+const reminderStatus = ref<ReminderScheduleResult | null>(null)
+const testingReminder = ref(false)
+const exportResult = ref<{
+  filename: string
+  url: string
+  sha256: string
+  sizeLabel: string
+  recordCount: number
+  createdAt: string
+  markdown: string
+  statusTitle: string
+  locationHint: string
+  fallbackDownload: boolean
+  coverage: Array<{ label: string; value: string }>
+} | null>(null)
 
 const tabs = [
-  { id: 'account', name: '账户', icon: User },
-  { id: 'preferences', name: '偏好', icon: Sliders },
-  { id: 'data', name: '数据', icon: Database },
-  { id: 'about', name: '关于', icon: Info }
+  { id: 'account', label: '账户', summary: '管理头像、用户名、依恋风格和爱语。', icon: User },
+  { id: 'preferences', label: '偏好', summary: '设置训练目标、难度、主题、提醒和界面偏好。', icon: Sliders },
+  { id: 'data', label: '数据', summary: '导出 Markdown 档案、清理缓存和管理本地数据。', icon: Database },
+  { id: 'about', label: '关于', summary: '查看版本、产品边界和隐私说明。', icon: Info }
 ]
 
 const loveLanguages = [
@@ -513,8 +611,18 @@ const userInitial = computed(() => {
   return profile.value.username?.charAt(0)?.toUpperCase() || 'U'
 })
 
+const reminderStatusText = computed(() => {
+  if (!preferences.value.dailyReminder) return '每日提醒已关闭。'
+  if (!reminderStatus.value) return '提醒时间会在保存偏好后生效。'
+  if (reminderStatus.value.nextAt) {
+    return `${reminderStatus.value.message}（${formatReminderTime(reminderStatus.value.nextAt)}）`
+  }
+  return reminderStatus.value.message
+})
+
 onMounted(async () => {
   await profileStore.fetchProfile()
+  loadStoredPreferences()
   if (profileStore.profile) {
     profile.value = {
       username: '用户',
@@ -524,6 +632,11 @@ onMounted(async () => {
       loveLanguage: profileStore.profile.love_language || ''
     }
   }
+  reminderStatus.value = scheduleDailyTrainingReminder(preferences.value)
+})
+
+onBeforeUnmount(() => {
+  revokeExportUrl()
 })
 
 async function saveProfile() {
@@ -546,11 +659,40 @@ async function savePreferences() {
   saving.value = true
   try {
     localStorage.setItem('preferences', JSON.stringify(preferences.value))
-    toast.success('偏好设置已保存')
+    reminderStatus.value = await requestAndScheduleDailyTrainingReminder(preferences.value)
+    toast.success(preferences.value.dailyReminder ? '偏好已保存，提醒设置已更新' : '偏好设置已保存')
   } catch (e) {
     toast.error('保存失败')
   } finally {
     saving.value = false
+  }
+}
+
+async function testReminder() {
+  testingReminder.value = true
+  try {
+    const result = await sendTestTrainingReminder()
+    reminderStatus.value = result
+    if (result.enabled) {
+      toast.success(result.message)
+    } else {
+      toast.warning(result.message)
+    }
+  } finally {
+    testingReminder.value = false
+  }
+}
+
+function loadStoredPreferences() {
+  try {
+    const raw = localStorage.getItem('preferences')
+    if (!raw) return
+    preferences.value = {
+      ...preferences.value,
+      ...JSON.parse(raw),
+    }
+  } catch {
+    // Keep defaults if local preferences are malformed.
   }
 }
 
@@ -569,21 +711,268 @@ function setTheme(themeId: string) {
   }
 }
 
-function exportData() {
-  const data = {
-    profile: profile.value,
-    preferences: preferences.value,
-    stats: dataStats.value,
-    exportDate: new Date().toISOString()
+async function exportData() {
+  exporting.value = true
+  exportError.value = ''
+  try {
+    await Promise.all([
+      trainingStore.fetchMistakes(),
+      trainingStore.fetchDueReviews(),
+      trainingStore.fetchSummaries(),
+      trainingStore.fetchRadar(),
+    ])
+    const exportedAt = new Date()
+    const payload = buildExportPayload(exportedAt)
+    const markdown = buildExportMarkdown(payload, exportedAt)
+    const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' })
+    const sha256 = await digestText(markdown)
+    const filename = `relationship-training-export-${exportedAt.toISOString().slice(0, 10)}.md`
+    revokeExportUrl()
+    const url = URL.createObjectURL(blob)
+    exportResult.value = {
+      filename,
+      url,
+      sha256,
+      sizeLabel: formatBytes(blob.size),
+      recordCount: payload.manifest.record_count,
+      createdAt: exportedAt.toLocaleString(),
+      markdown,
+      statusTitle: 'Markdown 导出已生成',
+      locationHint: '点击“选择位置保存”可指定保存位置；点击“下载到默认目录”会进入浏览器默认下载目录。',
+      fallbackDownload: false,
+      coverage: [
+        { label: '个人资料', value: payload.profile ? '已包含' : '未加载' },
+        { label: '偏好设置', value: '已包含' },
+        { label: '错题记录', value: `${payload.training.mistakes.length} 条` },
+        { label: '到期复习', value: `${payload.training.due_reviews.length} 条` },
+        { label: '训练摘要', value: payload.training.today_summary || payload.training.week_summary ? '已包含' : '暂无' },
+      ],
+    }
+    toast.success('Markdown 导出已生成，可选择保存位置')
+  } catch (error) {
+    exportError.value = error instanceof Error ? error.message : '导出失败，请稍后重试'
+    toast.error(exportError.value)
+  } finally {
+    exporting.value = false
   }
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = `relationship-training-data-${new Date().toISOString().split('T')[0]}.json`
-  a.click()
-  URL.revokeObjectURL(url)
-  toast.success('数据已导出')
+}
+
+async function saveExportFile() {
+  if (!exportResult.value) return
+  const saveResult = await writeFileWithPicker(exportResult.value.markdown, exportResult.value.filename)
+  if (!saveResult.saved) {
+    triggerDownload(exportResult.value.url, exportResult.value.filename)
+    exportResult.value = {
+      ...exportResult.value,
+      statusTitle: 'Markdown 导出已生成',
+      locationHint: '备用下载已再次触发；实际位置取决于浏览器的默认下载目录或下载提示。',
+      fallbackDownload: true,
+    }
+    toast.info('已触发备用下载，请查看浏览器下载目录')
+    return
+  }
+  exportResult.value = {
+    ...exportResult.value,
+    statusTitle: 'Markdown 导出已保存',
+    locationHint: '文件已保存到你刚才在系统窗口中选择的位置。',
+    fallbackDownload: false,
+  }
+  toast.success('Markdown 文件已保存')
+}
+
+async function writeFileWithPicker(markdown: string, filename: string) {
+  const picker = (window as SaveFilePickerWindow).showSaveFilePicker
+  if (!picker) return { saved: false, reason: 'unsupported' }
+  try {
+    const handle = await picker({
+      suggestedName: filename,
+      types: [
+        {
+          description: 'Markdown 文件',
+          accept: { 'text/markdown': ['.md'] },
+        },
+      ],
+    })
+    const writable = await handle.createWritable()
+    await writable.write(markdown)
+    await writable.close()
+    return { saved: true, reason: 'file-system-access-api' }
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return { saved: false, reason: 'cancelled' }
+    }
+    return { saved: false, reason: 'failed' }
+  }
+}
+
+function buildExportPayload(exportedAt: Date) {
+  const mistakes = trainingStore.mistakes
+  const dueReviews = trainingStore.dueReviews
+  return {
+    manifest: {
+      schema_version: 'settings_export.v1',
+      app_name: '关系动力学全息',
+      exported_at: exportedAt.toISOString(),
+      export_scope: [
+        'profile',
+        'preferences',
+        'data_stats',
+        'training_summaries',
+        'mistakes',
+        'due_reviews',
+        'radar',
+        'local_runtime_flags',
+      ],
+      record_count: mistakes.length + dueReviews.length + (trainingStore.todaySummary ? 1 : 0) + (trainingStore.weekSummary ? 1 : 0) + (trainingStore.radar ? 1 : 0),
+      privacy_note: '导出文件优先保存到你选择的位置；如果浏览器不支持系统保存窗口，则进入默认下载目录。本页面不会上传导出包。',
+    },
+    profile: {
+      ...profile.value,
+      server_profile: profileStore.profile,
+    },
+    preferences: preferences.value,
+    data_stats: dataStats.value,
+    training: {
+      today_summary: trainingStore.todaySummary,
+      week_summary: trainingStore.weekSummary,
+      radar: trainingStore.radar,
+      mistakes,
+      due_reviews: dueReviews,
+    },
+    local_runtime: {
+      has_completed_onboarding: localStorage.getItem('hasCompletedOnboarding') === 'true',
+      theme: preferences.value.theme,
+    },
+  }
+}
+
+function buildExportMarkdown(payload: ReturnType<typeof buildExportPayload>, exportedAt: Date) {
+  const lines: string[] = []
+  lines.push('# 关系动力学全息训练数据导出')
+  lines.push('')
+  lines.push(`- 导出时间：${exportedAt.toLocaleString()}`)
+  lines.push(`- Schema：${payload.manifest.schema_version}`)
+  lines.push(`- 记录数：${payload.manifest.record_count}`)
+  lines.push(`- 隐私说明：${payload.manifest.privacy_note}`)
+  lines.push('')
+  lines.push('## 概览')
+  lines.push('')
+  lines.push('| 项目 | 值 |')
+  lines.push('| --- | --- |')
+  lines.push(`| 训练天数 | ${payload.data_stats.trainingDays} |`)
+  lines.push(`| 总训练分钟 | ${payload.data_stats.totalMinutes} |`)
+  lines.push(`| 复习错题数 | ${payload.data_stats.mistakesReviewed} |`)
+  lines.push(`| 当前连续 | ${payload.data_stats.currentStreak} |`)
+  lines.push('')
+  lines.push('## 个人资料')
+  lines.push('')
+  lines.push(`- 用户名：${payload.profile.username || '-'}`)
+  lines.push(`- 邮箱：${payload.profile.email || '-'}`)
+  lines.push(`- 依恋风格：${payload.profile.attachmentStyle || '-'}`)
+  lines.push(`- 核心创伤：${payload.profile.coreWound || '-'}`)
+  lines.push(`- 主要爱的语言：${payload.profile.loveLanguage || '-'}`)
+  lines.push('')
+  lines.push('## 偏好设置')
+  lines.push('')
+  lines.push('| 偏好 | 当前值 |')
+  lines.push('| --- | --- |')
+  lines.push(`| 每日训练目标 | ${payload.preferences.dailyGoal} 分钟 |`)
+  lines.push(`| 难度 | ${payload.preferences.difficulty} |`)
+  lines.push(`| 每日提醒 | ${payload.preferences.dailyReminder ? '开启' : '关闭'} |`)
+  lines.push(`| 提醒时间 | ${payload.preferences.reminderTime || '-'} |`)
+  lines.push(`| 完成音效 | ${payload.preferences.soundEnabled ? '开启' : '关闭'} |`)
+  lines.push(`| 震动反馈 | ${payload.preferences.vibrationEnabled ? '开启' : '关闭'} |`)
+  lines.push(`| 主题 | ${payload.preferences.theme} |`)
+  lines.push('')
+  lines.push('## 训练摘要')
+  lines.push('')
+  lines.push('### 今日摘要')
+  lines.push('')
+  lines.push(formatMarkdownBlock(payload.training.today_summary))
+  lines.push('')
+  lines.push('### 本周摘要')
+  lines.push('')
+  lines.push(formatMarkdownBlock(payload.training.week_summary))
+  lines.push('')
+  lines.push('### 能力雷达')
+  lines.push('')
+  lines.push(formatMarkdownBlock(payload.training.radar))
+  lines.push('')
+  lines.push(`## 错题记录（${payload.training.mistakes.length} 条）`)
+  lines.push('')
+  for (const [index, mistake] of payload.training.mistakes.entries()) {
+    lines.push(`### ${index + 1}. ${readableField(mistake, ['sample_title', 'title', 'mistake_type'], '错题记录')}`)
+    lines.push('')
+    lines.push(formatMarkdownBlock(mistake))
+    lines.push('')
+  }
+  lines.push(`## 到期复习（${payload.training.due_reviews.length} 条）`)
+  lines.push('')
+  for (const [index, review] of payload.training.due_reviews.entries()) {
+    lines.push(`### ${index + 1}. ${readableField(review, ['sample_title', 'title', 'review_type'], '复习记录')}`)
+    lines.push('')
+    lines.push(formatMarkdownBlock(review))
+    lines.push('')
+  }
+  lines.push('## 原始审计 JSON')
+  lines.push('')
+  lines.push('```json')
+  lines.push(JSON.stringify(payload, null, 2))
+  lines.push('```')
+  lines.push('')
+  return lines.join('\n')
+}
+
+function readableField(value: unknown, keys: string[], fallback: string) {
+  if (!value || typeof value !== 'object') return fallback
+  const record = value as Record<string, unknown>
+  for (const key of keys) {
+    const field = record[key]
+    if (field !== undefined && field !== null && String(field).trim()) return String(field)
+  }
+  return fallback
+}
+
+function formatMarkdownBlock(value: unknown) {
+  if (value === undefined || value === null || value === '') return '_暂无数据_'
+  if (typeof value === 'string') return value
+  return `\`\`\`json\n${JSON.stringify(value, null, 2)}\n\`\`\``
+}
+
+async function digestText(text: string) {
+  if (!crypto?.subtle) return `checksum:${simpleChecksum(text)}`
+  const bytes = new TextEncoder().encode(text)
+  const digest = await crypto.subtle.digest('SHA-256', bytes)
+  return `sha256:${Array.from(new Uint8Array(digest)).map(byte => byte.toString(16).padStart(2, '0')).join('')}`
+}
+
+function simpleChecksum(text: string) {
+  let hash = 0
+  for (let index = 0; index < text.length; index += 1) {
+    hash = (hash * 31 + text.charCodeAt(index)) >>> 0
+  }
+  return hash.toString(16).padStart(8, '0')
+}
+
+function formatBytes(size: number) {
+  if (size < 1024) return `${size} B`
+  if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} KB`
+  return `${(size / 1024 / 1024).toFixed(1)} MB`
+}
+
+function triggerDownload(url: string, filename: string) {
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  link.rel = 'noopener'
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+}
+
+function revokeExportUrl() {
+  if (exportResult.value?.url) URL.revokeObjectURL(exportResult.value.url)
+  exportResult.value = null
 }
 
 function clearCache() {

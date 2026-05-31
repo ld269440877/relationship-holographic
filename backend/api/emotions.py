@@ -1,8 +1,6 @@
 """
 情绪相关API路由
 """
-from typing import Optional
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
@@ -14,18 +12,18 @@ router = APIRouter(prefix="/api/emotions", tags=["情绪"])
 
 @router.get("/spectrum", response_model=list[EmotionSpectrum])
 def get_emotion_spectrum(
-    spectrum: Optional[str] = None,
-    intensity: Optional[int] = None,
+    spectrum: str | None = None,
+    intensity: int | None = None,
     session: Session = Depends(get_session)
 ) -> list[EmotionSpectrum]:
     """获取情绪谱系列表"""
     query = select(EmotionSpectrum)
-    
+
     if spectrum:
         query = query.where(EmotionSpectrum.spectrum == spectrum)
     if intensity:
         query = query.where(EmotionSpectrum.intensity == intensity)
-    
+
     results = session.exec(query).all()
     return list(results)
 
@@ -49,6 +47,12 @@ def get_mixed_emotions(session: Session = Depends(get_session)) -> list[MixedEmo
     return list(results)
 
 
+@router.get("/spectra-list")
+def get_spectra_list() -> list[str]:
+    """获取所有谱系列表"""
+    return ["喜", "怒", "哀", "惧", "爱", "惊", "羞"]
+
+
 @router.get("/mixed/{name}", response_model=MixedEmotion)
 def get_mixed_emotion(
     name: str,
@@ -58,17 +62,8 @@ def get_mixed_emotion(
     result = session.exec(
         select(MixedEmotion).where(MixedEmotion.name == name)
     ).first()
-    
+
     if not result:
         raise HTTPException(status_code=404, detail="混合情绪不存在")
-    
+
     return result
-
-
-@router.get("/spectra-list")
-def get_spectra_list() -> dict:
-    """获取所有谱系列表"""
-    return {
-        "spectra": ["喜", "怒", "哀", "惧", "爱", "惊", "羞"],
-        "description": "7大情绪谱系"
-    }

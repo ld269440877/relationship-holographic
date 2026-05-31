@@ -1,7 +1,7 @@
 """
 情绪识别引擎
 """
-from typing import Optional
+from typing import Any, ClassVar
 
 from loguru import logger
 
@@ -10,7 +10,7 @@ class EmotionEngine:
     """情绪识别引擎 - 基于规则的情绪分析"""
 
     # 情绪谱系定义
-    SPECTRUMS: dict[str, list[str]] = {
+    SPECTRUMS: ClassVar[dict[str, list[str]]] = {
         "喜": ["满足", "愉悦", "雀跃", "兴奋", "狂喜"],
         "怒": ["微烦", "烦躁", "恼火", "愤怒", "暴怒"],
         "哀": ["失落", "悲伤", "沮丧", "绝望", "崩溃"],
@@ -21,7 +21,7 @@ class EmotionEngine:
     }
 
     # 混合情绪定义
-    MIXED_EMOTIONS: dict[str, dict] = {
+    MIXED_EMOTIONS: ClassVar[dict[str, dict[str, str | int]]] = {
         "酸楚": {"spect1": "哀", "word1": "委屈", "int1": 6, "spect2": "哀", "word2": "羡慕", "int2": 5},
         "纠结": {"spect1": "爱", "word1": "想要", "int1": 7, "spect2": "惧", "word2": "害怕", "int2": 6},
         "心酸": {"spect1": "哀", "word1": "心疼", "int1": 7, "spect2": "哀", "word2": "无奈", "int2": 5},
@@ -35,7 +35,7 @@ class EmotionEngine:
     def __init__(self) -> None:
         logger.info("情绪识别引擎初始化完成")
 
-    def recognize_emotion(self, text: str) -> list[dict]:
+    def recognize_emotion(self, text: str) -> list[dict[str, Any]]:
         """识别文本中的情绪
 
         Args:
@@ -44,7 +44,7 @@ class EmotionEngine:
         Returns:
             识别的情绪列表 [{"spectrum": "喜", "word": "愉悦", "intensity": 6}]
         """
-        results: list[dict] = []
+        results: list[dict[str, Any]] = []
 
         # 简单关键词匹配
         for spectrum, words in self.SPECTRUMS.items():
@@ -59,8 +59,8 @@ class EmotionEngine:
                     })
 
         # 去除重复
-        seen = set()
-        unique_results = []
+        seen: set[str] = set()
+        unique_results: list[dict[str, Any]] = []
         for r in results:
             key = f"{r['spectrum']}:{r['word']}"
             if key not in seen:
@@ -94,7 +94,7 @@ class EmotionEngine:
         # 限制范围
         return max(1, min(10, base_intensity))
 
-    def analyze_mixed_emotion(self, emotions: list[dict]) -> Optional[dict]:
+    def analyze_mixed_emotion(self, emotions: list[dict[str, Any]]) -> dict[str, Any] | None:
         """分析混合情绪
 
         Args:

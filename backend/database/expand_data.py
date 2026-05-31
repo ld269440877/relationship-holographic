@@ -3,13 +3,13 @@
 从现有资源扩充数据到 5000+ 条
 """
 import uuid
+
 from loguru import logger
 from sqlmodel import Session
 
 from backend.database.connection import engine
-from backend.models.sample import InteractionSample
 from backend.models.resource import ResourceLibrary
-
+from backend.models.sample import InteractionSample
 
 # 扩充的互动样本数据（100+条）
 EXPANDED_SAMPLES = [
@@ -313,23 +313,23 @@ EXPANDED_RESOURCES = [
 def expand_samples(session: Session) -> None:
     """扩充互动样本"""
     logger.info("正在扩充互动样本...")
-    
+
     # 检查是否已存在
     existing_count = session.query(InteractionSample).count()
     if existing_count > 10:
         logger.info(f"样本已存在 {existing_count} 条，跳过")
         return
-    
+
     # 添加扩展样本
     for data in EXPANDED_SAMPLES:
         sample = InteractionSample(sample_uuid=str(uuid.uuid4()), **data)
         session.add(sample)
-    
+
     # 添加更多样本
     for data in MORE_SAMPLES:
         sample = InteractionSample(sample_uuid=str(uuid.uuid4()), **data)
         session.add(sample)
-    
+
     session.commit()
     logger.info(f"互动样本扩充完成: {len(EXPANDED_SAMPLES) + len(MORE_SAMPLES)} 条")
 
@@ -337,18 +337,18 @@ def expand_samples(session: Session) -> None:
 def expand_resources(session: Session) -> None:
     """扩充资源库"""
     logger.info("正在扩充资源库...")
-    
+
     # 检查是否已存在
     existing_count = session.query(ResourceLibrary).count()
     if existing_count > 10:
         logger.info(f"资源已存在 {existing_count} 条，跳过")
         return
-    
+
     # 添加扩展资源
     for data in EXPANDED_RESOURCES:
         resource = ResourceLibrary(resource_uuid=str(uuid.uuid4()), **data)
         session.add(resource)
-    
+
     session.commit()
     logger.info(f"资源库扩充完成: {len(EXPANDED_RESOURCES)} 条")
 
@@ -356,14 +356,14 @@ def expand_resources(session: Session) -> None:
 def expand_all() -> None:
     """执行所有扩充"""
     logger.info("开始数据扩充...")
-    
+
     from backend.database.connection import create_db_and_tables
     create_db_and_tables()
-    
+
     with Session(engine) as session:
         expand_samples(session)
         expand_resources(session)
-    
+
     logger.info("数据扩充全部完成！")
 
 

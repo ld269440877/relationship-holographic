@@ -150,7 +150,7 @@
           <div class="progress-bar mt-2">
             <div
               class="progress-bar-fill"
-              :style="{ width: (selectedEmotions.length / emotionWords.length * 100) + '%' }"
+              :style="{ width: safeEmotionProgressWidth }"
             ></div>
           </div>
         </div>
@@ -287,6 +287,8 @@ import { useRouter } from 'vue-router'
 import { CheckIcon } from 'lucide-vue-next'
 import { useProfileStore } from '@/stores/profile'
 import { useToast } from '@/utils/toast'
+import { markOnboardingCompleted } from '@/utils/onboarding'
+import { safeBarWidth } from '@/utils/format'
 
 const router = useRouter()
 const profileStore = useProfileStore()
@@ -376,6 +378,7 @@ const emotionLevel = computed(() => {
   if (count < 10) return '良好'
   return '丰富'
 })
+const safeEmotionProgressWidth = computed(() => safeBarWidth(emotionWords.length ? (selectedEmotions.value.length / emotionWords.length) * 100 : 0))
 
 function toggleEmotion(emotion: { word: string; icon: string }) {
   const index = selectedEmotions.value.indexOf(emotion.word)
@@ -399,6 +402,7 @@ function prevStep() {
 }
 
 async function completeOnboarding() {
+  markOnboardingCompleted()
   try {
     await profileStore.updateProfile({
       attachment_style: selectedAttachment.value ?? undefined,
@@ -406,10 +410,10 @@ async function completeOnboarding() {
       perception_baseline: selectedEmotions.value.length * 5
     })
     toast.success('欢迎开始你的成长之旅！')
-    router.push('/')
   } catch (e) {
-    toast.error('保存失败，请重试')
+    toast.error('画像保存失败，已先进入本地训练模式')
   }
+  router.push('/')
 }
 </script>
 

@@ -7,11 +7,9 @@
   - 样本基于心理学原理手工标注，包含完整的好坏回应对比
 """
 import json
-import random
 import uuid
 from datetime import datetime, timedelta
 from pathlib import Path
-import sys
 
 # ─── 数据库路径 ───────────────────────────────────────────
 DB_PATH = Path(__file__).resolve().parent.parent.parent / "data" / "relationship_training.db"
@@ -866,8 +864,7 @@ def insert_strategy(cursor, data: dict) -> None:
 
 def generate_interaction_samples(cursor) -> int:
     """生成 2000+ 高质量互动样本"""
-    import random
-    
+
     # 预定义样本模板 (按场景和难度分层)
     templates = [
         # ── 初识场景 ──
@@ -1267,7 +1264,7 @@ def main() -> None:
         total = cursor.execute("SELECT COUNT(*) FROM interaction_samples").fetchone()[0]
         print(f"  已生成 {new_count} 条，现有 {total} 条")
     else:
-        print(f"  样本数量已充足，跳过")
+        print("  样本数量已充足，跳过")
 
     # ── 3. 插入资源库 ─────────────────────────────────────────
     print("\n[3/5] 插入资源库...")

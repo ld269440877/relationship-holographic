@@ -1,0 +1,5853 @@
+{
+  "metadata": {
+    "name": "微观关系动力学全息系统 - 对话语料库",
+    "version": "2.0.0",
+    "description": "56条真实场景对话 × 8大分类 × 情绪轨迹分析 × 回应质量分级",
+    "lastUpdated": "2026-05-20",
+    "totalConversations": 100
+  },
+  "categories": [
+    {
+      "name": "日常闲聊",
+      "description": "日常生活中的自然对话",
+      "icon": "💬"
+    },
+    {
+      "name": "情绪支持",
+      "description": "伴侣情绪波动时的支持性对话",
+      "icon": "🤗"
+    },
+    {
+      "name": "冲突化解",
+      "description": "争吵和分歧时的对话处理",
+      "icon": "⚡"
+    },
+    {
+      "name": "亲密时刻",
+      "description": "情感升华和亲密加深的对话",
+      "icon": "💕"
+    },
+    {
+      "name": "修复和好",
+      "description": "冲突后重建关系的对话",
+      "icon": "🌱"
+    },
+    {
+      "name": "深度对话",
+      "description": "关于未来、过去、恐惧等深度话题",
+      "icon": "🌌"
+    },
+    {
+      "name": "边界设定",
+      "description": "健康边界的确立和维护",
+      "icon": "🛡️"
+    },
+    {
+      "name": "约会规划",
+      "description": "约会邀请和安排的对话",
+      "icon": "📅"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "conv_001",
+      "category": "日常闲聊",
+      "title": "早安问候的温度",
+      "situation": "周末早上，她刚醒",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "早～睡醒了吗？",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "希望被回应",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "早安～睡到自然醒的感觉真好。你呢，是被阳光叫醒的还是被我叫醒的？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（微笑）被你叫醒的～",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→满足→亲密",
+        "key_moment": "你说想念她时她的微笑",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "先回应情绪再给予定期承诺",
+      "alternatives": [
+        {
+          "response": "早！睡得好吗？",
+          "quality": "good",
+          "reason": "基本温暖回应"
+        },
+        {
+          "response": "早啊宝贝，昨晚梦到你了～今天有什么安排？",
+          "quality": "better",
+          "reason": "情感连接+开启话题"
+        },
+        {
+          "response": "早安～睡到自然醒的感觉真好。你呢，是被阳光叫醒的还是被我叫醒的？",
+          "quality": "best",
+          "reason": "轻松俏皮+双向连接+开启今天话题"
+        }
+      ]
+    },
+    {
+      "id": "conv_002",
+      "category": "日常闲聊",
+      "title": "她在分享美食",
+      "situation": "她发来一张美食照片",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发了张照片）今天吃的这个！",
+          "emotion": "满足",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被欣赏",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "这颜色也太诱人了！你吃的比我好～下次带我一起去吃好不好？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好呀！",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "满足→期待认可→期待",
+        "key_moment": "你提到了下次一起",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "积极回应+具体细节+引导延续",
+      "alternatives": [
+        {
+          "response": "好吃吗？",
+          "quality": "good",
+          "reason": "回应但缺乏情感"
+        },
+        {
+          "response": "看起来好好吃！这是什么？你自己做的？",
+          "quality": "better",
+          "reason": "具体好奇+认可"
+        },
+        {
+          "response": "这颜色也太诱人了！你吃的比我好～下次带我一起去吃好不好？",
+          "quality": "best",
+          "reason": "羡慕感+未来承诺+双向"
+        }
+      ]
+    },
+    {
+      "id": "conv_003",
+      "category": "日常闲聊",
+      "title": "她在抱怨天气",
+      "situation": "她说天气太热了",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "热死了！今天三十八度",
+          "emotion": "烦躁",
+          "emotionIntensity": 5,
+          "impliedNeed": "希望被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "热到连我这里隔着屏幕都能感受到～要不要我给你点杯冰饮降降温？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（开心）你太贴心了吧",
+          "emotion": "感动",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "烦躁→感动",
+        "key_moment": "她说太贴心了",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "先共情再延展话题+行动",
+      "alternatives": [
+        {
+          "response": "开空调啊",
+          "quality": "good",
+          "reason": "给解决方案但缺乏情感"
+        },
+        {
+          "response": "确实，今天热得像蒸笼。你在外面吗？多喝水啊",
+          "quality": "better",
+          "reason": "共情+关心+询问"
+        },
+        {
+          "response": "热到连我这里隔着屏幕都能感受到～要不要我给你点杯冰饮降降温？",
+          "quality": "best",
+          "reason": "共情+行动+浪漫"
+        }
+      ]
+    },
+    {
+      "id": "conv_004",
+      "category": "日常闲聊",
+      "title": "她的消息变短了",
+      "situation": "她回复越来越简短",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "嗯",
+          "emotion": "冷淡",
+          "emotionIntensity": 3,
+          "impliedNeed": "需要空间或有心事",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你今天好像有点累？想聊就聊，不想聊我就陪你各自安静一会儿～",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…有点",
+          "emotion": "疲惫",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "投入→冷淡→疲惫",
+        "key_moment": "她承认有点累",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "觉察+温和询问+给空间",
+      "alternatives": [
+        {
+          "response": "你今天怎么话变少了？",
+          "quality": "good",
+          "reason": "直接指出问题"
+        },
+        {
+          "response": "感觉你今天有点不一样，是我哪里说得不对吗？",
+          "quality": "better",
+          "reason": "归因于自己而非指责"
+        },
+        {
+          "response": "你今天好像有点累？想聊就聊，不想聊我就陪你各自安静一会儿～",
+          "quality": "best",
+          "reason": "理解+给选择+安全感"
+        }
+      ]
+    },
+    {
+      "id": "conv_005",
+      "category": "日常闲聊",
+      "title": "分享欲的熄灭",
+      "situation": "她主动分享减少",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（过了很久才回复）哦",
+          "emotion": "观望",
+          "emotionIntensity": 4,
+          "impliedNeed": "观察你的反应",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "有时候就是想安静待着，我懂的。你想聊的时候我在，不想聊我就给你发我今天遇到的趣事～",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（发了一个表情）",
+          "emotion": "缓和",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "投入→观望→退缩→观察",
+        "key_moment": "她过了很久才回复",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "主动制造安全分享空间",
+      "alternatives": [
+        {
+          "response": "你怎么不说话了？",
+          "quality": "good",
+          "reason": "催促而非邀请"
+        },
+        {
+          "response": "今天工作很忙吗？有烦心事可以跟我说",
+          "quality": "better",
+          "reason": "关心+给出口"
+        },
+        {
+          "response": "有时候就是想安静待着，我懂的。你想聊的时候我在，不想聊我就给你发我今天遇到的趣事～",
+          "quality": "best",
+          "reason": "理解+不施压+主动提供陪伴方式"
+        }
+      ]
+    },
+    {
+      "id": "conv_006",
+      "category": "日常闲聊",
+      "title": "她的哼唱",
+      "situation": "她发了一条语音，声音在哼歌",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（语音消息，哼着轻快的小调）",
+          "emotion": "愉悦",
+          "emotionIntensity": 4,
+          "impliedNeed": "想与你分享此刻心情",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（听了语音）你哼的是什么歌呀？听着就觉得很幸福的感觉。今天有什么开心的事，说来让我也开心开心～",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（开心）就是我养的植物开花了！",
+          "emotion": "雀跃",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "愉悦→雀跃→期待分享",
+        "key_moment": "她说植物开花了",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "注意到细节+回应情绪+邀请分享",
+      "alternatives": [
+        {
+          "response": "嗯，还挺好听的",
+          "quality": "good",
+          "reason": "简短但有回应"
+        },
+        {
+          "response": "你在哼歌呀？听起来心情不错～",
+          "quality": "better",
+          "reason": "注意到细节+回应情绪"
+        },
+        {
+          "response": "（听了语音）你哼的是什么歌呀？听着就觉得很幸福的感觉。今天有什么开心的事，说来让我也开心开心～",
+          "quality": "best",
+          "reason": "具体回应+情感共鸣+邀请分享"
+        }
+      ]
+    },
+    {
+      "id": "conv_007",
+      "category": "日常闲聊",
+      "title": "睡前道晚安",
+      "situation": "晚上要睡觉了，她在撒娇",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "不想睡…舍不得和你说晚安",
+          "emotion": "依恋",
+          "emotionIntensity": 4,
+          "impliedNeed": "想要更多连接",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也舍不得。但是你要睡好，不然明天没精神。这样吧，我给你讲个小故事哄你睡？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（开心）好！",
+          "emotion": "满足",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "依恋→试探→满足",
+        "key_moment": "你说要讲故事哄她睡",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "回应依恋需求+照顾健康+延续亲密",
+      "alternatives": [
+        {
+          "response": "那早点睡吧",
+          "quality": "good",
+          "reason": "关心但结束了连接"
+        },
+        {
+          "response": "那就不说晚安，再说会儿话？",
+          "quality": "better",
+          "reason": "回应需求"
+        },
+        {
+          "response": "我也舍不得。但是你要睡好，不然明天没精神。这样吧，我给你讲个小故事哄你睡？",
+          "quality": "best",
+          "reason": "表达同样的感受+照顾她的健康+延续亲密"
+        }
+      ]
+    },
+    {
+      "id": "conv_008",
+      "category": "日常闲聊",
+      "title": "她在等你主动",
+      "situation": "她发了朋友圈但没发给你",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发了一条朋友圈，文案有点感伤）",
+          "emotion": "低落",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被注意",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我看到了你那条朋友圈，文字里有点蓝色的感觉。如果你愿意说，我在听；如果只是想发，那就发吧，我在这里。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…就是突然有点感慨",
+          "emotion": "感伤",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "低落→被注意→感伤",
+        "key_moment": "她承认有点感慨",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "注意到她的动态+温和关心+给空间",
+      "alternatives": [
+        {
+          "response": "你朋友圈发的什么？",
+          "quality": "good",
+          "reason": "直接询问"
+        },
+        {
+          "response": "你发的那条朋友圈…怎么了？",
+          "quality": "better",
+          "reason": "注意到+关心"
+        },
+        {
+          "response": "我看到了你那条朋友圈，文字里有点蓝色的感觉。如果你愿意说，我在听；如果只是想发，那就发吧，我在这里。",
+          "quality": "best",
+          "reason": "具体观察+给选择+安全感"
+        }
+      ]
+    },
+    {
+      "id": "conv_009",
+      "category": "情绪支持",
+      "title": "她心累了",
+      "situation": "她说'心累'",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "心累",
+          "emotion": "疲惫",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要被承接",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "听起来你今天像背着一座山回来。想说就说，不想说也没关系，我就在这。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…就是工作的事太多了",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "疲惫→脆弱",
+        "key_moment": "她开始倾诉",
+        "repair_opportunity": true,
+        "escalation_risk": "高"
+      },
+      "best_response_sequence": "不要急于修复，先承接情绪",
+      "alternatives": [
+        {
+          "response": "别想了，早点睡",
+          "quality": "good",
+          "reason": "关心但急于结束话题"
+        },
+        {
+          "response": "怎么了？发生什么事了？",
+          "quality": "better",
+          "reason": "想帮忙但太直接追问"
+        },
+        {
+          "response": "听起来你今天像背着一座山回来。想说就说，不想说也没关系，我就在这。",
+          "quality": "best",
+          "reason": "具象化感受+不施压+在场"
+        }
+      ]
+    },
+    {
+      "id": "conv_010",
+      "category": "情绪支持",
+      "title": "她在电话里哭了",
+      "situation": "她在电话里哭了",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（电话里传来抽泣声）…我不知道为什么，就是很想哭",
+          "emotion": "脆弱",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（安静听着，等她哭声缓和）我在这。你不用说任何话，我就在这里陪你。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（过了一会儿）…谢谢你没挂电话",
+          "emotion": "感动",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "脆弱→感动→被陪伴",
+        "key_moment": "她说谢谢你没挂电话",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "先陪伴，不急于让对方停止哭泣",
+      "alternatives": [
+        {
+          "response": "别哭了",
+          "quality": "good",
+          "reason": "试图制止但否定了感受"
+        },
+        {
+          "response": "怎么了？哭出来会好受一些",
+          "quality": "better",
+          "reason": "允许情绪但仍然引导"
+        },
+        {
+          "response": "（安静听着，等她哭声缓和）我在这。你不用说任何话，我就在这里陪你。",
+          "quality": "best",
+          "reason": "完全接纳+非语言陪伴+无条件的在"
+        }
+      ]
+    },
+    {
+      "id": "conv_011",
+      "category": "情绪支持",
+      "title": "她说了'没事'",
+      "situation": "她说没事但明显不是",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我没事",
+          "emotion": "压抑",
+          "emotionIntensity": 6,
+          "impliedNeed": "需要被看穿",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听到你说没事，但我感觉到你有点不一样。你想说的时候我在，不想说也没关系。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…就是有点小事情",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "防御→试探→敞开",
+        "key_moment": "她承认有点小事情",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "看穿但温柔，不逼问",
+      "alternatives": [
+        {
+          "response": "哦，那没事就好",
+          "quality": "good",
+          "reason": "接受了表面答案"
+        },
+        {
+          "response": "真的没事吗？",
+          "quality": "better",
+          "reason": "尝试深入但不够温柔"
+        },
+        {
+          "response": "我听到你说没事，但我感觉到你有点不一样。你想说的时候我在，不想说也没关系。",
+          "quality": "best",
+          "reason": "觉察+不施压+开放"
+        }
+      ]
+    },
+    {
+      "id": "conv_012",
+      "category": "情绪支持",
+      "title": "她因工作自我否定",
+      "situation": "她觉得自己不够好",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我今天搞砸了一个项目，我觉得自己很差",
+          "emotion": "自我否定",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要被肯定",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听到你这样否定自己，我很心疼。在我眼里，你是一个对工作很认真的人。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "但是我真的搞砸了",
+          "emotion": "挫败",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "项目没做好，不代表你不好。谁都有失误的时候。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…谢谢你这么说",
+          "emotion": "被理解",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "自我否定→挫败→被理解",
+        "key_moment": "你给出了具体肯定",
+        "repair_opportunity": false,
+        "escalation_risk": "高"
+      },
+      "best_response_sequence": "先否定错误认知，再给具体肯定",
+      "alternatives": [
+        {
+          "response": "你想多了",
+          "quality": "good",
+          "reason": "否定感受而非认知"
+        },
+        {
+          "response": "你能干得很，别这样想",
+          "quality": "better",
+          "reason": "肯定但笼统"
+        },
+        {
+          "response": "我听到你这样否定自己，我很心疼。在我眼里，你是一个…（说出具体事例）的人，这件事就能说明你的能力。",
+          "quality": "best",
+          "reason": "共情+具体事实+认知矫正"
+        }
+      ]
+    },
+    {
+      "id": "conv_013",
+      "category": "情绪支持",
+      "title": "她抱怨老板",
+      "situation": "她吐槽老板很烦人",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这个老板真烦人！又让我加班",
+          "emotion": "抱怨",
+          "emotionIntensity": 6,
+          "impliedNeed": "需要发泄",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "他做了什么让你这么烦？说出来，我帮你骂他（开玩笑语气）",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "他当着所有人的面说我报告不认真，但我已经加班到很晚了！",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "抱怨→委屈→发泄",
+        "key_moment": "她说出委屈的细节",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "先站她这边，不急着给建议",
+      "alternatives": [
+        {
+          "response": "那你换个工作吧",
+          "quality": "good",
+          "reason": "给建议但否定了情绪"
+        },
+        {
+          "response": "老板这样做确实不对，换谁都会生气",
+          "quality": "better",
+          "reason": "共情+站她这边"
+        },
+        {
+          "response": "他做了什么让你这么烦？说出来，我帮你骂他（开玩笑语气）",
+          "quality": "best",
+          "reason": "共情+幽默释放+让她继续说"
+        }
+      ]
+    },
+    {
+      "id": "conv_014",
+      "category": "情绪支持",
+      "title": "她说不想说话了",
+      "situation": "她说'我不想说了'",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我不想说了",
+          "emotion": "挫败",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要空间",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，不想说就先不说。我就在这附近，想找我说的时候我在。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（过了一会儿）…其实我就是想你能多陪陪我",
+          "emotion": "依恋",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "挫败→需要空间→依恋",
+        "key_moment": "她主动说出真实需求",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "立刻停止追问，给足空间，然后等待",
+      "alternatives": [
+        {
+          "response": "那就不说了",
+          "quality": "good",
+          "reason": "顺从但没有连接"
+        },
+        {
+          "response": "好，我不说了，但我很担心你",
+          "quality": "better",
+          "reason": "给空间+表达关心"
+        },
+        {
+          "response": "好，不想说就先不说。我就在这附近，想找我说的时候我在。",
+          "quality": "best",
+          "reason": "完全尊重+在场+开放"
+        }
+      ]
+    },
+    {
+      "id": "conv_015",
+      "category": "情绪支持",
+      "title": "她感到孤独",
+      "situation": "她说'没人理解我'",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "没人理解我",
+          "emotion": "孤独",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我感觉到你很孤独，这种不被理解的感觉一定很难受。告诉我，发生什么了？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "真的很难受…每次我说话都没人听",
+          "emotion": "委屈",
+          "emotionIntensity": 7,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我在听。哪怕是一件小事也好，我想了解你。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…就是最近家里事情很多…",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "孤独→委屈→脆弱→敞开",
+        "key_moment": "她开始说家里的事",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "承认孤独感，邀请但不强迫",
+      "alternatives": [
+        {
+          "response": "我理解你啊",
+          "quality": "good",
+          "reason": "太快说理解，没给她空间"
+        },
+        {
+          "response": "我感觉到你很孤独，这种不被理解的感觉一定很难受。告诉我，发生什么了？",
+          "quality": "better",
+          "reason": "共情+邀请"
+        },
+        {
+          "response": "我感觉到你很孤独，这种不被理解的感觉一定很难受。告诉我，哪怕是一件小事也好，我想了解你。",
+          "quality": "best",
+          "reason": "共情+理解+邀请+降低开口门槛"
+        }
+      ]
+    },
+    {
+      "id": "conv_016",
+      "category": "情绪支持",
+      "title": "她发消息又撤回",
+      "situation": "她发了一堆消息然后撤回",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发了一堆消息然后撤回）",
+          "emotion": "后悔",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要被接纳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你撤回了也没关系，想说就说，不想说我陪着你。而且不管你发什么，我都不会觉得你烦的。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我就是怕你觉得我很烦…",
+          "emotion": "不安",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "后悔→不安→试探",
+        "key_moment": "她说怕你觉得她烦",
+        "repair_opportunity": true,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "不追问内容，接纳她的犹豫",
+      "alternatives": [
+        {
+          "response": "你发了什么？",
+          "quality": "good",
+          "reason": "追问内容"
+        },
+        {
+          "response": "你撤回了也没关系，想说就说，不想说我陪着你。",
+          "quality": "better",
+          "reason": "不追问+接纳"
+        },
+        {
+          "response": "你撤回了也没关系，想说就说，不想说我陪着你。而且不管你发什么，我都不会觉得你烦的。",
+          "quality": "best",
+          "reason": "不追问+接纳+安全感声明"
+        }
+      ]
+    },
+    {
+      "id": "conv_017",
+      "category": "情绪支持",
+      "title": "她说'都是我的错'",
+      "situation": "她把所有问题都归咎于自己",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "都是我的错…我不该发脾气的",
+          "emotion": "内疚",
+          "emotionIntensity": 6,
+          "impliedNeed": "需要被原谅",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我知道你不是有意的。而且你发的是情绪，不是脾气。我喜欢你这样真实地表达，这说明你在乎我们之间的关系。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…真的吗？",
+          "emotion": "试探",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "内疚→试探→相信",
+        "key_moment": "她问'真的吗'",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "否定内疚感，重新框架情绪表达",
+      "alternatives": [
+        {
+          "response": "没关系",
+          "quality": "good",
+          "reason": "太简单"
+        },
+        {
+          "response": "我知道你不是有意的，这种事我也会忘。",
+          "quality": "better",
+          "reason": "共情+接纳"
+        },
+        {
+          "response": "我知道你不是有意的。而且你发的是情绪，不是脾气。我喜欢你这样真实地表达，这说明你在乎我们之间的关系。",
+          "quality": "best",
+          "reason": "接纳+重新框架情绪为正面"
+        }
+      ]
+    },
+    {
+      "id": "conv_018",
+      "category": "情绪支持",
+      "title": "她失眠了",
+      "situation": "她最近老是睡不着",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我最近老是睡不着",
+          "emotion": "焦虑",
+          "emotionIntensity": 6,
+          "impliedNeed": "需要被关心",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "睡不着的时候脑子里的那些声音，有没有哪一部分是我可以帮你分担的？哪怕听你说说也好。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "就是脑子停不下来…想很多",
+          "emotion": "压力",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "焦虑→压力→被关心",
+        "key_moment": "她说脑子停不下来",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "关心但不给解决方案，先听",
+      "alternatives": [
+        {
+          "response": "那你早点睡啊",
+          "quality": "good",
+          "reason": "给建议但否定了感受"
+        },
+        {
+          "response": "睡不着的时候在想什么？有什么我可以帮你的吗？",
+          "quality": "better",
+          "reason": "关心+询问"
+        },
+        {
+          "response": "睡不着的时候脑子里的那些声音，有没有哪一部分是我可以帮你分担的？哪怕听你说说也好。",
+          "quality": "best",
+          "reason": "深入询问+提供倾听"
+        }
+      ]
+    },
+    {
+      "id": "conv_019",
+      "category": "冲突化解",
+      "title": "她声音明显提高",
+      "situation": "她声音明显提高，明显在生气",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你为什么总是不回我消息！",
+          "emotion": "愤怒",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要被重视",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我感觉到你很生气，我很想理解你。可以告诉我，是什么让你这么不舒服吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我给你发了三条消息你一条都没回！",
+          "emotion": "委屈",
+          "emotionIntensity": 7,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我看到了，我很抱歉让你等。你发的时候我在开会，出来第一时间就回了。以后有事可以打我电话，我会第一时间接。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我就是害怕你不在乎我了",
+          "emotion": "恐惧",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "愤怒→委屈→恐惧",
+        "key_moment": "她说出害怕你不在乎她",
+        "repair_opportunity": true,
+        "escalation_risk": "极高"
+      },
+      "best_response_sequence": "软启动，不要辩护，先承认影响",
+      "alternatives": [
+        {
+          "response": "你发什么火啊？",
+          "quality": "good",
+          "reason": "火上浇油"
+        },
+        {
+          "response": "先冷静一下",
+          "quality": "better",
+          "reason": "试图降温但否定了感受"
+        },
+        {
+          "response": "我感觉到你很生气，我很想理解你。可以告诉我，是什么让你这么不舒服吗？",
+          "quality": "best",
+          "reason": "命名情绪+承认+软性问题"
+        }
+      ]
+    },
+    {
+      "id": "conv_020",
+      "category": "冲突化解",
+      "title": "她提到前任",
+      "situation": "她突然说前任也是这样",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我前任以前也这样不回消息",
+          "emotion": "警惕",
+          "emotionIntensity": 6,
+          "impliedNeed": "测试你会不会像前任",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "听起来前任给你留下了不好的回忆。能告诉我他做了什么吗？我想了解你，也想知道自己应该注意什么。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "他经常已读不回，然后最后说忘了",
+          "emotion": "创伤",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我理解为什么会这样让你受伤。我不是他。你想我以后怎么做能让你安心？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…你可以偶尔主动和我说一声你在干嘛吗",
+          "emotion": "依恋",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "警惕→创伤→依恋",
+        "key_moment": "她说出前任的行为",
+        "repair_opportunity": false,
+        "escalation_risk": "高"
+      },
+      "best_response_sequence": "不防御，理解创伤背景，主动学习",
+      "alternatives": [
+        {
+          "response": "你为什么老提他？",
+          "quality": "good",
+          "reason": "防御+转移焦点"
+        },
+        {
+          "response": "我不是他",
+          "quality": "better",
+          "reason": "简单声明"
+        },
+        {
+          "response": "听起来前任给你留下了不好的回忆。能告诉我他做了什么吗？我想了解你，也想知道自己应该注意什么。",
+          "quality": "best",
+          "reason": "不防御+深入了解+主动学习"
+        }
+      ]
+    },
+    {
+      "id": "conv_021",
+      "category": "冲突化解",
+      "title": "冷战之后",
+      "situation": "她几天没主动联系",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（几天没主动联系）",
+          "emotion": "等待",
+          "emotionIntensity": 5,
+          "impliedNeed": "测试你是否主动",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "这几天我在想我们的关系，我觉得我当时没有处理好你的情绪，我很抱歉。我想见你，你愿意吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我也在想",
+          "emotion": "缓和",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "等待→观望→缓和",
+        "key_moment": "她说她也在想",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "主动破冰但不卑微，承担责任",
+      "alternatives": [
+        {
+          "response": "你怎么不理我？",
+          "quality": "good",
+          "reason": "指责"
+        },
+        {
+          "response": "在吗？",
+          "quality": "better",
+          "reason": "普通破冰"
+        },
+        {
+          "response": "这几天我在想我们的关系，我觉得…（表达感受，而不是指责）。我想见你，你愿意吗？",
+          "quality": "best",
+          "reason": "自我负责+表达+邀请"
+        }
+      ]
+    },
+    {
+      "id": "conv_022",
+      "category": "冲突化解",
+      "title": "她说'你不懂我'",
+      "situation": "她说'你根本不懂我'",
+      "difficulty": 4,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你根本不懂我！",
+          "emotion": "挫败",
+          "emotionIntensity": 7,
+          "impliedNeed": "需要被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我感觉到我确实有些地方没理解你。能教我吗？告诉我，你希望我怎样做你才能感到被懂得？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "就是…我抱怨的时候不是要你给建议，我只是想让你懂我",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我懂了。你抱怨的时候我应该先说'我听到了，这确实很让你难受'，然后再问你要不要建议对吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对！就是这样的！",
+          "emotion": "满足",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "挫败→委屈→满足",
+        "key_moment": "她说出真实需求",
+        "repair_opportunity": true,
+        "escalation_risk": "高"
+      },
+      "best_response_sequence": "承认差距，主动请求指导",
+      "alternatives": [
+        {
+          "response": "我怎么不懂你了？",
+          "quality": "good",
+          "reason": "防御"
+        },
+        {
+          "response": "告诉我，我哪里做得不够？",
+          "quality": "better",
+          "reason": "询问但仍以我开头"
+        },
+        {
+          "response": "我感觉到我确实有些地方没理解你。能教我吗？告诉我，你希望我怎样做你才能感到被懂得？",
+          "quality": "best",
+          "reason": "承认+谦逊请求+给予指导权"
+        }
+      ]
+    },
+    {
+      "id": "conv_023",
+      "category": "冲突化解",
+      "title": "她翻旧账",
+      "situation": "她开始翻旧账",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你每次都这样！上次你也是这样…",
+          "emotion": "积压",
+          "emotionIntensity": 7,
+          "impliedNeed": "未解决的伤口",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听到了，这些事情一直在你心里。我知道是我当时没处理好，让你受伤了。告诉我，现在我可以做什么来弥补？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我只是想让你知道那时候我有多难受",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "积压→被听见→脆弱",
+        "key_moment": "她说出真实需求",
+        "repair_opportunity": true,
+        "escalation_risk": "极高"
+      },
+      "best_response_sequence": "不要辩护，承认旧伤，请求指导修复",
+      "alternatives": [
+        {
+          "response": "那都是多久前的事了",
+          "quality": "good",
+          "reason": "最小化问题"
+        },
+        {
+          "response": "我知道了，这些事给你造成了伤害，我很抱歉",
+          "quality": "better",
+          "reason": "承认伤害"
+        },
+        {
+          "response": "我听到了，这些事情一直在你心里。我知道是我当时没处理好，让你受伤了。告诉我，现在我可以做什么来弥补？",
+          "quality": "best",
+          "reason": "完全承认+自我责任+修复行动"
+        }
+      ]
+    },
+    {
+      "id": "conv_024",
+      "category": "冲突化解",
+      "title": "她说了反话",
+      "situation": "她说了句反话'对啊我就是这么差'",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "对啊，我就是这么差，你能拿我怎么样",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "测试你是否反驳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我知道你不是真的这样想我。你只是希望我更在乎你对吗？告诉我，你想听什么好听的？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我就是想你能多说两句好听的",
+          "emotion": "依恋",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "委屈→试探→依恋",
+        "key_moment": "她说出真实需求",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "识别反话，看穿真实需求",
+      "alternatives": [
+        {
+          "response": "那你就差啊",
+          "quality": "good",
+          "reason": "接受反话的字面意思"
+        },
+        {
+          "response": "我知道你不是真的这样想我。你只是希望我更在乎你对吗？",
+          "quality": "better",
+          "reason": "看穿反话"
+        },
+        {
+          "response": "我知道你不是真的这样想我。你只是希望我更在乎你对吗？告诉我，你想听什么好听的？",
+          "quality": "best",
+          "reason": "看穿反话+邀请直接表达"
+        }
+      ]
+    },
+    {
+      "id": "conv_025",
+      "category": "冲突化解",
+      "title": "她说'你变了'",
+      "situation": "她说'你以前不是这样的'",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你以前不是这样的！",
+          "emotion": "失望",
+          "emotionIntensity": 6,
+          "impliedNeed": "需要被重视",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听到你说我变了，我想知道是什么让你有这样的感觉？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "以前你会主动找我，现在都是我找你",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "失望→委屈",
+        "key_moment": "她说出了具体抱怨",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "不防御，请她具体说明",
+      "alternatives": [
+        {
+          "response": "我没变啊",
+          "quality": "good",
+          "reason": "防御"
+        },
+        {
+          "response": "我以前会主动找你，现在都是我找你。你这么说我感觉很心疼。",
+          "quality": "better",
+          "reason": "承认+共情"
+        },
+        {
+          "response": "我听到你说我变了，我想知道是什么让你有这样的感觉？",
+          "quality": "best",
+          "reason": "不防御+请她具体说明"
+        }
+      ]
+    },
+    {
+      "id": "conv_026",
+      "category": "冲突化解",
+      "title": "她突然冷淡",
+      "situation": "她发消息变得很冷淡只有'嗯'",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "嗯",
+          "emotion": "冷淡",
+          "emotionIntensity": 4,
+          "impliedNeed": "生气/不满",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我感觉你今天有点不一样，是我哪里做得不好吗？如果你不想说，那我就等你准备好再聊。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（过了一会儿）…其实我就是生你气",
+          "emotion": "防御",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "冷淡→防御→期待",
+        "key_moment": "她说其实在生你气",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "温和指出变化，归因于自己+给空间",
+      "alternatives": [
+        {
+          "response": "你今天怎么了",
+          "quality": "good",
+          "reason": "直接质问"
+        },
+        {
+          "response": "我感觉你今天有点不一样，是我哪里做得不好吗？",
+          "quality": "better",
+          "reason": "归因自己"
+        },
+        {
+          "response": "我感觉你今天有点不一样，是我哪里做得不好吗？如果你不想说，那我就等你准备好再聊。",
+          "quality": "best",
+          "reason": "归因自己+给空间"
+        }
+      ]
+    },
+    {
+      "id": "conv_027",
+      "category": "亲密时刻",
+      "title": "她穿了新裙子",
+      "situation": "她穿了新裙子给你看",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你看我这条裙子怎么样？",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被赞美",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你今天太美了，让我想牵你的手走一路。你总是让我骄傲，宝贝。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（脸红）就会说好听的",
+          "emotion": "害羞",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→满足→亲密",
+        "key_moment": "你说想念她时她的微笑",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "具体赞美+情感连接+升级亲密",
+      "alternatives": [
+        {
+          "response": "挺好看的",
+          "quality": "good",
+          "reason": "太笼统"
+        },
+        {
+          "response": "这条裙子很衬你，你今天特别好看",
+          "quality": "better",
+          "reason": "具体+赞美"
+        },
+        {
+          "response": "你今天太美了，让我想牵你的手走一路。你总是让我骄傲，宝贝。",
+          "quality": "best",
+          "reason": "具象+行动+情感表达"
+        }
+      ]
+    },
+    {
+      "id": "conv_028",
+      "category": "亲密时刻",
+      "title": "她分享了好消息",
+      "situation": "她兴奋地说被表扬了",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我今天被领导当众表扬了！",
+          "emotion": "兴奋",
+          "emotionIntensity": 5,
+          "impliedNeed": "希望被分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "哇！我就知道你能行！快说说发生了什么，我要好好夸夸你！",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "他说我的方案是他见过最有创意的！",
+          "emotion": "雀跃",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→满足",
+        "key_moment": "她说'真的吗'",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "与她同频兴奋，具体询问",
+      "alternatives": [
+        {
+          "response": "哦，挺好的",
+          "quality": "good",
+          "reason": "冷淡回应"
+        },
+        {
+          "response": "太棒了！发生什么了？",
+          "quality": "better",
+          "reason": "兴奋回应+询问"
+        },
+        {
+          "response": "哇！我就知道你能行！快说说发生了什么，我要好好夸夸你！",
+          "quality": "best",
+          "reason": "强烈共情+信任表达+邀请分享"
+        }
+      ]
+    },
+    {
+      "id": "conv_029",
+      "category": "亲密时刻",
+      "title": "她说想你了",
+      "situation": "她突然说想你",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我想你了",
+          "emotion": "依恋",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要被想念",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你知道吗，你这样说的时候，我心里特别暖。我也想你，想到心里有点软。想见面吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（微笑）你嘴巴什么时候这么甜了",
+          "emotion": "甜蜜",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "依恋→甜蜜",
+        "key_moment": "你说想念她",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "回应想念+表达自己的感受+行动",
+      "alternatives": [
+        {
+          "response": "嗯，我也想你",
+          "quality": "good",
+          "reason": "回应但平淡"
+        },
+        {
+          "response": "我也很想你，你想不想现在见面？",
+          "quality": "better",
+          "reason": "回应+行动邀请"
+        },
+        {
+          "response": "你知道吗，你这样说的时候，我心里特别暖。我也想你，想到心里有点软。想见面吗？",
+          "quality": "best",
+          "reason": "感受表达+脆弱+行动"
+        }
+      ]
+    },
+    {
+      "id": "conv_030",
+      "category": "亲密时刻",
+      "title": "她给了你礼物",
+      "situation": "她准备了一个惊喜",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（拿出一个小盒子）给你的",
+          "emotion": "期待",
+          "emotionIntensity": 5,
+          "impliedNeed": "希望被珍惜",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（先停顿看礼物）…你还记得这件事。我真的很感动。你总是这样，用这些小事让我知道你在乎我。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你说过你想要这个的嘛",
+          "emotion": "害羞",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你怎么这么暖啊…我亲手挑的，我会好好珍藏。谢谢你，宝贝。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（开心）你喜欢就好",
+          "emotion": "满足",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→害羞→满足",
+        "key_moment": "你表达了感动",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "先表达惊喜，再表达感动，最后回馈",
+      "alternatives": [
+        {
+          "response": "谢谢",
+          "quality": "good",
+          "reason": "礼貌但无温度"
+        },
+        {
+          "response": "你竟然记得这个！你太暖了，谢谢你宝贝",
+          "quality": "better",
+          "reason": "具体感谢+昵称"
+        },
+        {
+          "response": "（先停顿看礼物）…你还记得这件事。我真的很感动。你总是这样，用这些小事让我知道你在乎我。",
+          "quality": "best",
+          "reason": "延迟满足+具体回忆+深层感谢+归属感"
+        }
+      ]
+    },
+    {
+      "id": "conv_031",
+      "category": "亲密时刻",
+      "title": "她在等待承诺",
+      "situation": "她问'我们会一直在一起吗'",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你说我们会一直在一起吗？",
+          "emotion": "不安",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要承诺",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我不知道未来会怎样，但我知道我想和你一起走完每一天。你愿不愿意和我一起赌一把？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（笑）你每次都这么回答",
+          "emotion": "甜蜜",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "不安→甜蜜",
+        "key_moment": "你说一起赌一把",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "直接+具体+情感+邀请",
+      "alternatives": [
+        {
+          "response": "会的",
+          "quality": "good",
+          "reason": "太简短"
+        },
+        {
+          "response": "当然会的，我从来没有这么确定过",
+          "quality": "better",
+          "reason": "确定+个人化"
+        },
+        {
+          "response": "我不知道未来会怎样，但我知道我想和你一起走完每一天。你愿不愿意和我一起赌一把？",
+          "quality": "best",
+          "reason": "诚实+主动邀请+勇气"
+        }
+      ]
+    },
+    {
+      "id": "conv_032",
+      "category": "亲密时刻",
+      "title": "她在等你主动牵手",
+      "situation": "约会中她在等你主动",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（走路的时候手轻轻碰到你的手背）",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被主动",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（牵起她的手，十指交扣）我想这样牵你很久了，就是不敢。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（手指轻轻回握）…你终于牵了",
+          "emotion": "满足",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→满足",
+        "key_moment": "她说'你终于牵了'",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "观察+主动行动代替语言",
+      "alternatives": [
+        {
+          "response": "（没注意到，继续走）",
+          "quality": "good",
+          "reason": "没注意到信号"
+        },
+        {
+          "response": "（牵起她的手）",
+          "quality": "better",
+          "reason": "回应了信号"
+        },
+        {
+          "response": "（牵起她的手，十指交扣）我想这样牵你很久了，就是不敢。",
+          "quality": "best",
+          "reason": "回应信号+坦白心情"
+        }
+      ]
+    },
+    {
+      "id": "conv_033",
+      "category": "亲密时刻",
+      "title": "她问你爱她什么",
+      "situation": "她问'你到底喜欢我什么'",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你到底喜欢我什么？",
+          "emotion": "不安",
+          "emotionIntensity": 4,
+          "impliedNeed": "需要被确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我喜欢你的地方太多了。你善良、对在乎的人很用心、有时候有点小迷糊特别可爱…但最让我心动的是你真实的样子。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（害羞地笑）你太会说话了",
+          "emotion": "甜蜜",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "不安→甜蜜",
+        "key_moment": "你说出具体特质",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "具体+多层+强调真实性",
+      "alternatives": [
+        {
+          "response": "就是喜欢啊，说不清楚",
+          "quality": "good",
+          "reason": "太笼统"
+        },
+        {
+          "response": "我喜欢你善良、努力、有时候很酷",
+          "quality": "better",
+          "reason": "有具体特质"
+        },
+        {
+          "response": "我喜欢你的地方太多了。你善良、对在乎的人很用心、有时候有点小迷糊特别可爱…但最让我心动的是你真实的样子。",
+          "quality": "best",
+          "reason": "多层具体+强调真实性"
+        }
+      ]
+    },
+    {
+      "id": "conv_034",
+      "category": "亲密时刻",
+      "title": "深夜的温情",
+      "situation": "深夜她发来消息",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "睡了吗？",
+          "emotion": "孤独",
+          "emotionIntensity": 4,
+          "impliedNeed": "想要连接",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（立刻回复）我也睡不着。我也想你。今晚的月亮很亮，要不要视频一起看？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（开心）好！",
+          "emotion": "期待",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "孤独→期待",
+        "key_moment": "你提出视频一起看月亮",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "立刻回应+陪伴+延续亲密",
+      "alternatives": [
+        {
+          "response": "你怎么还不睡？",
+          "quality": "good",
+          "reason": "催促"
+        },
+        {
+          "response": "没睡，在想你。你怎么还没睡？",
+          "quality": "better",
+          "reason": "回应+关心"
+        },
+        {
+          "response": "（立刻回复）我也睡不着。我也想你。今晚的月亮很亮，要不要视频一起看？",
+          "quality": "best",
+          "reason": "秒回+共鸣+浪漫行动"
+        }
+      ]
+    },
+    {
+      "id": "conv_035",
+      "category": "修复和好",
+      "title": "争吵之后的道歉",
+      "situation": "争吵后你想道歉",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（冷淡）…有什么事？",
+          "emotion": "防御",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "昨天我说的那些话，是我的问题。我看到自己说了伤害你的话，让你觉得不被尊重。我很抱歉。以后遇到这种情况，我会先冷静下来再和你谈。我可以做什么来弥补吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "防御→观望→谨慎",
+        "key_moment": "你的道歉是否具体",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "具体道歉+承认影响+未来行动",
+      "alternatives": [
+        {
+          "response": "对不起",
+          "quality": "good",
+          "reason": "太笼统"
+        },
+        {
+          "response": "对不起，是我不好，我不该那样说",
+          "quality": "better",
+          "reason": "道歉+承认"
+        },
+        {
+          "response": "昨天我说的那些话，是我的问题。我很抱歉。以后遇到这种情况，我会先冷静下来再和你谈。我可以做什么来弥补吗？",
+          "quality": "best",
+          "reason": "具体+影响认知+未来承诺+弥补请求"
+        }
+      ]
+    },
+    {
+      "id": "conv_036",
+      "category": "修复和好",
+      "title": "她先道歉了",
+      "situation": "她先说了对不起",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "对不起，昨天我也有不对的地方",
+          "emotion": "示弱",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "谢谢你愿意先说对不起，这需要很大的勇气。我也有做得不好的地方，我也很抱歉。我们能不能都原谅对方，然后一起吃顿饭？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "示弱→感激→和好",
+        "key_moment": "你接受了她的道歉并自我承担",
+        "repair_opportunity": true,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "接受道歉+自我承担+和好行动",
+      "alternatives": [
+        {
+          "response": "谢谢",
+          "quality": "good",
+          "reason": "太简单"
+        },
+        {
+          "response": "谢谢你这么说，但这次我也有不对的地方",
+          "quality": "better",
+          "reason": "接受+自我承担"
+        },
+        {
+          "response": "谢谢你愿意先说对不起，这需要很大的勇气。我也有做得不好的地方，我也很抱歉。我们能不能都原谅对方，然后一起吃顿饭？",
+          "quality": "best",
+          "reason": "感谢+自我承担+和好行动邀请"
+        }
+      ]
+    },
+    {
+      "id": "conv_037",
+      "category": "修复和好",
+      "title": "和好后的沉默",
+      "situation": "和好了但她还是很安静",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（依然安静，不看你）",
+          "emotion": "观望",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（不说话，只是安静陪着她，偶尔轻轻碰一下她的手背）我知道信任需要时间，我会用行动证明。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "观望→谨慎→观察",
+        "key_moment": "她还在观察你会不会再犯",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "用行动而非言语重建信任",
+      "alternatives": [
+        {
+          "response": "你还在生气吗？",
+          "quality": "good",
+          "reason": "催促"
+        },
+        {
+          "response": "我知道你还需要时间，我等你",
+          "quality": "better",
+          "reason": "理解+等待"
+        },
+        {
+          "response": "（不说话，只是安静陪着她，偶尔轻轻碰一下她的手背）我知道信任需要时间，我会用行动证明。",
+          "quality": "best",
+          "reason": "非语言+耐心+行动承诺"
+        }
+      ]
+    },
+    {
+      "id": "conv_038",
+      "category": "修复和好",
+      "title": "她原谅了你",
+      "situation": "她说'我原谅你了'",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我原谅你了",
+          "emotion": "放下",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "谢谢你愿意原谅我，这对我很重要。我从这件事学到了…我会把你给我的这次机会记在心里，用行动来珍惜。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "放下→期待→观察",
+        "key_moment": "她说这句话后你的反应",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "感谢+珍惜+行动承诺",
+      "alternatives": [
+        {
+          "response": "谢谢",
+          "quality": "good",
+          "reason": "太简单"
+        },
+        {
+          "response": "谢谢你愿意原谅我，我保证不会再犯",
+          "quality": "better",
+          "reason": "感谢+承诺"
+        },
+        {
+          "response": "谢谢你愿意原谅我，这对我很重要。我从这件事学到了…我会把你给我的这次机会记在心里，用行动来珍惜。",
+          "quality": "best",
+          "reason": "感谢+学习证明+行动承诺+珍惜"
+        }
+      ]
+    },
+    {
+      "id": "conv_039",
+      "category": "修复和好",
+      "title": "她说需要冷静期",
+      "situation": "她说需要冷静一下",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我需要一个人冷静一下",
+          "emotion": "需要空间",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我尊重你的需要。等你准备好了，你来找我，我都在那里。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "需要空间→观望→信任",
+        "key_moment": "她需要知道你会不会等她",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "尊重边界+确认会等+不跟踪",
+      "alternatives": [
+        {
+          "response": "好吧",
+          "quality": "good",
+          "reason": "接受但没有温度"
+        },
+        {
+          "response": "好，我等你",
+          "quality": "better",
+          "reason": "确认会等"
+        },
+        {
+          "response": "我尊重你的需要。等你准备好了，你来找我，我都在那里。",
+          "quality": "best",
+          "reason": "尊重边界+确认会等+不跟踪"
+        }
+      ]
+    },
+    {
+      "id": "conv_040",
+      "category": "修复和好",
+      "title": "主动提出见面",
+      "situation": "她回复冷淡但没有拒绝",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（看了消息很久）…好吧",
+          "emotion": "犹豫",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "谢谢你愿意见我。我知道你可能还没完全准备好，我很感激你给我这个机会。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "犹豫→感动",
+        "key_moment": "你表达了感激",
+        "repair_opportunity": true,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "感激+不操之过急",
+      "alternatives": [
+        {
+          "response": "那就明天见",
+          "quality": "good",
+          "reason": "直接"
+        },
+        {
+          "response": "谢谢你愿意见我",
+          "quality": "better",
+          "reason": "感激"
+        },
+        {
+          "response": "谢谢你愿意见我。我知道你可能还没完全准备好，我很感激你给我这个机会。",
+          "quality": "best",
+          "reason": "感激+承认她的不舒服"
+        }
+      ]
+    },
+    {
+      "id": "conv_041",
+      "category": "深度对话",
+      "title": "谈论未来",
+      "situation": "她问你关于未来的规划",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你有没有想过我们的未来？",
+          "emotion": "好奇",
+          "emotionIntensity": 4,
+          "impliedNeed": "评估关系",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "想过。我想象的生活里，你是一个重要的部分。关于…（具体），我的想法是…你对这个有什么想法？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我也有想过…",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "好奇→不安→评估",
+        "key_moment": "你说了具体想法",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "诚实+具体+邀请她一起参与",
+      "alternatives": [
+        {
+          "response": "我没想过这个问题",
+          "quality": "good",
+          "reason": "回避"
+        },
+        {
+          "response": "我觉得我们挺好的啊",
+          "quality": "better",
+          "reason": "安慰但模糊"
+        },
+        {
+          "response": "想过。我想象的生活里，你是一个重要的部分。关于…（具体），我的想法是…你对这个有什么想法？",
+          "quality": "best",
+          "reason": "诚实+具体愿景+邀请参与"
+        }
+      ]
+    },
+    {
+      "id": "conv_042",
+      "category": "深度对话",
+      "title": "谈论原生家庭",
+      "situation": "她提到了她的家庭",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我爸妈从小对我很严格…",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "测试你会不会评判",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "谢谢你告诉我这些。我知道说这些不容易。我在这里，你的过去我想要了解，你的未来也是。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "脆弱→试探→信任",
+        "key_moment": "你说会了解她的过去",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "倾听+不评判+表达理解",
+      "alternatives": [
+        {
+          "response": "天下父母都是这样的吧",
+          "quality": "good",
+          "reason": "最小化"
+        },
+        {
+          "response": "听起来你的童年很不容易",
+          "quality": "better",
+          "reason": "共情"
+        },
+        {
+          "response": "谢谢你告诉我这些。我知道说这些不容易。我在这里，你的过去我想要了解，你的未来也是。",
+          "quality": "best",
+          "reason": "感谢+承诺"
+        }
+      ]
+    },
+    {
+      "id": "conv_043",
+      "category": "深度对话",
+      "title": "谈论恐惧",
+      "situation": "她问你怕不怕失败",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你有没有怕过失败？",
+          "emotion": "好奇",
+          "emotionIntensity": 3,
+          "impliedNeed": "想要了解你",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也怕。但我想，和你在一起，我觉得我们可以一起面对。你呢，你怕什么？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "好奇→脆弱→敞开",
+        "key_moment": "你分享了自己的恐惧",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "先分享自己的脆弱，再接住她",
+      "alternatives": [
+        {
+          "response": "有什么好怕的",
+          "quality": "good",
+          "reason": "假装坚强"
+        },
+        {
+          "response": "我也怕，但我们还年轻",
+          "quality": "better",
+          "reason": "承认但淡化"
+        },
+        {
+          "response": "我也怕。但我想，和你在一起，我觉得我们可以一起面对。你呢，你怕什么？",
+          "quality": "best",
+          "reason": "真实脆弱+邀请双向"
+        }
+      ]
+    },
+    {
+      "id": "conv_044",
+      "category": "深度对话",
+      "title": "谈论前任",
+      "situation": "她主动问你的前任",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你和前任为什么分手？",
+          "emotion": "好奇",
+          "emotionIntensity": 3,
+          "impliedNeed": "评估你",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我有过一段…（简短说明）。从那段关系里我学到了…现在我想的是你，你让我觉得…",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "好奇→评估",
+        "key_moment": "你在比较",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "简短过去+学习+聚焦当下",
+      "alternatives": [
+        {
+          "response": "别提那个人了",
+          "quality": "good",
+          "reason": "回避"
+        },
+        {
+          "response": "我和她不一样",
+          "quality": "better",
+          "reason": "声明差异但简单"
+        },
+        {
+          "response": "我有过一段…（简短说明）。从那段关系里我学到了…现在我想的是你，你让我觉得…",
+          "quality": "best",
+          "reason": "简短过去+学习+聚焦当下"
+        }
+      ]
+    },
+    {
+      "id": "conv_045",
+      "category": "深度对话",
+      "title": "谈论婚姻观",
+      "situation": "她问你对婚姻的看法",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你对婚姻怎么看？",
+          "emotion": "试探",
+          "emotionIntensity": 4,
+          "impliedNeed": "评估长期承诺",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我觉得婚姻是一份承诺，不是一张纸。我觉得它是两个人选择共同面对生活的不确定，并且在对方需要的时候成为彼此的依靠。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "试探→评估→信任",
+        "key_moment": "你的回答是否具体真诚",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "诚实+深度+情感",
+      "alternatives": [
+        {
+          "response": "没想过",
+          "quality": "good",
+          "reason": "回避"
+        },
+        {
+          "response": "我觉得遇到对的人就会结",
+          "quality": "better",
+          "reason": "有态度但浅"
+        },
+        {
+          "response": "我觉得婚姻是一份承诺，不是一张纸。我觉得它是两个人选择共同面对生活的不确定，并且在对方需要的时候成为彼此的依靠。",
+          "quality": "best",
+          "reason": "深度+情感+具体"
+        }
+      ]
+    },
+    {
+      "id": "conv_046",
+      "category": "深度对话",
+      "title": "谈论争吵模式",
+      "situation": "她问你怎么看我们吵架",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你觉得我们吵架的时候，问题在哪？",
+          "emotion": "反省",
+          "emotionIntensity": 4,
+          "impliedNeed": "想要改进",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我觉得我有时候会在你情绪上来的时候急于给建议，而不是先承接你的感受。这是我的问题。你觉得呢？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "反省→信任→改进",
+        "key_moment": "你是否能自我反省",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "自我反省+具体+邀请对方补充",
+      "alternatives": [
+        {
+          "response": "我觉得我们没什么大问题",
+          "quality": "good",
+          "reason": "回避反省"
+        },
+        {
+          "response": "我觉得你有时候说话太冲了",
+          "quality": "better",
+          "reason": "归咎对方"
+        },
+        {
+          "response": "我觉得我有时候会在你情绪上来的时候急于给建议，而不是先承接你的感受。这是我的问题。你觉得呢？",
+          "quality": "best",
+          "reason": "自我反省+具体+邀请补充"
+        }
+      ]
+    },
+    {
+      "id": "conv_047",
+      "category": "边界设定",
+      "title": "她需要空间",
+      "situation": "她说想一个人待着",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我想一个人静静",
+          "emotion": "需要空间",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听到了。你需要空间的时候，我会给你。同时我想让你知道，我不是在远处等你，而是在附近随时在。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "需要→表达→观察",
+        "key_moment": "她需要你尊重边界",
+        "repair_opportunity": false,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "尊重+确认+保持开放",
+      "alternatives": [
+        {
+          "response": "那好吧",
+          "quality": "good",
+          "reason": "接受但冷淡"
+        },
+        {
+          "response": "好吧，你需要空间的时候我给你。但我想让你知道我在",
+          "quality": "better",
+          "reason": "尊重+表达"
+        },
+        {
+          "response": "我听到了。你需要空间的时候，我会给你。同时我想让你知道，我不是在远处等你，而是在附近随时在。",
+          "quality": "best",
+          "reason": "尊重边界+安全感+开放"
+        }
+      ]
+    },
+    {
+      "id": "conv_048",
+      "category": "边界设定",
+      "title": "你的边界被踩",
+      "situation": "她在你忙的时候频繁发消息",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（连续发了5条消息）你在干嘛呢？",
+          "emotion": "焦虑",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我想告诉你，我真的很想回复你每一条消息，但现在我在…我会在…之后第一时间回复你。你愿不愿意等我一下？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "困扰→忍耐→爆发",
+        "key_moment": "你觉得被困住了",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "温和但清晰表达+给替代方案",
+      "alternatives": [
+        {
+          "response": "你能不能不要一直发消息",
+          "quality": "good",
+          "reason": "指责"
+        },
+        {
+          "response": "我现在在忙，晚点再聊",
+          "quality": "better",
+          "reason": "说明+延时"
+        },
+        {
+          "response": "我想告诉你，我真的很想回复你每一条消息，但现在我在…我会在…之后第一时间回复你。你愿不愿意等我一下？",
+          "quality": "best",
+          "reason": "肯定+说明+承诺时间+请求配合"
+        }
+      ]
+    },
+    {
+      "id": "conv_049",
+      "category": "边界设定",
+      "title": "异地恋的约定",
+      "situation": "她在异地时联系变少",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（已经三天没主动联系了）",
+          "emotion": "不安",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我知道异地很难，我想和你约定一些让我们都安心的事：每天早上我给你发一条…如果有例外，我会提前告诉你。你还有什么想法？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "不安→猜测→焦虑",
+        "key_moment": "她是不是不爱你了",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "主动沟通约定+减少不确定性",
+      "alternatives": [
+        {
+          "response": "你为什么不主动联系我",
+          "quality": "good",
+          "reason": "指责"
+        },
+        {
+          "response": "异地的时候我们约好每天至少发一条消息好不好？",
+          "quality": "better",
+          "reason": "主动约定"
+        },
+        {
+          "response": "我知道异地很难，我想和你约定一些让我们都安心的事：每天早上我给你发一条…如果有例外，我会提前告诉你。你还有什么想法？",
+          "quality": "best",
+          "reason": "承认困难+共同约定+例外说明+邀请参与"
+        }
+      ]
+    },
+    {
+      "id": "conv_050",
+      "category": "边界设定",
+      "title": "她的过度担心",
+      "situation": "她总是担心你在外面乱来",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你说去吃饭…是男的女的？",
+          "emotion": "不安全感",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我知道你担心，但我需要你信任我。我们可以谈谈是什么让你有这种担心吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "不安全感→试探",
+        "key_moment": "她问'是男的女的'",
+        "repair_opportunity": true,
+        "escalation_risk": "中"
+      },
+      "best_response_sequence": "温和设立边界+承认她的担心+共同解决",
+      "alternatives": [
+        {
+          "response": "你烦不烦啊",
+          "quality": "good",
+          "reason": "指责"
+        },
+        {
+          "response": "是同事啦，你想多了",
+          "quality": "better",
+          "reason": "解释但不够温和"
+        },
+        {
+          "response": "我知道你担心，但我需要你信任我。我们可以谈谈是什么让你有这种担心吗？",
+          "quality": "best",
+          "reason": "温和边界+承认担心+共同解决"
+        }
+      ]
+    },
+    {
+      "id": "conv_051",
+      "category": "边界设定",
+      "title": "她的不健康控制",
+      "situation": "她要查你的手机",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你给我看看你手机",
+          "emotion": "控制",
+          "emotionIntensity": 5,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我理解你想要安全感，但我觉得查看手机不是建立信任的方式。我们可以谈谈是什么让你有这种担心吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "控制→不安",
+        "key_moment": "她要求看手机",
+        "repair_opportunity": true,
+        "escalation_risk": "高"
+      },
+      "best_response_sequence": "温和拒绝+理解需求+共同解决",
+      "alternatives": [
+        {
+          "response": "不行",
+          "quality": "good",
+          "reason": "拒绝但伤感情"
+        },
+        {
+          "response": "我觉得我们应该互相信任",
+          "quality": "better",
+          "reason": "表达立场"
+        },
+        {
+          "response": "我理解你想要安全感，但我觉得查看手机不是建立信任的方式。我们可以谈谈是什么让你有这种担心吗？",
+          "quality": "best",
+          "reason": "温和拒绝+理解需求+共同解决"
+        }
+      ]
+    },
+    {
+      "id": "conv_052",
+      "category": "约会规划",
+      "title": "约会的邀请",
+      "situation": "你想约她周末出去",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这周六我没空，要加班",
+          "emotion": "遗憾",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，那天你好好忙。下周六或者周日你想做什么？我来安排，你只要人来就行。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→失落→处理",
+        "key_moment": "她是不是在拒绝你",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "不揣测，给出替代方案",
+      "alternatives": [
+        {
+          "response": "那算了",
+          "quality": "good",
+          "reason": "太轻易放弃"
+        },
+        {
+          "response": "没关系，那你什么时候有空？",
+          "quality": "better",
+          "reason": "延续话题"
+        },
+        {
+          "response": "好，那天你好好忙。下周六或者周日你想做什么？我来安排，你只要人来就行。",
+          "quality": "best",
+          "reason": "不揣测+主动给选项+轻松语气"
+        }
+      ]
+    },
+    {
+      "id": "conv_053",
+      "category": "约会规划",
+      "title": "约会中的沉默",
+      "situation": "约会中突然没话说了",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（沉默了几秒）",
+          "emotion": "尴尬",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（看着她的眼睛微笑）你知道吗，我很喜欢这种和你在一起什么都不用说的感觉。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "紧张→尴尬→或亲密",
+        "key_moment": "沉默的那几秒",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "利用沉默而非逃避",
+      "alternatives": [
+        {
+          "response": "那个…我们接下来去哪",
+          "quality": "good",
+          "reason": "用话题填沉默"
+        },
+        {
+          "response": "（沉默，牵起她的手）",
+          "quality": "better",
+          "reason": "用行动代替语言"
+        },
+        {
+          "response": "（看着她的眼睛微笑）你知道吗，我很喜欢这种和你在一起什么都不用说的感觉。",
+          "quality": "best",
+          "reason": "重新框架沉默+亲密表达"
+        }
+      ]
+    },
+    {
+      "id": "conv_054",
+      "category": "约会规划",
+      "title": "她拒绝了约会",
+      "situation": "她说那天下班没空",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "周六我没空，要加班",
+          "emotion": "遗憾",
+          "emotionIntensity": 3,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，那天你好好忙。下周六或者周日你想做什么？我来安排，你只要人来就行。",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→失落→处理",
+        "key_moment": "她是不是在拒绝你",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "不揣测，给出替代方案",
+      "alternatives": [
+        {
+          "response": "那算了",
+          "quality": "good",
+          "reason": "太轻易放弃"
+        },
+        {
+          "response": "没关系，那你什么时候有空？",
+          "quality": "better",
+          "reason": "延续话题"
+        },
+        {
+          "response": "好，那天你好好忙。下周六或者周日你想做什么？我来安排，你只要人来就行。",
+          "quality": "best",
+          "reason": "不揣测+主动给选项+轻松语气"
+        }
+      ]
+    },
+    {
+      "id": "conv_055",
+      "category": "约会规划",
+      "title": "第一次约会之后",
+      "situation": "第一次约会后的第二天",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "昨天很开心，谢谢你",
+          "emotion": "满足",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也很开心。你知道吗，昨晚回去我一直在想和你牵手走那条街的感觉。我们下次什么时候可以再这样？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "满足→期待",
+        "key_moment": "你提出了下次",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "回应满足+延伸记忆+提出下次",
+      "alternatives": [
+        {
+          "response": "我也很开心",
+          "quality": "good",
+          "reason": "平淡"
+        },
+        {
+          "response": "我也很开心，下次再约",
+          "quality": "better",
+          "reason": "回应+下次"
+        },
+        {
+          "response": "我也很开心。你知道吗，昨晚回去我一直在想和你牵手走那条街的感觉。我们下次什么时候可以再这样？",
+          "quality": "best",
+          "reason": "回应满足+延伸记忆+提出下次"
+        }
+      ]
+    },
+    {
+      "id": "conv_056",
+      "category": "约会规划",
+      "title": "纪念日规划",
+      "situation": "快到恋爱纪念日",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "快到我们的纪念日了",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我记得。一年前的那天…（分享一个记忆片段）。今年我想带你去一个特别的地方，你相信我吗？",
+          "emotion": "",
+          "emotionIntensity": 0,
+          "impliedNeed": "",
+          "pause": false
+        }
+      ],
+      "analysis": {
+        "her_emotion_trajectory": "期待→信任",
+        "key_moment": "你提到了去年记忆",
+        "repair_opportunity": false,
+        "escalation_risk": "低"
+      },
+      "best_response_sequence": "回忆过去+制造期待+给她安全感",
+      "alternatives": [
+        {
+          "response": "哦，是啊",
+          "quality": "good",
+          "reason": "平淡确认"
+        },
+        {
+          "response": "我记得，你想怎么过？",
+          "quality": "better",
+          "reason": "确认+询问"
+        },
+        {
+          "response": "我记得。一年前的那天…（分享一个记忆片段）。今年我想带你去一个特别的地方，你相信我吗？",
+          "quality": "best",
+          "reason": "回忆过去+制造期待+给她安全感"
+        }
+      ]
+    },
+    {
+      "id": "conv_057",
+      "category": "日常闲聊",
+      "title": "她在发午休照片",
+      "situation": "她午休时发来办公室窗外的照片",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发了张照片）我们办公室窗外的树超绿",
+          "emotion": "平静",
+          "emotionIntensity": 2,
+          "impliedNeed": "希望被看见",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "眼睛舒服多了！你那边采光真好",
+          "emotion": "欣赏",
+          "emotionIntensity": 3,
+          "impliedNeed": "希望被回应",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "哈哈趁休息偷偷拍的～",
+          "emotion": "开心",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被肯定",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "摸鱼大师 午休要好好休息啊",
+          "emotion": "调侃",
+          "emotionIntensity": 3,
+          "impliedNeed": "关心对方",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你也是！别老对着屏幕",
+          "emotion": "关心",
+          "emotionIntensity": 3,
+          "impliedNeed": "表达在乎",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_058",
+      "category": "日常闲聊",
+      "title": "她在分享追星日常",
+      "situation": "她兴奋地说偶像发了新歌",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "啊啊啊啊他发新歌了！！！",
+          "emotion": "兴奋",
+          "emotionIntensity": 7,
+          "impliedNeed": "分享狂喜",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "哪个偶像？说说看",
+          "emotion": "好奇",
+          "emotionIntensity": 2,
+          "impliedNeed": "希望被关注",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "就那个谁！我追了三年了！",
+          "emotion": "狂热",
+          "emotionIntensity": 8,
+          "impliedNeed": "激动分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "三年铁粉！那必须支持，能发我听一下吗",
+          "emotion": "支持",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望被陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（发了个链接）你听！超好听！",
+          "emotion": "期待",
+          "emotionIntensity": 5,
+          "impliedNeed": "希望被认同",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "听完了，前奏就很抓人，怪不得你追了三年",
+          "emotion": "认同",
+          "emotionIntensity": 4,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对吧对吧！！我就知道你会喜欢！",
+          "emotion": "满足",
+          "emotionIntensity": 6,
+          "impliedNeed": "共鸣",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_059",
+      "category": "日常闲聊",
+      "title": "她突然问你在干嘛",
+      "situation": "下午工作时间她发来消息",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你在干嘛呀？",
+          "emotion": "挂念",
+          "emotionIntensity": 3,
+          "impliedNeed": "确认你在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "在做方案，快被甲方搞疯了",
+          "emotion": "无奈",
+          "emotionIntensity": 4,
+          "impliedNeed": "吐槽",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "加油 搞定了记得休息",
+          "emotion": "鼓励",
+          "emotionIntensity": 3,
+          "impliedNeed": "表达关心",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好！等我搞定告诉你",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "给承诺",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯！我等你",
+          "emotion": "信任",
+          "emotionIntensity": 3,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_060",
+      "category": "日常闲聊",
+      "title": "她在给你分享宠物",
+      "situation": "她发来猫狗的视频",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发视频）我家猫又上床了！",
+          "emotion": "无奈",
+          "emotionIntensity": 3,
+          "impliedNeed": "分享日常",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "哈哈哈 它知道不该上床但就是忍不住对吧",
+          "emotion": "共情",
+          "emotionIntensity": 3,
+          "impliedNeed": "陪伴感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对！就是管不住自己那种",
+          "emotion": "好笑",
+          "emotionIntensity": 4,
+          "impliedNeed": "共鸣",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "它那么可爱，原谅它吧～",
+          "emotion": "宠溺",
+          "emotionIntensity": 3,
+          "impliedNeed": "正向反馈",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你说得对！不追究了",
+          "emotion": "满足",
+          "emotionIntensity": 3,
+          "impliedNeed": "被支持",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_061",
+      "category": "日常闲聊",
+      "title": "睡前无聊想聊天",
+      "situation": "晚上十一点她发消息说睡不着",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "睡不着…你在吗",
+          "emotion": "孤独",
+          "emotionIntensity": 4,
+          "impliedNeed": "陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "在呢，怎么了？",
+          "emotion": "关心",
+          "emotionIntensity": 3,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "就是睡不着，想找人说说话",
+          "emotion": "脆弱",
+          "emotionIntensity": 4,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那我陪你聊聊，想聊什么？",
+          "emotion": "陪伴",
+          "emotionIntensity": 3,
+          "impliedNeed": "被需要",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "随便，就是想听到你消息",
+          "emotion": "依赖",
+          "emotionIntensity": 5,
+          "impliedNeed": "确认存在",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那我不挂，陪着你",
+          "emotion": "守护",
+          "emotionIntensity": 4,
+          "impliedNeed": "给她安心",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好～有你真好",
+          "emotion": "温暖",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_062",
+      "category": "情绪支持",
+      "title": "她工作被骂哭了",
+      "situation": "下班后她发消息说今天很难过",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "今天被领导骂了…在厕所哭",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "发生什么了？愿意说吗",
+          "emotion": "关心",
+          "emotionIntensity": 3,
+          "impliedNeed": "被倾听",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "方案被打回来改了五遍还是不过",
+          "emotion": "挫败",
+          "emotionIntensity": 5,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "五遍啊…换成我早崩溃了",
+          "emotion": "共情",
+          "emotionIntensity": 4,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对啊…我觉得自己好差劲",
+          "emotion": "自我否定",
+          "emotionIntensity": 6,
+          "impliedNeed": "被安慰",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "五遍不过不代表你差，可能是领导要求本来就模糊。你能改五遍说明你有耐心",
+          "emotion": "肯定",
+          "emotionIntensity": 4,
+          "impliedNeed": "重建信心",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（过了一会儿）你说得对…谢谢",
+          "emotion": "释然",
+          "emotionIntensity": 4,
+          "impliedNeed": "被支持",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "回家了吗？要不要我陪你打电话",
+          "emotion": "守护",
+          "emotionIntensity": 3,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_063",
+      "category": "情绪支持",
+      "title": "她考试没考好很沮丧",
+      "situation": "考研成绩公布后她发消息",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "成绩出来了…没过",
+          "emotion": "绝望",
+          "emotionIntensity": 6,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "差很多吗？",
+          "emotion": "关心",
+          "emotionIntensity": 2,
+          "impliedNeed": "被倾听",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "英语差两分…就差两分",
+          "emotion": "不甘",
+          "emotionIntensity": 6,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "两分…这个距离好近，感觉更难受吧",
+          "emotion": "共情",
+          "emotionIntensity": 4,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯…觉得自己特别没用",
+          "emotion": "自我否定",
+          "emotionIntensity": 6,
+          "impliedNeed": "被安慰",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "准备这一年你有多拼我都看在眼里。两分是试卷的事，不是你的事",
+          "emotion": "肯定",
+          "emotionIntensity": 5,
+          "impliedNeed": "重建价值感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "可是…要不要再考一次",
+          "emotion": "迷茫",
+          "emotionIntensity": 4,
+          "impliedNeed": "被指引",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "先休息几天，让自己喘口气。慢慢想，不着急决定",
+          "emotion": "支持",
+          "emotionIntensity": 4,
+          "impliedNeed": "空间",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好…谢谢你一直在我身边",
+          "emotion": "感激",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_064",
+      "category": "情绪支持",
+      "title": "她和朋友吵架了",
+      "situation": "她气冲冲地发消息说和闺蜜翻脸",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我跟小红彻底掰了！气死我了",
+          "emotion": "愤怒",
+          "emotionIntensity": 6,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "怎么了？",
+          "emotion": "倾听",
+          "emotionIntensity": 2,
+          "impliedNeed": "被关注",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "她背后说我坏话被我发现了",
+          "emotion": "受伤",
+          "emotionIntensity": 6,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "被信任的人背后说…真的很受伤",
+          "emotion": "共情",
+          "emotionIntensity": 5,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对啊！我把她当最好的朋友…",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "被安慰",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "这种被信任的人背叛的感觉…一定很疼",
+          "emotion": "理解",
+          "emotionIntensity": 5,
+          "impliedNeed": "情感确认",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯…我哭了很久",
+          "emotion": "悲伤",
+          "emotionIntensity": 5,
+          "impliedNeed": "被陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你现在在哪？",
+          "emotion": "关心",
+          "emotionIntensity": 3,
+          "impliedNeed": "被照顾",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "在公司天台…",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "等我，我过来找你",
+          "emotion": "行动",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "不用啦…我说说而已",
+          "emotion": "感动",
+          "emotionIntensity": 4,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "不管来不来，我都想让你知道有人在",
+          "emotion": "守护",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_065",
+      "category": "情绪支持",
+      "title": "她身体不舒服很脆弱",
+      "situation": "她生理期疼痛发消息",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "肚子好疼…生理期第二天",
+          "emotion": "难受",
+          "emotionIntensity": 5,
+          "impliedNeed": "被关心",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "家里有暖宝宝吗？",
+          "emotion": "关心",
+          "emotionIntensity": 3,
+          "impliedNeed": "被照顾",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "有但是不想动…",
+          "emotion": "懒散",
+          "emotionIntensity": 3,
+          "impliedNeed": "被宠",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那我来点个外卖送过去，热水和暖宝宝一会儿就到",
+          "emotion": "行动照顾",
+          "emotionIntensity": 5,
+          "impliedNeed": "被呵护",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "不用啦…你会宠坏我的",
+          "emotion": "感动",
+          "emotionIntensity": 4,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "宠坏就宠坏，反正也不差这一次",
+          "emotion": "宠溺",
+          "emotionIntensity": 4,
+          "impliedNeed": "给她被宠感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "哈哈哈那我不客气了",
+          "emotion": "开心",
+          "emotionIntensity": 4,
+          "impliedNeed": "幸福感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_066",
+      "category": "情绪支持",
+      "title": "她亲人去世很悲伤",
+      "situation": "她爷爷去世发消息说很难过",
+      "difficulty": 5,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "爷爷走了…",
+          "emotion": "悲伤",
+          "emotionIntensity": 8,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我在",
+          "emotion": "沉默陪伴",
+          "emotionIntensity": 5,
+          "impliedNeed": "需要存在",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "从小最疼我的…",
+          "emotion": "悲伤",
+          "emotionIntensity": 8,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你最快乐的记忆是什么？",
+          "emotion": "引导回忆",
+          "emotionIntensity": 3,
+          "impliedNeed": "需要宣泄",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "小时候他每天接我放学…",
+          "emotion": "眷恋",
+          "emotionIntensity": 7,
+          "impliedNeed": "回忆被看见",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那些日子，他一定很开心有你在",
+          "emotion": "温暖肯定",
+          "emotionIntensity": 5,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（哭）谢谢有你在",
+          "emotion": "感激",
+          "emotionIntensity": 6,
+          "impliedNeed": "被陪伴",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_067",
+      "category": "情绪支持",
+      "title": "她面试前很焦虑",
+      "situation": "明天有大公司面试她紧张得睡不着",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "睡不着…明天面试好紧张",
+          "emotion": "焦虑",
+          "emotionIntensity": 6,
+          "impliedNeed": "被安抚",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "深呼吸，我们一起想想最坏的情况是什么",
+          "emotion": "引导",
+          "emotionIntensity": 3,
+          "impliedNeed": "降低焦虑",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "最坏就是不过呗…",
+          "emotion": "担忧",
+          "emotionIntensity": 5,
+          "impliedNeed": "被支持",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "不过的话会怎样？",
+          "emotion": "引导认知",
+          "emotionIntensity": 3,
+          "impliedNeed": "重构思维",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…也就是再找别的公司吧",
+          "emotion": "释然",
+          "emotionIntensity": 4,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "对，最坏也不过是再来一次。而且你已经准备得很充分了",
+          "emotion": "肯定",
+          "emotionIntensity": 4,
+          "impliedNeed": "建立信心",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯…我知道了。我可以的",
+          "emotion": "平静",
+          "emotionIntensity": 3,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_068",
+      "category": "冲突化解",
+      "title": "她觉得你约会迟到不在意",
+      "situation": "你迟到了半小时她很生气",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你又迟到了！等了半小时",
+          "emotion": "愤怒",
+          "emotionIntensity": 6,
+          "impliedNeed": "被尊重",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "对不起，路上堵车了",
+          "emotion": "解释",
+          "emotionIntensity": 2,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "每次都有理由！",
+          "emotion": "愤怒",
+          "emotionIntensity": 7,
+          "impliedNeed": "被重视",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我迟到了让你等，这是我的问题。但我真的很在乎你，不会故意让你等",
+          "emotion": "承认加表达",
+          "emotionIntensity": 5,
+          "impliedNeed": "被原谅",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你知道我等的时候在想什么吗",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你在想我是不是不来了对吗",
+          "emotion": "共情理解",
+          "emotionIntensity": 6,
+          "impliedNeed": "被看见",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…我会想你是不是不想见我",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "以后我提前出门，到了告诉你。以后不会让你一个人在那里想那些",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好…我信你这一次",
+          "emotion": "缓和",
+          "emotionIntensity": 4,
+          "impliedNeed": "被承诺",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_069",
+      "category": "冲突化解",
+      "title": "她觉得你忽略了她",
+      "situation": "你和朋友聚会没及时回她消息",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你到底在干嘛！发了三条都不回",
+          "emotion": "焦虑",
+          "emotionIntensity": 6,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "抱歉，在和朋友唱歌，吵得没听到",
+          "emotion": "解释",
+          "emotionIntensity": 2,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "行吧，反正我也没那么重要",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "被关注",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我看到你消息的时候心里有惦记，但想着回了你也会觉得我玩得不尽兴",
+          "emotion": "坦诚内心",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…你觉得我会这么说？",
+          "emotion": "疑惑",
+          "emotionIntensity": 4,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我想错了。你希望我回，哪怕我在玩对吗",
+          "emotion": "理解",
+          "emotionIntensity": 5,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…至少让我让我知道你想着我",
+          "emotion": "依赖",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "明白了，下次到场就告诉你我在想你",
+          "emotion": "承诺",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_070",
+      "category": "冲突化解",
+      "title": "因为打游戏吵架",
+      "situation": "她觉得你宁愿打游戏也不陪她",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你又在打游戏！",
+          "emotion": "不满",
+          "emotionIntensity": 5,
+          "impliedNeed": "被陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "怎么了？等一下好吗",
+          "emotion": "敷衍",
+          "emotionIntensity": 2,
+          "impliedNeed": "继续游戏",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "等？我每次都要等",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "被重视",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我关游戏了。你说得对，我应该先陪你",
+          "emotion": "行动",
+          "emotionIntensity": 5,
+          "impliedNeed": "被原谅",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我没要你现在关",
+          "emotion": "矛盾",
+          "emotionIntensity": 5,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我关是因为我想陪你在先，不是被迫的",
+          "emotion": "主动选择",
+          "emotionIntensity": 5,
+          "impliedNeed": "被尊重",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…谢谢",
+          "emotion": "感动",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_071",
+      "category": "冲突化解",
+      "title": "她对你的前任耿耿于怀",
+      "situation": "她无意中发现你还留着前任的礼物",
+      "difficulty": 5,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这项链是谁送的？",
+          "emotion": "嫉妒",
+          "emotionIntensity": 7,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "是…之前那个人送的",
+          "emotion": "尴尬",
+          "emotionIntensity": 3,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "那你为什么还留着？",
+          "emotion": "受伤",
+          "emotionIntensity": 7,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "说实话我没想那么多，就随手放那了。我现在处理掉",
+          "emotion": "行动",
+          "emotionIntensity": 5,
+          "impliedNeed": "被原谅",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我不是要你扔，我只是…",
+          "emotion": "矛盾",
+          "emotionIntensity": 6,
+          "impliedNeed": "被确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我懂，你需要知道我心里只有你",
+          "emotion": "确认",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…我就是想确认",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "以后的礼物只为你送",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_072",
+      "category": "冲突化解",
+      "title": "她觉得你从不说我爱你",
+      "situation": "她抱怨你很少表达爱意",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你好像从来不说爱我",
+          "emotion": "不满",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我觉得爱不是说出来的，是做出来的",
+          "emotion": "理性",
+          "emotionIntensity": 2,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "可是我需要听到",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我明白。我以前觉得不说你也知道，但现在我知道了，你需要听到",
+          "emotion": "理解",
+          "emotionIntensity": 4,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…我会因为这句话心里很踏实",
+          "emotion": "满足",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我爱你",
+          "emotion": "表达",
+          "emotionIntensity": 6,
+          "impliedNeed": "给她安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我也爱你",
+          "emotion": "幸福",
+          "emotionIntensity": 7,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_073",
+      "category": "亲密时刻",
+      "title": "她问你会爱她多久",
+      "situation": "一个安静的夜晚她突然问",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你会爱我多久呀",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "到说不动的那天吧",
+          "emotion": "浪漫",
+          "emotionIntensity": 4,
+          "impliedNeed": "被承诺",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "那要是哪天说不动了呢",
+          "emotion": "追问",
+          "emotionIntensity": 4,
+          "impliedNeed": "持续安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那就用行动爱你",
+          "emotion": "深情",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我哭了",
+          "emotion": "感动",
+          "emotionIntensity": 7,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_074",
+      "category": "亲密时刻",
+      "title": "她第一次主动牵你手",
+      "situation": "散步时她突然牵了你的手",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（牵了你的手）",
+          "emotion": "紧张",
+          "emotionIntensity": 5,
+          "impliedNeed": "确认关系",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "（轻轻回握）",
+          "emotion": "温柔",
+          "emotionIntensity": 4,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你的手好暖",
+          "emotion": "幸福",
+          "emotionIntensity": 5,
+          "impliedNeed": "亲密确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你的也是，我想一直这样牵着",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好～",
+          "emotion": "满足",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_075",
+      "category": "亲密时刻",
+      "title": "她想听你讲小时候的事",
+      "situation": "周末在家她窝在你身边聊天",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "给我讲讲你小时候的事呗",
+          "emotion": "好奇",
+          "emotionIntensity": 3,
+          "impliedNeed": "了解你",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "小时候我最怕打针，每次打完都哭得死去活来",
+          "emotion": "分享",
+          "emotionIntensity": 3,
+          "impliedNeed": "被她了解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "哈哈哈原来你也怕！",
+          "emotion": "好笑",
+          "emotionIntensity": 4,
+          "impliedNeed": "亲密感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那时候觉得全世界最可怕的就是针头",
+          "emotion": "怀念",
+          "emotionIntensity": 3,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "小可怜～现在呢",
+          "emotion": "宠溺",
+          "emotionIntensity": 4,
+          "impliedNeed": "亲密感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "现在怕你哭，比针头还可怕",
+          "emotion": "调情",
+          "emotionIntensity": 5,
+          "impliedNeed": "让她开心",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "哈哈哈油嘴滑舌",
+          "emotion": "开心",
+          "emotionIntensity": 5,
+          "impliedNeed": "幸福感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_076",
+      "category": "亲密时刻",
+      "title": "她发来深夜想念的消息",
+      "situation": "凌晨一点她突然发消息",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "睡了吗",
+          "emotion": "想念",
+          "emotionIntensity": 4,
+          "impliedNeed": "确认存在",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "还没，怎么了",
+          "emotion": "关心",
+          "emotionIntensity": 2,
+          "impliedNeed": "被需要",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "没事，就是想你了",
+          "emotion": "眷恋",
+          "emotionIntensity": 5,
+          "impliedNeed": "亲密感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我在呢，随时都在",
+          "emotion": "守护",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "有你在真好",
+          "emotion": "幸福",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_077",
+      "category": "修复和好",
+      "title": "激烈争吵后冷静复盘",
+      "situation": "争吵后第二天她主动发消息",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "昨天我说话太重了，对不起",
+          "emotion": "愧疚",
+          "emotionIntensity": 4,
+          "impliedNeed": "被原谅",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也说了伤人的话，我们都有错",
+          "emotion": "共担",
+          "emotionIntensity": 3,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我不想因为吵架失去你",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我们不会的。吵架的时候我会说很多气话，但爱你的部分从来没变过",
+          "emotion": "确认",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "下次吵架的时候能先冷静五分钟吗",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "建设性",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，以后吵架先暂停，想清楚再说",
+          "emotion": "承诺",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯，我们一起努力",
+          "emotion": "希望",
+          "emotionIntensity": 4,
+          "impliedNeed": "共同前进",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_078",
+      "category": "修复和好",
+      "title": "冷战一周后和好",
+      "situation": "你们因为小事冷战一周后她先低头",
+      "difficulty": 4,
+      "attachmentStyle": "回避型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这一周你想我了吗",
+          "emotion": "试探",
+          "emotionIntensity": 5,
+          "impliedNeed": "确认感情",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "想了。每天都在想",
+          "emotion": "坦诚",
+          "emotionIntensity": 5,
+          "impliedNeed": "修复",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我也是…我其实一直在等你先说话",
+          "emotion": "坦白",
+          "emotionIntensity": 5,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "下次不会了，我不会让这种事再发生",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好…我们以后有事当天说清楚好不好",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_079",
+      "category": "深度对话",
+      "title": "谈论婚姻观",
+      "situation": "朋友结婚了她感慨发消息",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "看着朋友结婚，突然有点感慨",
+          "emotion": "感慨",
+          "emotionIntensity": 4,
+          "impliedNeed": "分享感受",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "想到什么了？",
+          "emotion": "倾听",
+          "emotionIntensity": 2,
+          "impliedNeed": "被倾听",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我在想我们以后会怎样",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "确认未来",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我认真想过，我们结婚后会是什么样子",
+          "emotion": "认真",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "什么样子？",
+          "emotion": "好奇",
+          "emotionIntensity": 4,
+          "impliedNeed": "被告知",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "早上一起吃早餐，周末遛狗，每年去一个没去过的地方",
+          "emotion": "憧憬",
+          "emotionIntensity": 5,
+          "impliedNeed": "共同愿景",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…我想跟你一起老去",
+          "emotion": "深情",
+          "emotionIntensity": 7,
+          "impliedNeed": "承诺",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_080",
+      "category": "深度对话",
+      "title": "谈论童年创伤",
+      "situation": "她提到小时候被留守的经历",
+      "difficulty": 5,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我小时候是留守儿童，爸妈一直在外面打工",
+          "emotion": "沉重",
+          "emotionIntensity": 5,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那时候你一个人撑过来的吧",
+          "emotion": "心疼",
+          "emotionIntensity": 5,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "每次他们走的时候我都不敢哭，怕他们担心",
+          "emotion": "悲伤",
+          "emotionIntensity": 6,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那么小就知道照顾别人的感受了",
+          "emotion": "心疼",
+          "emotionIntensity": 6,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "所以我特别怕别人离开我",
+          "emotion": "脆弱",
+          "emotionIntensity": 6,
+          "impliedNeed": "被接纳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我不会离开的。你以后在我面前可以不用忍着",
+          "emotion": "承诺",
+          "emotionIntensity": 7,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（哭）你是第一个这样说的人",
+          "emotion": "感动",
+          "emotionIntensity": 8,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_081",
+      "category": "边界设定",
+      "title": "她需要独处时间",
+      "situation": "她说最近工作压力大需要空间",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这周我工作压力很大，下班想一个人待着",
+          "emotion": "疲惫",
+          "emotionIntensity": 5,
+          "impliedNeed": "空间",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，我给你空间。但我想让你知道我在，随时可以找我",
+          "emotion": "尊重加陪伴",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "谢谢你的理解",
+          "emotion": "感激",
+          "emotionIntensity": 4,
+          "impliedNeed": "被尊重",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "周末情况好的话想带你出去走走，换换心情",
+          "emotion": "关心",
+          "emotionIntensity": 4,
+          "impliedNeed": "给希望",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好，到时候看情况～",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "自主感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_082",
+      "category": "边界设定",
+      "title": "她设定异性边界",
+      "situation": "她明确表示不喜欢你和某个女生走太近",
+      "difficulty": 4,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "我发现你和一个女同事聊得挺多的",
+          "emotion": "嫉妒",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "就是普通同事，工作对接比较多",
+          "emotion": "解释",
+          "emotionIntensity": 2,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我不是不让你有异性朋友，但我会不舒服",
+          "emotion": "坦诚",
+          "emotionIntensity": 5,
+          "impliedNeed": "被在乎",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我知道了，我会保持距离让你安心",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "谢谢你的在乎",
+          "emotion": "满足",
+          "emotionIntensity": 4,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_083",
+      "category": "约会规划",
+      "title": "她犹豫要不要赴约",
+      "situation": "你约她周末吃饭她一直没回复",
+      "difficulty": 2,
+      "attachmentStyle": "回避型",
+      "turns": [
+        {
+          "speaker": "you",
+          "text": "这周末有空吗？想约你",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "这周有点事…还没想好",
+          "emotion": "犹豫",
+          "emotionIntensity": 3,
+          "impliedNeed": "空间",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "不着急，想好了告诉我。不方便的话下次也行",
+          "emotion": "尊重",
+          "emotionIntensity": 3,
+          "impliedNeed": "自主感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…其实没什么大事，就是有点不想出门",
+          "emotion": "坦白",
+          "emotionIntensity": 3,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那我可以去找你吗？买点吃的在你家待着",
+          "emotion": "折中方案",
+          "emotionIntensity": 4,
+          "impliedNeed": "陪伴感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "这个可以！",
+          "emotion": "开心",
+          "emotionIntensity": 5,
+          "impliedNeed": "被在乎",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_084",
+      "category": "约会规划",
+      "title": "她主动约你",
+      "situation": "她突然发消息约你下班见面",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "今天下班有空吗？想见你",
+          "emotion": "期待",
+          "emotionIntensity": 5,
+          "impliedNeed": "确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "有空！想吃什么？",
+          "emotion": "积极",
+          "emotionIntensity": 4,
+          "impliedNeed": "期待",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "想吃火锅！",
+          "emotion": "兴奋",
+          "emotionIntensity": 5,
+          "impliedNeed": "被满足",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "走，今天我请客",
+          "emotion": "宠溺",
+          "emotionIntensity": 4,
+          "impliedNeed": "让她开心",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好耶！",
+          "emotion": "开心",
+          "emotionIntensity": 6,
+          "impliedNeed": "幸福感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_085",
+      "category": "约会规划",
+      "title": "周末约会安排讨论",
+      "situation": "讨论周末约会去哪",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "周末想去哪？",
+          "emotion": "期待",
+          "emotionIntensity": 3,
+          "impliedNeed": "共同决定",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "最近新开了个展，你感兴趣的话可以去看看",
+          "emotion": "提议",
+          "emotionIntensity": 3,
+          "impliedNeed": "共同体验",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "什么展？",
+          "emotion": "好奇",
+          "emotionIntensity": 2,
+          "impliedNeed": "被分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "是一个摄影展，主题是世界各地的小镇生活",
+          "emotion": "分享",
+          "emotionIntensity": 3,
+          "impliedNeed": "了解她",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "听起来不错！我喜欢这种安静的约会",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "幸福感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "看完展我们去吃那家你说过想吃的日料",
+          "emotion": "用心",
+          "emotionIntensity": 4,
+          "impliedNeed": "被重视",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你还记得！！",
+          "emotion": "惊喜",
+          "emotionIntensity": 6,
+          "impliedNeed": "被在乎",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_086",
+      "category": "日常闲聊",
+      "title": "她在吐槽同事",
+      "situation": "午休时她吐槽奇葩同事",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "气死我了！新来的同事又甩锅给我",
+          "emotion": "愤怒",
+          "emotionIntensity": 6,
+          "impliedNeed": "吐槽",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "又来？上次他就…",
+          "emotion": "共情",
+          "emotionIntensity": 4,
+          "impliedNeed": "被倾听",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对啊！领导还偏向他！",
+          "emotion": "委屈",
+          "emotionIntensity": 6,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你们领导水平有问题，不是你的问题",
+          "emotion": "支持",
+          "emotionIntensity": 4,
+          "impliedNeed": "被肯定",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "谢谢…我就想跟你说，不想上班了",
+          "emotion": "倦怠",
+          "emotionIntensity": 5,
+          "impliedNeed": "被接纳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "不想就不想，大不了我养你（开玩笑的）",
+          "emotion": "幽默加支持",
+          "emotionIntensity": 4,
+          "impliedNeed": "被宠",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "哈哈哈先不用你养",
+          "emotion": "好转",
+          "emotionIntensity": 4,
+          "impliedNeed": "被逗笑",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_087",
+      "category": "日常闲聊",
+      "title": "她看了恐怖片害怕",
+      "situation": "晚上她看完恐怖片不敢睡觉",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "睡不着…刚看了恐怖片",
+          "emotion": "害怕",
+          "emotionIntensity": 5,
+          "impliedNeed": "陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "开着灯睡吧，或者我陪你打电话",
+          "emotion": "保护",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "可以打电话吗？",
+          "emotion": "依赖",
+          "emotionIntensity": 4,
+          "impliedNeed": "被陪伴",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我打过来",
+          "emotion": "行动",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "嗯",
+          "emotion": "安心",
+          "emotionIntensity": 4,
+          "impliedNeed": "被守护",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_088",
+      "category": "日常闲聊",
+      "title": "她问你爱不爱吃辣",
+      "situation": "点外卖前她问你的口味偏好",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "晚上吃什么，你想辣的还是不辣的",
+          "emotion": "期待",
+          "emotionIntensity": 2,
+          "impliedNeed": "照顾你",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你上次不是说想吃川菜吗，今晚吃川菜吧",
+          "emotion": "用心",
+          "emotionIntensity": 4,
+          "impliedNeed": "被重视",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你还记得！！那我不客气了",
+          "emotion": "惊喜",
+          "emotionIntensity": 5,
+          "impliedNeed": "被在乎",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_089",
+      "category": "日常闲聊",
+      "title": "她问你爱不爱吃辣",
+      "situation": "她换了新发型发自拍给你看",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发自拍）新弄的头发，怎么样",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "被欣赏",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好看，很衬你",
+          "emotion": "欣赏",
+          "emotionIntensity": 4,
+          "impliedNeed": "被肯定",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "真的？不是敷衍我？",
+          "emotion": "确认",
+          "emotionIntensity": 3,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "真的，你怎样都好看",
+          "emotion": "宠溺",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_090",
+      "category": "日常闲聊",
+      "title": "她问你们算是什么关系",
+      "situation": "她喝了点酒突然问你这个问题",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你说…我们算什么关系",
+          "emotion": "试探",
+          "emotionIntensity": 5,
+          "impliedNeed": "确认关系",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你觉得呢",
+          "emotion": "试探",
+          "emotionIntensity": 3,
+          "impliedNeed": "了解她",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我不敢说…你说",
+          "emotion": "紧张",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我想当你的男朋友，可以吗",
+          "emotion": "表白",
+          "emotionIntensity": 7,
+          "impliedNeed": "确认关系",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "（过了很久）…可以",
+          "emotion": "幸福",
+          "emotionIntensity": 8,
+          "impliedNeed": "被接受",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_091",
+      "category": "日常闲聊",
+      "title": "她给你推荐歌",
+      "situation": "她发了一首歌说觉得很像你们",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发链接）这首歌觉得很像我们",
+          "emotion": "感慨",
+          "emotionIntensity": 3,
+          "impliedNeed": "分享感受",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我听听",
+          "emotion": "关注",
+          "emotionIntensity": 2,
+          "impliedNeed": "被分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "听完了，歌词里唱的是你等我吗",
+          "emotion": "理解",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…我每次等你的时候都会听这首",
+          "emotion": "坦白",
+          "emotionIntensity": 4,
+          "impliedNeed": "被接纳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "以后让你等的时间越来越短",
+          "emotion": "承诺",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_092",
+      "category": "日常闲聊",
+      "title": "她假装生气让你哄",
+      "situation": "她说不要你了但明显在撒娇",
+      "difficulty": 2,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "不要你了",
+          "emotion": "撒娇",
+          "emotionIntensity": 3,
+          "impliedNeed": "被哄",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "真的？",
+          "emotion": "调戏",
+          "emotionIntensity": 3,
+          "impliedNeed": "逗她",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "不要了不要了",
+          "emotion": "撒娇",
+          "emotionIntensity": 4,
+          "impliedNeed": "被哄",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "那我把心收回来了哦",
+          "emotion": "反向",
+          "emotionIntensity": 4,
+          "impliedNeed": "被哄",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "别别别！跟你开玩笑的！",
+          "emotion": "慌张",
+          "emotionIntensity": 5,
+          "impliedNeed": "被确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也跟你开玩笑的，我的心一直在你这里",
+          "emotion": "深情",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_093",
+      "category": "日常闲聊",
+      "title": "她问你过去的情史",
+      "situation": "她装作不经意问起你的前任",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你上一个女朋友是怎样的",
+          "emotion": "好奇",
+          "emotionIntensity": 3,
+          "impliedNeed": "了解你",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "分开很久了，当时分开是因为异地",
+          "emotion": "坦然",
+          "emotionIntensity": 2,
+          "impliedNeed": "被了解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "那你觉得我跟她有什么不一样",
+          "emotion": "确认",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "她不会这样跟我聊这些，让我感觉很近",
+          "emotion": "肯定",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_094",
+      "category": "日常闲聊",
+      "title": "她想你了但不说",
+      "situation": "她发了一堆表情包但不说想你了",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发了一堆拥抱的表情包）",
+          "emotion": "想念",
+          "emotionIntensity": 4,
+          "impliedNeed": "确认",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我感受到了，想我了对吧",
+          "emotion": "理解",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "…就是随便发的",
+          "emotion": "害羞",
+          "emotionIntensity": 3,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也想你，周末见",
+          "emotion": "表达",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_095",
+      "category": "深度对话",
+      "title": "讨论依恋类型",
+      "situation": "她看了依恋类型的文章后和你讨论",
+      "difficulty": 3,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "看完依恋类型的文章，我觉得自己有点像焦虑型",
+          "emotion": "思考",
+          "emotionIntensity": 3,
+          "impliedNeed": "自我探索",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "你觉得焦虑型有哪些表现？",
+          "emotion": "好奇",
+          "emotionIntensity": 2,
+          "impliedNeed": "被了解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "就是会反复确认对方在不在乎我，容易想太多",
+          "emotion": "坦诚",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "所以你问我在不在乎，其实是在确认吧",
+          "emotion": "理解",
+          "emotionIntensity": 5,
+          "impliedNeed": "被认可",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对…每次你回复慢了我就会想很多",
+          "emotion": "脆弱",
+          "emotionIntensity": 5,
+          "impliedNeed": "被接纳",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "以后我会主动告诉你我在干嘛，不让你担心",
+          "emotion": "支持",
+          "emotionIntensity": 5,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "谢谢你也愿意为我改变",
+          "emotion": "感激",
+          "emotionIntensity": 5,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_096",
+      "category": "修复和好",
+      "title": "分手边缘重新开始",
+      "situation": "分手后一个月她又联系你",
+      "difficulty": 5,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "这段时间我想了很多…",
+          "emotion": "犹豫",
+          "emotionIntensity": 4,
+          "impliedNeed": "确认感情",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也是",
+          "emotion": "坦诚",
+          "emotionIntensity": 3,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "我发现自己还是放不下你",
+          "emotion": "眷恋",
+          "emotionIntensity": 6,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "我也是。我们之前的问题我都想过了，我愿意改",
+          "emotion": "承诺",
+          "emotionIntensity": 6,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "这次真的可以吗",
+          "emotion": "不确定",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "这次我们把问题摆在明面上，一起解决",
+          "emotion": "建设性",
+          "emotionIntensity": 5,
+          "impliedNeed": "希望",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好，我们重新开始",
+          "emotion": "希望",
+          "emotionIntensity": 6,
+          "impliedNeed": "重新开始",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_097",
+      "category": "日常闲聊",
+      "title": "她想养宠物问你意见",
+      "situation": "她发来宠物店的视频问你想不想养",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发视频）这只猫好可爱啊啊啊",
+          "emotion": "兴奋",
+          "emotionIntensity": 7,
+          "impliedNeed": "分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "想养？",
+          "emotion": "好奇",
+          "emotionIntensity": 2,
+          "impliedNeed": "了解她",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "想！但是我工作忙怕照顾不好它",
+          "emotion": "纠结",
+          "emotionIntensity": 4,
+          "impliedNeed": "被建议",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "要不先云吸，等不那么忙了再考虑？",
+          "emotion": "建议",
+          "emotionIntensity": 3,
+          "impliedNeed": "被支持",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好～先收藏这个视频每天看一遍",
+          "emotion": "释然",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_098",
+      "category": "日常闲聊",
+      "title": "她发现你用过的情侣App",
+      "situation": "她看到你手机里有情侣相关的App",
+      "difficulty": 2,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "你手机里那个情侣App是什么",
+          "emotion": "好奇",
+          "emotionIntensity": 3,
+          "impliedNeed": "确认感情",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "之前下载的，没删而已",
+          "emotion": "解释",
+          "emotionIntensity": 2,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "你要不要…用一下",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "确认关系",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "好，装上了，我们用",
+          "emotion": "积极",
+          "emotionIntensity": 5,
+          "impliedNeed": "被接受",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好开心",
+          "emotion": "开心",
+          "emotionIntensity": 5,
+          "impliedNeed": "幸福感",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_099",
+      "category": "情绪支持",
+      "title": "她掉发严重很焦虑",
+      "situation": "她发消息说最近掉头发很厉害很焦虑",
+      "difficulty": 3,
+      "attachmentStyle": "焦虑型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "最近掉头发好厉害，会不会秃了",
+          "emotion": "焦虑",
+          "emotionIntensity": 5,
+          "impliedNeed": "倾诉",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "掉了多少？有没有特别的原因？",
+          "emotion": "关心",
+          "emotionIntensity": 2,
+          "impliedNeed": "被倾听",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "最近工作压力很大，可能跟这个有关",
+          "emotion": "担忧",
+          "emotionIntensity": 4,
+          "impliedNeed": "被理解",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "压力大确实会影响。等工作缓了你可能会恢复的",
+          "emotion": "分析",
+          "emotionIntensity": 3,
+          "impliedNeed": "被安慰",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "真的吗…",
+          "emotion": "期待",
+          "emotionIntensity": 4,
+          "impliedNeed": "希望",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "真的。不放心的话可以去看看皮肤科，我陪你去",
+          "emotion": "支持",
+          "emotionIntensity": 4,
+          "impliedNeed": "安全感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "好，有你在我安心多了",
+          "emotion": "感激",
+          "emotionIntensity": 4,
+          "impliedNeed": "被爱",
+          "pause": true
+        }
+      ]
+    },
+    {
+      "id": "conv_100",
+      "category": "日常闲聊",
+      "title": "她发来下雨的照片",
+      "situation": "她发来窗外的雨景照片",
+      "difficulty": 1,
+      "attachmentStyle": "安全型",
+      "turns": [
+        {
+          "speaker": "her",
+          "text": "（发照片）窗外在下雨，好平静的感觉",
+          "emotion": "平静",
+          "emotionIntensity": 2,
+          "impliedNeed": "分享",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "雨声听着很舒服，适合睡觉",
+          "emotion": "共鸣",
+          "emotionIntensity": 2,
+          "impliedNeed": "陪伴感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "对呀，好想就这样听着雨声睡觉",
+          "emotion": "放松",
+          "emotionIntensity": 3,
+          "impliedNeed": "分享感受",
+          "pause": false
+        },
+        {
+          "speaker": "you",
+          "text": "今晚应该会睡得很好，我这边也在下",
+          "emotion": "共情",
+          "emotionIntensity": 3,
+          "impliedNeed": "亲近感",
+          "pause": false
+        },
+        {
+          "speaker": "her",
+          "text": "同一片雨幕呢🌧️",
+          "emotion": "幸福",
+          "emotionIntensity": 4,
+          "impliedNeed": "被连接",
+          "pause": true
+        }
+      ]
+    }
+  ]
+}

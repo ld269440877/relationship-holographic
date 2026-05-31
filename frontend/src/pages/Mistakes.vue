@@ -1,475 +1,388 @@
 <template>
-  <div class="p-8">
-    <!-- 标题区 -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold text-gray-800 dark:text-white">错题本</h1>
-      <p class="text-gray-500 dark:text-gray-400 mt-2">从错误中学习，让每一次失误都成为成长的养分 📚</p>
+  <div class="p-4 sm:p-6 lg:p-8">
+    <div class="mb-8 flex flex-col items-start justify-between gap-4 sm:flex-row sm:gap-6">
+      <div>
+        <h1 class="text-3xl font-bold text-gray-800 dark:text-white">错题本</h1>
+        <p class="text-gray-500 dark:text-gray-400 mt-2">用间隔重复把每一次失误转化为关系直觉。</p>
+      </div>
+      <button @click="refresh" class="btn-secondary w-full sm:w-auto" :disabled="loading">
+        {{ loading ? '刷新中...' : '刷新错题' }}
+      </button>
     </div>
 
-    <!-- 统计卡片 -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-      <div class="card">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
-            <span class="text-2xl">📝</span>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">总错题数</p>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">{{ totalMistakes }}</p>
-          </div>
-        </div>
-      </div>
+      <div class="card"><p class="text-sm text-gray-500">未掌握错题</p><p class="text-3xl font-bold text-gray-800 dark:text-white mt-2">{{ mistakes.length }}</p></div>
+      <div class="card"><p class="text-sm text-gray-500">今日到期</p><p class="text-3xl font-bold text-orange-500 mt-2">{{ dueReviews.length }}</p></div>
+      <div class="card"><p class="text-sm text-gray-500">累计答对</p><p class="text-3xl font-bold text-green-500 mt-2">{{ totalCorrect }}</p></div>
+      <div class="card"><p class="text-sm text-gray-500">累计答错</p><p class="text-3xl font-bold text-red-500 mt-2">{{ totalWrong }}</p></div>
+    </div>
 
-      <div class="card">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-            <span class="text-2xl">🔥</span>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">本周新增</p>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">{{ weeklyNew }}</p>
-          </div>
-        </div>
-      </div>
+    <ModuleTabs
+      v-model="activeTab"
+      :tabs="mistakeTabs"
+      label="错题本选项卡"
+      id-prefix="mistakes-tab"
+      class="mb-6"
+      @update:model-value="onTabChange"
+    />
 
-      <div class="card">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-            <span class="text-2xl">✅</span>
-          </div>
+    <div v-if="activeTab === 'due_review' && dueReviews.length" class="card mb-8 border border-orange-200 dark:border-orange-800 bg-orange-50/60 dark:bg-orange-900/10">
+      <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-4">今日优先复习</h2>
+      <div class="space-y-3">
+        <div v-for="item in dueReviews" :key="item.mistake_id" class="p-4 rounded-xl bg-white dark:bg-gray-800 flex items-start justify-between gap-4">
           <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">已纠正</p>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">{{ correctedMistakes }}</p>
+            <p class="text-sm text-orange-600 dark:text-orange-400 mb-1">到期错题 #{{ item.mistake_id }}</p>
+            <p class="font-medium text-gray-800 dark:text-white">{{ item.sample.their_words }}</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ item.sample.context }}</p>
           </div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-            <span class="text-2xl">📈</span>
-          </div>
-          <div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">正确率</p>
-            <p class="text-2xl font-bold text-gray-800 dark:text-white">{{ accuracyRate }}%</p>
+          <div class="flex shrink-0 flex-col gap-2 sm:flex-row">
+            <button @click="submitReview(item.mistake_id, false)" class="px-3 py-2 rounded-lg bg-red-100 text-red-600 text-sm">还没掌握</button>
+            <button @click="submitReview(item.mistake_id, true)" class="px-3 py-2 rounded-lg bg-green-500 text-white text-sm">已掌握</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 错题分析图表 -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-      <!-- 错题类型分布 -->
-      <div class="card">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-6">错题类型分布</h2>
-        <div class="space-y-4">
-          <div v-for="(type, index) in mistakeTypes" :key="index">
-            <div class="flex items-center justify-between mb-1">
-              <span class="text-sm text-gray-600 dark:text-gray-300">{{ type.name }}</span>
-              <span class="text-sm font-medium text-gray-800 dark:text-white">{{ type.count }}道</span>
-            </div>
-            <div class="progress-bar">
-              <div
-                class="progress-bar-fill"
-                :class="type.color"
-                :style="{ width: (type.count / totalMistakes * 100) + '%' }"
-              ></div>
-            </div>
-          </div>
+    <div
+      v-if="activeTab !== 'mastery_evidence' && resourceContext"
+      class="card mb-8 border border-sky-100 bg-sky-50/70 dark:border-sky-900/50 dark:bg-sky-950/20"
+    >
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-sky-700 dark:text-sky-300">来自资源海洋的错题改写上下文</p>
+          <h2 class="mt-1 break-words text-xl font-bold text-gray-800 dark:text-white">{{ resourceContext.title || '未命名资源' }}</h2>
+          <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">{{ resourceMistakeGuidance }}</p>
         </div>
-      </div>
-
-      <!-- 进步趋势 -->
-      <div class="card">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-white mb-6">每周进步趋势</h2>
-        <div class="flex items-end justify-between h-40 px-4">
-          <div
-            v-for="(week, index) in weeklyProgress"
-            :key="index"
-            class="flex flex-col items-center gap-2"
+        <div class="flex shrink-0 flex-wrap gap-2">
+          <RouterLink
+            :to="{ name: 'ResourceDetail', params: { id: resourceContext.id } }"
+            class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-sky-700 shadow-sm hover:bg-sky-100 dark:bg-gray-900 dark:text-sky-300 dark:hover:bg-sky-950/60"
           >
-            <div
-              class="w-12 rounded-t-lg transition-all duration-500"
-              :class="week.improved ? 'bg-green-500' : 'bg-red-500'"
-              :style="{ height: (week.correctRate * 100) + 'px' }"
-            ></div>
-            <span class="text-xs text-gray-500 dark:text-gray-400">{{ week.label }}</span>
-          </div>
+            回看资源
+          </RouterLink>
+          <RouterLink
+            :to="{ path: '/trainer', query: { resource_id: resourceContext.id, q: resourceContext.title || resourceContext.category } }"
+            class="rounded-lg bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-700"
+          >
+            带入训练
+          </RouterLink>
+          <button class="rounded-lg bg-white px-3 py-2 text-sm font-semibold text-gray-600 shadow-sm hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-300 dark:hover:bg-gray-800" type="button" @click="clearResourceContext">
+            只看全部错题
+          </button>
         </div>
       </div>
-    </div>
-
-    <!-- 筛选器 -->
-    <div class="flex items-center gap-4 mb-6">
-      <div class="flex items-center gap-2">
-        <button
-          v-for="filter in filters"
-          :key="filter.value"
-          @click="selectedFilter = filter.value"
-          class="px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-          :class="[
-            selectedFilter === filter.value
-              ? 'bg-blue-500 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-          ]"
-        >
-          {{ filter.label }}
-        </button>
+      <div class="mt-4 grid grid-cols-1 gap-3 lg:grid-cols-4">
+        <div class="rounded-lg bg-white p-3 text-sm dark:bg-gray-900">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">改写焦点</p>
+          <p class="mt-1 text-gray-800 dark:text-gray-100">{{ resourceContext.mistake_pattern || '把失误改成可练动作' }}</p>
+        </div>
+        <div class="rounded-lg bg-white p-3 text-sm dark:bg-gray-900">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">表达目标</p>
+          <p class="mt-1 text-gray-800 dark:text-gray-100">{{ resourceContext.expression_goal || '低压承接' }}</p>
+        </div>
+        <div class="rounded-lg bg-white p-3 text-sm dark:bg-gray-900">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">场景 / 分类</p>
+          <p class="mt-1 text-gray-800 dark:text-gray-100">{{ resourceContext.applicable_scene || resourceContext.category }}</p>
+        </div>
+        <div class="rounded-lg bg-white p-3 text-sm dark:bg-gray-900">
+          <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">质量 / 难度</p>
+          <p class="mt-1 text-gray-800 dark:text-gray-100">Q{{ resourceContext.quality_score || '-' }} · D{{ resourceContext.difficulty_level || '-' }}</p>
+        </div>
       </div>
-      <div class="flex-1"></div>
-      <select
-        v-model="sortBy"
-        class="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200"
-      >
-        <option value="newest">最新在前</option>
-        <option value="oldest">最早在前</option>
-        <option value="difficulty">按难度</option>
-      </select>
+      <div v-if="resourceContext.usage_tip || resourceContext.source_summary" class="mt-3 rounded-lg bg-white p-3 text-sm leading-6 text-gray-600 dark:bg-gray-900 dark:text-gray-300">
+        {{ resourceContext.usage_tip || resourceContext.source_summary }}
+      </div>
     </div>
 
-    <!-- 错题列表 -->
-    <div class="space-y-4 mb-8">
-      <transition-group name="list">
-        <div
-          v-for="mistake in filteredMistakes"
-          :key="mistake.id"
-          class="card"
-          :class="{ 'opacity-60': mistake.corrected }"
-        >
-          <div class="flex items-start gap-4">
-            <!-- 序号 -->
-            <div
-              class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0"
-              :class="mistake.corrected ? 'bg-green-500' : 'bg-red-500'"
-            >
-              <CheckIcon v-if="mistake.corrected" class="w-5 h-5" />
-              <span v-else>{{ mistake.id }}</span>
+    <div v-if="activeTab !== 'mastery_evidence'" class="flex flex-wrap items-center gap-3 mb-6">
+      <button v-for="filter in filters" :key="filter.value" @click="selectedFilter = filter.value" class="px-4 py-2 rounded-lg text-sm font-medium transition-colors" :class="selectedFilter === filter.value ? 'bg-blue-500 text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300'">
+        {{ filter.label }}
+      </button>
+    </div>
+
+    <div v-if="activeTab === 'mastery_evidence'" class="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div class="card">
+        <p class="text-sm text-gray-500">掌握率</p>
+        <p class="mt-2 text-4xl font-bold text-green-500">{{ masteryRate }}%</p>
+        <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">按累计答对 / 总复习次数估算，只作为训练证据，不当人格标签。</p>
+      </div>
+      <div class="card lg:col-span-2">
+        <h2 class="mb-4 text-xl font-bold text-gray-800 dark:text-white">掌握证据</h2>
+        <div v-if="mistakes.length" class="space-y-3">
+          <div v-for="mistake in mistakes.slice(0, 8)" :key="`evidence-${mistake.id}`" class="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <p class="font-semibold text-gray-800 dark:text-white">#{{ mistake.id }} {{ mistake.review_focus || mistake.emotion_mistake || '回应差异' }}</p>
+              <span class="text-xs text-gray-400">对 {{ mistake.correct_count || 0 }} / 错 {{ mistake.wrong_count || 0 }}</span>
             </div>
+            <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">{{ mistake.their_words }}</p>
+            <p v-if="mistake.next_review" class="mt-1 text-xs text-gray-400">下次复习：{{ mistake.next_review }}</p>
+          </div>
+        </div>
+        <p v-else class="text-sm text-gray-500">暂无掌握证据，先完成一次训练或错题复习。</p>
+      </div>
+    </div>
 
-            <div class="flex-1 min-w-0">
-              <!-- 场景标签 -->
-              <div class="flex items-center gap-2 mb-2">
-                <span
-                  class="px-2 py-0.5 rounded text-xs font-medium"
-                  :class="getCategoryClass(mistake.category)"
-                >
-                  {{ mistake.category }}
-                </span>
-                <span class="text-xs text-gray-400">
-                  难度: {{ mistake.difficulty }}
-                </span>
-                <span v-if="mistake.corrected" class="px-2 py-0.5 rounded text-xs bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400">
-                  已纠正
-                </span>
+    <div v-else class="space-y-4">
+      <div v-for="mistake in focusedMistakes" :key="mistake.id" class="card border border-red-100 dark:border-red-900/50">
+        <div class="flex items-start gap-4">
+          <div class="w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center font-bold shrink-0">{{ mistake.id }}</div>
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="px-2 py-0.5 rounded text-xs bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">{{ mistake.emotion_mistake || '回应差异' }}</span>
+              <span v-if="mistake.review_focus" class="px-2 py-0.5 rounded text-xs bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300">{{ mistake.review_focus }}</span>
+              <span v-if="mistake.next_review" class="text-xs text-gray-400">下次复习：{{ mistake.next_review }}</span>
+            </div>
+            <p class="text-gray-700 dark:text-gray-200 mb-3">{{ mistake.context }}</p>
+            <div class="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 mb-3">
+              <p class="text-xs text-blue-600 dark:text-blue-400 mb-1">TA 说</p>
+              <p class="text-gray-800 dark:text-white">{{ mistake.their_words }}</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div class="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                <p class="text-sm text-red-600 dark:text-red-400 mb-1">你的回应</p>
+                <p class="text-sm text-gray-700 dark:text-gray-200">{{ mistake.user_bad_response }}</p>
               </div>
-
-              <!-- 场景描述 -->
-              <p class="text-gray-700 dark:text-gray-200 mb-3">{{ mistake.context }}</p>
-
-              <!-- 对方言行 -->
-              <div class="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 mb-3">
-                <p class="text-sm text-blue-600 dark:text-blue-400 mb-1">TA说：</p>
-                <p class="text-gray-800 dark:text-white">"{{ mistake.theirWords }}"</p>
+              <div class="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
+                <p class="text-sm text-green-600 dark:text-green-400 mb-1">理想回应</p>
+                <p class="text-sm text-gray-700 dark:text-gray-200">{{ mistake.correct_response }}</p>
               </div>
-
-              <!-- 错误回应 vs 理想回应 -->
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div class="p-3 rounded-lg bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
-                  <p class="text-sm text-red-600 dark:text-red-400 mb-1">❌ 你的回应：</p>
-                  <p class="text-gray-700 dark:text-gray-200 text-sm">{{ mistake.badResponse }}</p>
-                  <p v-if="mistake.badReason" class="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                    原因：{{ mistake.badReason }}
-                  </p>
+            </div>
+            <div v-if="mistake.error_attribution?.length" class="mb-4 rounded-lg bg-gray-50 dark:bg-gray-800 p-3">
+              <p class="text-sm font-semibold text-gray-800 dark:text-white mb-2">结构化错误归因</p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div v-for="item in mistake.error_attribution" :key="`${mistake.id}-${item.category}-${item.dimension}`" class="rounded-lg bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-700 p-3">
+                  <div class="flex items-center justify-between gap-2 mb-1">
+                    <span class="text-sm font-medium text-gray-800 dark:text-white">{{ item.category }}</span>
+                    <span class="text-xs text-blue-500">{{ dimensionLabel(item.dimension) }}</span>
+                  </div>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{{ item.reason }}</p>
+                  <p class="text-xs text-green-600 dark:text-green-300 mt-2">{{ item.repair }}</p>
                 </div>
-                <div class="p-3 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
-                  <p class="text-sm text-green-600 dark:text-green-400 mb-1">✅ 理想回应：</p>
-                  <p class="text-gray-700 dark:text-gray-200 text-sm">{{ mistake.goodResponse }}</p>
+              </div>
+            </div>
+            <div class="mb-4 grid grid-cols-1 gap-3 lg:grid-cols-3">
+              <div v-if="mistake.emotion_flow?.length" class="rounded-lg bg-indigo-50 p-3 dark:bg-indigo-900/20">
+                <p class="mb-2 text-sm font-semibold text-indigo-700 dark:text-indigo-300">情绪流动动线</p>
+                <ol class="space-y-2 text-xs leading-5 text-gray-600 dark:text-gray-300">
+                  <li v-for="(step, index) in mistake.emotion_flow" :key="`${mistake.id}-flow-${index}`">
+                    {{ index + 1 }}. {{ step }}
+                  </li>
+                </ol>
+              </div>
+              <div v-if="mistake.rewrite_drills?.length" class="rounded-lg bg-emerald-50 p-3 dark:bg-emerald-900/20">
+                <p class="mb-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300">三步改写练习</p>
+                <ol class="space-y-2 text-xs leading-5 text-gray-600 dark:text-gray-300">
+                  <li v-for="(drill, index) in mistake.rewrite_drills" :key="`${mistake.id}-drill-${index}`">
+                    {{ index + 1 }}. {{ drill }}
+                  </li>
+                </ol>
+              </div>
+              <div v-if="mistake.resource_queries?.length" class="rounded-lg bg-sky-50 p-3 dark:bg-sky-900/20">
+                <p class="mb-2 text-sm font-semibold text-sky-700 dark:text-sky-300">关联资源检索</p>
+                <div class="flex flex-wrap gap-2">
+                  <RouterLink
+                    v-for="query in mistake.resource_queries"
+                    :key="`${mistake.id}-${query}`"
+                    :to="{ path: '/resources', query: { q: query } }"
+                    class="rounded bg-white px-2 py-1 text-xs text-sky-700 shadow-sm hover:bg-sky-100 dark:bg-gray-900 dark:text-sky-300"
+                  >
+                    {{ query }}
+                  </RouterLink>
+                </div>
+              </div>
+            </div>
+            <div v-if="mistake.expression_rewrite" class="mb-4 rounded-lg border border-indigo-100 bg-indigo-50/70 p-3 dark:border-indigo-900/50 dark:bg-indigo-950/20">
+              <div class="mb-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p class="text-xs font-semibold text-indigo-500 dark:text-indigo-300">表达工具改写链</p>
+                  <h3 class="text-base font-bold text-gray-800 dark:text-white">{{ mistake.expression_rewrite.target_goal }} · {{ mistake.expression_rewrite.primary_tool }}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-gray-600 dark:text-gray-300">{{ mistake.expression_rewrite.principle }}</p>
+                </div>
+                <RouterLink
+                  :to="{ path: '/expression', query: { goal: mistake.expression_rewrite.target_goal } }"
+                  class="rounded bg-white px-3 py-2 text-xs font-semibold text-indigo-700 shadow-sm hover:bg-indigo-100 dark:bg-gray-900 dark:text-indigo-300"
+                >
+                  查看工具箱
+                </RouterLink>
+              </div>
+
+              <div class="grid grid-cols-1 gap-3 xl:grid-cols-3">
+                <div v-for="version in mistake.expression_rewrite.rewrite_versions" :key="`${mistake.id}-${version.name}`" class="rounded-lg bg-white p-3 dark:bg-gray-900">
+                  <p class="text-sm font-semibold text-indigo-600 dark:text-indigo-300">{{ version.name }}</p>
+                  <p class="mt-2 text-sm leading-relaxed text-gray-700 dark:text-gray-200">{{ version.text }}</p>
+                  <p class="mt-2 text-xs text-gray-400">{{ version.tool }}</p>
                 </div>
               </div>
 
-              <!-- 关键原则 -->
-              <div v-if="mistake.principle" class="p-3 rounded-lg bg-yellow-50 dark:bg-yellow-900/20 mb-4">
-                <p class="text-sm text-yellow-600 dark:text-yellow-400 mb-1">💡 关键原则：</p>
-                <p class="text-gray-700 dark:text-gray-200 text-sm">{{ mistake.principle }}</p>
+              <div class="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-2">
+                <div class="rounded-lg bg-white p-3 dark:bg-gray-900">
+                  <p class="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">推荐工具</p>
+                  <div class="flex flex-wrap gap-2">
+                    <span v-for="tool in mistake.expression_rewrite.recommended_tools" :key="`${mistake.id}-${tool.tool_uuid}`" class="rounded bg-indigo-100 px-2 py-1 text-xs text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-200">
+                      {{ tool.name }}
+                    </span>
+                  </div>
+                </div>
+                <div class="rounded-lg bg-white p-3 dark:bg-gray-900">
+                  <p class="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">迁移与禁区</p>
+                  <p class="text-xs leading-relaxed text-gray-600 dark:text-gray-300">{{ mistake.expression_rewrite.transfer_drill }}</p>
+                  <ul class="mt-2 space-y-1">
+                    <li v-for="move in mistake.expression_rewrite.forbidden_moves" :key="`${mistake.id}-${move}`" class="text-xs text-amber-700 dark:text-amber-300">{{ move }}</li>
+                  </ul>
+                </div>
               </div>
-
-              <!-- 操作按钮 -->
-              <div class="flex items-center gap-4">
-                <button
-                  v-if="!mistake.corrected"
-                  @click="markAsCorrected(mistake)"
-                  class="px-4 py-2 rounded-lg bg-green-500 text-white text-sm font-medium hover:bg-green-600 transition-colors"
-                >
-                  ✓ 我已掌握
-                </button>
-                <button
-                  @click="relearnMistake(mistake)"
-                  class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                >
-                  再练习一遍
-                </button>
-                <span class="text-xs text-gray-400 ml-auto">
-                  {{ mistake.createdAt }}
-                </span>
-              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button @click="submitReview(mistake.id, false)" class="px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm">继续复习</button>
+              <button @click="submitReview(mistake.id, true)" class="px-4 py-2 rounded-lg bg-green-500 text-white text-sm">标记掌握</button>
+              <span class="text-xs text-gray-400 ml-auto">对 {{ mistake.correct_count || 0 }} / 错 {{ mistake.wrong_count || 0 }}</span>
             </div>
           </div>
         </div>
-      </transition-group>
+      </div>
 
-      <!-- 空状态 -->
-      <div v-if="filteredMistakes.length === 0" class="text-center py-16">
-        <div class="text-6xl mb-4">🎉</div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">
-          {{ selectedFilter === 'corrected' ? '暂无已纠正的错题' : '太棒了！没有错题了' }}
-        </h3>
-        <p class="text-gray-500 dark:text-gray-400">
-          {{ selectedFilter === 'corrected' ? '去完成一些训练题来积累经验吧' : '继续保持，继续加油！' }}
-        </p>
-        <button
-          v-if="selectedFilter !== 'all'"
-          @click="selectedFilter = 'all'"
-          class="mt-4 btn-primary"
-        >
-          查看全部错题
-        </button>
+      <div v-if="focusedMistakes.length === 0" class="card text-center py-16">
+        <div class="text-5xl mb-4">{{ resourceContext ? '⌕' : '🎉' }}</div>
+        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">{{ resourceContext ? '暂无匹配错题' : '暂无错题' }}</h3>
+        <p class="text-gray-500 dark:text-gray-400">{{ resourceContext ? '这个资源还没有匹配到历史错题，可以先带入训练生成新的练习记录。' : '完成训练后，系统会自动把需要复习的题加入这里。' }}</p>
       </div>
     </div>
-
-    <!-- 底部统计 -->
-    <div class="card bg-gradient-to-r from-blue-500 to-purple-500 text-white">
-      <div class="flex items-center justify-between">
-        <div>
-          <h3 class="text-xl font-bold mb-1">📊 学习报告显示</h3>
-          <p class="text-sm opacity-80">
-            你在 {{ timeRange }} 内共练习了 {{ totalPractice }} 次，错误率从 {{ oldErrorRate }}% 下降到 {{ newErrorRate }}%
-          </p>
-        </div>
-        <div class="text-4xl">📈</div>
-      </div>
-    </div>
-
-    <!-- 确认弹窗 -->
-    <Teleport to="body">
-      <transition name="fade">
-        <div
-          v-if="showConfirmModal"
-          class="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-          @click.self="showConfirmModal = false"
-        >
-          <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-md w-full mx-4 shadow-2xl">
-            <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-4">确认纠正</h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">
-              确定已经掌握这道题了吗？下次遇到类似场景你能够做出更好的回应。
-            </p>
-            <div class="flex gap-4">
-              <button
-                @click="showConfirmModal = false"
-                class="flex-1 btn-secondary"
-              >
-                再想想
-              </button>
-              <button
-                @click="confirmCorrected"
-                class="flex-1 btn-primary"
-              >
-                确定掌握
-              </button>
-            </div>
-          </div>
-        </div>
-      </transition>
-    </Teleport>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
-import { CheckIcon } from 'lucide-vue-next'
+import { computed, onMounted, ref, watch } from 'vue'
+import ModuleTabs from '@/components/ModuleTabs.vue'
 import { useTrainingStore } from '@/stores/training'
 import { useToast } from '@/utils/toast'
+import { useResourceContextFromRoute } from '@/composables/useResourceContext'
 
 const store = useTrainingStore()
 const toast = useToast()
+const { route, router, resourceContext, loadResourceContextFromRoute, clearResourceContext } = useResourceContextFromRoute({
+  clearPath: '/mistakes',
+  onError: (message) => toast.error(message),
+})
+const loading = ref(false)
+const selectedFilter = ref<'all' | 'due'>('all')
+const activeTab = ref('due_review')
 
-const selectedFilter = ref('all')
-const sortBy = ref('newest')
-const showConfirmModal = ref(false)
-const selectedMistakeForCorrection = ref<typeof mistakes.value[0] | null>(null)
-
-const filters = [
-  { label: '全部', value: 'all' },
-  { label: '未纠正', value: 'uncorrected' },
-  { label: '已纠正', value: 'corrected' }
+const mistakeTabs = [
+  { id: 'due_review', label: '待复习', summary: '优先处理今天到期和仍未掌握的错题。' },
+  { id: 'rewrite', label: '三版改写', summary: '把同一旧回应改成轻、稳、深三版。' },
+  { id: 'mastery_evidence', label: '掌握证据', summary: '查看错题是否真的被修复，而不是只被标记完成。' },
 ]
 
-const mistakeTypes = ref([
-  { name: '情绪识别错误', count: 12, color: 'bg-red-500' },
-  { name: '回应方式不当', count: 8, color: 'bg-orange-500' },
-  { name: '边界意识不足', count: 5, color: 'bg-yellow-500' },
-  { name: '沟通技巧欠缺', count: 7, color: 'bg-blue-500' }
-])
+const filters = [
+  { label: '全部错题', value: 'all' },
+  { label: '今日到期', value: 'due' },
+] as const
 
-const weeklyProgress = ref([
-  { label: '第1周', correctRate: 0.45, improved: false },
-  { label: '第2周', correctRate: 0.52, improved: true },
-  { label: '第3周', correctRate: 0.58, improved: true },
-  { label: '第4周', correctRate: 0.65, improved: true },
-  { label: '本周', correctRate: 0.75, improved: true }
-])
-
-const mistakes = ref([
-  {
-    id: 1,
-    category: '暧昧',
-    difficulty: 2,
-    context: '刚认识不久的对象主动约你吃饭，但在约定时间前突然说临时有事要改期。',
-    theirWords: '抱歉啊，今天真的有事，能不能改到明天？',
-    badResponse: '好吧，那你明天可别再放我鸽子了。',
-    badReason: '语气带有指责和威胁，给对方压力',
-    goodResponse: '没关系，工作要紧。明天见，期待哦～',
-    principle: '给对方空间，不施压，用积极态度回应',
-    corrected: false,
-    createdAt: '2024-01-15'
-  },
-  {
-    id: 2,
-    category: '冲突',
-    difficulty: 3,
-    context: '伴侣因为工作压力大向你抱怨，你给了一些建议但对方似乎不太领情。',
-    theirWords: '算了，跟你说也没用，你根本不懂。',
-    badResponse: '我怎么不懂了？我不也是在给你想办法吗！',
-    badReason: '防御性回应，否认对方感受',
-    goodResponse: '听起来你真的很辛苦，不想说话也没关系，我就在这陪着你。',
-    principle: '先共情后建议，情感支持优先',
-    corrected: true,
-    createdAt: '2024-01-10'
-  },
-  {
-    id: 3,
-    category: '热恋',
-    difficulty: 1,
-    context: '伴侣发来一张自拍，问你觉得怎么样。',
-    theirWords: '你看我今天拍的照片怎么样？',
-    badResponse: '还行吧，就普通照片。',
-    badReason: '敷衍回应，忽视对方的分享欲',
-    goodResponse: '太好看了吧！我的宝怎么拍都美，心里美滋滋的～',
-    principle: '积极回应伴侣的分享，满足情感需求',
-    corrected: false,
-    createdAt: '2024-01-12'
-  },
-  {
-    id: 4,
-    category: '平淡',
-    difficulty: 2,
-    context: '在一起一段时间后，对话变得越来越简短，每天就是早安晚安。',
-    theirWords: '嗯。',
-    badResponse: '你能不能多说点话啊？这样聊天有什么意思。',
-    badReason: '直接批评对方，制造压力',
-    goodResponse: '今天工作累不累？要不要周末我们出去走走，换个环境聊聊天？',
-    principle: '不批评不指责，用提议代替抱怨',
-    corrected: false,
-    createdAt: '2024-01-08'
-  },
-  {
-    id: 5,
-    category: '修复',
-    difficulty: 4,
-    context: '争吵后双方冷静下来，你想要修复关系但对方还在生闷气。',
-    theirWords: '......',
-    badResponse: '好了别生气了，都是我的错还不行吗？',
-    badReason: '为了快速和解而敷衍认错，不真诚',
-    goodResponse: '我知道你还在生气，我也反思了一下...不管怎样我很在乎你的感受，等你准备好了我们再聊聊可以吗？',
-    principle: '真诚表达，给对方时间和空间',
-    corrected: true,
-    createdAt: '2024-01-05'
-  }
-])
-
-const totalMistakes = computed(() => mistakes.value.length)
-const weeklyNew = computed(() => Math.floor(Math.random() * 5) + 1)
-const correctedMistakes = computed(() => mistakes.value.filter(m => m.corrected).length)
-const accuracyRate = computed(() => Math.round((correctedMistakes.value / totalMistakes.value) * 100))
-
-const timeRange = ref('过去一个月')
-const totalPractice = ref(156)
-const oldErrorRate = ref(45)
-const newErrorRate = ref(25)
-
+const mistakes = computed(() => store.mistakes)
+const dueReviews = computed(() => store.dueReviews)
+const totalCorrect = computed(() => mistakes.value.reduce((sum, item) => sum + (item.correct_count || 0), 0))
+const totalWrong = computed(() => mistakes.value.reduce((sum, item) => sum + (item.wrong_count || 0), 0))
+const masteryRate = computed(() => {
+  const total = totalCorrect.value + totalWrong.value
+  return total ? Math.round((totalCorrect.value / total) * 100) : 0
+})
+const dueIds = computed(() => new Set(dueReviews.value.map(item => item.mistake_id)))
 const filteredMistakes = computed(() => {
-  let result = [...mistakes.value]
-  
-  if (selectedFilter.value === 'corrected') {
-    result = result.filter(m => m.corrected)
-  } else if (selectedFilter.value === 'uncorrected') {
-    result = result.filter(m => !m.corrected)
-  }
-  
-  if (sortBy.value === 'newest') {
-    result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  } else if (sortBy.value === 'oldest') {
-    result.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
-  } else if (sortBy.value === 'difficulty') {
-    result.sort((a, b) => b.difficulty - a.difficulty)
-  }
-  
-  return result
+  if (activeTab.value === 'due_review') return mistakes.value.filter(item => dueIds.value.has(item.id))
+  if (selectedFilter.value === 'due') return mistakes.value.filter(item => dueIds.value.has(item.id))
+  return mistakes.value
+})
+const resourceFocusTerms = computed(() => {
+  if (!resourceContext.value) return []
+  return [
+    resourceContext.value.mistake_pattern,
+    resourceContext.value.expression_goal,
+    resourceContext.value.applicable_scene,
+    resourceContext.value.category,
+    resourceContext.value.title,
+  ]
+    .filter((value): value is string => Boolean(value && value.trim()))
+    .flatMap(value => value.split(/[｜|,，、\s]+/))
+    .map(value => value.trim())
+    .filter(value => value.length >= 2)
+})
+const focusedMistakes = computed(() => {
+  if (!resourceContext.value || resourceFocusTerms.value.length === 0) return filteredMistakes.value
+  const terms = resourceFocusTerms.value
+  const matched = filteredMistakes.value.filter((mistake) => {
+    const haystack = [
+      mistake.context,
+      mistake.their_words,
+      mistake.user_bad_response,
+      mistake.correct_response,
+      mistake.emotion_mistake,
+      mistake.review_focus || '',
+      ...(mistake.resource_queries || []),
+      ...(mistake.emotion_flow || []),
+      ...(mistake.rewrite_drills || []),
+    ].join(' ')
+    return terms.some(term => haystack.includes(term))
+  })
+  return matched.length ? matched : filteredMistakes.value
+})
+const resourceMistakeGuidance = computed(() => {
+  if (!resourceContext.value) return ''
+  const mistake = resourceContext.value.mistake_pattern || '把反应式回应改成可验证、可退出的表达'
+  const goal = resourceContext.value.expression_goal || '低压承接'
+  const scene = resourceContext.value.applicable_scene || resourceContext.value.category || '当前场景'
+  return `围绕“${scene}”复盘错题：先识别“${mistake}”，再把回应改成“${goal}”。重点不是背话术，而是把旧反射改成更安全、更具体、更有人味的下一句。`
 })
 
-function getCategoryClass(category: string): string {
-  const map: Record<string, string> = {
-    '初识': 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400',
-    '暧昧': 'bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400',
-    '热恋': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
-    '冲突': 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400',
-    '平淡': 'bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
-    '修复': 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+async function refresh() {
+  loading.value = true
+  await Promise.all([store.fetchMistakes(), store.fetchDueReviews(), store.fetchRadar(), loadResourceContextFromRoute()])
+  loading.value = false
+}
+
+async function submitReview(mistakeId: number, correct: boolean) {
+  const result = await store.submitReview(mistakeId, correct)
+  if (result) {
+    toast.success(correct ? '已进入更长间隔复习' : '已安排明日继续复习')
+  } else {
+    toast.error('提交失败，请稍后重试')
   }
-  return map[category] || 'bg-gray-100 text-gray-700'
 }
 
-function markAsCorrected(mistake: typeof mistakes.value[0]) {
-  selectedMistakeForCorrection.value = mistake
-  showConfirmModal.value = true
+function normalizeTab(value: unknown) {
+  const tab = typeof value === 'string' ? value : ''
+  return mistakeTabs.some((item) => item.id === tab) ? tab : 'due_review'
 }
 
-function confirmCorrected() {
-  if (selectedMistakeForCorrection.value) {
-    selectedMistakeForCorrection.value.corrected = true
-    toast.success('太棒了！这道题你已经掌握了！')
-  }
-  showConfirmModal.value = false
-  selectedMistakeForCorrection.value = null
+function onTabChange(value: string) {
+  activeTab.value = normalizeTab(value)
+  const query = { ...route.query }
+  if (activeTab.value === 'due_review') delete query.tab
+  else query.tab = activeTab.value
+  router.replace({ path: '/mistakes', query })
 }
 
-function relearnMistake(mistake: typeof mistakes.value[0]) {
-  toast.info('正在加载练习...')
-}
-
-onMounted(async () => {
-  await store.fetchMistakes()
+onMounted(() => {
+  activeTab.value = normalizeTab(route.query.tab)
+  refresh()
 })
+
+watch(
+  () => route.query.resource_id,
+  () => {
+    loadResourceContextFromRoute()
+  }
+)
+
+function dimensionLabel(dimension: string) {
+  const labels: Record<string, string> = {
+    emotion_score: '情绪识别',
+    need_score: '需求洞察',
+    safety_score: '安全回应',
+    connection_score: '连接延展',
+    boundary_score: '边界尊重',
+    style_score: '风格匹配',
+    repair_score: '修复能力',
+  }
+  return labels[dimension] || dimension
+}
 </script>
-
-<style scoped>
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.3s ease;
-}
-
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(-20px);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

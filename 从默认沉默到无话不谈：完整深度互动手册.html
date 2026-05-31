@@ -6,6 +6,7 @@
     <title>🧭 从默认沉默到无话不谈 - 全息互动训练系统 v2.0</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
     <style>
+
         :root {
             --bg-base: #fafbfc;
             --bg-card: #ffffff;
@@ -30,6 +31,8 @@
             --pink-light: #fbcce8;
             --teal: #38b2ac;
             --teal-light: #b2f5ea;
+            --gray: #718096;
+            --gray-light: #e2e8f0;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
             --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
             --radius-sm: 8px;
@@ -438,7 +441,21 @@
         .tag-red { background: var(--red-light); color: var(--red); }
         .tag-pink { background: var(--pink-light); color: var(--pink); }
         .tag-teal { background: var(--teal-light); color: var(--teal); }
-        
+        .tag-gray { background: var(--gray-light); color: var(--gray); }
+
+        /* Badge (sidebar count) */
+        .badge {
+            margin-left: auto;
+            background: var(--bg-hover);
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 600;
+            padding: 1px 7px;
+            border-radius: 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+
         /* 表格 */
         .data-table {
             width: 100%;
@@ -573,7 +590,83 @@
         .scenario-card.expanded .scenario-response {
             display: block;
         }
-        
+
+        /* Dangerous patterns */
+        .dangerous-list { display: flex; flex-direction: column; gap: 12px; }
+        .dangerous-item { background: var(--bg-hover); border-radius: 10px; padding: 14px; border-left: 4px solid var(--red); }
+        .dangerous-name { font-weight: 700; font-size: 14px; color: var(--text-dark); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .dangerous-num { background: var(--red); color: white; border-radius: 50%; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+        .dangerous-detail { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+        .dangerous-row { color: var(--text-secondary); line-height: 1.5; }
+        .dangerous-label { font-weight: 600; color: var(--text-dark); }
+        .danger-result { color: var(--red); font-weight: 500; }
+        .danger-correct { color: var(--green); }
+
+        /* Relationship milestones */
+        .milestone-list { display: flex; flex-direction: column; gap: 10px; }
+        .milestone-item { background: var(--bg-hover); border-radius: 10px; padding: 14px; border-left: 4px solid var(--pink); }
+        .milestone-level { font-weight: 700; font-size: 15px; color: var(--text-dark); margin-bottom: 4px; }
+        .milestone-desc { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; }
+        .milestone-row { font-size: 12px; color: var(--text-secondary); }
+        .milestone-label { font-weight: 600; color: var(--text-dark); }
+        .milestone-danger { color: var(--orange); }
+        .danger-correct { color: var(--green); }
+
+        /* ========== Evolution Center ========== */
+        .evolution-overview { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+        .evo-stat { background: var(--bg-hover); border-radius: 12px; padding: 14px; text-align: center; }
+        .evo-stat-num { font-size: 22px; font-weight: 800; color: var(--green); }
+        .evo-stat-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .evo-sources-title { font-size: 13px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .evo-sources { display: flex; flex-direction: column; gap: 8px; }
+        .evo-source-item { display: flex; align-items: center; gap: 10px; background: var(--bg-hover); border-radius: 8px; padding: 10px 12px; }
+        .evo-source-icon { font-size: 20px; flex-shrink: 0; }
+        .evo-source-info { flex: 1; min-width: 0; }
+        .evo-source-name { font-size: 13px; font-weight: 600; color: var(--text-dark); }
+        .evo-source-meta { display: flex; align-items: center; gap: 6px; margin-top: 3px; }
+        .evo-source-status { font-size: 10px; }
+        .evo-quotes { display: flex; flex-direction: column; gap: 10px; }
+        .evo-quote-item { background: var(--bg-hover); border-radius: 10px; padding: 12px 14px; border-left: 3px solid var(--green); }
+        .evo-quote-text { font-size: 13px; color: var(--text-dark); font-style: italic; line-height: 1.5; margin-bottom: 6px; }
+        .evo-quote-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted); }
+        .evo-log { display: flex; flex-direction: column; gap: 8px; }
+        .evo-log-item { display: flex; gap: 10px; background: var(--bg-hover); border-radius: 8px; padding: 10px 12px; }
+        .evo-log-date { font-size: 11px; color: var(--text-muted); white-space: nowrap; padding-top: 2px; min-width: 60px; }
+        .evo-log-content { flex: 1; }
+        .evo-log-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap; }
+        .evo-log-detail { font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+        .evo-log-source { font-size: 11px; color: var(--text-muted); }
+        .evo-mechanism { background: linear-gradient(135deg, #11998e18, #38ef7d18); border: 1px solid var(--green); border-radius: 12px; padding: 16px; margin-top: 20px; }
+        .evo-mech-title { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .evo-mech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .evo-mech-item { background: var(--bg); border-radius: 8px; padding: 12px; text-align: center; }
+        .evo-mech-icon { font-size: 24px; margin-bottom: 6px; }
+        .evo-mech-name { font-size: 12px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+        .evo-mech-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+
+        /* Spectrum grid (3f enhanced) */
+        .spectrum-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .spectrum-chip {
+            padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s; border: 2px solid transparent;
+            opacity: 0.65;
+        }
+        .spectrum-chip:hover { opacity: 1; transform: translateY(-1px); }
+        .spectrum-chip.active { opacity: 1; border-color: currentColor; }
+        .spectrum-detail {
+            background: var(--bg-hover); border-radius: 10px; padding: 14px;
+            margin-top: 10px; border-left: 3px solid var(--blue);
+        }
+        .spectrum-levels { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+        .spectrum-level { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+        .spectrum-level-num { font-weight: 700; min-width: 20px; }
+        .spectrum-level-bar { flex: 1; height: 6px; background: var(--border-light); border-radius: 3px; }
+        .spectrum-level-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+        .spectrum-word { display: inline-block; padding: 3px 10px; border-radius: 15px; font-size: 12px; margin: 2px; background: var(--bg-base); border: 1px solid var(--border-light); cursor: pointer; transition: all 0.2s; }
+        .spectrum-word:hover { background: var(--blue-light); border-color: var(--blue); color: var(--blue); }
+
+        .milestone-danger { color: var(--orange); }
+
         .response-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -968,10 +1061,96 @@
             font-size: 12px;
             color: var(--text-light);
         }
-    </style>
-</head>
-<body>
+    
+
+        /* Dark mode toggle */
+        .top-nav-right {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .dark-toggle {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background: transparent;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s;
+        }
+        .dark-toggle:hover {
+            background: var(--bg-hover);
+            border-color: var(--blue);
+        }
+
+        /* ============================ DARK MODE ============================ */
+        [data-theme="dark"] { --bg-base: #1a1a2e; --bg-card: #16213e; --bg-hover: #1f2b47; --text-dark: #e8e8e8; --text-body: #c8c8d0; --text-light: #9090a0; --text-muted: #606070; --border-light: #2a3a5a; --border-medium: #3a4a6a; }
+        [data-theme="dark"] body { background: var(--bg-base); color: var(--text-body); }
+        [data-theme="dark"] .card-container, [data-theme="dark"] .sidebar-section, [data-theme="dark"] .left-sidebar, [data-theme="dark"] .top-nav { background: var(--bg-card); border-color: var(--border-light); }
+        [data-theme="dark"] .card-header { background: var(--bg-hover); border-color: var(--border-light); }
+        [data-theme="dark"] .sidebar-item:hover, [data-theme="dark"] .sidebar-item.active { background: var(--bg-hover); }
+        [data-theme="dark"] .radar-item, [data-theme="dark"] .learning-path-guide { background: var(--bg-card); border-color: var(--border-light); }
+
+        /* ============================ MODAL ============================ */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: flex-start; padding: 24px 16px; overflow-y: auto; backdrop-filter: blur(4px); }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: var(--bg-card); border-radius: var(--radius-lg); width: 100%; max-width: 860px; min-height: 60vh; max-height: 90vh; overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.3); display: flex; flex-direction: column; margin: auto; animation: modalIn 0.25s ease; }
+        @keyframes modalIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border-light); background: var(--bg-hover); flex-shrink: 0; }
+        .modal-header h3 { font-size: 17px; font-weight: 600; color: var(--text-dark); }
+        .modal-close { width: 32px; height: 32px; border-radius: 8px; border: none; background: var(--bg-hover); color: var(--text-light); cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .modal-close:hover { background: var(--red-light); color: var(--red); }
+        .modal-body { padding: 24px; overflow-y: auto; flex: 1; }
+        .browser-toolbar { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .browser-search { flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid var(--border-medium); border-radius: var(--radius-md); background: var(--bg-base); color: var(--text-dark); font-size: 14px; }
+        .browser-search:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-light); }
+        .browser-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border-medium); background: transparent; color: var(--text-light); font-size: 13px; cursor: pointer; transition: all 0.15s; }
+        .filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+        .filter-btn.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+        .browser-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-bottom: 24px; }
+        .browser-card { background: var(--bg-base); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 16px; cursor: pointer; transition: all 0.2s; }
+        .browser-card:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .browser-card-title { font-weight: 600; font-size: 14px; color: var(--text-dark); margin-bottom: 6px; line-height: 1.4; }
+        .browser-card-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+        .browser-card-preview { font-size: 13px; color: var(--text-light); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .browser-card-tags { display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap; }
+        .browser-pagination { display: flex; align-items: center; justify-content: center; gap: 16px; padding-top: 16px; border-top: 1px solid var(--border-light); }
+        .browser-pagination button { padding: 8px 20px; border-radius: var(--radius-md); border: 1px solid var(--border-medium); background: transparent; color: var(--text-body); cursor: pointer; font-size: 14px; transition: all 0.15s; }
+        .browser-pagination button:hover:not(:disabled) { border-color: var(--blue); color: var(--blue); }
+        .browser-pagination button:disabled { opacity: 0.4; cursor: not-allowed; }
+        .browser-empty { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 15px; }
+        .detail-section { margin-bottom: 24px; }
+        .detail-section-title { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+        .detail-content { font-size: 14px; color: var(--text-body); line-height: 1.7; }
+        .loading-overlay { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 80px 20px; gap: 16px; }
+        .loading-spinner { width: 40px; height: 40px; border: 3px solid var(--border-light); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { color: var(--text-muted); font-size: 14px; }
+        .data-load-error { background: var(--red-light); color: var(--red); padding: 12px 20px; border-radius: var(--radius-md); font-size: 14px; margin-bottom: 16px; }
+        .data-loading-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink)); animation: loadingPulse 1.5s ease infinite; z-index: 10000; }
+        @keyframes loadingPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+        /* ============================ MOBILE ============================ */
+        @media (max-width: 768px) {
+            .left-sidebar { width: 260px; transform: translateX(-100%); transition: transform 0.3s ease; }
+            .left-sidebar.open { transform: translateX(0); }
+            .top-nav-steps { display: none; }
+            .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
+            .browser-grid { grid-template-columns: 1fr; }
+        }
+
+
     <div id="app">
+        <!-- Loading bar for async data fetch -->
+        <div v-if="dataLoading" class="data-loading-bar"></div>
+        <!-- Data load error toast -->
+        <div v-if="dataLoadError" style="position:fixed;top:60px;left:50%;transform:translateX(-50%);z-index:9998;background:var(--red-light);color:var(--red);padding:10px 20px;border-radius:var(--radius-md);font-size:13px;box-shadow:var(--shadow-lg);max-width:90%;text-align:center;">
+            {{ dataLoadError }}
+        </div>
+
         <!-- 顶部进度条 -->
         <div class="learning-progress-bar">
             <div class="learning-progress-fill" :style="{ width: progressPercent + '%' }"></div>
@@ -981,6 +1160,11 @@
         <nav class="top-nav">
             <button class="mobile-menu-btn" @click="sidebarOpen = !sidebarOpen">☰</button>
             <div class="top-nav-title">🧭 微观关系动力学 v2.0</div>
+            <div class="top-nav-right">
+                <button class="dark-toggle" @click="toggleDarkMode" :title="darkMode ? '切换亮色模式' : '切换暗色模式'">
+                    {{ darkMode ? '☀️' : '🌙' }}
+                </button>
+            </div>
             <div class="top-nav-steps">
                 <div v-for="(step, i) in learningSteps" :key="i"
                      class="step-tab"
@@ -1037,7 +1221,50 @@
                         <span>复盘模板</span>
                     </div>
                 </div>
-            </aside>
+            
+                <div class="content-browse-section">
+                    <div class="sidebar-section-title">📦 内容库</div>
+                    <div class="sidebar-item" @click="openBrowser('stories')">
+                        <span class="sidebar-item-icon">📖</span>
+                        <span>故事库</span>
+                        <span class="badge">{{ stats.stories }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('games')">
+                        <span class="sidebar-item-icon">🎮</span>
+                        <span>游戏库</span>
+                        <span class="badge">{{ stats.games }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('dialogues')">
+                        <span class="sidebar-item-icon">💬</span>
+                        <span>对话</span>
+                        <span class="badge">{{ stats.dialogues }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('scripts')">
+                        <span class="sidebar-item-icon">💡</span>
+                        <span>话术</span>
+                        <span class="badge">{{ stats.scripts }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('jokes')">
+                        <span class="sidebar-item-icon">😄</span>
+                        <span>段子</span>
+                        <span class="badge">{{ stats.jokes }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('scenes')">
+                        <span class="sidebar-item-icon">🎭</span>
+                        <span>场景</span>
+                        <span class="badge">{{ stats.scenes }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('emotions')">
+                        <span class="sidebar-item-icon">🎨</span>
+                        <span>情绪</span>
+                        <span class="badge">{{ stats.emotions > 999 ? '1k+' : stats.emotions }}</span>
+                    </div>
+                    <div class="sidebar-item" @click="openBrowser('knowledge')">
+                        <span class="sidebar-item-icon">📚</span>
+                        <span>知识库</span>
+                        <span class="badge">{{ stats.knowledge }}</span>
+                    </div>
+                </div></aside>
             
             <!-- 主内容区 -->
             <main class="content-area">
@@ -1053,22 +1280,44 @@
                 
                 <!-- 统计卡片 -->
                 <div class="stats-row">
-                    <div class="stat-card">
-                        <div class="stat-number">{{ stats.modules }}</div>
-                        <div class="stat-label">学习模块</div>
+                    <div class="stat-card" @click="openBrowser('stories')">
+                        <div class="stat-number">{{ stats.stories }}</div>
+                        <div class="stat-label">📖 故事</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">{{ stats.concepts }}</div>
-                        <div class="stat-label">核心概念</div>
+                    <div class="stat-card" @click="openBrowser('games')">
+                        <div class="stat-number">{{ stats.games }}</div>
+                        <div class="stat-label">🎮 游戏</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">{{ stats.tools }}</div>
-                        <div class="stat-label">工具数量</div>
+                    <div class="stat-card" @click="openBrowser('dialogues')">
+                        <div class="stat-number">{{ stats.dialogues }}</div>
+                        <div class="stat-label">💬 对话</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number">{{ stats.samples }}</div>
-                        <div class="stat-label">样本场景</div>
+                    <div class="stat-card" @click="openBrowser('scenes')">
+                        <div class="stat-number">{{ stats.scenes }}</div>
+                        <div class="stat-label">🎭 场景</div>
                     </div>
+                </div>
+                <div class="stats-row" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="stat-card" @click="openBrowser('scripts')">
+                        <div class="stat-number">{{ stats.scripts }}</div>
+                        <div class="stat-label">💡 话术</div>
+                    </div>
+                    <div class="stat-card" @click="openBrowser('jokes')">
+                        <div class="stat-number">{{ stats.jokes }}</div>
+                        <div class="stat-label">😄 段子</div>
+                    </div>
+                    <div class="stat-card" @click="openBrowser('emotions')">
+                        <div class="stat-number">{{ stats.emotions > 999 ? '1k+' : stats.emotions }}</div>
+                        <div class="stat-label">🎨 情绪</div>
+                    </div>
+                    <div class="stat-card" @click="openBrowser('knowledge')">
+                        <div class="stat-number">{{ stats.knowledge }}</div>
+                        <div class="stat-label">📚 知识</div>
+                    </div>
+                </div>
+                <div v-if="dataLoading" style="background: var(--bg-hover); padding: 12px 16px; border-radius: var(--radius-md); font-size: 13px; color: var(--text-muted); margin-bottom: 24px; display: flex; align-items: center; gap: 8px;">
+                    <div class="loading-spinner" style="width:16px;height:16px;border-width:2px;"></div>
+                    正在加载全部 {{ 8 }} 个内容库…
                 </div>
                 
                 <!-- 学习路径引导 -->
@@ -1180,30 +1429,105 @@
                             <div class="card-toggle" :class="{ expanded: cards.emotion }">▼</div>
                         </div>
                         <div class="card-body" :class="{ expanded: cards.emotion }">
-                            <!-- 七大谱系 -->
-                            <h4 style="font-size: 14px; margin-bottom: 12px;">🌈 七大谱系（强度1→5递增）</h4>
-                            <div v-for="(s, i) in emotionSpectra" :key="i" style="margin-bottom: 16px;">
+                            <!-- 外部数据提示 -->
+                            <div v-if="emotionSpectraFull.length > 0" style="background: var(--blue-light); color: var(--blue); padding: 10px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                📊 情绪词典已加载
+                                <span style="font-weight: 600;">{{ stats.emotions > 0 ? stats.emotions + '个' : '' }}</span>
+                                情绪词 ·
+                                <button @click.stop="openBrowser('emotions')" style="background: var(--blue); color: white; border: none; padding: 3px 10px; border-radius: 12px; font-size: 12px; cursor: pointer;">点击浏览全部 →</button>
+                            </div>
+                            <div v-else-if="dataLoading" style="background: var(--bg-hover); padding: 10px 14px; border-radius: 8px; font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+                                ⏳ 正在加载情绪词典…
+                            </div>
+
+                            <!-- 情绪谱系交互可视化 -->
+                            <h4 style="font-size: 14px; margin-bottom: 12px;">🌈 七大谱系交互图谱
+                                <span style="font-size: 12px; font-weight: normal; color: var(--text-muted);">（点击谱系展开详情）</span>
+                            </h4>
+                            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 20px;">
+                                <div v-for="(s, i) in emotionSpectra" :key="i"
+                                     @click="activeSpectrum = activeSpectrum === i ? -1 : i"
+                                     :style="{
+                                         background: s.tagClass === 'tag-red' ? 'var(--red-light)' :
+                                                     s.tagClass === 'tag-orange' ? 'var(--orange-light)' :
+                                                     s.tagClass === 'tag-yellow' ? '#fef9c3' :
+                                                     s.tagClass === 'tag-green' ? 'var(--green-light)' :
+                                                     s.tagClass === 'tag-blue' ? 'var(--blue-light)' :
+                                                     s.tagClass === 'tag-purple' ? 'var(--purple-light)' : 'var(--gray-light)',
+                                         border: activeSpectrum === i ? ('2px solid ' + (s.tagClass === 'tag-red' ? 'var(--red)' : s.tagClass === 'tag-orange' ? 'var(--orange)' : s.tagClass === 'tag-yellow' ? '#ca8a04' : s.tagClass === 'tag-green' ? 'var(--green)' : s.tagClass === 'tag-blue' ? 'var(--blue)' : s.tagClass === 'tag-purple' ? 'var(--purple)' : 'var(--gray)')) : '2px solid transparent',
+                                         borderRadius: '10px', padding: '10px 6px', cursor: 'pointer',
+                                         transition: 'all 0.2s', textAlign: 'center'
+                                     }">
+                                    <div style="font-size: 18px; margin-bottom: 4px;">{{ s.emoji }}</div>
+                                    <div style="font-size: 11px; font-weight: 600; color: var(--text-dark);">{{ s.name }}</div>
+                                    <div style="font-size: 10px; color: var(--text-muted); margin-top: 2px;">强度{{ s.levels }}</div>
+                                </div>
+                            </div>
+
+                            <!-- 展开的谱系详情 -->
+                            <div v-if="activeSpectrum >= 0" style="background: var(--bg-hover); padding: 16px; border-radius: 8px; margin-bottom: 20px; animation: fadeIn 0.2s ease;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                    <span style="font-size: 18px;">{{ emotionSpectra[activeSpectrum].emoji }}</span>
+                                    <span class="tag" :class="emotionSpectra[activeSpectrum].tagClass" style="font-weight: 700; font-size: 14px;">{{ emotionSpectra[activeSpectrum].name }}</span>
+                                    <span style="font-size: 12px; color: var(--text-muted);">{{ emotionSpectra[activeSpectrum].desc }}</span>
+                                    <span v-if="emotionSpectraFull[activeSpectrum]?.levels" style="margin-left: auto; font-size: 11px; background: white; padding: 2px 8px; border-radius: 10px; color: var(--text-muted);">
+                                        共{{ emotionSpectraFull[activeSpectrum].levels.reduce((a,l) => a + (l.synonyms?.length||0), 0) }}个词
+                                    </span>
+                                </div>
+                                <!-- 五级强度展示 -->
+                                <div style="display: flex; gap: 6px; margin-bottom: 12px; align-items: flex-end;">
+                                    <div v-for="(level, li) in (emotionSpectraFull[activeSpectrum]?.levels || emotionSpectra[activeSpectrum].words.map((w,wi)=>({word: w, level: wi})))" :key="li"
+                                         :style="{
+                                             flex: 1, background: 'white', borderRadius: '6px', padding: '8px 6px',
+                                             border: '1px solid var(--border-light)', textAlign: 'center'
+                                         }">
+                                        <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 4px;">强度{{ li+1 }}</div>
+                                        <div v-for="(word, wi) in (level.synonyms || [level.word || level])" :key="wi"
+                                             :style="{
+                                                 fontSize: '12px', color: 'var(--text-dark)', marginBottom: '2px',
+                                                 fontWeight: li >= 2 ? '600' : '400'
+                                             }"
+                                             @click.stop="openBrowser('emotions'); browserSearch = (typeof word === 'object' ? word.word || word : word)"
+                                             :title="'在词典中搜索: ' + (typeof word === 'object' ? word.word || word : word)"
+                                             style="cursor: pointer;">
+                                            {{ typeof word === 'object' ? word.word || word : word }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="font-size: 12px; color: var(--text-muted);">
+                                    💡 应对：{{ emotionSpectra[activeSpectrum].response }}
+                                </div>
+                            </div>
+
+                            <!-- 七大谱系文字版（保留展示） -->
+                            <h4 style="font-size: 14px; margin-bottom: 12px;">📋 谱系速查表</h4>
+                            <div v-for="(s, i) in emotionSpectra" :key="'s'+i" style="margin-bottom: 16px;">
                                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                                     <span class="tag" :class="s.tagClass" style="font-weight: 600;">{{ s.name }}</span>
                                     <span style="font-size: 12px; color: var(--text-muted);">{{ s.desc }}</span>
+                                    <span v-if="emotionSpectraFull.length > 0" style="margin-left: auto; font-size: 11px; color: var(--text-muted); background: var(--bg-hover); padding: 1px 8px; border-radius: 10px;">
+                                        {{ emotionSpectraFull[i]?.levels?.reduce ? emotionSpectraFull[i].levels.reduce((a,l) => a + (l.synonyms?.length||0), 0) + '词' : '' }}
+                                    </span>
                                 </div>
                                 <div style="display: flex; gap: 4px; flex-wrap: wrap;">
                                     <span v-for="(word, j) in s.words" :key="j"
-                                          style="padding: 4px 8px; border-radius: 4px; font-size: 12px;"
+                                          style="padding: 4px 8px; border-radius: 4px; font-size: 12px; cursor: pointer; transition: all 0.15s;"
                                           :style="{
                                               background: j < 2 ? 'var(--border-light)' : j < 4 ? 'var(--blue-light)' : '#b8d8f0',
                                               color: j < 2 ? 'var(--text-light)' : j < 4 ? 'var(--blue)' : '#2266aa'
-                                          }">
+                                          }"
+                                          :title="'点击在情绪词典中搜索'"
+                                          @click.stop="openBrowser('emotions'); browserSearch = word">
                                         {{ word }}
                                     </span>
                                 </div>
                             </div>
-                            
+
                             <!-- 混合情绪 -->
                             <h4 style="font-size: 14px; margin: 20px 0 12px;">🔀 混合情绪（8种）</h4>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
-                                <div v-for="(mix, i) in mixedEmotions" :key="i" 
-                                     style="background: var(--bg-hover); padding: 12px; border-radius: 8px;">
+                                <div v-for="(mix, i) in mixedEmotions" :key="i"
+                                     style="background: var(--bg-hover); padding: 12px; border-radius: 8px; cursor: default;">
                                     <div style="font-weight: 600; color: var(--purple); margin-bottom: 4px;">{{ mix.name }}</div>
                                     <div style="font-size: 12px; color: var(--text-light);">{{ mix.components }}</div>
                                     <div style="font-size: 12px; color: var(--text-body); margin-top: 6px; padding: 6px; background: white; border-radius: 4px;">
@@ -1211,7 +1535,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!-- 强度标尺 -->
                             <h4 style="font-size: 14px; margin: 20px 0 12px;">📊 情绪强度标尺（1-10）</h4>
                             <div style="background: var(--bg-hover); padding: 16px; border-radius: 8px;">
@@ -1240,7 +1564,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 看见 -->
                     <div class="card-container fade-in">
                         <div class="card-header" @click="toggleCard('seeing')">
@@ -1560,7 +1884,12 @@
                                             <div class="sample-question">{{ sample.question }}</div>
                                             <div class="sample-analysis">
                                                 <span class="tag tag-blue" style="margin-right: 4px;">情绪：{{ sample.emotion }}</span>
-                                                <span class="tag tag-purple">需求：{{ sample.need }}</span>
+                                                <span class="tag tag-purple" style="margin-right: 4px;">需求：{{ sample.need }}</span>
+                                                <span class="tag tag-orange" v-if="sample.intensity">强度{{ sample.intensity }}</span>
+                                                <span class="tag tag-green" v-if="sample.phase">适用：{{ sample.phase }}</span>
+                                            </div>
+                                            <div class="sample-response" v-if="sample.response" style="margin-top:8px;padding:8px 12px;background:var(--bg-hover);border-radius:6px;font-size:13px;color:var(--text-secondary);">
+                                                <span style="color:var(--green);font-weight:600;">✅ 回应：</span>{{ sample.response }}
                                             </div>
                                         </div>
                                     </div>
@@ -1578,41 +1907,291 @@
                                 <div class="card-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">🎭</div>
                                 <div>
                                     <div class="card-title">互动练习场</div>
-                                    <div class="card-subtitle">点击展开，原回应 vs 理想回应</div>
+                                    <div class="card-subtitle">先思考，再看答案 · 自测模式</div>
                                 </div>
                             </div>
-                            <div class="card-toggle" :class="{ expanded: cards.scenarioMain }">▼</div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <button v-if="!practiceMode" @click.stop="practiceMode = true; practiceAnswer = {}"
+                                        style="background: var(--purple-light); color: var(--purple); border: none; padding: 4px 12px; border-radius: 12px; font-size: 12px; cursor: pointer;">
+                                    🧠 开始自测
+                                </button>
+                                <button v-else @click.stop="practiceMode = false; practiceAnswer = {}"
+                                        style="background: var(--gray-light); color: var(--gray); border: none; padding: 4px 12px; border-radius: 12px; font-size: 12px; cursor: pointer;">
+                                    ✏️ 编辑模式
+                                </button>
+                                <div class="card-toggle" :class="{ expanded: cards.scenarioMain }">▼</div>
+                            </div>
                         </div>
                         <div class="card-body" :class="{ expanded: cards.scenarioMain }">
-                            <div v-for="(s, i) in scenarios" :key="i" 
-                                 class="scenario-card"
-                                 :class="{ expanded: s.show }"
-                                 @click="s.show = !s.show">
-                                <div class="scenario-header">
-                                    <span class="scenario-label" :style="{ color: s.color }">{{ s.label }}</span>
-                                    <span style="font-size: 12px; color: var(--text-muted);">点击展开答案</span>
+
+                            <!-- 自测模式 -->
+                            <div v-if="practiceMode" style="margin-bottom: 20px;">
+                                <div style="background: var(--purple-light); padding: 14px 18px; border-radius: 8px; margin-bottom: 16px; font-size: 13px; color: var(--purple);">
+                                    🧠 <strong>自测说明：</strong>阅读每个场景，先想想「如果是，你会怎么回应？」再点击选项看正确答案。
                                 </div>
-                                <div class="scenario-content">「{{ s.text }}」</div>
-                                <div class="scenario-response">
-                                    <div class="response-grid">
-                                        <div class="response-item response-wrong">
-                                            <div class="response-label">❌ 原回应</div>
-                                            <div>{{ s.original }}</div>
+
+                                <!-- 得分统计 -->
+                                <div v-if="Object.keys(practiceAnswer).length > 0" style="display: flex; gap: 12px; margin-bottom: 16px; flex-wrap: wrap;">
+                                    <div style="flex: 1; min-width: 120px; background: var(--green-light); padding: 10px 14px; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--green);">{{ Object.values(practiceAnswer).filter(a => a === 'ideal').length }}</div>
+                                        <div style="font-size: 11px; color: var(--green);">选理想回应</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: var(--red-light); padding: 10px 14px; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--red);">{{ Object.values(practiceAnswer).filter(a => a === 'original').length }}</div>
+                                        <div style="font-size: 11px; color: var(--red);">选原回应</div>
+                                    </div>
+                                    <div style="flex: 1; min-width: 120px; background: var(--blue-light); padding: 10px 14px; border-radius: 8px; text-align: center;">
+                                        <div style="font-size: 20px; font-weight: 700; color: var(--blue);">{{ scenarios.length - Object.keys(practiceAnswer).length }}</div>
+                                        <div style="font-size: 11px; color: var(--blue);">未选择</div>
+                                    </div>
+                                </div>
+
+                                <div v-for="(s, i) in scenarios" :key="'p'+i"
+                                     style="margin-bottom: 16px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 12px; padding: 16px;">
+                                    <!-- 场景 -->
+                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                        <span class="scenario-label" :style="{ color: s.color, fontWeight: '700' }">{{ s.label }}</span>
+                                        <span style="font-size: 14px; color: var(--text-dark);">「{{ s.text }}」</span>
+                                    </div>
+
+                                    <!-- 未选择时显示选项 -->
+                                    <div v-if="!practiceAnswer[i]" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <button @click.stop="practiceAnswer[i] = 'original'"
+                                                style="padding: 12px; background: var(--bg-hover); border: 2px solid var(--border-light); border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 13px;">
+                                            <div style="font-weight: 600; color: var(--red); margin-bottom: 4px;">❌ 我的选择：原回应</div>
+                                            <div style="color: var(--text-light);">"{{ s.original }}"</div>
+                                        </button>
+                                        <button @click.stop="practiceAnswer[i] = 'ideal'"
+                                                style="padding: 12px; background: var(--bg-hover); border: 2px solid var(--border-light); border-radius: 8px; text-align: left; cursor: pointer; transition: all 0.2s; font-size: 13px;">
+                                            <div style="font-weight: 600; color: var(--green); margin-bottom: 4px;">✅ 我的选择：理想回应</div>
+                                            <div style="color: var(--text-light);">"{{ s.ideal }}"</div>
+                                        </button>
+                                    </div>
+
+                                    <!-- 已选择：显示结果 -->
+                                    <div v-else style="animation: fadeIn 0.3s ease;">
+                                        <div v-if="practiceAnswer[i] === 'original'" style="padding: 12px; background: var(--red-light); border-radius: 8px; margin-bottom: 10px;">
+                                            <div style="font-weight: 600; color: var(--red); margin-bottom: 4px;">❌ 你选择了原回应</div>
+                                            <div style="color: var(--red); font-size: 13px;">"{{ s.original }}"</div>
+                                            <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted);">
+                                                💡 为什么不理想：{{ s.flow }}
+                                            </div>
                                         </div>
-                                        <div class="response-item response-right">
-                                            <div class="response-label">✅ 理想回应</div>
-                                            <div>{{ s.ideal }}</div>
+                                        <div v-if="practiceAnswer[i] === 'ideal'" style="padding: 12px; background: var(--green-light); border-radius: 8px; margin-bottom: 10px;">
+                                            <div style="font-weight: 600; color: var(--green); margin-bottom: 4px;">✅ 正确！理想回应</div>
+                                            <div style="color: var(--green); font-size: 13px;">"{{ s.ideal }}"</div>
+                                            <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted);">
+                                                {{ s.flow }}
+                                            </div>
+                                        </div>
+                                        <button @click.stop="delete practiceAnswer[i]"
+                                                style="background: none; border: none; color: var(--text-muted); font-size: 12px; cursor: pointer; text-decoration: underline;">
+                                            重新选择
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 原有展开模式（编辑模式） -->
+                            <div v-else>
+                                <div v-for="(s, i) in scenarios" :key="'e'+i"
+                                     class="scenario-card"
+                                     :class="{ expanded: s.show }"
+                                     @click="s.show = !s.show">
+                                    <div class="scenario-header">
+                                        <span class="scenario-label" :style="{ color: s.color }">{{ s.label }}</span>
+                                        <span style="font-size: 12px; color: var(--text-muted);">点击展开答案</span>
+                                    </div>
+                                    <div class="scenario-content">「{{ s.text }}」</div>
+                                    <div class="scenario-response">
+                                        <div class="response-grid">
+                                            <div class="response-item response-wrong">
+                                                <div class="response-label">❌ 原回应</div>
+                                                <div>{{ s.original }}</div>
+                                            </div>
+                                            <div class="response-item response-right">
+                                                <div class="response-label">✅ 理想回应</div>
+                                                <div>{{ s.ideal }}</div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top: 12px; padding: 12px; background: var(--purple-light); border-radius: 6px;">
+                                            <div style="font-size: 12px; font-weight: 600; color: var(--purple);">💡 情感流动变化</div>
+                                            <div style="font-size: 13px; margin-top: 4px;">{{ s.flow }}</div>
                                         </div>
                                     </div>
-                                    <div style="margin-top: 12px; padding: 12px; background: var(--purple-light); border-radius: 6px;">
-                                        <div style="font-size: 12px; font-weight: 600; color: var(--purple);">💡 情感流动变化</div>
-                                        <div style="font-size: 13px; margin-top: 4px;">{{ s.flow }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 危险模式 -->
+                    <div class="card-container fade-in" style="margin-top: 16px;">
+                        <div class="card-header" @click="toggleCard('dangerousMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #ff6b6b, #ff8e53);">⚠️</div>
+                                <div>
+                                    <div class="card-title">⚠️ 危险模式</div>
+                                    <div class="card-subtitle">8种常见破坏关系的反应</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.dangerousMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.dangerousMain }">
+                            <div class="dangerous-list">
+                                <div v-for="(dp, i) in dangerousPatterns" :key="i" class="dangerous-item">
+                                    <div class="dangerous-name">
+                                        <span class="dangerous-num">{{ i+1 }}</span>
+                                        {{ dp.name }}
+                                    </div>
+                                    <div class="dangerous-detail">
+                                        <div class="dangerous-row"><span class="dangerous-label">表现：</span><span>{{ dp.symptom }}</span></div>
+                                        <div class="dangerous-row danger-result"><span class="dangerous-label">后果：</span>{{ dp.result }}</div>
+                                        <div class="dangerous-row danger-correct"><span class="dangerous-label">✅ 正确做法：</span>{{ dp.correct }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 关系里程碑 -->
+                    <div class="card-container fade-in" style="margin-top: 16px;">
+                        <div class="card-header" @click="toggleCard('milestoneMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #a8edea, #fed6e3);">🏆</div>
+                                <div>
+                                    <div class="card-title">🏆 关系里程碑</div>
+                                    <div class="card-subtitle">6个阶段：陌生 → 稳定</div>
+                                </div>
+                            </div>
+                            <div class="card-toggle" :class="{ expanded: cards.milestoneMain }">▼</div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.milestoneMain }">
+                            <div class="milestone-list">
+                                <div v-for="m in relationshipMilestones" :key="m.level" class="milestone-item">
+                                    <div class="milestone-level">{{ m.icon }} {{ m.name }}</div>
+                                    <div class="milestone-desc">{{ m.desc }}</div>
+                                    <div class="milestone-row"><span class="milestone-label">标志：</span>{{ m.sign }}</div>
+                                    <div class="milestone-row milestone-danger"><span class="milestone-label">⚠️：</span>{{ m.danger }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- ========== 第0章：进化中心 🌍 ========== -->
+                <section id="evolution">
+                    <div class="card-container fade-in">
+                        <div class="card-header" @click="toggleCard('evolutionMain')">
+                            <div class="card-header-left">
+                                <div class="card-icon" style="background: linear-gradient(135deg, #11998e, #38ef7d);">🌍</div>
+                                <div>
+                                    <div class="card-title">🌍 进化中心</div>
+                                    <div class="card-subtitle">知识永不静止 · 系统自我呼吸 · 来源可溯</div>
+                                </div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;">
+                                <div style="font-size:11px;color:var(--green);background:var(--green-light);padding:3px 10px;border-radius:20px;">🟢 实时</div>
+                                <div class="card-toggle" :class="{ expanded: cards.evolutionMain }">▼</div>
+                            </div>
+                        </div>
+                        <div class="card-body" :class="{ expanded: cards.evolutionMain }">
+
+                            <!-- 进化状态概览 -->
+                            <div class="evolution-overview">
+                                <div class="evo-stat">
+                                    <div class="evo-stat-num">{{ evolutionState.totalKnowledgeNodes }}</div>
+                                    <div class="evo-stat-label">知识节点</div>
+                                </div>
+                                <div class="evo-stat">
+                                    <div class="evo-stat-num">{{ evolutionState.activeSources }}</div>
+                                    <div class="evo-stat-label">活跃来源</div>
+                                </div>
+                                <div class="evo-stat">
+                                    <div class="evo-stat-num">{{ knowledgeUpdateLog.length }}</div>
+                                    <div class="evo-stat-label">本次更新</div>
+                                </div>
+                                <div class="evo-stat">
+                                    <div class="evo-stat-num">{{ evolutionState.lastGlobalUpdate }}</div>
+                                    <div class="evo-stat-label">最后更新</div>
+                                </div>
+                            </div>
+
+                            <!-- 知识来源状态 -->
+                            <div class="evo-sources-title">📡 知识来源</div>
+                            <div class="evo-sources">
+                                <div v-for="src in knowledgeSources" :key="src.id" class="evo-source-item">
+                                    <div class="evo-source-icon">{{ src.icon }}</div>
+                                    <div class="evo-source-info">
+                                        <div class="evo-source-name">{{ src.name }}</div>
+                                        <div class="evo-source-meta">
+                                            <span :class="'tag tag-' + (src.quality==='学术级'?'blue': src.quality==='临床级'?'purple':'green')" style="font-size:10px;">{{ src.quality }}</span>
+                                            <span style="color:var(--text-muted);font-size:11px;">{{ src.url }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="evo-source-status" :style="{ color: src.status==='active'?'var(--green)':'var(--text-muted)' }">●</div>
+                                </div>
+                            </div>
+
+                            <!-- 最新研究语录 -->
+                            <div class="evo-sources-title" style="margin-top:20px;">💬 最新研究语录</div>
+                            <div class="evo-quotes">
+                                <div v-for="(q, i) in researchQuotes" :key="i" class="evo-quote-item">
+                                    <div class="evo-quote-text">「{{ q.quote }}」</div>
+                                    <div class="evo-quote-meta">
+                                        <span class="tag tag-blue" style="font-size:10px;">{{ q.topic }}</span>
+                                        <span>— {{ q.source }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 知识更新日志 -->
+                            <div class="evo-sources-title" style="margin-top:20px;">📜 知识更新日志</div>
+                            <div class="evo-log">
+                                <div v-for="(log, i) in knowledgeUpdateLog" :key="i" class="evo-log-item">
+                                    <div class="evo-log-date">{{ log.date }}</div>
+                                    <div class="evo-log-content">
+                                        <div class="evo-log-header">
+                                            <span class="tag" :class="log.action==='新增'?'tag-green': log.action==='扩展'?'tag-blue':'tag-orange'" style="font-size:10px;">{{ log.action }}</span>
+                                            <span class="tag tag-gray" style="font-size:10px;">{{ log.category }}</span>
+                                            <span style="font-weight:600;font-size:13px;">{{ log.item }}</span>
+                                        </div>
+                                        <div class="evo-log-detail">{{ log.detail }}</div>
+                                        <div class="evo-log-source">来源：{{ knowledgeSources.find(s=>s.id===log.source)?.icon }} {{ knowledgeSources.find(s=>s.id===log.source)?.name }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 进化机制说明 -->
+                            <div class="evo-mechanism">
+                                <div class="evo-mech-title">⚙️ 进化机制说明</div>
+                                <div class="evo-mech-grid">
+                                    <div class="evo-mech-item">
+                                        <div class="evo-mech-icon">📡</div>
+                                        <div class="evo-mech-name">外部来源订阅</div>
+                                        <div class="evo-mech-desc">Gottman Blog、Esther Perel Substack、心理学顶刊RSS</div>
+                                    </div>
+                                    <div class="evo-mech-item">
+                                        <div class="evo-mech-icon">🤖</div>
+                                        <div class="evo-mech-name">周度AI摘要</div>
+                                        <div class="evo-mech-desc">每周自动抓取→分析→生成更新建议→注入知识库</div>
+                                    </div>
+                                    <div class="evo-mech-item">
+                                        <div class="evo-mech-icon">👥</div>
+                                        <div class="evo-mech-name">用户贡献回路</div>
+                                        <div class="evo-mech-desc">提交真实案例（匿名化）→聚类提取模式→更新样本库</div>
+                                    </div>
+                                    <div class="evo-mech-item">
+                                        <div class="evo-mech-icon">🔄</div>
+                                        <div class="evo-mech-name">版本化数据库</div>
+                                        <div class="evo-mech-desc">每次更新带时间戳，支持回滚，保证知识可追溯</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+
                 
                 <!-- ========== 第7章：复盘模板 ========== -->
                 <section id="review">
@@ -1706,41 +2285,111 @@
                 </div>
             </main>
         </div>
-    </div>
     
-    <script>
-        const { createApp } = Vue;
-        
-        createApp({
+        <div class="modal-overlay" :class="{ active: modalOpen }" @click.self="closeModal">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>{{ modalTitle }}</h3>
+                    <button class="modal-close" @click="closeModal">✕</button>
+                </div>
+                <div v-if="dataLoading && modalOpen && modalType === 'browser'" class="loading-overlay">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">正在加载内容库…</div>
+                </div>
+                <div v-else-if="modalType === 'browser'" class="modal-body" id="browserModal">
+                    <div v-if="dataLoadError" class="data-load-error">{{ dataLoadError }}</div>
+                    <div class="browser-toolbar">
+                        <input type="text" class="browser-search" v-model="browserSearch" :placeholder="'搜索'+modalTitle+'…'" @input="browserPage = 1">
+                        <div class="browser-filters">
+                            <button v-for="cat in getBrowserCategories(browserCategory)" :key="cat" class="filter-btn" :class="{ active: browserFilter === cat }" @click="browserFilter = cat; browserPage = 1">{{ cat }}</button>
+                        </div>
+                    </div>
+                    <div v-if="getBrowserItems().length > 0" class="browser-grid">
+                        <div v-for="(item, idx) in getBrowserPaginated()" :key="idx" class="browser-card" @click="openModal(browserCategory, item)">
+                            <div class="browser-card-title">{{ item.title || item.name || item.context || item.word || ("条目 " + (idx+1)) }}</div>
+                            <div class="browser-card-meta">
+                                <span v-if="item.category">{{ item.category }}</span>
+                                <span v-if="item.duration_minutes">{{ item.duration_minutes }}分钟</span>
+                                <span v-if="item.min_players">{{ item.min_players }}人+</span>
+                                <span v-if="item.spectrum">{{ item.spectrum }}·{{ item.level }}</span>
+                            </div>
+                            <div class="browser-card-preview">{{ item.content || item.description || item.analysis || item.synopsis || "" }}</div>
+                            <div class="browser-card-tags" v-if="getItemTags(item).length">
+                                <span v-for="tag in getItemTags(item)" :key="tag" class="tag tag-blue" style="font-size:11px;">{{ tag }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="browser-empty"><div style="font-size:32px;margin-bottom:12px;">🔍</div><div>没有找到匹配的条目</div></div>
+                    <div v-if="getBrowserTotalPages() > 1" class="browser-pagination">
+                        <button @click="prevPage" :disabled="browserPage <= 1">上一页</button>
+                        <span style="font-size:13px;color:var(--text-muted);">{{ browserPage }} / {{ getBrowserTotalPages() }}</span>
+                        <button @click="nextPage" :disabled="browserPage >= getBrowserTotalPages()">下一页</button>
+                    </div>
+                </div>
+                <div v-else-if="modalType === 'story'" class="modal-body">
+                    <div class="detail-section"><div class="detail-section-title">分类</div><span class="tag tag-blue">{{ modalData?.category }}</span></div>
+                    <div class="detail-section"><div class="detail-section-title">故事</div><div class="detail-content" style="white-space:pre-line;">{{ modalData?.content }}</div></div>
+                    <div class="detail-section" v-if="modalData?.moral"><div class="detail-section-title">启示</div><div class="detail-content" style="color:var(--green);font-weight:600;">{{ modalData.moral }}</div></div>
+                    <div class="detail-section" v-if="modalData?.applicable_scenario"><div class="detail-section-title">适用场景</div><div class="detail-content">{{ modalData.applicable_scenario }}</div></div>
+                    <div class="detail-section" v-if="modalData?.reflection_questions?.length"><div class="detail-section-title">反思问题</div><div class="detail-content"><div v-for="q in modalData.reflection_questions" :key="q" style="margin-bottom:6px;">• {{ q }}</div></div></div>
+                </div>
+                <div v-else-if="modalType === 'game'" class="modal-body">
+                    <div class="detail-section"><div class="detail-section-title">分类</div><span class="tag tag-blue">{{ modalData?.category }}</span></div>
+                    <div class="detail-section"><div class="detail-section-title">游戏介绍</div><div class="detail-content">{{ modalData?.description }}</div></div>
+                    <div class="detail-section" v-if="modalData?.steps?.length"><div class="detail-section-title">步骤</div><div class="detail-content"><div v-for="(step, i) in modalData.steps" :key="i" style="margin-bottom:8px;"><span style="background:var(--blue-light);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:12px;margin-right:8px;">{{ i+1 }}</span>{{ step }}</div></div></div>
+                    <div class="detail-section" v-if="modalData?.variation"><div class="detail-section-title">变化玩法</div><div class="detail-content">{{ modalData.variation }}</div></div>
+                    <div class="detail-section"><div class="detail-section-title">基本信息</div><div style="font-size:13px;color:var(--text-light);">⏱ {{ modalData?.duration_minutes || modalData?.duration }}分钟 &nbsp; 👥 {{ modalData?.min_players }}+人 &nbsp; 🎯 {{ modalData?.materials_needed?.join("、") || "无需道具" }}</div></div>
+                </div>
+                <div v-else-if="modalType === 'dialogue'" class="modal-body">
+                    <div class="detail-section"><div class="detail-section-title">情境</div><div class="detail-content">{{ modalData?.situation }}</div></div>
+                    <div class="detail-section" v-if="modalData?.analysis"><div class="detail-section-title">分析</div><div class="detail-content">{{ modalData.analysis }}</div></div>
+                    <div class="detail-section" v-if="modalData?.messages?.length"><div class="detail-section-title">对话</div><div class="detail-content"><div v-for="(msg, i) in modalData.messages" :key="i" :style="{marginBottom:'12px',padding:'10px 14px',background: msg.role==='A'?'var(--blue-light)':'var(--green-light)',borderRadius:'8px',borderLeft:'3px solid ' + (msg.role==='A'?'var(--blue)':'var(--green)')}"><div style="font-size:11px;font-weight:600;color:var(--text-muted);margin-bottom:4px;">{{ msg.role === "A" ? "🙋 你的回应" : "💁 她的回应" }}</div><div>{{ msg.content }}</div></div></div></div>
+                </div>
+                <div v-else-if="['script','joke','scene'].includes(modalType)" class="modal-body">
+                    <div class="detail-section" v-if="modalData?.context || modalData?.content"><div class="detail-section-title">{{ modalType === "script" ? "场景" : "段子" }}</div><div class="detail-content" style="white-space:pre-line;">{{ modalData?.context || modalData?.content }}</div></div>
+                    <div class="detail-section" v-if="modalData?.examples?.length"><div class="detail-section-title">{{ modalType === "script" ? "示例" : "金句" }}</div><div class="detail-content"><div v-for="(ex, i) in modalData.examples" :key="i" style="margin-bottom:8px;padding:8px 12px;background:var(--bg-hover);border-radius:6px;">{{ ex }}</div></div></div>
+                    <div class="detail-section" v-if="modalData?.analysis"><div class="detail-section-title">分析</div><div class="detail-content">{{ modalData.analysis }}</div></div>
+                </div>
+                <div v-else-if="modalType === 'knowledge'" class="modal-body">
+                    <div class="detail-section"><div class="detail-section-title">描述</div><div class="detail-content">{{ modalData?.description }}</div></div>
+                    <div class="detail-section" v-if="modalData?.items?.length"><div class="detail-section-title">详细内容</div><div class="detail-content"><div v-for="(item, i) in modalData.items" :key="i" style="margin-bottom:16px;padding:12px;background:var(--bg-hover);border-radius:8px;"><div style="font-weight:600;color:var(--text-dark);margin-bottom:6px;">{{ item.name || item.title || ("条目 "+(i+1)) }}</div><div style="white-space:pre-line;">{{ item.definition || item.content || item.description || "" }}</div></div></div></div>
+                </div>
+                <div v-else-if="modalType === 'emotion'" class="modal-body">
+                    <div class="detail-section"><div class="detail-section-title">情绪词</div><div style="font-size:20px;font-weight:700;color:var(--text-dark);margin-bottom:12px;">{{ modalData?.word || modalData?.name }}</div></div>
+                    <div class="detail-section" v-if="modalData?.spectrum"><div class="detail-section-title">谱系</div><span class="tag tag-blue">{{ modalData.spectrum }}</span></div>
+                </div>
+            </div>
+        </div></div>
+    
+    
+<script>
+const { createApp } = Vue;
+
+createApp({
             data() {
                 return {
                     sidebarOpen: false,
                     currentStep: 0,
                     currentPhase: 0,
                     currentSampleTab: 0,
-                    searchQuery: '',
-                    progressPercent: 40,
+                    searchQuery: "",
+                    progressPercent: 100,
+                    darkMode: false,
                     cards: {
-                        core: true,
-                        metrics: false,
-                        emotion: false,
-                        seeing: false,
-                        appreciation: false,
-                        detective: false,
-                        poet: false,
-                        '5w2h': false,
-                        pathMain: false,
-                        sampleMain: false,
-                        scenarioMain: false,
-                        reviewMain: false,
-                        planMain: false
+                        core: true, metrics: false, emotion: false, seeing: false,
+                        appreciation: false, detective: false, poet: false, '5w2h': false,
+                        pathMain: false, sampleMain: false, scenarioMain: false,
+                        reviewMain: false, planMain: false,
+                        dangerousMain: false, milestoneMain: false, evolutionMain: false
                     },
                     stats: {
-                        modules: 7,
-                        concepts: 15,
-                        tools: 4,
-                        samples: 25
+                        modules: 7, concepts: 13, tools: 4,
+                        emotions: 1516, scenes: 220, dialogues: 100,
+                        jokes: 109, scripts: 100, stories: 80, games: 60, knowledge: 73
                     },
+                    activeSpectrum: -1,
+                    practiceMode: false,  // 互动练习自测模式
+                    practiceAnswer: {},    // 用户选择的答案 {scenarioIndex: 'original'|'ideal'},
                     learningSteps: [
                         { id: 'overview', name: '全景', icon: '🎯' },
                         { id: 'concepts', name: '概念', icon: '📖' },
@@ -1748,34 +2397,36 @@
                         { id: 'path', name: '八阶', icon: '🛤️' },
                         { id: 'samples', name: '样本', icon: '📚' },
                         { id: 'scenarios', name: '练习', icon: '🎭' },
-                        { id: 'review', name: '复盘', icon: '📝' }
+                        { id: 'review', name: '复盘', icon: '📝' },
+                        { id: 'browser', name: '内容库', icon: '📦' }
                     ],
                     learningPath: [
-                        { id: 'overview', name: '目标' },
-                        { id: 'concepts', name: '概念' },
-                        { id: 'tools', name: '工具' },
-                        { id: 'path', name: '路径' },
-                        { id: 'samples', name: '样本' },
-                        { id: 'review', name: '训练' }
+                        { id: 'overview', name: '目标' }, { id: 'concepts', name: '概念' },
+                        { id: 'tools', name: '工具' }, { id: 'path', name: '路径' },
+                        { id: 'samples', name: '样本' }, { id: 'review', name: '训练' }
                     ],
                     emotionSpectra: [
-                        { name: '喜', desc: '满足→狂喜', tagClass: 'tag-green', words: ['满足', '愉悦', '雀跃', '兴奋', '狂喜'] },
-                        { name: '怒', desc: '微烦→暴怒', tagClass: 'tag-red', words: ['微烦', '烦躁', '恼火', '愤怒', '暴怒'] },
-                        { name: '哀', desc: '失落→崩溃', tagClass: 'tag-blue', words: ['失落', '悲伤', '沮丧', '绝望', '崩溃'] },
-                        { name: '惧', desc: '紧张→恐慌', tagClass: 'tag-purple', words: ['紧张', '焦虑', '恐惧', '惊恐', '恐慌'] },
-                        { name: '爱', desc: '好感→痴迷', tagClass: 'tag-pink', words: ['好感', '依恋', '温柔', '心动', '痴迷'] },
-                        { name: '惊', desc: '意外→惊骇', tagClass: 'tag-orange', words: ['意外', '惊讶', '震惊', '目瞪口呆', '惊骇'] },
-                        { name: '羞', desc: '不好意思→羞辱', tagClass: 'tag-pink', words: ['不好意思', '惭愧', '羞耻', '无地自容', '羞辱'] }
+                        { name: '喜', emoji: '😊', desc: '满足→狂喜', levels: '1-5', tagClass: 'tag-green', response: '正向共鸣，跟随节奏，一起开心', words: ['满足','愉悦','雀跃','兴奋','狂喜'] },
+                        { name: '怒', emoji: '😠', desc: '微烦→暴怒', levels: '1-5', tagClass: 'tag-red', response: '先降温度，不对抗，承认感受，等冷静', words: ['微烦','烦躁','恼火','愤怒','暴怒'] },
+                        { name: '哀', emoji: '😢', desc: '失落→崩溃', levels: '1-5', tagClass: 'tag-blue', response: '陪伴倾听，命名感受，不急着给建议', words: ['失落','悲伤','沮丧','绝望','崩溃'] },
+                        { name: '惧', emoji: '😨', desc: '紧张→恐慌', levels: '1-5', tagClass: 'tag-purple', response: '安全感先行，肯定她的存在，不施压', words: ['紧张','焦虑','恐惧','惊恐','恐慌'] },
+                        { name: '爱', emoji: '💕', desc: '好感→痴迷', levels: '1-5', tagClass: 'tag-pink', response: '回应具体行为，适度回馈，不要忽冷忽热', words: ['好感','依恋','温柔','心动','痴迷'] },
+                        { name: '惊', emoji: '😲', desc: '意外→惊骇', levels: '1-5', tagClass: 'tag-orange', response: '先给确认时间，不追问，等她自己说', words: ['意外','惊讶','震惊','目瞪口呆','惊骇'] },
+                        { name: '羞', emoji: '😳', desc: '不好意思→羞辱', levels: '1-5', tagClass: 'tag-orange', response: '不戳穿，给台阶，不在公众场合提起', words: ['不好意思','惭愧','羞耻','无地自容','羞辱'] }
                     ],
                     mixedEmotions: [
-                        { name: '酸楚', components: '羡慕 + 委屈', example: '看到别人有自己没有' },
-                        { name: '纠结', components: '想要 + 害怕', example: '面临选择时' },
-                        { name: '释然', components: '放下 + 轻松', example: '终于结束一段关系后' },
-                        { name: '心酸', components: '心疼 + 无奈', example: '看到在乎的人受苦' },
-                        { name: '忐忑', components: '期待 + 不安', example: '等待重要结果时' },
-                        { name: '五味杂陈', components: '多种混合', example: '复杂情绪交织时' },
-                        { name: '百感交集', components: '喜+悲+怒', example: '重大事件后' },
-                        { name: '患得患失', components: '渴望 + 恐惧失去', example: '在乎对方时' }
+                        { name: '酸楚', components: '羡慕 + 委屈', example: '看到别人有自己没有', response: '先承认感受，不比较', category: '复合' },
+                        { name: '纠结', components: '想要 + 害怕', example: '面临选择时', response: '帮她拆解利弊，不替她决定', category: '复合' },
+                        { name: '释然', components: '放下 + 轻松', example: '终于结束一段关系后', response: '陪伴即可，不需要说什么', category: '复合' },
+                        { name: '心酸', components: '心疼 + 无奈', example: '看到在乎的人受苦', response: '承认无奈，陪伴在旁边', category: '复合' },
+                        { name: '忐忑', components: '期待 + 不安', example: '等待重要结果时', response: '陪伴等待，不给压力', category: '复合' },
+                        { name: '五味杂陈', components: '多种混合', example: '复杂情绪交织时', response: '不急着分辨，先让她说完', category: '复合' },
+                        { name: '百感交集', components: '喜+悲+怒', example: '重大事件后', response: '给她时间，不催她贴标签', category: '复合' },
+                        { name: '患得患失', components: '渴望 + 恐惧失去', example: '在乎对方时', response: '给她安全感，用行动证明稳定', category: '复合' },
+                        { name: '感伤', components: '怀念 + 遗憾', example: '想起前任或过去', response: '不评判，不比较，给空间', category: '复合' },
+                        { name: '愧疚', components: '自责 + 后悔', example: '做了对不起对方的事', response: '先承认，不解释，倾听她', category: '复合' },
+                        { name: '嫉妒', components: '不平 + 渴望', example: '看到别人得到自己想要的', response: '承认嫉妒，不指责她小气', category: '复合' },
+                        { name: '愤怒+受伤', components: '被冒犯 + 委屈', example: '被误解或被冤枉', response: '先确认：「你受伤了」，等冷静', category: '复合' }
                     ],
                     seeingLevels: [
                         { num: 'L1', name: '行为层', desc: '注意到动作、表情', color: 'var(--blue)', example: '你刚才抿了一下嘴', reaction: '哦，是吗' },
@@ -1783,19 +2434,48 @@
                         { num: 'L3', name: '需求层', desc: '识别未说出口的需求', color: 'var(--green)', example: '你是不是希望被认可，但又不好意思说？', reaction: '眼睛睁大' }
                     ],
                     appreciationTypes: [
-                        { name: '欣赏外在', depth: '表层愉悦', example: '你今天这条围巾颜色很适合你', effect: '表层愉悦' },
-                        { name: '欣赏行为', depth: '强化行为', example: '你刚才帮陌生人指路，很温暖', effect: '强化行为' },
-                        { name: '欣赏特质', depth: '深度认同', example: '你有一种让人放松的能力', effect: '深度认同' },
-                        { name: '欣赏过程', depth: '认可努力', example: '我知道你为这个项目付出了很多', effect: '认可努力' },
-                        { name: '欣赏存在', depth: '无条件接纳', example: '你在，我就觉得很安心', effect: '无条件接纳' }
+                        { name: '欣赏外在', depth: '表层愉悦', level: 1, example: '你今天这条围巾颜色很适合你', effect: '心情好', why: '具体可见，但深度最浅', when: '刚认识，或不确定时' },
+                        { name: '欣赏行为', depth: '强化行为', level: 2, example: '你刚才帮陌生人指路，很温暖', effect: '被看见', why: '具体可重复，有学习价值', when: '当她做了具体的事' },
+                        { name: '欣赏过程', depth: '认可努力', level: 3, example: '我知道你为这个项目付出了很多', effect: '被认可', why: '认可努力而非结果，更有温度', when: '她正在努力或有压力时' },
+                        { name: '欣赏特质', depth: '深度认同', level: 4, example: '你有一种让人放松的能力', effect: '被理解', why: '看到内在自我，有认同感', when: '有一定了解后' },
+                        { name: '欣赏存在', depth: '无条件接纳', level: 5, example: '你在，我就觉得很安心', effect: '安全感', why: '无条件的看见，最有力量', when: '关系稳定后，慎重使用' },
+                        { name: '欣赏独特', depth: '看见不同', level: 3, example: '你这种认真劲我很喜欢，大多数人做不到', effect: '被尊重', why: '独特性比普遍性更有力量', when: '她有独特之处时' },
+                        { name: '欣赏成长', depth: '见证改变', level: 4, example: '你上次还不太敢，现在已经能这样表达了', effect: '被推动', why: '看见变化，强化成长动力', when: '见证了她改变的时刻' },
+                        { name: '欣赏选择', depth: '认同决定', level: 3, example: '你决定___，我觉得你考虑得很周全', effect: '被支持', why: '不评判选择，认可决策过程', when: '她做了重要决定' },
+                        { name: '欣赏脆弱', depth: '接纳真实', level: 5, example: '你愿意说出来，这本身就很勇敢', effect: '被拥抱', why: '直面脆弱需要勇气，给予接纳', when: '她展露脆弱时，谨慎使用' },
+                        { name: '欣赏反差', depth: '惊喜发现', level: 3, example: '没想到你这么___，每次发现你新的一面都觉得很好', effect: '被珍惜', why: '表达「我一直在关注你」', when: '发现她新的一面时' }
                     ],
                     detectiveClues: [
-                        { type: '环境', typeTag: 'tag-blue', subtype: '空间', point: '位置（角落/门口）', meaning: '角落→安全感；门口→想离开' },
-                        { type: '环境', typeTag: 'tag-blue', subtype: '物品', point: '杯子、手机', meaning: '手机倒扣→不想被打扰' },
-                        { type: '行为', typeTag: 'tag-purple', subtype: '面部', point: '眉毛、嘴角', meaning: '眉心微皱→困惑/烦躁' },
-                        { type: '行为', typeTag: 'tag-purple', subtype: '手部', point: '摸脖子、手指敲桌', meaning: '摸脖子→紧张；敲桌→不耐烦' },
-                        { type: '行为', typeTag: 'tag-purple', subtype: '躯干', point: '前倾/后仰', meaning: '后仰→防御' },
-                        { type: '语言', typeTag: 'tag-green', subtype: '语气', point: '音调、语速', meaning: '音调升高→兴奋/紧张' }
+                        // 环境线索
+                        { type: '环境', typeTag: 'tag-blue', subtype: '空间位置', point: '角落、靠墙', meaning: '需要安全感，不希望被打扰', response: '不逼近，用开放式问题' },
+                        { type: '环境', typeTag: 'tag-blue', subtype: '空间位置', point: '靠近门口', meaning: '想离开，或想掌控撤退路线', response: '放松氛围，给她退路' },
+                        { type: '环境', typeTag: 'tag-blue', subtype: '物品信号', point: '手机倒扣/屏幕朝下', meaning: '不希望被打断，或有事隐瞒', response: '降低音量，不追问' },
+                        { type: '环境', typeTag: 'tag-blue', subtype: '物品信号', point: '桌上东西多而乱', meaning: '可能心烦，思绪乱', response: '不评价环境' },
+                        { type: '环境', typeTag: 'tag-blue', subtype: '物品信号', point: '随身物品整理干净', meaning: '今天有安排，或重视这次见面', response: '欣赏她的用心' },
+                        // 面部线索
+                        { type: '行为', typeTag: 'tag-purple', subtype: '眉', point: '眉心皱起', meaning: '困惑、烦躁、不认同', response: '停下来问：你好像有点不舒服？' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '眉', point: '眉毛上扬', meaning: '惊讶、好奇、期待', response: '继续说下去' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '眼', point: '眼神回避', meaning: '羞耻、撒谎、或不想谈', response: '不逼，给台阶' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '眼', point: '眼神直视不动', meaning: '认真、被尊重、或施压', response: '保持稳定的眼神' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '眼', point: '眼眶泛红', meaning: '压抑哭泣，或刚哭过', response: '安静，给纸巾' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '嘴', point: '嘴角下垂', meaning: '悲伤、不满、疲惫', response: '「你好像不太开心？」' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '嘴', point: '嘴唇抿紧', meaning: '忍耐、压抑、决定不说', response: '不追问，等她主动' },
+                        // 手部线索
+                        { type: '行为', typeTag: 'tag-purple', subtype: '手', point: '摸脖子/捏颈侧', meaning: '紧张、压力、自我安抚', response: '降低语速' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '手', point: '手指敲桌/抖腿', meaning: '不耐烦、焦虑、想结束', response: '加快节奏或暂停' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '手', point: '手放在背后', meaning: '紧张，或在隐藏什么', response: '用轻松话题缓解' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '手', point: '手心出汗/握拳', meaning: '紧张、害怕、激动', response: '给她安全感' },
+                        // 躯干线索
+                        { type: '行为', typeTag: 'tag-purple', subtype: '身体', point: '身体后仰靠椅背', meaning: '防御、拒绝、累了', response: '调整话题或休息' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '身体', point: '身体前倾', meaning: '感兴趣、认同、期待更多', response: '继续' },
+                        { type: '行为', typeTag: 'tag-purple', subtype: '身体', point: '转头不看', meaning: '不认同、羞耻、需要时间', response: '暂停' },
+                        // 语音线索
+                        { type: '语言', typeTag: 'tag-green', subtype: '语速', point: '突然变快', meaning: '紧张、激动、在防御', response: '不打断，让她说' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语速', point: '突然变慢或停顿', meaning: '在组织语言、撒谎、或想说但找不到词', response: '等3秒' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语调', point: '音调升高', meaning: '兴奋、紧张、在乎', response: '跟随情绪' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语调', point: '声音压低', meaning: '私密话题、羞耻、或说秘密', response: '靠近，降低音量' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语气词', point: '频繁叹气', meaning: '疲惫、无奈、沮丧', response: '「看起来真的很累？」' },
+                        { type: '语言', typeTag: 'tag-green', subtype: '语气词', point: '「随便」「都行」', meaning: '在防御、不想谈、或不在乎', response: '停止追问' }
                     ],
                     fiveW2H: [
                         { icon: '❓', key: 'Why', question: '为什么说？', example: '求认可还是求释放' },
@@ -1807,208 +2487,380 @@
                         { icon: '📏', key: 'How much', question: '程度多深？', example: '强度7，先降情绪' }
                     ],
                     phases: [
-                        { 
-                            num: '第零阶', name: '默认沉默', tagClass: 'tag-red', goal: '启动侦探模式',
-                            input: '没话题、注意力在自己',
-                            transform: '将注意力转向外部',
-                            output: '注意到3个细节',
-                            operations: [
-                                { action: '将注意力转向外部', tool: '侦探', toolTag: 'tag-blue', example: '先观察环境' }
-                            ],
-                            selfCheck: '能注意到3个细节',
-                            upgrade: '能主动说一句话',
-                            exercise: '走进一家咖啡店，列出你观察到的5个细节（物品位置、人的表情等）'
-                        },
-                        { 
-                            num: '第一阶', name: '信息', tagClass: 'tag-blue', goal: '交换基本信息',
-                            input: '不知道问什么',
-                            transform: '环境线索切入 + 开放式问题',
-                            output: '能交换5个以上事实',
-                            operations: [
-                                { action: '环境线索切入', tool: '侦探', toolTag: 'tag-blue', example: '你这个杯子很特别' },
-                                { action: '开放式事实问题', tool: '提问L1', toolTag: 'tag-green', example: '周末喜欢做什么？' },
-                                { action: '自我暴露', tool: '框架', toolTag: 'tag-purple', example: '我喜欢爬山' }
-                            ],
-                            selfCheck: '能交换5个以上事实，没有连续提问',
-                            upgrade: '能自然延续话题',
-                            exercise: '和朋友聊天时，尝试至少问3个开放式问题，并分享1件关于自己的事'
-                        },
-                        { 
-                            num: '第二阶', name: '情绪', tagClass: 'tag-purple', goal: '识别情绪标签并反射',
-                            input: '她说的话',
-                            transform: '找情绪词 + 多假设 + 双选项验证',
-                            output: '识别准确率>50%',
-                            operations: [
-                                { action: '找情绪词', tool: '侦探', toolTag: 'tag-blue', example: '她说「唉」→可能烦躁' },
-                                { action: '多假设', tool: '侦探', toolTag: 'tag-blue', example: '可能累/烦/委屈' },
-                                { action: '双选项验证', tool: '提问', toolTag: 'tag-green', example: '是身体累还是心里烦？' },
-                                { action: '诗人反射', tool: '诗人', toolTag: 'tag-orange', example: '听起来今天不是很顺' }
-                            ],
-                            selfCheck: '识别准确率>50%，她能说「对」',
-                            upgrade: '她主动分享情绪',
-                            exercise: '今天听到朋友叹气时，尝试猜测她的情绪，并用「听起来有点___？」确认'
-                        },
-                        { 
-                            num: '第三阶', name: '感受', tagClass: 'tag-green', goal: '让她感到「你和我在一起」',
-                            input: '她的情绪',
-                            transform: '接住不评判 + 命名感受 + 安静陪伴',
-                            output: '她主动说「对，就是这样」',
-                            operations: [
-                                { action: '接住不评判', tool: '共情', toolTag: 'tag-purple', example: '我听到了' },
-                                { action: '命名感受', tool: '诗人', toolTag: 'tag-orange', example: '那一定很委屈' },
-                                { action: '安静陪伴', tool: '诗人', toolTag: 'tag-orange', example: '沉默3-5秒' },
-                                { action: '给退路', tool: '提问', toolTag: 'tag-green', example: '想继续说吗？' }
-                            ],
-                            selfCheck: '她主动说「对，就是这样」',
-                            upgrade: '她愿意深入分享',
-                            exercise: '朋友向你倾诉时，不要给建议，先说「那一定很___」来命名她的感受'
-                        },
-                        { 
-                            num: '第四阶', name: '看见', tagClass: 'tag-orange', goal: '照出她未意识到的细微状态',
-                            input: '微表情/微行为',
-                            transform: '捕捉 + 形成假设 + 轻问验证',
-                            output: '她眼睛睁大（「你怎么知道」）',
-                            operations: [
-                                { action: '捕捉微表情', tool: '侦探', toolTag: 'tag-blue', example: '嘴角下拉了一下' },
-                                { action: '形成假设', tool: '侦探', toolTag: 'tag-blue', example: '可能压抑了' },
-                                { action: '轻问验证', tool: '提问', toolTag: 'tag-green', example: '是不是心里有事？' },
-                                { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '话到嘴边又咽回去' }
-                            ],
-                            selfCheck: '她眼睛睁大/呼吸变浅（「你怎么知道」）',
-                            upgrade: '她感到被深度理解',
-                            exercise: '观察一个人说话时的微表情（眉毛、嘴角），并说出你观察到的行为'
-                        },
-                        { 
-                            num: '第五阶', name: '欣赏', tagClass: 'tag-pink', goal: '用具体真诚的光照亮她',
-                            input: '她的优点/特质',
-                            transform: '观察欣赏点 + 选择具体类型',
-                            output: '她变得更有自信',
-                            operations: [
-                                { action: '观察欣赏点', tool: '侦探', toolTag: 'tag-blue', example: '她处理冲突很冷静' },
-                                { action: '选择具体行为/特质', tool: '欣赏类型', toolTag: 'tag-green', example: '你刚才那样说话，既表达了立场又没有伤人' },
-                                { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '你那种温柔但坚定的感觉，我很欣赏' }
-                            ],
-                            selfCheck: '每周3次以上，她不觉得讨好',
-                            upgrade: '她变得更有自信',
-                            exercise: '今天对一个人说出一件你具体欣赏的事（不是「你很好」而是「你___做得很好」）'
-                        },
-                        { 
-                            num: '第六阶', name: '理解', tagClass: 'tag-blue', goal: '建立她的内在模型，知道根源',
-                            input: '重复出现的行为模式',
-                            transform: '收集模式 + 来源假设 + 时机验证',
-                            output: '能准确预测她的1个需求',
-                            operations: [
-                                { action: '收集重复模式', tool: '侦探', toolTag: 'tag-blue', example: '每次提妈妈语速变快' },
-                                { action: '来源假设', tool: '5W2H(Why)', toolTag: 'tag-purple', example: '可能关系紧张' },
-                                { action: '时机验证', tool: '提问', toolTag: 'tag-green', example: '你提妈妈时好像有点激动？' },
-                                { action: '行动转化', tool: '框架', toolTag: 'tag-blue', example: '你讨厌被催，所以我不问进度' }
-                            ],
-                            selfCheck: '能准确预测她的1个需求',
-                            upgrade: '她觉得你是最懂她的人',
-                            exercise: '回忆一个反复出现的场景，思考「为什么她总是这样？」并列出3个可能原因'
-                        },
-                        { 
-                            num: '第七阶', name: '爱', tagClass: 'tag-red', goal: '稳定的行动，不忽冷忽热',
-                            input: '她的脆弱时刻',
-                            transform: '保持内核稳定 + 行动表达 + 脆弱陪伴',
-                            output: '她感到安全港湾',
-                            operations: [
-                                { action: '保持内核稳定', tool: '框架', toolTag: 'tag-blue', example: '不因她情绪波动而变' },
-                                { action: '行动表达', tool: '—', toolTag: 'tag-gray', example: '带她提过的零食' },
-                                { action: '脆弱时陪伴', tool: '共情', toolTag: 'tag-purple', example: '安静陪着，不说「别哭」' },
-                                { action: '需要空间时尊重', tool: '边界', toolTag: 'tag-green', example: '我就在隔壁' }
-                            ],
-                            selfCheck: '她脆弱时你能稳住，她不觉得压迫',
-                            upgrade: '她感到安全港湾',
-                            exercise: '今天做一件表达关心的小事（带她喜欢的东西、记住她说过的话）'
-                        },
-                        { 
-                            num: '第八阶', name: '被爱', tagClass: 'tag-green', goal: '安心接收并回馈爱的循环',
-                            input: '她表达的爱意',
-                            transform: '识别 + 接收 + 感受 + 回馈',
-                            output: '爱的流动自然循环',
-                            operations: [
-                                { action: '识别她的爱意', tool: '侦探', toolTag: 'tag-blue', example: '她记得我不吃香菜' },
-                                { action: '接收不推开', tool: '接纳', toolTag: 'tag-green', example: '谢谢而不是「不用」' },
-                                { action: '感受自己感受', tool: '诗人', toolTag: 'tag-orange', example: '我心里暖暖的' },
-                                { action: '自然回馈', tool: '—', toolTag: 'tag-gray', example: '带她喜欢的蛋糕' },
-                                { action: '表达被爱', tool: '诗人', toolTag: 'tag-orange', example: '你这样做，我觉得很幸福' }
-                            ],
-                            selfCheck: '能安心接收，不欠债感',
-                            upgrade: '爱的流动自然循环',
-                            exercise: '当有人对你好时，先说「谢谢」，而不是「不用这么麻烦」'
-                        }
+                        { num: '第零阶', name: '默认沉默', tagClass: 'tag-red', goal: '启动侦探模式', input: '没话题、注意力在自己', transform: '将注意力转向外部', output: '注意到3个细节', operations: [{ action: '将注意力转向外部', tool: '侦探', toolTag: 'tag-blue', example: '先观察环境' }], selfCheck: '能注意到3个细节', upgrade: '能主动说一句话', exercise: '走进一家咖啡店，列出你观察到的5个细节（物品位置、人的表情等）' },
+                        { num: '第一阶', name: '信息', tagClass: 'tag-blue', goal: '交换基本信息', input: '不知道问什么', transform: '环境线索切入 + 开放式问题', output: '能交换5个以上事实', operations: [{ action: '环境线索切入', tool: '侦探', toolTag: 'tag-blue', example: '你这个杯子很特别' }, { action: '开放式事实问题', tool: '提问L1', toolTag: 'tag-green', example: '周末喜欢做什么？' }, { action: '自我暴露', tool: '框架', toolTag: 'tag-purple', example: '我喜欢爬山' }], selfCheck: '能交换5个以上事实，没有连续提问', upgrade: '能自然延续话题', exercise: '和朋友聊天时，尝试至少问3个开放式问题，并分享1件关于自己的事' },
+                        { num: '第二阶', name: '情绪', tagClass: 'tag-purple', goal: '识别情绪标签并反射', input: '她说的话', transform: '找情绪词 + 多假设 + 双选项验证', output: '识别准确率>50%', operations: [{ action: '找情绪词', tool: '侦探', toolTag: 'tag-blue', example: '她说「唉」→可能烦躁' }, { action: '多假设', tool: '侦探', toolTag: 'tag-blue', example: '可能累/烦/委屈' }, { action: '双选项验证', tool: '提问', toolTag: 'tag-green', example: '是身体累还是心里烦？' }, { action: '诗人反射', tool: '诗人', toolTag: 'tag-orange', example: '听起来今天不是很顺' }], selfCheck: '识别准确率>50%，她能说「对」', upgrade: '她主动分享情绪', exercise: '今天听到朋友叹气时，尝试猜测她的情绪，并用「听起来有点___？」确认' },
+                        { num: '第三阶', name: '感受', tagClass: 'tag-green', goal: '让她感到「你和我在一起」', input: '她的情绪', transform: '接住不评判 + 命名感受 + 安静陪伴', output: '她主动说「对，就是这样」', operations: [{ action: '接住不评判', tool: '共情', toolTag: 'tag-purple', example: '我听到了' }, { action: '命名感受', tool: '诗人', toolTag: 'tag-orange', example: '那一定很委屈' }, { action: '安静陪伴', tool: '诗人', toolTag: 'tag-orange', example: '沉默3-5秒' }, { action: '给退路', tool: '提问', toolTag: 'tag-green', example: '想继续说吗？' }], selfCheck: '她主动说「对，就是这样」', upgrade: '她愿意深入分享', exercise: '朋友向你倾诉时，不要给建议，先说「那一定很___」来命名她的感受' },
+                        { num: '第四阶', name: '看见', tagClass: 'tag-orange', goal: '照出她未意识到的细微状态', input: '微表情/微行为', transform: '捕捉 + 形成假设 + 轻问验证', output: '她眼睛睁大（「你怎么知道」）', operations: [{ action: '捕捉微表情', tool: '侦探', toolTag: 'tag-blue', example: '嘴角下拉了一下' }, { action: '形成假设', tool: '侦探', toolTag: 'tag-blue', example: '可能压抑了' }, { action: '轻问验证', tool: '提问', toolTag: 'tag-green', example: '是不是心里有事？' }, { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '话到嘴边又咽回去' }], selfCheck: '她眼睛睁大/呼吸变浅（「你怎么知道」）', upgrade: '她感到被深度理解', exercise: '观察一个人说话时的微表情（眉毛、嘴角），并说出你观察到的行为' },
+                        { num: '第五阶', name: '欣赏', tagClass: 'tag-pink', goal: '用具体真诚的光照亮她', input: '她的优点/特质', transform: '观察欣赏点 + 选择具体类型', output: '她变得更有自信', operations: [{ action: '观察欣赏点', tool: '侦探', toolTag: 'tag-blue', example: '她处理冲突很冷静' }, { action: '选择具体行为/特质', tool: '欣赏类型', toolTag: 'tag-green', example: '你刚才那样说话，既表达了立场又没有伤人' }, { action: '诗人表达', tool: '诗人', toolTag: 'tag-orange', example: '你那种温柔但坚定的感觉，我很欣赏' }], selfCheck: '每周3次以上，她不觉得讨好', upgrade: '她变得更有自信', exercise: '今天对一个人说出一件你具体欣赏的事（不是「你很好」而是「你___做得很好」）' },
+                        { num: '第六阶', name: '理解', tagClass: 'tag-blue', goal: '建立她的内在模型，知道根源', input: '重复出现的行为模式', transform: '收集模式 + 来源假设 + 时机验证', output: '能准确预测她的1个需求', operations: [{ action: '收集重复模式', tool: '侦探', toolTag: 'tag-blue', example: '每次提妈妈语速变快' }, { action: '来源假设', tool: '5W2H(Why)', toolTag: 'tag-purple', example: '可能关系紧张' }, { action: '时机验证', tool: '提问', toolTag: 'tag-green', example: '你提妈妈时好像有点激动？' }, { action: '行动转化', tool: '框架', toolTag: 'tag-blue', example: '你讨厌被催，所以我不问进度' }], selfCheck: '能准确预测她的1个需求', upgrade: '她觉得你是最懂她的人', exercise: '回忆一个反复出现的场景，思考「为什么她总是这样？」并列出3个可能原因' },
+                        { num: '第七阶', name: '爱', tagClass: 'tag-red', goal: '稳定的行动，不忽冷忽热', input: '她的脆弱时刻', transform: '保持内核稳定 + 行动表达 + 脆弱陪伴', output: '她感到安全港湾', operations: [{ action: '保持内核稳定', tool: '框架', toolTag: 'tag-blue', example: '不因她情绪波动而变' }, { action: '行动表达', tool: '—', toolTag: 'tag-gray', example: '带她提过的零食' }, { action: '脆弱时陪伴', tool: '共情', toolTag: 'tag-purple', example: '安静陪着，不说「别哭」' }, { action: '需要空间时尊重', tool: '边界', toolTag: 'tag-green', example: '我就在隔壁' }], selfCheck: '她脆弱时你能稳住，她不觉得压迫', upgrade: '她感到安全港湾', exercise: '今天做一件表达关心的小事（带她喜欢的东西、记住她说过的话）' },
+                        { num: '第八阶', name: '被爱', tagClass: 'tag-green', goal: '安心接收并回馈爱的循环', input: '她表达的爱意', transform: '识别 + 接收 + 感受 + 回馈', output: '爱的流动自然循环', operations: [{ action: '识别她的爱意', tool: '侦探', toolTag: 'tag-blue', example: '她记得我不吃香菜' }, { action: '接收不推开', tool: '接纳', toolTag: 'tag-green', example: '谢谢而不是「不用」' }, { action: '感受自己感受', tool: '诗人', toolTag: 'tag-orange', example: '我心里暖暖的' }, { action: '自然回馈', tool: '—', toolTag: 'tag-gray', example: '带她喜欢的蛋糕' }, { action: '表达被爱', tool: '诗人', toolTag: 'tag-orange', example: '你这样做，我觉得很幸福' }], selfCheck: '能安心接收，不欠债感', upgrade: '爱的流动自然循环', exercise: '当有人对你好时，先说「谢谢」，而不是「不用这么麻烦」' }
                     ],
-                    sampleTabs: [
-                        { name: '全部' },
-                        { name: '她/他' },
-                        { name: '自己' },
-                        { name: '人性' }
-                    ],
+                    sampleTabs: [{ name: '全部' }, { name: '她/他' }, { name: '自己' }, { name: '人性' }],
                     humanCategories: [
                         { name: '见人', desc: '观察对方的情绪和行为', color: 'var(--blue)', example: '她叹气时，可能是累了/烦了/委屈了' },
                         { name: '见自己', desc: '观察自己的反应和感受', color: 'var(--purple)', example: '我听到她叹气时，我会有什么反应？' },
                         { name: '见众生', desc: '理解普遍人性规律', color: 'var(--green)', example: '人在脆弱时都希望被理解' }
                     ],
                     sampleCategories: [
-                        {
-                            name: '她/他的情绪样本',
-                            icon: '💫',
-                            items: [
-                                { question: '她说「唉」', emotion: '烦躁/累/委屈', need: '被倾听' },
-                                { question: '她沉默', emotion: '可能压抑/思考', need: '给空间或轻问' },
-                                { question: '她突然客气', emotion: '可能在防御', need: '降低压力' },
-                                { question: '她问「在吗」', emotion: '有话想说', need: '给开口机会' }
-                            ]
-                        },
-                        {
-                            name: '自己的反应样本',
-                            icon: '🧘',
-                            items: [
-                                { question: '我急于给建议', emotion: '焦虑/想帮忙', need: '先倾听' },
-                                { question: '我沉默', emotion: '不知道说什么', need: '练习共情话术' },
-                                { question: '我反驳', emotion: '防御/被误解', need: '先确认再回应' }
-                            ]
-                        },
-                        {
-                            name: '人性规律样本',
-                            icon: '🔮',
-                            items: [
-                                { question: '人在脆弱时', emotion: '希望被理解', need: '不说「别哭」' },
-                                { question: '人在被否定时', emotion: '防御/攻击', need: '先共情再建议' },
-                                { question: '人在被认可时', emotion: '开心/自信', need: '具体欣赏' }
-                            ]
-                        }
+                        { name: '她/他的情绪样本', icon: '💫', items: [
+                            { question: '她说「唉」', emotion: '烦躁/累/委屈', intensity: '3-7', need: '被倾听', response: '「听起来你今天很耗，说说？」', phase: '第三阶' },
+                            { question: '她沉默', emotion: '可能压抑/思考', intensity: '2-5', need: '给空间或轻问', response: '（等3秒后）「想说的时候说，不想说也没关系」', phase: '第七阶' },
+                            { question: '她突然客气', emotion: '可能在防御', intensity: '4-7', need: '降低压力', response: '「我没有在评判，你放心说」', phase: '第三阶' },
+                            { question: '她问「在吗」', emotion: '有话想说/需要确认', intensity: '2-4', need: '给开口机会', response: '「我在，怎么了？」', phase: '第三阶' },
+                            { question: '她说「随便」', emotion: '不在乎/不想说', intensity: '2-3', need: '停止追问', response: '（停止追问，换话题或给空间）', phase: '第七阶' },
+                            { question: '她笑了但眼神没笑', emotion: '压抑/表演性微笑', intensity: '5-8', need: '被看见', response: '「你笑着，但眼睛好像有点累？」', phase: '第四阶' },
+                            { question: '她主动分享好消息', emotion: '开心/求共鸣', intensity: '2-4', need: '一起开心', response: '「哇！发生了什么让你这么开心！」', phase: '第一阶' },
+                            { question: '她批评自己', emotion: '自责/自我否定', intensity: '5-9', need: '被反驳', response: '「我觉得你___，所以这不全是你一个人的问题」', phase: '第三阶' },
+                            { question: '她说「我没事」', emotion: '压抑/试探', intensity: '4-7', need: '温和戳破', response: '「我听到你没事，但我感觉你有一点点不开心？」', phase: '第四阶' },
+                            { question: '她突然发火', emotion: '积压爆发/被触碰到痛点', intensity: '7-10', need: '先降温度', response: '（先不说话，等30秒）「我听到了」', phase: '第三阶' },
+                            { question: '她提起前任', emotion: '怀念/痛苦/未放下', intensity: '4-7', need: '不比较', response: '「那时候你一定很难受，你愿意说说吗？」', phase: '第三阶' },
+                            { question: '她说「你不懂」', emotion: '不被理解/防御', intensity: '5-8', need: '放下解释', response: '「可能我真的不懂，你能教我吗？」', phase: '第三阶' }
+                        ]},
+                        { name: '自己的反应样本', icon: '🧘', items: [
+                            { question: '我急于给建议', emotion: '焦虑/想帮忙', intensity: '4-6', need: '先倾听', response: '先重复她说的，再问「你想要建议还是只是想说说？」', phase: '第三阶' },
+                            { question: '我沉默', emotion: '不知道说什么', intensity: '2-3', need: '诚实+陪伴', response: '「我不太确定说什么，但我在这里」', phase: '第三阶' },
+                            { question: '我反驳', emotion: '防御/被误解', intensity: '6-8', need: '先确认再回应', response: '先深呼吸，再问「你是说我___？」', phase: '第三阶' },
+                            { question: '我想逃跑', emotion: '不知所措', intensity: '5-7', need: '留在原地', response: '「我有点不知所措，但我可以先陪你坐一会儿」', phase: '第七阶' },
+                            { question: '我比她更激动', emotion: '共振过度', intensity: '6-8', need: '降自己的温度', response: '先深呼吸，把注意力放回她身上', phase: '第三阶' },
+                            { question: '我觉得她无理取闹', emotion: '评判/不耐烦', intensity: '5-7', need: '悬置评判', response: '「她为什么会有这种感觉？」好奇心替代评判', phase: '第六阶' },
+                            { question: '我想帮她解决问题', emotion: '焦虑/价值感', intensity: '4-6', need: '接受陪伴本身有价值', response: '提醒自己：有时候倾听比解决方案更有价值', phase: '第三阶' },
+                            { question: '我假装理解', emotion: '不想承认不懂', intensity: '3-5', need: '诚实', response: '「这一块我可能理解得还不到位，你能举个例子吗？」', phase: '第三阶' }
+                        ]},
+                        { name: '人性规律样本', icon: '🔮', items: [
+                            { question: '人在脆弱时', emotion: '希望被理解', intensity: '7-10', need: '不说「别哭」', response: '给纸巾或安静陪伴，等她准备好了再说', phase: '第七阶' },
+                            { question: '人在被否定时', emotion: '防御/攻击', intensity: '6-9', need: '先共情再建议', response: '「我理解你为什么会这么想，同时___」', phase: '第三阶' },
+                            { question: '人在被认可时', emotion: '开心/自信', intensity: '3-5', need: '具体欣赏', response: '「你___做得很细致，一般人容易忽略」', phase: '第五阶' },
+                            { question: '人在被追问时', emotion: '压力/防御', intensity: '5-8', need: '给台阶', response: '「你不想说也没关系，我换话题了」', phase: '第七阶' },
+                            { question: '人在分享秘密时', emotion: '信任/脆弱', intensity: '6-8', need: '保守秘密', response: '不告诉第三个人，并让她知道「我记住了」', phase: '第五阶' },
+                            { question: '人在自我否定时', emotion: '羞耻/自我保护', intensity: '7-10', need: '被反驳', response: '「我看到的你不太一样，你有注意到你___吗？」', phase: '第四阶' },
+                            { question: '人在做决定时', emotion: '纠结/焦虑', intensity: '5-8', need: '不替她决定', response: '帮她列利弊，最后说「这是你的决定，我支持你」', phase: '第三阶' }
+                        ]}
                     ],
+                    // 危险模式：常见破坏关系的反应
+                    dangerousPatterns: [
+                        { name: '截断情绪流', symptom: '她刚开始倾诉，你立刻给建议或否定', result: '她下次不说了', correct: '先听完，再确认「所以你是想___？」' },
+                        { name: '否定感受', symptom: '「这有什么好难过的」「你想太多了」', result: '她的感受被否定，防御升级', correct: '「我听到了，这确实挺难的」' },
+                        { name: '追问细节', symptom: '她不想说，你一直问「到底怎么了」', result: '她关闭或撒谎', correct: '「你不想说就算了，我在这里」' },
+                        { name: '比惨', symptom: '「这算什么，我上次比你还惨」', result: '她感到自己的感受被轻视', correct: '「那确实不容易，你当时一定很___」' },
+                        { name: '过度分析', symptom: '「你这样说，是因为你童年___」', result: '她感到被审判', correct: '简单确认感受即可，不要挖根源' },
+                        { name: '太快给答案', symptom: '她说一个困难，你立刻列出解决方案', result: '她感到能力被质疑', correct: '先问「你想要建议还是只是想说说？」' },
+                        { name: '在别人面前说她', symptom: '即使是好话，在别人面前说她也不自在', result: '信任崩塌', correct: '如果要夸，当面夸，不要背后夸' },
+                        { name: '忽冷忽热', symptom: '今天很热情，明天消失', result: '她没有安全感', correct: '保持稳定的关注频率，哪怕每天只有一点点' }
+                    ],
+                    // 关系里程碑
+                    relationshipMilestones: [
+                        { level: 1, name: '陌生', icon: '🌫️', desc: '刚认识或不了解彼此', sign: '聊天有边界，话题表面', danger: '不要急于推进，保持耐心' },
+                        { level: 2, name: '熟悉', icon: '🌿', desc: '知道基本信息，有共同话题', sign: '聊天变多，愿意分享日常', danger: '不要假设了解，给标签留空间' },
+                        { level: 3, name: '信任', icon: '🌳', desc: '愿意分享感受和困惑', sign: '她向你倾诉负面情绪', danger: '保密，不拿她的秘密开玩笑' },
+                        { level: 4, name: '依赖', icon: '🌺', desc: '有事先想到对方', sign: '她开始主动关心你', danger: '不要把她的关心当作理所当然' },
+                        { level: 5, name: '亲密', icon: '🔥', desc: '可以坦诚，表达脆弱', sign: '她愿意展示不完美的一面', danger: '不利用她的脆弱，守护安全感' },
+                        { level: 6, name: '稳定', icon: '🏠', desc: '关系有韧性，可以吵架和好', sign: '吵架后能修复，信任不变', danger: '不要因为稳定就忽视维护' }
+                    ],
+
+                    // ========== 进化数据层 ==========
+                    // 知识来源追踪
+                    knowledgeSources: [
+                        { id: 'gottman', name: 'Gottman研究所', icon: '🔬', url: 'https://www.gottman.com/blog/', lastFetched: null, status: 'active', quality: '学术级' },
+                        { id: 'perel', name: 'Esther Perel', icon: '🕊️', url: 'https://www.estherperel.com', lastFetched: null, status: 'active', quality: '临床级' },
+                        { id: 'psychology_today', name: 'Psychology Today', icon: '📰', url: 'https://www.psychologytoday.com', lastFetched: null, status: 'active', quality: '大众级' },
+                        { id: 'xinhua', name: '新华网健康', icon: '🇨🇳', url: 'https://www.xinhuanet.com', lastFetched: null, status: 'active', quality: '大众级' }
+                    ],
+
+                    // 知识更新日志
+                    knowledgeUpdateLog: [
+                        { date: '2025-01-15', source: 'gottman', category: '情绪理论', item: 'Limerence（热烈迷恋）', action: '新增', detail: 'limerence是Phase 1，强迫性吸引状态，非真正亲密。关键转化在limerence消退后' },
+                        { date: '2025-01-15', source: 'gottman', category: '信任理论', item: '信任动态波动模型', action: '新增', detail: '信任不是线性额度，而是动态波动；背叛后修复需要3-5次正向互动' },
+                        { date: '2025-01-15', source: 'gottman', category: 'Bid理论', item: 'Turn Toward/Away/Against', action: '扩展', detail: '对Connection Bid的回应方式比频率更能预测关系质量' },
+                        { date: '2025-01-15', source: 'perel', category: '存在心理学', item: 'Permission to Be vs Pressure to Do', action: '新增', detail: '现代关系核心困境：需要不断用成就证明价值，而非允许自己只是存在' },
+                        { date: '2025-01-15', source: 'perel', category: '危机关系', item: '叙事弹性', action: '新增', detail: '每次危机测试关系的叙事弹性——能否共同讲述容纳变化的故事' },
+                        { date: '2025-01-15', source: 'perel', category: '创伤关系', item: 'Grief对关系的重塑', action: '新增', detail: '丧恸可能让伴侣更亲密或更疏远，无中间地带；关键变量：能否共同表达悲伤' },
+                        { date: '2025-01-15', source: 'perel', category: '数字时代', item: 'AI恋爱代理/关系展演', action: '新增', detail: '技术正在重塑亲密感的质感：屏幕vs在场、展演vs真实、算法匹配vs有机发展' },
+                        { date: '2026-05-25', source: 'gottman', category: '关系韧性', item: 'The Good and Bad of Resilience', action: '新增', detail: '韧性可以带领伴侣度过几乎任何事情。"几乎"这个词比听起来更重要。好的韧性需要与脆弱平衡' },
+                        { date: '2026-05-25', source: 'gottman', category: '疗法形式', item: '在线治疗形态选择', action: '新增', detail: '大多数伴侣问在线治疗是否有效，但很少问他们实际得到的是哪种治疗' },
+                        { date: '2026-05-25', source: 'gottman', category: '丧恸关系', item: 'Bereavement: How Loss Reshapes a Relationship', action: '新增', detail: '失去降临到你们其中一人，但它会搬到你们两个人的生活中。丧恸可能让伴侣更亲密或更疏远' },
+                        { date: '2026-05-25', source: 'gottman', category: '遗传关系', item: '5 Ways Genetics Can Impact Your Relationships', action: '新增', detail: '应激反应、依恋方式、冲突风格——都由基因塑造。基因对婚姻的影响程度是多少？' },
+                        { date: '2026-05-25', source: 'gottman', category: '先天后天', item: 'Nature vs Nurture: What Shapes Our Relationships?', action: '新增', detail: '两种力量塑造你是谁。第三种力量决定你与谁在一起' },
+                        { date: '2026-05-25', source: 'psychology_today', category: '约会经济', item: 'Date-Flation影响约会', action: '新增', detail: '美国CPI上涨催生"约会通胀"新术语，如何应对约会成本上升带来的关系压力' },
+                        { date: '2026-05-25', source: 'psychology_today', category: '疗法未来', item: 'Does Psychotherapy Still Need a Human?', action: '新增', detail: '深度治疗正在激增，AI重塑紧张的医疗系统。只有人类关系才能做到的事情变得不明确' },
+                        { date: '2026-05-25', source: 'psychology_today', category: '约会策略', item: '90天约会法则', action: '新增', detail: '像退货政策一样用90天试用期来评估一段关系，检验兼容性' }
+                    ],
+
+                    // 最新研究语录（可直接引用的金句）
+                    researchQuotes: [
+                        { quote: 'Limerence feels like love, but it\'s only Phase 1.', source: 'Gottman研究所 2024', attribution: 'Alexander Elguren', topic: '迷恋与爱' },
+                        { quote: 'People live and love even in the most dire of circumstances.', source: 'Esther Perel 2025年12月', attribution: 'Where Should We Begin?', topic: '战争与爱情' },
+                        { quote: 'Achievement has become both a burden and a measure of identity.', source: 'Esther Perel 2025年12月', attribution: 'The Permission to Be', topic: '存在vs成就' },
+                        { quote: 'The "almost" in "almost anything" matters more than it sounds.', source: 'Gottman研究所 2025', attribution: 'Resilience研究', topic: '韧性' },
+                        { quote: 'Grief arrives for one of you. It moves in with both.', source: 'Gottman研究所 2025', attribution: 'Bereavement研究', topic: '丧恸与关系' },
+                        { quote: 'Couples who can play together stay together.', source: 'Gottman研究所', attribution: 'Sound Relationship House', topic: '游戏与亲密' },
+                        { quote: 'By now, most couples ask whether online therapy works. Fewer ask what kind of therapy they are actually getting.', source: 'Gottman研究所 2026', attribution: 'Alexander Elguren', topic: '在线治疗' },
+                        { quote: 'Stress response, bonding, conflict style — all shaped by your genes.', source: 'Gottman研究所 2026', attribution: 'Genetics研究', topic: '基因与关系' },
+                        { quote: 'Two forces shape who you are. A third decides who you stay with.', source: 'Gottman研究所 2026', attribution: 'Nature vs Nurture', topic: '先天与后天' },
+                        { quote: 'Depth therapy is surging as AI reshapes a strained mental healthcare system.', source: 'Psychology Today 2026', attribution: 'Grant Hilary Brenner', topic: 'AI与疗法' },
+                        { quote: 'The facial cues you provide to others can shape how they treat us.', source: 'Psychology Today 2026', attribution: 'Susan Krauss Whitbourne', topic: '微笑科学' }
+                    ],
+
+                    // 进化状态
+                    evolutionState: {
+                        lastGlobalUpdate: '2026-05-25',
+                        totalKnowledgeNodes: 260,
+                        pendingUpdates: 0,
+                        activeSources: 4,
+                        autoUpdateEnabled: true,
+                        updateFrequency: 'weekly', // weekly / monthly / realtime
+                        userContributionsCount: 0
+                    },
                     scenarios: [
-                        { label: '场景1：她说「今天好累」', color: 'var(--blue)', text: '今天好累啊…', show: false, original: '「那你早点休息」', ideal: '「听起来今天很耗你，想聊聊吗？」', flow: '她会说下去，情绪打开' },
-                        { label: '场景2：她迟到10分钟', color: 'var(--purple)', text: '（她迟到10分钟）', show: false, original: '「你怎么又迟到？」', ideal: '「路上堵了吧？没事，我也刚到。」', flow: '她放松，可能笑' },
-                        { label: '场景3：猜错情绪', color: 'var(--green)', text: '（你猜错了她的情绪）', show: false, original: '沉默或尴尬', ideal: '「哈哈，那我猜错了。那你当时是什么感觉？」', flow: '她愿意纠正并分享' },
-                        { label: '场景4：她说「我没事」', color: 'var(--orange)', text: '我没事（但明显不是）', show: false, original: '「哦，那好吧」', ideal: '「我听到你说没事，但感觉你有点不一样。想说就说，不想说也没关系。」', flow: '她可能开始说' },
-                        { label: '场景5：她抱怨工作', color: 'var(--red)', text: '这个老板真烦人', show: false, original: '「那你换个工作吧」', ideal: '「怎么了？他做了什么让你这么烦？」', flow: '她继续倾诉' },
-                        { label: '场景6：她分享好消息', color: 'var(--pink)', text: '我今天被表扬了！', show: false, original: '「哦，挺好的」', ideal: '「哇，发生了什么？你一定很开心吧！」', flow: '她感到被分享' }
+                        { label: '场景1', color: 'var(--blue)', text: '今天好累啊…', show: false, original: '「那你早点休息」', ideal: '「听起来今天很耗你，想聊聊吗？」', flow: '她会说下去，把委屈倒出来', phase: '第二阶', tags: ['倾听', '情绪'] },
+                        { label: '场景2', color: 'var(--purple)', text: '（她迟到10分钟）', show: false, original: '「你怎么又迟到？」', ideal: '「路上堵了吧？没事，我也刚到。」', flow: '她放松，不会防御或解释', phase: '第一阶', tags: ['理解', '接纳'] },
+                        { label: '场景3', color: 'var(--green)', text: '（你猜错了她的情绪）', show: false, original: '沉默或尴尬', ideal: '「哈哈，那我猜错了。那你当时是什么感觉？」', flow: '她愿意纠正，你获得新信息', phase: '第二阶', tags: ['验证', '好奇'] },
+                        { label: '场景4', color: 'var(--orange)', text: '我没事（但明显不是）', show: false, original: '「哦，那好吧」', ideal: '「我听到你说没事，但感觉你有点不一样。」', flow: '她可能开始说，或感觉被看见', phase: '第四阶', tags: ['看见', '诚实'] },
+                        { label: '场景5', color: 'var(--red)', text: '这个老板真烦人', show: false, original: '「那你换个工作吧」', ideal: '「怎么了？他做了什么让你这么烦？」', flow: '她继续倾诉，不被截断', phase: '第三阶', tags: ['倾听', '共情'] },
+                        { label: '场景6', color: 'var(--pink)', text: '我今天被表扬了！', show: false, original: '「哦，挺好的」', ideal: '「哇，发生了什么？你一定很开心吧！」', flow: '她感到被分享，你的兴奋放大她的快乐', phase: '第一阶', tags: ['共鸣', '欣赏'] },
+                        { label: '场景7', color: 'var(--blue)', text: '我不想说了（聊天中突然冷淡）', show: false, original: '「好吧」（继续发消息）', ideal: '「好，我等你。」（停止发消息）', flow: '她感觉被尊重，压力消失', phase: '第七阶', tags: ['边界', '空间'] },
+                        { label: '场景8', color: 'var(--purple)', text: '（她说话时你忍不住打断）', show: false, original: '「我懂，你不就是想说——」', ideal: '「抱歉，你继续说。」', flow: '她感到被打断，但如果你立刻道歉会加分', phase: '第三阶', tags: ['倾听', '纠正'] },
+                        { label: '场景9', color: 'var(--orange)', text: '为什么他总是这样对我？', show: false, original: '「你想太多了吧」', ideal: '「他这样，让你感觉很不公平？」', flow: '她感到被理解，而不是被评判', phase: '第二阶', tags: ['共情', '验证'] },
+                        { label: '场景10', color: 'var(--green)', text: '（她第一次和你分享秘密）', show: false, original: '「这事你还跟别人说过吗？」', ideal: '「谢谢你愿意告诉我，我会好好守着。」', flow: '信任建立，她会更敞开', phase: '第五阶', tags: ['信任', '接纳'] },
+                        { label: '场景11', color: 'var(--red)', text: '我不想去派对，但我妈非要我去', show: false, original: '「那就别去了，直接说不舒服」', ideal: '「被困在中间很难受吧？你想去吗？」', flow: '先理解她的困境，再给选择', phase: '第三阶', tags: ['共情', '选择'] },
+                        { label: '场景12', color: 'var(--purple)', text: '你真的在乎我吗？（突然质疑关系）', show: false, original: '「你怎么又这样问？」', ideal: '「我听到了，你想确认。你感觉我最近哪里让你不踏实？」', flow: '不防御，先理解恐惧来源', phase: '第六阶', tags: ['安全感', '验证'] },
+                        { label: '场景13', color: 'var(--blue)', text: '我刚才说了很傻的话…', show: false, original: '「对啊，你是说了」（笑）', ideal: '「我倒觉得那是你真实的一面，挺可爱的。」', flow: '化解尴尬，她感到被接纳', phase: '第三阶', tags: ['接纳', '幽默'] },
+                        { label: '场景14', color: 'var(--orange)', text: '（她沉默地盯着某处）', show: false, original: '「你在想什么？说话啊」', ideal: '（不说话，轻轻把手放在她旁边）', flow: '用陪伴代替追问，她想说时会主动开口', phase: '第七阶', tags: ['陪伴', '沉默'] }
                     ],
                     trainingPlan: [
                         { week: 1, theme: '概念内化+侦探基础', tagClass: 'tag-blue', task: '每天学3个细粒度情绪词+观察1人写3个细节', tools: '侦探工具', focus: '信息阶+情绪阶' },
                         { week: 2, theme: '诗人+看见', tagClass: 'tag-orange', task: '每天感官开关3次+1次细微看见验证', tools: '诗人+侦探', focus: '感受阶+看见阶' },
                         { week: 3, theme: '5W2H+欣赏+理解', tagClass: 'tag-purple', task: '每天用5W2H分析1句话+1次具体欣赏+1次来源假设', tools: '5W2H+提问', focus: '欣赏阶+理解阶' },
                         { week: 4, theme: '爱+被爱+整合', tagClass: 'tag-green', task: '每天1次爱的行动+接收练习+完整互动日志', tools: '全部工具', focus: '全部阶' }
-                    ]
+                    ],
+                    // External data
+                    emotionData: null, sceneData: null, dialogueData: null, jokeData: null,
+                    scriptData: null, storyData: null, gameData: null, knowledgeData: null,
+                    // Browser state
+                    browserCategory: 'stories', browserFilter: '全部', browserSearch: '',
+                    browserPage: 1, browserPageSize: 12,
+                    // Modal state
+                    modalOpen: false, modalType: '', modalData: null, modalTitle: '',
+                    // Search state
+                    searchResults: null, searchLoading: false,
+                    // Loading state
+                    dataLoading: true, dataLoadError: null,
+                    // Computed shortcuts
+                    emotionSpectraFull: [], mixedEmotionsFull: [], sceneSamples: [],
+                    conversationItems: [], jokeItems: [], scriptItems: [],
+                    storyItems: [], gameItems: [], knowledgeSections: [],
                 };
             },
             methods: {
-                toggleCard(key) {
-                    this.cards[key] = !this.cards[key];
-                },
+                toggleCard(key) { this.cards[key] = !this.cards[key]; },
                 scrollToSection(id) {
-                    const element = document.getElementById(id);
-                    if (element) {
-                        element.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
                     this.sidebarOpen = false;
+                },
+                toggleDarkMode() {
+                    this.darkMode = !this.darkMode;
+                    document.documentElement.setAttribute("data-theme", this.darkMode ? "dark" : "light");
+                    localStorage.setItem("darkMode", this.darkMode);
+                },
+                async loadAllData() {
+                    this.dataLoading = true;
+                    this.dataLoadError = null;
+                    const base = "./";
+                    const files = {
+                        emotionData: "情绪词典完整版.json",
+                        sceneData: "场景样本库完整版.json",
+                        dialogueData: "对话语料库.json",
+                        jokeData: "段子库.json",
+                        scriptData: "话术库.json",
+                        storyData: "故事库.json",
+                        gameData: "游戏库.json",
+                        knowledgeData: "知识库.json"
+                    };
+                    try {
+                        const entries = Object.entries(files);
+                        const results = await Promise.allSettled(
+                            entries.map(([key, file]) =>
+                                fetch(base + file).then(r => { if (!r.ok) throw new Error(file); return r.json(); })
+                            )
+                        );
+                        for (let i = 0; i < entries.length; i++) {
+                            const [key] = entries[i];
+                            const result = results[i];
+                            if (result.status === "fulfilled") {
+                                this[key] = result.value;
+                                this.populateShortcuts(key, result.value);
+                            } else {
+                                console.warn("Failed to load", files[key]);
+                            }
+                        }
+                    } catch (e) {
+                        this.dataLoadError = "部分数据加载失败，请刷新重试";
+                    } finally {
+                        this.dataLoading = false;
+                    }
+                },
+                populateShortcuts(key, data) {
+                    if (!data) return;
+                    if (key === "emotionData") {
+                        this.emotionSpectraFull = data.emotionSpectra || [];
+                        this.mixedEmotionsFull = data.mixedEmotions || [];
+                    }
+                    if (key === "sceneData") {
+                        this.sceneSamples = data.samples || [];
+                        this.stats.scenes = this.sceneSamples.length;
+                    }
+                    if (key === "dialogueData") {
+                        this.conversationItems = data.conversations || [];
+                        this.stats.dialogues = this.conversationItems.length;
+                    }
+                    if (key === "jokeData") {
+                        this.jokeItems = data.items || [];
+                        this.stats.jokes = this.jokeItems.length;
+                    }
+                    if (key === "scriptData") {
+                        this.scriptItems = data.items || [];
+                        this.stats.scripts = this.scriptItems.length;
+                    }
+                    if (key === "storyData") {
+                        this.storyItems = data.items || [];
+                        this.stats.stories = this.storyItems.length;
+                    }
+                    if (key === "gameData") {
+                        this.gameItems = data.items || [];
+                        this.stats.games = this.gameItems.length;
+                    }
+                    if (key === "knowledgeData") {
+                        this.knowledgeSections = data.sections || [];
+                        this.stats.knowledge = this.knowledgeSections.reduce ?
+                            this.knowledgeSections.reduce((acc, s) => acc + (s.items?.length || 0), 0) : 0;
+                    }
+                },
+                openBrowser(category) {
+                    this.browserCategory = category;
+                    this.browserFilter = "全部";
+                    this.browserSearch = "";
+                    this.browserPage = 1;
+                    this.modalType = "browser";
+                    this.modalTitle = this.getBrowserTitle(category);
+                    this.modalData = null;
+                    this.modalOpen = true;
+                    setTimeout(() => document.getElementById("browserModal")?.scrollTo(0, 0), 50);
+                    document.body.style.overflow = "hidden";
+                },
+                getBrowserTitle(cat) {
+                    const titles = {
+                        stories: "📖 故事库", games: "🎮 游戏库", dialogues: "💬 对话语料",
+                        scripts: "💡 话术库", jokes: "😄 段子库", scenes: "🎭 场景样本",
+                        knowledge: "📚 知识库", emotions: "🎨 情绪词典"
+                    };
+                    return titles[cat] || cat;
+                },
+                getBrowserCategories(cat) {
+                    const cats = {
+                        stories: ["全部","案例分析","真实经历","情景剧","名言故事"],
+                        games: ["全部","破冰","沟通游戏","亲密游戏","解决冲突","依恋风格"],
+                        dialogues: ["全部","日常闲聊","情绪支持","冲突化解","亲密时刻","修复和好","深度对话","边界设定","约会规划"],
+                        scripts: ["全部","推拉","土味情话","观察","倾听","共情","升级","其他"],
+                        jokes: ["全部","调侃","暖场","化解尴尬","撒娇","反撇"],
+                        scenes: ["全部","冷场","尴尬","冲突","亲密","职场","社交"],
+                        knowledge: ["全部","八阶深度解析","依恋类型详解","四骑士深度指南","连接请求详解","情绪调节手册","Q&A"],
+                        emotions: ["全部","喜","怒","哀","惧","爱","惊","羞","复合情绪"]
+                    };
+                    return cats[cat] || ["全部"];
+                },
+                getBrowserItems() {
+                    let items = [];
+                    const cat = this.browserCategory;
+                    if (cat === "stories") items = this.storyItems;
+                    else if (cat === "games") items = this.gameItems;
+                    else if (cat === "dialogues") items = this.conversationItems;
+                    else if (cat === "scripts") items = this.scriptItems;
+                    else if (cat === "jokes") items = this.jokeItems;
+                    else if (cat === "scenes") items = this.sceneSamples;
+                    else if (cat === "knowledge") items = this.knowledgeSections;
+                    else if (cat === "emotions") {
+                        items = this.emotionSpectraFull.flatMap(s =>
+                            s.levels?.flatMap(l => (l.synonyms || []).map(w => ({ word: w, level: l.level, spectrum: s.name }))) || []
+                        );
+                    }
+                    if (this.browserFilter !== "全部") {
+                        if (cat === "emotions") items = items.filter(i => i.spectrum === this.browserFilter);
+                        else if (cat === "knowledge") items = items.filter(i => i.name?.includes(this.browserFilter));
+                        else items = items.filter(i => i.category === this.browserFilter);
+                    }
+                    if (this.browserSearch.trim()) {
+                        const q = this.browserSearch.toLowerCase();
+                        items = items.filter(i => JSON.stringify(i).toLowerCase().includes(q));
+                    }
+                    return items;
+                },
+                getBrowserPaginated() {
+                    const all = this.getBrowserItems();
+                    const start = (this.browserPage - 1) * this.browserPageSize;
+                    return all.slice(start, start + this.browserPageSize);
+                },
+                getBrowserTotalPages() {
+                    return Math.ceil(this.getBrowserItems().length / this.browserPageSize);
+                },
+                prevPage() { if (this.browserPage > 1) this.browserPage--; },
+                nextPage() { if (this.browserPage < this.getBrowserTotalPages()) this.browserPage++; },
+                openModal(type, data, title) {
+                    this.modalType = type;
+                    this.modalData = data;
+                    this.modalTitle = title || this.getBrowserTitle(type);
+                    this.modalOpen = true;
+                    document.body.style.overflow = "hidden";
+                },
+                closeModal() {
+                    this.modalOpen = false;
+                    this.modalData = null;
+                    this.modalType = "";
+                    document.body.style.overflow = "";
+                },
+                performSearch() {
+                    if (!this.searchQuery.trim()) { this.searchResults = null; return; }
+                    this.searchLoading = true;
+                    const q = this.searchQuery.toLowerCase();
+                    const results = [];
+                    const addIf = (items, label, getText) => {
+                        items.forEach(item => {
+                            const text = getText(item);
+                            if (text && text.toLowerCase().includes(q)) {
+                                results.push({ ...item, _label: label, _text: text.substring(0, 200) });
+                            }
+                        });
+                    };
+                    this.storyItems.forEach(s => addIf([s], "故事", i => i.title + " " + i.content));
+                    this.gameItems.forEach(g => addIf([g], "游戏", i => i.name + " " + i.description));
+                    this.conversationItems.forEach(d => addIf([d], "对话", i => i.situation + " " + JSON.stringify(i.messages)));
+                    this.scriptItems.forEach(s => addIf([s], "话术", i => i.context + " " + (i.examples?.join(" ") || "")));
+                    this.jokeItems.forEach(j => addIf([j], "段子", i => i.content));
+                    this.sceneSamples.forEach(s => addIf([s], "场景", i => i.context + " " + (i.analysis || "")));
+                    this.searchResults = results.slice(0, 50);
+                    this.searchLoading = false;
+                },
+                openSearchResult(item) {
+                    if (item._label === "故事") this.openModal("story", item, item.title);
+                    else if (item._label === "游戏") this.openModal("game", item, item.name);
+                    else if (item._label === "对话") this.openModal("dialogue", item, item.situation);
+                    else if (item._label === "话术") this.openModal("script", item, item.context);
+                    else if (item._label === "段子") this.openModal("joke", item, "段子");
+                    else if (item._label === "场景") this.openModal("scene", item, item.context);
+                },
+                getItemTags(item) { return (item.tags || []).slice(0, 3); },
+                toggleScenario(idx) { this.scenarios[idx].show = !this.scenarios[idx].show; },
+            },
+            mounted() {
+                if (localStorage.getItem("darkMode") === "true" ||
+                    (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches && !localStorage.getItem("darkMode"))) {
+                    this.darkMode = true;
+                    document.documentElement.setAttribute("data-theme", "dark");
                 }
+                this.loadAllData();
             }
         }).mount('#app');
-    </script>
+</script>
 </body>
 </html>

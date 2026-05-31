@@ -1,10 +1,26 @@
 """
 对比分析引擎
 """
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Optional
+from typing import ClassVar, NamedTuple
 
 from loguru import logger
+
+RuleCheck = Callable[[str], bool]
+
+
+class PenaltyRule(NamedTuple):
+    name: str
+    check: RuleCheck
+    penalty: int
+    reason: str
+
+
+class BonusRule(NamedTuple):
+    name: str
+    check: RuleCheck
+    bonus: int
 
 
 @dataclass
@@ -14,64 +30,48 @@ class ComparisonResult:
     ideal_response: str
     response_type: str  # soft/tension/humor
     score: float  # 0-100
-    differences: list[dict]  # [{"type": "missed_signal", "desc": "..."}]
+    differences: list[dict[str, str | int]]  # [{"type": "missed_signal", "desc": "..."}]
     suggestions: list[str]
-    principle_ref: Optional[str] = None
+    principle_ref: str | None = None
 
 
 class ComparisonEngine:
     """对比分析引擎 - 核心学习机制"""
 
     # 响应质量评估规则
-    QUALITY_RULES = [
-        {
-            "name": "封闭式回应",
-            "check": lambda o: len(o) < 10 or o in ["嗯", "哦", "好", "是吧", "是吗"],
-            "penalty": 30,
-            "reason": "封闭式回应会停止对话，错过信号"
-        },
-        {
-            "name": "忽视情绪信号",
-            "check": lambda o: "情绪" in o and len(o) < 15,
-            "penalty": 25,
-            "reason": "识别到情绪但未充分回应"
-        },
-        {
-            "name": "急于解决问题",
-            "check": lambda o: "所以" in o or "应该" in o,
-            "penalty": 20,
-            "reason": "情绪未接住就急于给建议"
-        },
-        {
-            "name": "过度分析",
-            "check": lambda o: len(o) > 100 and "因为" in o,
-            "penalty": 15,
-            "reason": "过度理性分析会让人感到不被理解"
-        },
+    QUALITY_RULES: ClassVar[list[PenaltyRule]] = [
+        PenaltyRule(
+            name="封闭式回应",
+            check=lambda o: len(o) < 10 or o in ["嗯", "哦", "好", "是吧", "是吗"],
+            penalty=30,
+            reason="封闭式回应会停止对话，错过信号",
+        ),
+        PenaltyRule(
+            name="忽视情绪信号",
+            check=lambda o: "情绪" in o and len(o) < 15,
+            penalty=25,
+            reason="识别到情绪但未充分回应",
+        ),
+        PenaltyRule(
+            name="急于解决问题",
+            check=lambda o: "所以" in o or "应该" in o,
+            penalty=20,
+            reason="情绪未接住就急于给建议",
+        ),
+        PenaltyRule(
+            name="过度分析",
+            check=lambda o: len(o) > 100 and "因为" in o,
+            penalty=15,
+            reason="过度理性分析会让人感到不被理解",
+        ),
     ]
 
     # 优点规则
-    QUALITY_BONUS = [
-        {
-            "name": "情绪反射",
-            "check": lambda o: any(kw in o for kw in ["听起来", "感觉你", "是不是有点"]),
-            "bonus": 20,
-        },
-        {
-            "name": "开放提问",
-            "check": lambda o: any(kw in o for kw in ["怎么", "什么", "为什么", "能说说"]),
-            "bonus": 15,
-        },
-        {
-            "name": "具体观察",
-            "check": lambda o: any(kw in o for kw in ["刚才", "注意到", "你刚才"]),
-            "bonus": 15,
-        },
-        {
-            "name": "给退路",
-            "check": lambda o: any(kw in o for kw in ["忙的话", "没关系", "要是"]),
-            "bonus": 10,
-        },
+    QUALITY_BONUS: ClassVar[list[BonusRule]] = [
+        BonusRule(name="情绪反射", check=lambda o: any(kw in o for kw in ["听起来", "感觉你", "是不是有点"]), bonus=20),
+        BonusRule(name="开放提问", check=lambda o: any(kw in o for kw in ["怎么", "什么", "为什么", "能说说"]), bonus=15),
+        BonusRule(name="具体观察", check=lambda o: any(kw in o for kw in ["刚才", "注意到", "你刚才"]), bonus=15),
+        BonusRule(name="给退路", check=lambda o: any(kw in o for kw in ["忙的话", "没关系", "要是"]), bonus=10),
     ]
 
     def __init__(self) -> None:
@@ -97,26 +97,26 @@ class ComparisonEngine:
         base_score = 100
 
         # 检查问题
-        differences: list[dict] = []
+        differences: list[dict[str, str | int]] = []
         for rule in self.QUALITY_RULES:
-            if rule["check"](original_response):
-                base_score -= rule["penalty"]
+            if rule.check(original_response):
+                base_score -= rule.penalty
                 differences.append({
                     "type": "problem",
-                    "name": rule["name"],
-                    "desc": rule["reason"],
-                    "penalty": rule["penalty"]
+                    "name": rule.name,
+                    "desc": rule.reason,
+                    "penalty": rule.penalty,
                 })
 
         # 检查优点
-        for rule in self.QUALITY_BONUS:
-            if rule["check"](original_response):
-                base_score += rule["bonus"]
+        for bonus_rule in self.QUALITY_BONUS:
+            if bonus_rule.check(original_response):
+                base_score += bonus_rule.bonus
                 differences.append({
                     "type": "bonus",
-                    "name": rule["name"],
-                    "desc": f"好回应：{rule['name']}",
-                    "bonus": rule["bonus"]
+                    "name": bonus_rule.name,
+                    "desc": f"好回应：{bonus_rule.name}",
+                    "bonus": bonus_rule.bonus,
                 })
 
         # 限制分数范围
@@ -139,7 +139,7 @@ class ComparisonEngine:
 
     def _generate_suggestions(
         self,
-        differences: list[dict],
+        differences: list[dict[str, str | int]],
         original: str,
         ideal: str
     ) -> list[str]:

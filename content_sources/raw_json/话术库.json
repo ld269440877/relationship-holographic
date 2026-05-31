@@ -1,0 +1,1278 @@
+{
+  "metadata": {
+    "name": "微观关系动力学全息系统 - 话术库",
+    "version": "1.0.0",
+    "totalItems": 100,
+    "lastUpdated": "2026-05-20"
+  },
+  "categories": [
+    {
+      "name": "推拉",
+      "description": "欲擒故纵，推开再拉近",
+      "icon": "🔄",
+      "count": 20
+    },
+    {
+      "name": "土味情话",
+      "description": "直接表达爱意的甜蜜话语",
+      "icon": "💕",
+      "count": 26
+    },
+    {
+      "name": "观察",
+      "description": "基于观察的细腻回应",
+      "icon": "🔍",
+      "count": 16
+    },
+    {
+      "name": "倾听",
+      "description": "确认理解的话语",
+      "icon": "👂",
+      "count": 12
+    },
+    {
+      "name": "共情",
+      "description": "理解感受的话语",
+      "icon": "❤️",
+      "count": 14
+    },
+    {
+      "name": "升级",
+      "description": "推进关系的承诺话语",
+      "icon": "⬆️",
+      "count": 12
+    }
+  ],
+  "items": [
+    {
+      "id": "tac_001",
+      "category": "推拉",
+      "content": "你很好，但如果我这样说的话，你会不会觉得我太直接了？",
+      "when_to_use": "暧昧期想要推进但又不确定对方反应",
+      "danger_level": 2,
+      "example_context": "你觉得我怎么样？",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_002",
+      "category": "推拉",
+      "content": "我本来想今天不联系你的，结果还是没忍住。",
+      "when_to_use": "她觉得你太黏，想要空间时",
+      "danger_level": 2,
+      "example_context": "已经连续联系三天",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_003",
+      "category": "推拉",
+      "content": "你再这样我可要当真了哦。",
+      "when_to_use": "她说了暧昧的话，想确认关系",
+      "danger_level": 2,
+      "example_context": "她说想我了",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_004",
+      "category": "推拉",
+      "content": "我平时不是这样的人，但不知道为什么对你…算了，不说了。",
+      "when_to_use": "暧昧期制造悬念",
+      "danger_level": 2,
+      "example_context": "刚认识不久",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_005",
+      "category": "推拉",
+      "content": "你这样会让我误会的。",
+      "when_to_use": "她说了让你心动的话，想表达",
+      "danger_level": 2,
+      "example_context": "她夸我很细心",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_006",
+      "category": "推拉",
+      "content": "我决定了，以后你说什么我都听。",
+      "when_to_use": "她想要掌控感时",
+      "danger_level": 1,
+      "example_context": "她让你做决定",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_007",
+      "category": "推拉",
+      "content": "我发现自己越来越喜欢你了，但我不想给你压力。",
+      "when_to_use": "感情明确但她在犹豫",
+      "danger_level": 2,
+      "example_context": "她说还没准备好",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_008",
+      "category": "推拉",
+      "content": "你不回复我的时候我就想，你一定是在忙，或者在想着我。",
+      "when_to_use": "她经常不秒回",
+      "danger_level": 1,
+      "example_context": "她总是很久才回消息",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_009",
+      "category": "推拉",
+      "content": "今天不行，但我可以期待明天吗？",
+      "when_to_use": "她拒绝了某个邀约",
+      "danger_level": 1,
+      "example_context": "约她周末出去",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_010",
+      "category": "推拉",
+      "content": "如果你再这样看我，我可要亲上来了。",
+      "when_to_use": "约会中有亲密氛围，眼神接触多",
+      "danger_level": 3,
+      "example_context": "对视超过5秒",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_011",
+      "category": "土味情话",
+      "content": "我想你了，不是随便想想的那种，是那种睁开眼第一个想到你的想。",
+      "when_to_use": "想表达深度想念",
+      "danger_level": 1,
+      "example_context": "她问你在干嘛",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_012",
+      "category": "土味情话",
+      "content": "你知道我为什么会喜欢你吗？因为你的每一点都刚刚好。",
+      "when_to_use": "她问为什么喜欢她",
+      "danger_level": 1,
+      "example_context": "她问喜欢我什么",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_013",
+      "category": "土味情话",
+      "content": "如果想你是一种病，那我已经病入膏肓了。",
+      "when_to_use": "想念到极致时",
+      "danger_level": 1,
+      "example_context": "异地三天",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_014",
+      "category": "土味情话",
+      "content": "我以前觉得'一日不见如隔三秋'是夸张，现在发现是真的。",
+      "when_to_use": "分开后联系",
+      "danger_level": 1,
+      "example_context": "她问想不想她",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_015",
+      "category": "土味情话",
+      "content": "你笑起来真好看，但我想让你只对我笑。",
+      "when_to_use": "她笑得很好看时",
+      "danger_level": 2,
+      "example_context": "她发了张笑的照片",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_016",
+      "category": "土味情话",
+      "content": "我不是喜欢你，我只是对你有一点点心动，加上亿点点。",
+      "when_to_use": "想用数字游戏表达",
+      "danger_level": 1,
+      "example_context": "她问喜欢多少",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_017",
+      "category": "土味情话",
+      "content": "我有一百种想你的方式，想你想得停不下来。",
+      "when_to_use": "表达想念的强烈",
+      "danger_level": 1,
+      "example_context": "睡前聊天",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_018",
+      "category": "土味情话",
+      "content": "如果我有超能力，我要穿越到我们第一次见面那天，再喜欢你一次。",
+      "when_to_use": "纪念日或感情深时",
+      "danger_level": 1,
+      "example_context": "恋爱纪念日",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_019",
+      "category": "土味情话",
+      "content": "我不完整，只有你在我身边的时候，我才觉得自己是完整的。",
+      "when_to_use": "感情很深时表达",
+      "danger_level": 1,
+      "example_context": "她问你爱她什么",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_020",
+      "category": "土味情话",
+      "content": "你对我来说是特别的，别人问我喜欢你哪里，我说不上来，但就是喜欢。",
+      "when_to_use": "说不清为什么喜欢",
+      "danger_level": 1,
+      "example_context": "她问喜欢什么",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_021",
+      "category": "土味情话",
+      "content": "我本来想低调，但喜欢你这件事我实在低调不起来。",
+      "when_to_use": "想要高调表白",
+      "danger_level": 1,
+      "example_context": "想要公开关系",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_022",
+      "category": "土味情话",
+      "content": "我不想住太大的房子，因为那样我找你的时候会花更久。",
+      "when_to_use": "关于未来同居的话题",
+      "danger_level": 1,
+      "example_context": "讨论未来",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_023",
+      "category": "土味情话",
+      "content": "我每次看到月亮，都会想同一个问题。",
+      "when_to_use": "关于想念的铺垫",
+      "danger_level": 1,
+      "example_context": "晚上联系",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_024",
+      "category": "土味情话",
+      "content": "别人问我喜欢你什么，我说我不知道，但我知道我离不开你。",
+      "when_to_use": "深层表达",
+      "danger_level": 1,
+      "example_context": "她问喜欢你什么",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_025",
+      "category": "土味情话",
+      "content": "我每次生气的时候，想到你就会笑，这就是你对我的影响力。",
+      "when_to_use": "表达她的重要性",
+      "danger_level": 1,
+      "example_context": "吵架后和好",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_026",
+      "category": "土味情话",
+      "content": "你说你喜欢听情话，我学了很多，但每次看到你，我脑子里就只剩下一句话：我喜欢你。",
+      "when_to_use": "情话储备用完时",
+      "danger_level": 1,
+      "example_context": "她要你说情话",
+      "tags": [
+        "土味情话",
+        "浪漫"
+      ]
+    },
+    {
+      "id": "tac_027",
+      "category": "观察",
+      "content": "我发现你今天心情不错，是因为我吗？",
+      "when_to_use": "她心情明显好的时候",
+      "danger_level": 1,
+      "example_context": "她哼着歌",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_028",
+      "category": "观察",
+      "content": "你今天有点不一样，说不出来哪里，但就是不一样。",
+      "when_to_use": "她有新变化时",
+      "danger_level": 1,
+      "example_context": "她换了发型",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_029",
+      "category": "观察",
+      "content": "你说话的时候眼睛会亮，你知道吗？",
+      "when_to_use": "她谈到喜欢的话题",
+      "danger_level": 1,
+      "example_context": "她说起旅行",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_030",
+      "category": "观察",
+      "content": "我注意到你有个小习惯，每次思考的时候都会这样…（模仿）",
+      "when_to_use": "发现她的习惯时",
+      "danger_level": 1,
+      "example_context": "观察到她摸耳垂",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_031",
+      "category": "观察",
+      "content": "你开心的时候声音会变轻，你知道吗？",
+      "when_to_use": "她开心时",
+      "danger_level": 1,
+      "example_context": "她笑得很开心",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_032",
+      "category": "观察",
+      "content": "我发现你说'没事'的时候，通常都有事。",
+      "when_to_use": "她掩饰情绪时",
+      "danger_level": 2,
+      "example_context": "她说没事",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_033",
+      "category": "观察",
+      "content": "你提到某个人时语气会变轻，我猜这个人对你很重要。",
+      "when_to_use": "她提到某个特别的人",
+      "danger_level": 1,
+      "example_context": "她提到妈妈",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_034",
+      "category": "观察",
+      "content": "我发现你生气了不会直接说，会先这样…（描述她的模式）",
+      "when_to_use": "了解她的情绪模式后",
+      "danger_level": 2,
+      "example_context": "她每次生气都冷战",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_035",
+      "category": "观察",
+      "content": "你说话的时候手会不自觉地动，很可爱。",
+      "when_to_use": "她说话时观察到她有手势",
+      "danger_level": 1,
+      "example_context": "她描述事情",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_036",
+      "category": "观察",
+      "content": "你生气的时候会这样深呼吸，我学会了，我下次看到这个就知道要先让你冷静。",
+      "when_to_use": "观察到她的情绪处理方式",
+      "danger_level": 1,
+      "example_context": "她深呼吸",
+      "tags": [
+        "观察",
+        "共情",
+        "关注细节"
+      ]
+    },
+    {
+      "id": "tac_037",
+      "category": "倾听",
+      "content": "我听到了。你觉得…（重复她的话）。这种感觉一定很…（命名情绪）。",
+      "when_to_use": "她分享了感受时",
+      "danger_level": 1,
+      "example_context": "她说了工作烦恼",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_038",
+      "category": "倾听",
+      "content": "我不太确定我理解对了没有，你想说的是…？",
+      "when_to_use": "她表达了复杂情感时",
+      "danger_level": 1,
+      "example_context": "她说了一大段话",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_039",
+      "category": "倾听",
+      "content": "谢谢你告诉我这些。我知道这不容易。",
+      "when_to_use": "她分享了脆弱的事",
+      "danger_level": 1,
+      "example_context": "她说起了前任",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_040",
+      "category": "倾听",
+      "content": "我想确认一下我理解对了没有…（总结她的话）",
+      "when_to_use": "她说完了一件事",
+      "danger_level": 1,
+      "example_context": "她解释了一件事",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_041",
+      "category": "倾听",
+      "content": "所以你的意思是…（换一种方式重复她的核心需求）",
+      "when_to_use": "她的需求不明确时",
+      "danger_level": 1,
+      "example_context": "她拐弯抹角",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_042",
+      "category": "倾听",
+      "content": "我听到了。这件事让你觉得…（命名感受）。",
+      "when_to_use": "她分享了事情经过",
+      "danger_level": 1,
+      "example_context": "她说被老板批评了",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_043",
+      "category": "倾听",
+      "content": "你说完我才发现，原来你是这个意思。我之前没理解到。",
+      "when_to_use": "纠正自己的理解",
+      "danger_level": 1,
+      "example_context": "误会了她的意思",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_044",
+      "category": "倾听",
+      "content": "你说的时候我在认真听，我能感觉到你…（说出她话里的感受）。",
+      "when_to_use": "她需要被听到时",
+      "danger_level": 1,
+      "example_context": "她说没人听她说话",
+      "tags": [
+        "倾听",
+        "确认理解"
+      ]
+    },
+    {
+      "id": "tac_045",
+      "category": "共情",
+      "content": "我知道这让你很难受。换是我，我也会这样的。",
+      "when_to_use": "她情绪低落时",
+      "danger_level": 1,
+      "example_context": "她搞砸了一件事",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_046",
+      "category": "共情",
+      "content": "听起来你今天像背着一座山回来。",
+      "when_to_use": "她很累的时候",
+      "danger_level": 1,
+      "example_context": "她说好累",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_047",
+      "category": "共情",
+      "content": "这种感觉我知道，被误解的时候特别难受。",
+      "when_to_use": "她被误解时",
+      "danger_level": 1,
+      "example_context": "她说被冤枉了",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_048",
+      "category": "共情",
+      "content": "我理解你为什么会这样想。如果我是你，我可能也会这样。",
+      "when_to_use": "她做了让你不理解的行为",
+      "danger_level": 1,
+      "example_context": "她突然冷淡",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_049",
+      "category": "共情",
+      "content": "我知道说这些不容易，谢谢你愿意告诉我。",
+      "when_to_use": "她分享了脆弱的事",
+      "danger_level": 1,
+      "example_context": "她说了家庭的事",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_050",
+      "category": "共情",
+      "content": "我能理解你为什么纠结。换是我在那个处境里，我也不知道怎么选。",
+      "when_to_use": "她面临困难选择",
+      "danger_level": 1,
+      "example_context": "她说在犹豫",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_051",
+      "category": "共情",
+      "content": "我听到你说你觉得自己不够好。我不这样认为，但我知道这种感觉是真实的。",
+      "when_to_use": "她自我否定时",
+      "danger_level": 1,
+      "example_context": "她说我不够好",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_052",
+      "category": "共情",
+      "content": "我知道异地很难。我知道这对你来说也不容易。",
+      "when_to_use": "她为异地烦恼时",
+      "danger_level": 1,
+      "example_context": "她说想我了",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_053",
+      "category": "共情",
+      "content": "我理解你为什么要这样做。换我可能也一样。",
+      "when_to_use": "她做了让你不解的事",
+      "danger_level": 1,
+      "example_context": "她突然说想冷静",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_054",
+      "category": "共情",
+      "content": "我知道你很难。我在这里。",
+      "when_to_use": "她很难过时",
+      "danger_level": 1,
+      "example_context": "她在哭",
+      "tags": [
+        "共情",
+        "理解",
+        "支持"
+      ]
+    },
+    {
+      "id": "tac_055",
+      "category": "升级",
+      "content": "我发现我越来越离不开你了，你知道吗？",
+      "when_to_use": "感情稳定后加深",
+      "danger_level": 1,
+      "example_context": "关系稳定三个月",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_056",
+      "category": "升级",
+      "content": "我想把你介绍给我的朋友们，你愿意吗？",
+      "when_to_use": "想公开关系",
+      "danger_level": 1,
+      "example_context": "认识半年",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_057",
+      "category": "升级",
+      "content": "我希望我们以后…（描述未来场景）。你觉得呢？",
+      "when_to_use": "谈论未来时",
+      "danger_level": 1,
+      "example_context": "感情稳定",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_058",
+      "category": "升级",
+      "content": "我想和你一起去做…（具体事情）。",
+      "when_to_use": "想要一起尝试新事物",
+      "danger_level": 1,
+      "example_context": "有共同兴趣",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_059",
+      "category": "升级",
+      "content": "我以前觉得独处最好，但认识你之后，我觉得两个人也不赖。",
+      "when_to_use": "关系深入时",
+      "danger_level": 1,
+      "example_context": "她问我想不想结婚",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_060",
+      "category": "升级",
+      "content": "你愿意成为我故事里的人吗？",
+      "when_to_use": "想要确定关系",
+      "danger_level": 2,
+      "example_context": "暧昧很久了",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_061",
+      "category": "升级",
+      "content": "我不在乎别人怎么看，我只知道我选择你。",
+      "when_to_use": "她担心外界的看法",
+      "danger_level": 1,
+      "example_context": "她说担心朋友怎么看",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_062",
+      "category": "升级",
+      "content": "我想和你一起变老，你介意吗？",
+      "when_to_use": "感情极深时",
+      "danger_level": 2,
+      "example_context": "恋爱很久",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_063",
+      "category": "升级",
+      "content": "如果可以的话，我想让你认识我妈。",
+      "when_to_use": "想让她进入更深的圈子",
+      "danger_level": 1,
+      "example_context": "关系半年以上",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_064",
+      "category": "升级",
+      "content": "我想在你身边。我不想只是你的男/女朋友，我想成为你信任的人。",
+      "when_to_use": "感情深入时",
+      "danger_level": 1,
+      "example_context": "她说需要安全感",
+      "tags": [
+        "升级",
+        "承诺",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "tac_065",
+      "category": "推拉",
+      "content": "你今天表现挺好的，不过我不确定明天还会不会这样想。",
+      "when_to_use": "暧昧期想要制造不确定性，让对方保持兴趣",
+      "danger_level": 3,
+      "example_context": "你觉得我今天表现怎么样？",
+      "tags": [
+        "推拉",
+        "不确定性"
+      ]
+    },
+    {
+      "id": "tac_066",
+      "category": "推拉",
+      "content": "我本来想约你的，但又怕你觉得我太黏人。",
+      "when_to_use": "暧昧期想要邀约但又不确定对方态度",
+      "danger_level": 2,
+      "example_context": "最近想约你出来玩",
+      "tags": [
+        "推拉",
+        "制造悬念"
+      ]
+    },
+    {
+      "id": "tac_067",
+      "category": "推拉",
+      "content": "你刚认识我的时候，不是对我挺冷淡的吗？",
+      "when_to_use": "关系稳定后回顾过去，制造甜蜜反差",
+      "danger_level": 1,
+      "example_context": "回忆相识的过程",
+      "tags": [
+        "推拉",
+        "反差"
+      ]
+    },
+    {
+      "id": "tac_068",
+      "category": "推拉",
+      "content": "我可以喜欢你，但我不确定我应不应该。",
+      "when_to_use": "暧昧期想要确认关系但又欲擒故纵",
+      "danger_level": 3,
+      "example_context": "你喜欢我吗？",
+      "tags": [
+        "推拉",
+        "欲擒故纵"
+      ]
+    },
+    {
+      "id": "tac_069",
+      "category": "推拉",
+      "content": "你这人吧，其他都好，就是有时候太让人放不下心了。",
+      "when_to_use": "调侃时同时表达喜欢和无奈",
+      "danger_level": 1,
+      "example_context": "对方做了什么让你担心的事",
+      "tags": [
+        "推拉",
+        "矛盾情感"
+      ]
+    },
+    {
+      "id": "tac_070",
+      "category": "推拉",
+      "content": "说真的，你让我有点矛盾。想靠近你，又怕靠太近了你会跑。",
+      "when_to_use": "暧昧期坦诚表达内心的纠结",
+      "danger_level": 2,
+      "example_context": "你对这段关系的感受",
+      "tags": [
+        "推拉",
+        "坦诚"
+      ]
+    },
+    {
+      "id": "tac_071",
+      "category": "推拉",
+      "content": "我今天本来不想理你的，但想了想还是算了。",
+      "when_to_use": "假装不在乎但实际上很在乎",
+      "danger_level": 2,
+      "example_context": "对方发了消息",
+      "tags": [
+        "推拉",
+        "傲娇"
+      ]
+    },
+    {
+      "id": "tac_072",
+      "category": "推拉",
+      "content": "别以为我不知道你在想什么，我只是不想拆穿你而已。",
+      "when_to_use": "调侃时展现对对方的了解",
+      "danger_level": 1,
+      "example_context": "对方有点小动作",
+      "tags": [
+        "推拉",
+        "掌控感"
+      ]
+    },
+    {
+      "id": "tac_073",
+      "category": "推拉",
+      "content": "我再给你一次机会，好好表现。",
+      "when_to_use": "假装高冷但给对方台阶",
+      "danger_level": 2,
+      "example_context": "对方做错了什么事道歉",
+      "tags": [
+        "推拉",
+        "给台阶"
+      ]
+    },
+    {
+      "id": "tac_074",
+      "category": "推拉",
+      "content": "你知道我最讨厌什么吗？就是明明在乎却装作不在乎的人。",
+      "when_to_use": "暗示对方不要太傲娇",
+      "danger_level": 2,
+      "example_context": "对方有点傲娇的态度",
+      "tags": [
+        "推拉",
+        "暗示"
+      ]
+    },
+    {
+      "id": "tac_075",
+      "category": "土味情话",
+      "content": "你属什么？属牛？不对，你属我。",
+      "when_to_use": "轻松调情氛围中",
+      "danger_level": 1,
+      "example_context": "问对方属相",
+      "tags": [
+        "土味情话",
+        "直接"
+      ]
+    },
+    {
+      "id": "tac_076",
+      "category": "土味情话",
+      "content": "我觉得你不适合谈恋爱，你适合和我谈恋爱。",
+      "when_to_use": "暧昧期想要表明心意",
+      "danger_level": 2,
+      "example_context": "聊到感情话题",
+      "tags": [
+        "土味情话",
+        "表白"
+      ]
+    },
+    {
+      "id": "tac_077",
+      "category": "土味情话",
+      "content": "我有两个愿望一直在心头，一个是，另一个也是。",
+      "when_to_use": "留白让对方追问再揭示答案",
+      "danger_level": 1,
+      "example_context": "问有什么愿望",
+      "tags": [
+        "土味情话",
+        "留白"
+      ]
+    },
+    {
+      "id": "tac_078",
+      "category": "土味情话",
+      "content": "你今天怪怪的，怪好看的。",
+      "when_to_use": "夸赞时带点调皮",
+      "danger_level": 1,
+      "example_context": "见面时夸对方",
+      "tags": [
+        "土味情话",
+        "调皮"
+      ]
+    },
+    {
+      "id": "tac_079",
+      "category": "土味情话",
+      "content": "以后别叫我单身狗了，叫我热狗吧，因为你让我感到炙热。",
+      "when_to_use": "有对象后调侃自己是单身狗",
+      "danger_level": 1,
+      "example_context": "被问为什么没有对象",
+      "tags": [
+        "土味情话",
+        "自嘲"
+      ]
+    },
+    {
+      "id": "tac_080",
+      "category": "土味情话",
+      "content": "遇见你的那一刻起，我的GPS都失效了，因为我完全迷路了。",
+      "when_to_use": "形容遇到对方后的迷失感",
+      "danger_level": 2,
+      "example_context": "形容心动的感觉",
+      "tags": [
+        "土味情话",
+        "心动"
+      ]
+    },
+    {
+      "id": "tac_081",
+      "category": "土味情话",
+      "content": "你知道我的缺点是什么吗？是缺点你。",
+      "when_to_use": "简短直接的表白方式",
+      "danger_level": 1,
+      "example_context": "被问有什么缺点",
+      "tags": [
+        "土味情话",
+        "直接"
+      ]
+    },
+    {
+      "id": "tac_082",
+      "category": "土味情话",
+      "content": "我想变成一把伞，这样无论晴天雨天，我都能罩着你。",
+      "when_to_use": "想要表达保护欲和陪伴",
+      "danger_level": 1,
+      "example_context": "聊到天气或者想要保护对方",
+      "tags": [
+        "土味情话",
+        "保护"
+      ]
+    },
+    {
+      "id": "tac_083",
+      "category": "土味情话",
+      "content": "你怕不怕麻烦？不怕？那正好，因为我已经被你缠上了。",
+      "when_to_use": "调情时表达已经爱上对方",
+      "danger_level": 2,
+      "example_context": "暧昧期表示已经离不开对方",
+      "tags": [
+        "土味情话",
+        "缠人"
+      ]
+    },
+    {
+      "id": "tac_084",
+      "category": "土味情话",
+      "content": "我本想浪荡一生，却不小心中了你的毒。",
+      "when_to_use": "形容被对方吸引无法自拔",
+      "danger_level": 1,
+      "example_context": "聊到为什么喜欢对方",
+      "tags": [
+        "土味情话",
+        "沉溺"
+      ]
+    },
+    {
+      "id": "tac_085",
+      "category": "观察",
+      "content": "你每次说'算了'的时候，其实都不是真的算了对吧？",
+      "when_to_use": "指出对方隐藏的情绪",
+      "danger_level": 2,
+      "example_context": "对方说算了但明显还在乎",
+      "tags": [
+        "观察",
+        "洞察"
+      ]
+    },
+    {
+      "id": "tac_086",
+      "category": "观察",
+      "content": "你最近是不是有什么事憋着？你笑的时候眼睛不是这样的。",
+      "when_to_use": "发现对方情绪异常但对方不说",
+      "danger_level": 2,
+      "example_context": "对方明显有心事但不说",
+      "tags": [
+        "观察",
+        "关心"
+      ]
+    },
+    {
+      "id": "tac_087",
+      "category": "观察",
+      "content": "我发现你心情好的时候打字会快一点。",
+      "when_to_use": "侧面表达一直在注意对方",
+      "danger_level": 1,
+      "example_context": "注意到对方消息回复速度变化",
+      "tags": [
+        "观察",
+        "细节"
+      ]
+    },
+    {
+      "id": "tac_088",
+      "category": "观察",
+      "content": "你每次纠结要不要发消息的时候，最后都会发。",
+      "when_to_use": "指出对方的行为模式",
+      "danger_level": 1,
+      "example_context": "对方纠结要不要联系你",
+      "tags": [
+        "观察",
+        "了解"
+      ]
+    },
+    {
+      "id": "tac_089",
+      "category": "观察",
+      "content": "你生气的时候会说很多话，不生气的时候反而很安静。",
+      "when_to_use": "表达对对方情绪模式的了解",
+      "danger_level": 1,
+      "example_context": "对方生气的方式",
+      "tags": [
+        "观察",
+        "理解"
+      ]
+    },
+    {
+      "id": "tac_090",
+      "category": "观察",
+      "content": "我发现你说'我没事'的时候，就是最有事的时候。",
+      "when_to_use": "戳破对方的逞强",
+      "danger_level": 2,
+      "example_context": "对方说没事但明显有情绪",
+      "tags": [
+        "观察",
+        "戳破"
+      ]
+    },
+    {
+      "id": "tac_091",
+      "category": "倾听",
+      "content": "所以你的意思是，如果我下次这样做，你会感觉好一些？",
+      "when_to_use": "确认理解对方的诉求",
+      "danger_level": 1,
+      "example_context": "对方倾诉了自己的不满",
+      "tags": [
+        "倾听",
+        "确认"
+      ]
+    },
+    {
+      "id": "tac_092",
+      "category": "倾听",
+      "content": "我听到你说'习惯了'，这让我很心疼。",
+      "when_to_use": "捕捉到对方语气中的无奈",
+      "danger_level": 2,
+      "example_context": "对方提到习惯了一个人",
+      "tags": [
+        "倾听",
+        "心疼"
+      ]
+    },
+    {
+      "id": "tac_093",
+      "category": "倾听",
+      "content": "你刚才那句话听起来像是在问我，其实是在说自己的担心对吧？",
+      "when_to_use": "发现对方表达中的投射",
+      "danger_level": 2,
+      "example_context": "对方用提问的方式表达担心",
+      "tags": [
+        "倾听",
+        "洞察"
+      ]
+    },
+    {
+      "id": "tac_094",
+      "category": "倾听",
+      "content": "如果我理解得没错的话，你是想让我多陪你，但不知道怎么开口对吗？",
+      "when_to_use": "替对方说出不好意思说的话",
+      "danger_level": 2,
+      "example_context": "对方想要陪伴但不明说",
+      "tags": [
+        "倾听",
+        "体贴"
+      ]
+    },
+    {
+      "id": "tac_095",
+      "category": "共情",
+      "content": "换成是我，我也会和你一样难过。",
+      "when_to_use": "对方因为某事伤心时",
+      "danger_level": 1,
+      "example_context": "对方因为工作的事情难过",
+      "tags": [
+        "共情",
+        "理解"
+      ]
+    },
+    {
+      "id": "tac_096",
+      "category": "共情",
+      "content": "我可能无法完全感同身受，但我想陪着你。",
+      "when_to_use": "对方在倾诉难以感同身受的事情",
+      "danger_level": 1,
+      "example_context": "对方分享了很难过的事情",
+      "tags": [
+        "共情",
+        "陪伴"
+      ]
+    },
+    {
+      "id": "tac_097",
+      "category": "共情",
+      "content": "你说没关系的时候，我听出来了，有关系。",
+      "when_to_use": "发现对方在逞强",
+      "danger_level": 2,
+      "example_context": "对方说没关系但明显有关系",
+      "tags": [
+        "共情",
+        "戳破"
+      ]
+    },
+    {
+      "id": "tac_098",
+      "category": "共情",
+      "content": "你不需要向我解释那么多，我信你。",
+      "when_to_use": "对方在为自己的行为辩解时打断",
+      "danger_level": 1,
+      "example_context": "对方担心你不信任自己",
+      "tags": [
+        "共情",
+        "信任"
+      ]
+    },
+    {
+      "id": "tac_099",
+      "category": "升级",
+      "content": "我想好了，我想和你认真地走下去。",
+      "when_to_use": "确认关系后表达认真态度",
+      "danger_level": 1,
+      "example_context": "关系稳定后想要明确未来",
+      "tags": [
+        "升级",
+        "认真"
+      ]
+    },
+    {
+      "id": "tac_100",
+      "category": "升级",
+      "content": "我想把你介绍给我最重要的人认识。",
+      "when_to_use": "想要带对方进入自己的社交圈",
+      "danger_level": 2,
+      "example_context": "询问是否愿意见家人或朋友",
+      "tags": [
+        "升级",
+        "深入"
+      ]
+    }
+  ]
+}

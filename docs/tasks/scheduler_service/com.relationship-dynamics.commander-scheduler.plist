@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.relationship-dynamics.commander-scheduler</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/dillon/workspace/微关系动力学全息/.venv/bin/python</string>
+    <string>-m</string>
+    <string>tools.commander</string>
+    <string>scheduler-daemon</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/dillon/workspace/微关系动力学全息</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardOutPath</key>
+  <string>/Users/dillon/workspace/微关系动力学全息/docs/tasks/scheduler_service/scheduler.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/dillon/workspace/微关系动力学全息/docs/tasks/scheduler_service/scheduler.err.log</string>
+</dict>
+</plist>

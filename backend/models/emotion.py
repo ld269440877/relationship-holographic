@@ -1,10 +1,8 @@
 """
 情绪谱系模型
 """
-from datetime import datetime
-from typing import Optional
 
-from sqlmodel import Field, JSON, Relationship, SQLModel
+from sqlmodel import Field, SQLModel
 
 
 class EmotionSpectrum(SQLModel, table=True):
@@ -12,14 +10,14 @@ class EmotionSpectrum(SQLModel, table=True):
 
     __tablename__ = "emotion_spectrum"
 
-    id: Optional[int] = Field(default=None, primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
     spectrum: str = Field(index=True, description="喜/怒/哀/惧/爱/惊/羞")
     intensity: int = Field(index=True, ge=1, le=10, description="强度1-10")
     word: str = Field(description="情绪词")
-    behavioral_anchor: Optional[str] = Field(default=None, description="行为锚定描述")
-    physiological_signal: Optional[str] = Field(default=None, description="生理信号")
-    microexpression_desc: Optional[str] = Field(default=None, description="微表情特征")
-    example_sentence: Optional[str] = Field(default=None, description="例句")
+    behavioral_anchor: str | None = Field(default=None, description="行为锚定描述")
+    physiological_signal: str | None = Field(default=None, description="生理信号")
+    microexpression_desc: str | None = Field(default=None, description="微表情特征")
+    example_sentence: str | None = Field(default=None, description="例句")
 
 
 class MixedEmotion(SQLModel, table=True):
@@ -27,7 +25,7 @@ class MixedEmotion(SQLModel, table=True):
 
     __tablename__ = "mixed_emotions"
 
-    id: Optional[int] = Field(default=None, primary_key=True)
+    id: int | None = Field(default=None, primary_key=True)
     name: str = Field(description="混合情绪名称")
     component1_spectrum: str = Field(description="成分1谱系")
     component1_word: str = Field(description="成分1情绪词")
@@ -35,8 +33,8 @@ class MixedEmotion(SQLModel, table=True):
     component2_spectrum: str = Field(description="成分2谱系")
     component2_word: str = Field(description="成分2情绪词")
     component2_intensity: int = Field(ge=1, le=10)
-    typical_scenario: Optional[str] = Field(default=None, description="典型场景")
-    response_principle: Optional[str] = Field(default=None, description="回应原则")
+    typical_scenario: str | None = Field(default=None, description="典型场景")
+    response_principle: str | None = Field(default=None, description="回应原则")
 
 
 class EmotionTag(SQLModel):

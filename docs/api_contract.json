@@ -1,0 +1,151 @@
+{
+  "version": "2026-05-24",
+  "principle": "API 是前端唯一数据出口；SQLite 是主真源；外部内容只保存合规元数据与审计摘要。",
+  "base_path": "/api",
+  "modules": [
+    {
+      "name": "training",
+      "prefix": "/api/training",
+      "purpose": "训练、对比、AI 伴侣、错题、复习和摘要。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/training/partner/provider-status"},
+        {"method": "POST", "path": "/api/training/recognize"},
+        {"method": "GET", "path": "/api/training/next"},
+        {"method": "GET", "path": "/api/training/visual-map/{sample_id}"},
+        {"method": "POST", "path": "/api/training/partner/simulate"},
+        {"method": "GET", "path": "/api/training/partner/sessions/{session_id}/review"},
+        {"method": "POST", "path": "/api/training/compare"},
+        {"method": "GET", "path": "/api/training/radar"},
+        {"method": "GET", "path": "/api/training/mistakes"},
+        {"method": "GET", "path": "/api/training/reviews/due"},
+        {"method": "POST", "path": "/api/training/reviews/{mistake_id}"},
+        {"method": "GET", "path": "/api/training/summary/today"},
+        {"method": "GET", "path": "/api/training/summary/week"}
+      ]
+    },
+    {
+      "name": "resources",
+      "prefix": "/api/resources",
+      "purpose": "资源海洋、来源目录、链接健康、筛选、近重复治理和详情。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/resources"},
+        {"method": "GET", "path": "/api/resources/random"},
+        {"method": "GET", "path": "/api/resources/types"},
+        {"method": "GET", "path": "/api/resources/quality-report"},
+        {"method": "GET", "path": "/api/resources/similarity"},
+        {"method": "POST", "path": "/api/resources/similarity/action"},
+        {"method": "POST", "path": "/api/resources/similarity/rewrite-batch"},
+        {"method": "GET", "path": "/api/resources/sources"},
+        {"method": "POST", "path": "/api/resources/sources/health-check"},
+        {"method": "GET", "path": "/api/resources/filters"},
+        {"method": "GET", "path": "/api/resources/{resource_id}"}
+      ]
+    },
+    {
+      "name": "evolution",
+      "prefix": "/api/evolution",
+      "purpose": "系统进化、来源登记、内容流水线、向量索引、导入质量、发布治理和批次回滚。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/evolution/latest"},
+        {"method": "GET", "path": "/api/evolution/summary"},
+        {"method": "GET", "path": "/api/evolution/pipeline"},
+        {"method": "POST", "path": "/api/evolution/sources"},
+        {"method": "POST", "path": "/api/evolution/raw-items"},
+        {"method": "POST", "path": "/api/evolution/annotation-jobs"},
+        {"method": "POST", "path": "/api/evolution/asset-versions"},
+        {"method": "POST", "path": "/api/evolution/pipeline/advance"},
+        {"method": "POST", "path": "/api/evolution/pipeline/run-batch"},
+        {"method": "POST", "path": "/api/evolution/sources/fetch"},
+        {"method": "POST", "path": "/api/evolution/scheduler/run-weekly"},
+        {"method": "GET", "path": "/api/evolution/dedupe/report"},
+        {"method": "GET", "path": "/api/evolution/vector-index/report"},
+        {"method": "POST", "path": "/api/evolution/vector-index/rebuild"},
+        {"method": "POST", "path": "/api/evolution/vector-index/search"},
+        {"method": "POST", "path": "/api/evolution/vector-index/evaluate"},
+        {"method": "GET", "path": "/api/evolution/import-quality"},
+        {"method": "POST", "path": "/api/evolution/import-quality/repair-plan"},
+        {"method": "GET", "path": "/api/evolution/import-quality/issues"},
+        {"method": "GET", "path": "/api/evolution/import-quality/issues/audit"},
+        {"method": "POST", "path": "/api/evolution/import-quality/issues/action"},
+        {"method": "POST", "path": "/api/evolution/import-batches/rollback-plan"},
+        {"method": "GET", "path": "/api/evolution/safety-events"},
+        {"method": "GET", "path": "/api/evolution/reviewed-assets/publish-candidates"},
+        {"method": "POST", "path": "/api/evolution/reviewed-assets/boutique-batch"},
+        {"method": "POST", "path": "/api/evolution/reviewed-assets/action"}
+      ]
+    },
+    {
+      "name": "expression",
+      "prefix": "/api/expression",
+      "purpose": "表达工具本体、工具链和推荐。",
+      "endpoints": [
+        {"method": "POST", "path": "/api/expression/seed"},
+        {"method": "GET", "path": "/api/expression/tools"},
+        {"method": "GET", "path": "/api/expression/tools/{tool_id}"},
+        {"method": "GET", "path": "/api/expression/chains"},
+        {"method": "POST", "path": "/api/expression/recommend"}
+      ]
+    },
+    {
+      "name": "learning",
+      "prefix": "/api/learning",
+      "purpose": "学习框架、分类治学、5W2H 和课程图。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/learning/framework"},
+        {"method": "GET", "path": "/api/learning/curriculum-graph"}
+      ]
+    },
+    {
+      "name": "knowledge",
+      "prefix": "/api/knowledge",
+      "purpose": "结构化知识库与知识图谱。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/knowledge/sections"},
+        {"method": "GET", "path": "/api/knowledge/entries"},
+        {"method": "GET", "path": "/api/knowledge/entries/{entry_id}"},
+        {"method": "GET", "path": "/api/knowledge/imports/latest"},
+        {"method": "GET", "path": "/api/knowledge/visual-map"}
+      ]
+    },
+    {
+      "name": "analytics",
+      "prefix": "/api/analytics",
+      "purpose": "AI 质量、关系趋势、审计中心和 provider 诊断。",
+      "endpoints": [
+        {"method": "POST", "path": "/api/analytics/runtime-events"},
+        {"method": "GET", "path": "/api/analytics/ai-quality"},
+        {"method": "GET", "path": "/api/analytics/ai-failure-analysis"},
+        {"method": "GET", "path": "/api/analytics/ai-provider-diagnostics"},
+        {"method": "GET", "path": "/api/analytics/ai-provider-success-contract"},
+        {"method": "GET", "path": "/api/analytics/ai-provider-probe-readiness"},
+        {"method": "POST", "path": "/api/analytics/ai-provider-probe"},
+        {"method": "GET", "path": "/api/analytics/relationship-trends"},
+        {"method": "GET", "path": "/api/analytics/center"},
+        {"method": "GET", "path": "/api/analytics/audit-center"}
+      ]
+    },
+    {
+      "name": "catalog_profile_reviews",
+      "purpose": "样本、情绪、策略、档案、每日复盘和数据库健康。",
+      "endpoints": [
+        {"method": "GET", "path": "/api/samples"},
+        {"method": "POST", "path": "/api/samples/annotations/backfill"},
+        {"method": "GET", "path": "/api/samples/gold/summary"},
+        {"method": "GET", "path": "/api/emotions/spectrum"},
+        {"method": "GET", "path": "/api/profile"},
+        {"method": "PUT", "path": "/api/profile"},
+        {"method": "GET", "path": "/api/reviews"},
+        {"method": "POST", "path": "/api/reviews"},
+        {"method": "GET", "path": "/api/database/health"},
+        {"method": "GET", "path": "/api/database/migration-plan"}
+      ]
+    }
+  ],
+  "response_contracts": {
+    "list_page": "Long-list endpoints return items plus total/page/limit/offset when pagination is used.",
+    "safety": "Blocked AI paths return risk_level, flags, message, safe_alternatives, and do not call external provider.",
+    "governance": "State-changing governance endpoints support dry_run and write PipelineRunLog on real execution.",
+    "content_sources": "External source endpoints return metadata, summary, structure, health, and URL, never scraped full text."
+  }
+}
+

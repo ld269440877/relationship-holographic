@@ -2,7 +2,6 @@
 回应策略专家系统 API
 """
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from backend.database.connection import get_session

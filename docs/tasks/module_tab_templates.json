@@ -1,0 +1,897 @@
+{
+  "version": "2026-05-24-worldclass-v2",
+  "principle": "Every module tab is a workflow contract: it must expose the module responsibility, complete content structure, cases, dialogue contrast, 5W2H, emotion flow, expression moves, safety boundary, data source mapping, and quality gate.",
+  "revision_rule": "Before changing a page, database expansion script, resource seed, crawler, or knowledge card, check this file and docs/世界级模块选项卡与内容模板总则.md.",
+  "common_required_fields": [
+    "id",
+    "label",
+    "summary",
+    "jobToBeDone",
+    "primaryContent",
+    "primaryAction",
+    "emptyState",
+    "qualityGate",
+    "fiveW2H",
+    "scenarioTemplate",
+    "caseStoryTemplate",
+    "dialogueTemplate",
+    "comparisonTemplate",
+    "emotionFlowTemplate",
+    "expressionMoves",
+    "dataContract"
+  ],
+  "global_expression_moves": [
+    "value_quieting",
+    "detail_question",
+    "reality_feeling_alternation",
+    "emotion_resonance",
+    "deep_emotion_feedback",
+    "nonverbal_empathy",
+    "boundary_exit"
+  ],
+  "data_collection_contract": {
+    "allowed": [
+      "sourceTitle",
+      "sourceUrl",
+      "sourceType",
+      "shortExcerpt",
+      "summary",
+      "structuredAnalysis",
+      "localOriginalRewrite",
+      "licenseBoundary",
+      "qualityScore",
+      "templateMapping"
+    ],
+    "forbidden": [
+      "default_full_text_copy",
+      "private_chat_raw_text",
+      "unlicensed_bulk_copy",
+      "source_without_url",
+      "case_without_boundary_exit"
+    ]
+  },
+  "modules": [
+    {
+      "route": "/resources",
+      "name": "资源海洋",
+      "responsibility": "把知识、来源和表达方法转成可练、可迁移、可审计的资源，而不是堆链接或堆摘要。",
+      "uniqueDesign": "资源卡必须优先让用户看到真实场景差异：谁在说、为什么卡住、旧回应哪里错、新回应怎样让关系降压。",
+      "tabs": [
+        {
+          "id": "case_matrix",
+          "label": "案例矩阵",
+          "summary": "按主线、场景、能力点和难度浏览完整案例。",
+          "jobToBeDone": "我想看到一个具体互动案例，并知道旧回应和新回应的差异。",
+          "primaryContent": "案例卡列表：场景、TA原话、常见失误、更好回应、拆解、迁移练习。",
+          "primaryAction": "加入训练",
+          "emptyState": "当前没有完整案例，清空筛选或进入治理队列补齐 case blueprint。",
+          "qualityGate": "必须有 case_blueprint_json、case_completeness_score、场景、TA原话、旧回应、更好回应和边界出口。",
+          "fiveW2H": {
+            "why": "让学习者不再只看抽象方法，而是看真实互动如何变化。",
+            "what": "完整案例、对话差异、练习任务。",
+            "who": "训练者、AI伴侣、错题复盘都使用。",
+            "when": "用户想找具体例子、做迁移练习、修正错题时。",
+            "where": "资源列表、资源详情、训练推荐、错题详情。",
+            "how": "按主线/场景/工具/难度筛选，再进入详情。",
+            "howMuch": "每个内容单元至少 2 条真实变体，不允许只换标签。"
+          },
+          "scenarioTemplate": "场景 = 关系阶段 + 触发事件 + TA原话 + 表层信号 + 深层需要。",
+          "caseStoryTemplate": "一个短故事：时间地点、对方状态、说出的原话、说话前后的情绪变化。",
+          "dialogueTemplate": {
+            "theirWords": "TA说的原话。",
+            "weakResponse": "低质回应，体现误判、说教、盘查或越界。",
+            "betterResponse": "更好回应，体现现实/感受交替、情绪共振和边界出口。"
+          },
+          "comparisonTemplate": "旧做法让对方被评估；新做法让对方被看见、可选择、可继续说。",
+          "emotionFlowTemplate": "触发 -> 防御/疲惫/失望 -> 被看见 -> 降压 -> 可迁移行动。",
+          "expressionMoves": [
+            "value_quieting",
+            "detail_question",
+            "reality_feeling_alternation",
+            "emotion_resonance",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "resource_library",
+              "expression_tools",
+              "expression_tool_chains"
+            ],
+            "requiredFields": [
+              "case_blueprint_json",
+              "expression_tool_ids_json",
+              "source",
+              "source_license",
+              "review_status"
+            ],
+            "sourcePolicy": "project_original preferred; third-party sources store link, title, summary, short excerpt, structured analysis, and local original rewrite only."
+          }
+        },
+        {
+          "id": "source_boundary",
+          "label": "来源边界",
+          "summary": "查看来源链接、许可、健康状态和本地原创改写边界。",
+          "jobToBeDone": "我想知道这条资源从哪里来，是否能合法使用，是否保存了不该保存的内容。",
+          "primaryContent": "来源标题、URL、短摘录、摘要、许可边界、健康检查、派生资源。",
+          "primaryAction": "打开来源",
+          "emptyState": "暂无来源信息，进入浏览冲浪补齐来源目录。",
+          "qualityGate": "第三方来源不得默认全文搬运，标题必须可点击。",
+          "fiveW2H": {
+            "why": "防止把网络内容误当成项目原创或无许可全文。",
+            "what": "来源元数据和使用边界。",
+            "who": "用户、审核者、采集脚本。",
+            "when": "打开资源详情、做来源审计、扩库前。",
+            "where": "资源详情、浏览冲浪、治理台。",
+            "how": "展示链接、摘要、短摘录、结构化分析和本地原创改写。",
+            "howMuch": "每条外部来源必须有 sourceUrl 和 licenseBoundary。"
+          },
+          "scenarioTemplate": "来源场景 = 来源平台 + 内容类型 + 适配模块 + 风险说明。",
+          "caseStoryTemplate": "描述一个来源如何被转成训练资源：先读标题和摘要，再提取结构，最后本地原创改写。",
+          "dialogueTemplate": {
+            "theirWords": "来源中的合规短摘录或标题。",
+            "weakResponse": "直接搬全文或把摘要伪装成原文。",
+            "betterResponse": "保留链接和摘要，生成项目原创训练卡。"
+          },
+          "comparisonTemplate": "旧做法是复制；新做法是链接、摘要、分析、原创改写。",
+          "emotionFlowTemplate": "好奇 -> 采集冲动 -> 合规边界 -> 原创转化 -> 可审计发布。",
+          "expressionMoves": [
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "content_sources",
+              "source_registry",
+              "resource_library",
+              "pipeline_run_logs"
+            ],
+            "requiredFields": [
+              "source_url",
+              "source_title",
+              "source_summary",
+              "source_license"
+            ],
+            "sourcePolicy": "No third-party full-text storage by default."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/expression",
+      "name": "表达工具箱",
+      "responsibility": "把复杂沟通拆成可选择、可组合、可解释、可练习的表达动作。",
+      "uniqueDesign": "每个工具和工具链都要说明适用场景、顺序、禁用动作、边界和正反例，避免变成话术库。",
+      "tabs": [
+        {
+          "id": "atomic_tools",
+          "label": "原子工具",
+          "summary": "学习单个表达工具的定义、公式、风险和练习。",
+          "jobToBeDone": "我想知道一个表达概念到底是什么意思，以及怎么安全使用。",
+          "primaryContent": "工具卡：定义、公式、微步骤、风险标记、旧回应、更好回应。",
+          "primaryAction": "展开详情",
+          "emptyState": "没有匹配工具，换一个关键词或清空筛选。",
+          "qualityGate": "工具详情必须包含定义、原则、方法、场景、练习、风险边界。",
+          "fiveW2H": {
+            "why": "让用户知道为什么这个工具能降低防御或提升清晰度。",
+            "what": "原子表达动作。",
+            "who": "训练者、AI伴侣、错题改写。",
+            "when": "需要选择怎么说时。",
+            "where": "表达页、训练反馈、错题本、AI解释。",
+            "how": "按层级、场景、目标、风险筛选。",
+            "howMuch": "每个工具至少有一个旧回应和一个更好回应。"
+          },
+          "scenarioTemplate": "场景 = 关系阶段 + 表达目标 + 情绪强度 + 边界风险。",
+          "caseStoryTemplate": "讲一个人如何从直接说教切换到工具化表达。",
+          "dialogueTemplate": {
+            "theirWords": "对方触发语。",
+            "weakResponse": "未经工具组织的旧回应。",
+            "betterResponse": "按工具公式重写后的回应。"
+          },
+          "comparisonTemplate": "旧回应靠本能；新回应有结构、情绪、边界和退路。",
+          "emotionFlowTemplate": "触发 -> 紧张/防御 -> 工具承接 -> 明确下一步。",
+          "expressionMoves": [
+            "emotion_resonance",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "expression_tools"
+            ],
+            "requiredFields": [
+              "tool_uuid",
+              "name",
+              "layer",
+              "formula",
+              "micro_steps_json",
+              "risk_flags_json"
+            ],
+            "sourcePolicy": "Tools are project-maintained concepts with safety warnings."
+          }
+        },
+        {
+          "id": "tool_chains",
+          "label": "工具链",
+          "summary": "学习多个表达工具如何按顺序组合。",
+          "jobToBeDone": "我想知道某个场景下先说什么、后说什么、哪些动作禁用。",
+          "primaryContent": "工具链：场景、目标、顺序、禁用动作、示例对话。",
+          "primaryAction": "套用练习",
+          "emptyState": "没有匹配工具链，换场景、目标或关键词。",
+          "qualityGate": "工具链必须显示工具名称和示例，不得只显示 raw id。",
+          "fiveW2H": {
+            "why": "真实对话通常需要多步，而不是单个句子。",
+            "what": "工具顺序和禁用动作。",
+            "who": "需要迁移表达策略的用户。",
+            "when": "冲突、暧昧、深聊、拒绝、修复时。",
+            "where": "表达工具箱、训练反馈、AI伴侣解释。",
+            "how": "按场景和目标推荐链条。",
+            "howMuch": "每条链至少 3 个工具，且有 before/after。"
+          },
+          "scenarioTemplate": "场景 = 对方状态 + 表达目标 + 风险边界 + 期望下一步。",
+          "caseStoryTemplate": "一个对话从卡住到顺畅的三步变化。",
+          "dialogueTemplate": {
+            "theirWords": "对方真实表达或沉默。",
+            "weakResponse": "跳步、逼问、解释过快。",
+            "betterResponse": "按工具链逐步回应。"
+          },
+          "comparisonTemplate": "旧链路急于结果；新链路先降压、再理解、再请求。",
+          "emotionFlowTemplate": "不确定 -> 被承接 -> 愿意展开 -> 明确下一步。",
+          "expressionMoves": [
+            "value_quieting",
+            "detail_question",
+            "reality_feeling_alternation",
+            "emotion_resonance",
+            "deep_emotion_feedback",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "expression_tool_chains",
+              "expression_tools"
+            ],
+            "requiredFields": [
+              "chain_uuid",
+              "tool_ids_json",
+              "sequence_json",
+              "forbidden_tools_json",
+              "example_dialogue_json"
+            ],
+            "sourcePolicy": "Tool chains are local project guidance; must include anti-manipulation boundary."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/knowledge",
+      "name": "知识中枢",
+      "responsibility": "解释为什么这样做，并把知识映射到场景、工具、训练和证据。",
+      "uniqueDesign": "知识卡不能只给标题和摘要，必须让用户看见概念、原则、误区、案例、5W2H 和练习路径。",
+      "tabs": [
+        {
+          "id": "concept_cards",
+          "label": "知识卡片",
+          "summary": "学习概念、原则、方法和练习。",
+          "jobToBeDone": "我想真正理解一个概念，而不是只看一句定义。",
+          "primaryContent": "定义、原则、方法、场景、误区、练习。",
+          "primaryAction": "打开详情",
+          "emptyState": "没有匹配知识，清空搜索或切换主题。",
+          "qualityGate": "必须优先使用 source_metadata_json.learning。",
+          "fiveW2H": {
+            "why": "让知识能指导训练行为。",
+            "what": "概念、原则、方法。",
+            "who": "学习者、训练评分、AI解释。",
+            "when": "用户不理解某个能力点时。",
+            "where": "知识中枢、资源详情、训练反馈。",
+            "how": "按主题、标签、场景搜索。",
+            "howMuch": "每张卡至少含概念、原则、方法、场景、练习。"
+          },
+          "scenarioTemplate": "场景 = 概念出现的位置 + 失败表现 + 正确动作。",
+          "caseStoryTemplate": "用一个微故事说明概念如何改变对话走向。",
+          "dialogueTemplate": {
+            "theirWords": "触发这个概念的对方原话。",
+            "weakResponse": "不懂概念时的低质回应。",
+            "betterResponse": "按概念原则改写后的回应。"
+          },
+          "comparisonTemplate": "旧理解是名词；新理解是可执行动作。",
+          "emotionFlowTemplate": "模糊 -> 命名 -> 理解原因 -> 行动。",
+          "expressionMoves": [
+            "detail_question",
+            "emotion_resonance",
+            "deep_emotion_feedback"
+          ],
+          "dataContract": {
+            "tables": [
+              "knowledge_sections",
+              "knowledge_entries"
+            ],
+            "requiredFields": [
+              "title",
+              "content",
+              "summary",
+              "tags_json",
+              "source_metadata_json"
+            ],
+            "sourcePolicy": "Knowledge entries must be structured and not expose internal machine ids."
+          }
+        },
+        {
+          "id": "five_w_two_h",
+          "label": "5W2H",
+          "summary": "用元问题理解一个模块或概念。",
+          "jobToBeDone": "我想知道这个概念为什么重要、何时使用、怎么练到掌握。",
+          "primaryContent": "Why/What/Who/When/Where/How/How much 卡片。",
+          "primaryAction": "套用框架",
+          "emptyState": "等待知识导入后生成 5W2H。",
+          "qualityGate": "回答必须引用当前数据库覆盖情况。",
+          "fiveW2H": {
+            "why": "把抽象知识转成问题结构。",
+            "what": "七个元问题。",
+            "who": "所有学习者。",
+            "when": "学习新概念或复盘模块时。",
+            "where": "知识中枢、文档、资源详情。",
+            "how": "从数据库条目和标签生成。",
+            "howMuch": "每个模块至少一组 5W2H。"
+          },
+          "scenarioTemplate": "场景 = 一个概念被误用时，用 5W2H 重新拆解。",
+          "caseStoryTemplate": "用户从只会背概念，到用 5W2H 判断何时使用。",
+          "dialogueTemplate": {
+            "theirWords": "用户问：这个有什么用？",
+            "weakResponse": "只解释定义。",
+            "betterResponse": "用 Why/What/When/How 给出完整路径。"
+          },
+          "comparisonTemplate": "旧做法解释名词；新做法解释任务、场景和掌握证据。",
+          "emotionFlowTemplate": "困惑 -> 看见结构 -> 能选择行动。",
+          "expressionMoves": [
+            "value_quieting",
+            "detail_question"
+          ],
+          "dataContract": {
+            "tables": [
+              "knowledge_entries"
+            ],
+            "requiredFields": [
+              "category",
+              "tags_json",
+              "quality_score"
+            ],
+            "sourcePolicy": "5W2H answers must be generated from current local database facts."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/trainer",
+      "name": "训练中心",
+      "responsibility": "把知识和资源转成可评分、可复盘、可进步的作答过程。",
+      "uniqueDesign": "训练不是看内容，而是提交回应、得到差异、进入错题和复习。",
+      "tabs": [
+        {
+          "id": "current_question",
+          "label": "当前题",
+          "summary": "完成本轮回应训练。",
+          "jobToBeDone": "我想在一个具体场景里写出更好的回应。",
+          "primaryContent": "题目、场景、TA说、目标、输入框。",
+          "primaryAction": "提交评分",
+          "emptyState": "暂无题目，刷新或从资源进入训练。",
+          "qualityGate": "提交必须生成 training_attempt。",
+          "fiveW2H": {
+            "why": "把理解转成动作。",
+            "what": "训练题和用户回应。",
+            "who": "学习者。",
+            "when": "日常训练和资源练习时。",
+            "where": "训练中心。",
+            "how": "选择题目、输入回应、提交评分。",
+            "howMuch": "每轮至少有一个可评分回应。"
+          },
+          "scenarioTemplate": "场景 = TA原话 + 关系阶段 + 表达目标 + 风险提示。",
+          "caseStoryTemplate": "用户先写本能回应，再根据反馈改写。",
+          "dialogueTemplate": {
+            "theirWords": "题目中的 TA 原话。",
+            "weakResponse": "用户初稿中的问题。",
+            "betterResponse": "反馈推荐的改写。"
+          },
+          "comparisonTemplate": "旧回应缺少事实、情绪或边界；新回应补齐这些维度。",
+          "emotionFlowTemplate": "触发 -> 用户反应 -> 评分反馈 -> 改写降压。",
+          "expressionMoves": [
+            "reality_feeling_alternation",
+            "emotion_resonance",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "interaction_samples",
+              "training_attempts",
+              "mistake_logs"
+            ],
+            "requiredFields": [
+              "sample_id",
+              "user_response",
+              "score"
+            ],
+            "sourcePolicy": "Training samples must be reviewed/published/gold unless explicitly marked draft practice."
+          }
+        },
+        {
+          "id": "feedback",
+          "label": "七维反馈",
+          "summary": "看回应哪里好、哪里漏、下一步怎么改。",
+          "jobToBeDone": "我想知道自己为什么得分低，以及下一次最小改法是什么。",
+          "primaryContent": "事实、情绪、边界、工具、风险、改写、推荐资源。",
+          "primaryAction": "保存错题",
+          "emptyState": "提交作答后生成反馈。",
+          "qualityGate": "反馈必须包含错误归因、表达工具评分、下一步最小行动。",
+          "fiveW2H": {
+            "why": "反馈让训练形成闭环。",
+            "what": "评分维度和改写建议。",
+            "who": "学习者、错题本、档案。",
+            "when": "每次提交后。",
+            "where": "训练中心和错题本。",
+            "how": "对比用户回应和理想回应。",
+            "howMuch": "至少一条具体改写建议。"
+          },
+          "scenarioTemplate": "场景 = 用户回应中的缺口 + 需要补的能力。",
+          "caseStoryTemplate": "一次失分如何转成下一次可练动作。",
+          "dialogueTemplate": {
+            "theirWords": "题目原话。",
+            "weakResponse": "用户回应。",
+            "betterResponse": "系统建议回应。"
+          },
+          "comparisonTemplate": "旧回应的缺口和新回应的补足点必须并排展示。",
+          "emotionFlowTemplate": "挫败 -> 看见具体缺口 -> 可执行改法 -> 进入复习。",
+          "expressionMoves": [
+            "deep_emotion_feedback",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "training_attempts",
+              "mistake_logs",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "score",
+              "diff_report",
+              "expression_tool_scoring"
+            ],
+            "sourcePolicy": "Feedback must not invent evidence not present in the attempt."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/trainer-ai",
+      "name": "AI伴侣",
+      "responsibility": "在安全边界内模拟对话、解释状态变化，并把练习接回资源和错题。",
+      "uniqueDesign": "AI 陪练必须展示为什么这样回、关系状态怎样变化、哪里需要停下。",
+      "tabs": [
+        {
+          "id": "dialogue",
+          "label": "对话",
+          "summary": "进行实时陪练。",
+          "jobToBeDone": "我想在模拟对象面前练习一段真实对话。",
+          "primaryContent": "对话流、角色状态、输入框、安全提示。",
+          "primaryAction": "发送",
+          "emptyState": "选择角色和场景后开始。",
+          "qualityGate": "高风险输入必须先经过 Safety Guardian。",
+          "fiveW2H": {
+            "why": "真实对话需要动态反馈。",
+            "what": "模拟对话和状态变化。",
+            "who": "学习者和 AI 角色。",
+            "when": "用户需要陪练时。",
+            "where": "AI伴侣页面。",
+            "how": "输入回应，AI 模拟下一轮。",
+            "howMuch": "每轮必须有安全检查。"
+          },
+          "scenarioTemplate": "场景 = 角色 + 关系阶段 + 当前情绪 + 用户目标。",
+          "caseStoryTemplate": "一段对话从紧张到更安全的变化过程。",
+          "dialogueTemplate": {
+            "theirWords": "AI 角色回应。",
+            "weakResponse": "用户可能的越界或急迫回应。",
+            "betterResponse": "尊重边界的替代回应。"
+          },
+          "comparisonTemplate": "旧回应制造压力；新回应让对方可选择。",
+          "emotionFlowTemplate": "紧张 -> 安全承接 -> 试探展开 -> 可退出。",
+          "expressionMoves": [
+            "value_quieting",
+            "emotion_resonance",
+            "nonverbal_empathy",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "practice_sessions",
+              "practice_events",
+              "mistake_logs"
+            ],
+            "requiredFields": [
+              "safety_result",
+              "state_curve",
+              "response"
+            ],
+            "sourcePolicy": "AI output must not bypass consent or encourage manipulation."
+          }
+        },
+        {
+          "id": "tool_explain",
+          "label": "工具解释",
+          "summary": "解释 AI 回应使用了哪些工具和边界。",
+          "jobToBeDone": "我想知道这句话为什么这么说，而不是只看答案。",
+          "primaryContent": "工具链、表达动作、禁用动作、替代说法。",
+          "primaryAction": "套用改写",
+          "emptyState": "发送一轮对话后生成工具解释。",
+          "qualityGate": "必须说明风险边界和可拒绝出口。",
+          "fiveW2H": {
+            "why": "防止 AI 变成黑箱话术。",
+            "what": "工具链解释。",
+            "who": "学习者和错题本。",
+            "when": "AI 给出示范后。",
+            "where": "AI伴侣、错题本、训练反馈。",
+            "how": "从回应中检测表达动作。",
+            "howMuch": "至少一个工具和一个禁用动作。"
+          },
+          "scenarioTemplate": "场景 = AI 生成回应 + 工具选择原因。",
+          "caseStoryTemplate": "用户从模仿一句话到理解工具链。",
+          "dialogueTemplate": {
+            "theirWords": "对方回应。",
+            "weakResponse": "黑箱式答案。",
+            "betterResponse": "答案 + 工具解释 + 边界说明。"
+          },
+          "comparisonTemplate": "旧做法只复制句子；新做法理解结构。",
+          "emotionFlowTemplate": "疑惑 -> 看见工具 -> 能迁移。",
+          "expressionMoves": [
+            "detail_question",
+            "reality_feeling_alternation",
+            "deep_emotion_feedback"
+          ],
+          "dataContract": {
+            "tables": [
+              "expression_tools",
+              "expression_tool_chains",
+              "practice_events"
+            ],
+            "requiredFields": [
+              "tool_ids",
+              "risk_notes"
+            ],
+            "sourcePolicy": "Tool explanations must align with local expression toolbox."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/mistakes",
+      "name": "错题本",
+      "responsibility": "把失败回应转成错误归因、三版改写和掌握证据。",
+      "uniqueDesign": "错题不是惩罚，而是把下一次具体怎么说写清楚。",
+      "tabs": [
+        {
+          "id": "due_review",
+          "label": "待复习",
+          "summary": "优先处理今天到期和仍未掌握的错题。",
+          "jobToBeDone": "我想先知道今天最该复习哪几条错题。",
+          "primaryContent": "到期错题、错误类型、原题、旧回应、复习按钮。",
+          "primaryAction": "开始复习",
+          "emptyState": "当前没有到期错题，可以查看全部错题或去训练中心练一题。",
+          "qualityGate": "复习项必须来自 mistake_logs 或 due review，不伪造历史失误。",
+          "fiveW2H": {
+            "why": "把复习注意力放到最容易遗忘、最需要修正的回应模式上。",
+            "what": "到期错题与未掌握错题。",
+            "who": "学习者、训练推荐器、能力画像。",
+            "when": "每日复习或完成训练后。",
+            "where": "错题本、训练反馈、档案证据。",
+            "how": "按复习到期、错误归因和资源上下文筛选。",
+            "howMuch": "每条到期错题必须能标记掌握或继续复习。"
+          },
+          "scenarioTemplate": "场景 = 到期时间 + 原题 TA 说 + 用户旧回应 + 错误归因。",
+          "caseStoryTemplate": "一条错题从首次失误、进入复习、再次改写到掌握的过程。",
+          "dialogueTemplate": {
+            "theirWords": "原题 TA 说。",
+            "weakResponse": "用户旧回应。",
+            "betterResponse": "复习时建议的更好回应。"
+          },
+          "comparisonTemplate": "旧做法只看错题数量；新做法按到期、错因和下一步动作安排复习。",
+          "emotionFlowTemplate": "逃避错题 -> 看见优先级 -> 小步复习 -> 掌握证据。",
+          "expressionMoves": [
+            "emotion_resonance",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "mistake_logs",
+              "training_attempts"
+            ],
+            "requiredFields": [
+              "review_due_at",
+              "correct_count",
+              "wrong_count"
+            ],
+            "sourcePolicy": "Due reviews must be derived from real attempts or explicit practice records."
+          }
+        },
+        {
+          "id": "rewrite",
+          "label": "三版改写",
+          "summary": "把同一旧回应改成轻、稳、深三版。",
+          "jobToBeDone": "我想知道同一个错误在不同强度下怎么修。",
+          "primaryContent": "旧回应、轻松版、稳妥版、深入版、工具解释。",
+          "primaryAction": "保存改写",
+          "emptyState": "选择一条错题后开始改写。",
+          "qualityGate": "改写必须说明替换了什么工具和避免了什么风险。",
+          "fiveW2H": {
+            "why": "让错误变成可重复练习。",
+            "what": "三种强度的改写。",
+            "who": "学习者。",
+            "when": "复习错题时。",
+            "where": "错题本和训练反馈。",
+            "how": "按场景和情绪强度重写。",
+            "howMuch": "每条错题至少一版可用改写。"
+          },
+          "scenarioTemplate": "场景 = 原题 + 旧回应 + 错误类型 + 目标强度。",
+          "caseStoryTemplate": "一次失败回应如何被拆成三个可选版本。",
+          "dialogueTemplate": {
+            "theirWords": "原题 TA 说。",
+            "weakResponse": "用户旧回应。",
+            "betterResponse": "三版改写中的推荐版本。"
+          },
+          "comparisonTemplate": "旧回应只表达自己；新回应同时照顾事实、感受、边界。",
+          "emotionFlowTemplate": "羞耻/挫败 -> 归因 -> 可选改写 -> 掌握。",
+          "expressionMoves": [
+            "emotion_resonance",
+            "deep_emotion_feedback",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "mistake_logs",
+              "training_attempts",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "mistake_pattern",
+              "rewrite",
+              "review_due_at"
+            ],
+            "sourcePolicy": "Mistakes must come from real user attempts or explicit practice."
+          }
+        },
+        {
+          "id": "mastery_evidence",
+          "label": "掌握证据",
+          "summary": "查看错题是否真的被修复，而不是只被标记完成。",
+          "jobToBeDone": "我想知道自己在哪些错误模式上已经稳定进步。",
+          "primaryContent": "正确次数、错误次数、复习间隔、掌握状态、迁移资源。",
+          "primaryAction": "标记掌握",
+          "emptyState": "暂无掌握证据，先完成一次复习或训练。",
+          "qualityGate": "掌握证据必须来自复习记录和训练记录。",
+          "fiveW2H": {
+            "why": "防止把看懂错题误当成真实掌握。",
+            "what": "复习次数、正确次数、错误次数和迁移证据。",
+            "who": "学习者、档案页、推荐系统。",
+            "when": "复习后、阶段晋级前、能力画像更新时。",
+            "where": "错题本、我的档案、八阶路径。",
+            "how": "从 correct_count、wrong_count、review_due_at 和资源联动生成。",
+            "howMuch": "至少需要一次成功复习或一次迁移训练作为证据。"
+          },
+          "scenarioTemplate": "场景 = 同一错误模式在不同题目中的表现变化。",
+          "caseStoryTemplate": "用户从同一种情绪漏接，逐步练到能主动命名感受和给退路。",
+          "dialogueTemplate": {
+            "theirWords": "新场景中的 TA 原话。",
+            "weakResponse": "旧错误模式的回应。",
+            "betterResponse": "掌握后稳定出现的新回应。"
+          },
+          "comparisonTemplate": "旧证据是主观感觉；新证据是复习结果、分数变化和迁移表现。",
+          "emotionFlowTemplate": "不确定 -> 看到证据 -> 增强信心 -> 进入更高难度。",
+          "expressionMoves": [
+            "detail_question",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "mistake_logs",
+              "training_attempts",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "correct_count",
+              "wrong_count",
+              "review_due_at"
+            ],
+            "sourcePolicy": "Mastery evidence must not be manually fabricated without review or training records."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/surf",
+      "name": "浏览冲浪",
+      "responsibility": "管理外部信息源和合规采集策略，而不是把网络内容直接塞进资源库。",
+      "uniqueDesign": "每个来源都要说明适配模块、采集边界、链接健康、可派生资源类型。",
+      "tabs": [
+        {
+          "id": "all_sources",
+          "label": "全部来源",
+          "summary": "浏览当前数据库登记的全部外部信息源。",
+          "jobToBeDone": "我想快速找到一个可信来源，并看它适合哪个模块。",
+          "primaryContent": "来源标题、来源组、链接、摘要、主题、库内资源数量。",
+          "primaryAction": "打开来源",
+          "emptyState": "暂无来源，请先进入来源登记或数据治理。",
+          "qualityGate": "来源标题必须可点击，来源 URL 不能为空。",
+          "fiveW2H": {
+            "why": "让外部信息源可浏览、可筛选、可追溯。",
+            "what": "来源目录与摘要。",
+            "who": "学习者、内容设计者、审核者。",
+            "when": "查找资料、扩库、核查来源时。",
+            "where": "浏览冲浪、资源详情、治理台。",
+            "how": "按来源名、来源组、主题、场景和域名检索。",
+            "howMuch": "每个来源至少要有 URL、摘要或结构说明。"
+          },
+          "scenarioTemplate": "场景 = 来源平台 + 主题 + 适配模块 + 可派生资源类型。",
+          "caseStoryTemplate": "用户从来源目录找到一个研究/课程入口，再跳到资源海洋做训练。",
+          "dialogueTemplate": {
+            "theirWords": "用户问：这个来源有什么用？",
+            "weakResponse": "只给一个裸链接。",
+            "betterResponse": "给出摘要、主题、适配模块、链接状态和资源入口。"
+          },
+          "comparisonTemplate": "旧做法是链接堆；新做法是来源、摘要、结构和训练映射。",
+          "emotionFlowTemplate": "信息过载 -> 筛选来源 -> 明确用途 -> 进入训练。",
+          "expressionMoves": [
+            "detail_question",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "source_registry",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "source_url",
+              "source_title",
+              "source_summary"
+            ],
+            "sourcePolicy": "Source directory stores metadata and links, not default full text."
+          }
+        },
+        {
+          "id": "collection_strategy",
+          "label": "采集策略",
+          "summary": "把外部来源转成合规结构化素材。",
+          "jobToBeDone": "我想知道这个来源能怎么用、不能怎么用、能生成什么资源。",
+          "primaryContent": "来源链接、摘要、短摘录、结构化分析、本地原创改写策略。",
+          "primaryAction": "生成资源",
+          "emptyState": "选择来源后显示采集策略。",
+          "qualityGate": "不得默认全文搬运第三方内容。",
+          "fiveW2H": {
+            "why": "防止内容库侵犯版权或变成无来源摘要。",
+            "what": "来源采集和转化策略。",
+            "who": "采集脚本、审核者、内容设计者。",
+            "when": "新增来源或扩库前。",
+            "where": "浏览冲浪、进化中心、治理台。",
+            "how": "只存链接、标题、摘要、短摘录、结构化分析和原创改写。",
+            "howMuch": "每个来源至少映射一个模块和一个内容类型。"
+          },
+          "scenarioTemplate": "场景 = 来源类型 + 目标模块 + 风险边界 + 可派生内容。",
+          "caseStoryTemplate": "一个视频或文章如何被转成原创训练卡，而不是全文搬运。",
+          "dialogueTemplate": {
+            "theirWords": "来源标题或合规短摘录。",
+            "weakResponse": "复制全文进数据库。",
+            "betterResponse": "保留链接和摘要，生成原创案例、对话和练习。"
+          },
+          "comparisonTemplate": "旧做法搬运；新做法分析、改写、审计。",
+          "emotionFlowTemplate": "发现好内容 -> 想收藏 -> 版权边界 -> 结构化转化。",
+          "expressionMoves": [
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "source_registry",
+              "raw_content_items",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "source_url",
+              "source_type",
+              "license_boundary",
+              "structured_analysis"
+            ],
+            "sourcePolicy": "Store metadata and local original derivatives, not default full text."
+          }
+        },
+        {
+          "id": "link_health",
+          "label": "链接健康",
+          "summary": "查看来源是否可访问、是否跳转、是否需要复核。",
+          "jobToBeDone": "我想知道哪些来源链接失效或需要重新检查。",
+          "primaryContent": "HTTP 状态、可访问状态、跳转地址、最后检查时间。",
+          "primaryAction": "重新检查",
+          "emptyState": "暂无链接健康记录，先执行链接检查任务。",
+          "qualityGate": "链接健康只记录元数据，不保存网页正文。",
+          "fiveW2H": {
+            "why": "防止用户打开失效来源，也防止失效来源继续派生内容。",
+            "what": "来源链接健康状态。",
+            "who": "审核者、采集脚本、学习者。",
+            "when": "周期检查、扩库前、来源复核时。",
+            "where": "浏览冲浪、治理台、进化中心。",
+            "how": "读取 status/http_code/redirect_url/last_checked_at。",
+            "howMuch": "每个外部来源应至少有一次健康检查记录。"
+          },
+          "scenarioTemplate": "场景 = 来源链接 + 最近检查结果 + 推荐处理动作。",
+          "caseStoryTemplate": "一个来源从可访问变成失效后，相关资源降级复核而不是继续展示。",
+          "dialogueTemplate": {
+            "theirWords": "用户反馈：这个链接打不开。",
+            "weakResponse": "继续显示为正常来源。",
+            "betterResponse": "展示失效状态、检查时间、跳转信息和复核入口。"
+          },
+          "comparisonTemplate": "旧做法靠用户发现坏链；新做法周期检查并暴露健康证据。",
+          "emotionFlowTemplate": "打开失败 -> 看见原因 -> 进入复核 -> 恢复信任。",
+          "expressionMoves": [
+            "detail_question",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "pipeline_run_logs",
+              "resource_library"
+            ],
+            "requiredFields": [
+              "status",
+              "http_code",
+              "last_checked_at"
+            ],
+            "sourcePolicy": "Link health checks store metadata only and must not save page body."
+          }
+        }
+      ]
+    },
+    {
+      "route": "/governance",
+      "name": "治理与审计",
+      "responsibility": "让数据质量、发布状态、重复债务、批次影响和运行事件可见、可追溯、可回滚。",
+      "uniqueDesign": "治理页要展示证据和动作，不做装饰性仪表盘。",
+      "tabs": [
+        {
+          "id": "quality_gate",
+          "label": "质量门禁",
+          "summary": "查看内容是否达到发布标准。",
+          "jobToBeDone": "我想知道哪些内容可以发布，哪些需要隔离或改写。",
+          "primaryContent": "质量分、重复率、缺字段、来源风险、发布候选。",
+          "primaryAction": "生成治理计划",
+          "emptyState": "暂无待治理项目。",
+          "qualityGate": "所有状态变更必须写审计日志。",
+          "fiveW2H": {
+            "why": "防止低质、重复、越界内容进入用户页面。",
+            "what": "质量和发布门禁。",
+            "who": "审核者、自动治理脚本。",
+            "when": "导入、生成、发布、回滚前。",
+            "where": "治理台、进化中心、审计中心。",
+            "how": "扫描质量、重复、来源和安全证据。",
+            "howMuch": "发布内容必须 reviewed/published 且满足质量阈值。"
+          },
+          "scenarioTemplate": "场景 = 内容批次 + 质量问题 + 推荐治理动作。",
+          "caseStoryTemplate": "一批重复资源如何进入隔离或改写，而不是继续展示。",
+          "dialogueTemplate": {
+            "theirWords": "用户反馈：这些卡片看起来一样。",
+            "weakResponse": "只说数据很多。",
+            "betterResponse": "展示重复簇、相似度、处理动作和回滚计划。"
+          },
+          "comparisonTemplate": "旧治理靠感觉；新治理靠指标、队列和审计。",
+          "emotionFlowTemplate": "不信任 -> 看见证据 -> 有治理动作 -> 恢复信任。",
+          "expressionMoves": [
+            "detail_question",
+            "boundary_exit"
+          ],
+          "dataContract": {
+            "tables": [
+              "pipeline_run_logs",
+              "resource_library",
+              "content_import_issues"
+            ],
+            "requiredFields": [
+              "review_status",
+              "quality_score",
+              "audit_log"
+            ],
+            "sourcePolicy": "Governance actions must not silently delete or hide evidence."
+          }
+        }
+      ]
+    }
+  ]
+}

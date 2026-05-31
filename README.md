@@ -23,21 +23,24 @@ chmod +x start.sh
 ./start.sh
 ```
 
+如果 3000/8000 端口上残留的是本项目旧进程，启动脚本会自动清理并重新启动；如果端口被其他程序占用，脚本会提示你先关闭该程序。
+
 ### 方式二：手动启动
 
 **后端：**
 ```bash
-cd backend
-pip install -r ../requirements.txt
-python -c "from database.seed import seed_all; seed_all()"
-uvicorn backend.main:app --reload --port 8000
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -c "from backend.database.seed import seed_all; seed_all()"
+uvicorn backend.main:app --host 127.0.0.1 --port 8000
 ```
 
 **前端：**
 ```bash
 cd frontend
 npm install
-npm run dev
+VITE_API_PROXY_TARGET=http://127.0.0.1:8000 npm run dev -- --host 127.0.0.1 --port 3000
 ```
 
 ### 访问
@@ -65,6 +68,18 @@ npm run dev
 ├── docs/                       # 文档
 └── README.md
 ```
+
+## 📌 需求与原则入口
+
+项目需求、功能原则、模块模板和执行记录已经统一到：
+
+- [项目需求与功能原则统一索引](docs/项目需求与功能原则统一索引.md)
+- [最终需求契约](docs/requirements_final.md)
+- [世界级模块选项卡与内容模板总则](docs/世界级模块选项卡与内容模板总则.md)
+- [功能模块选项卡结构模板规范](docs/功能模块选项卡结构模板规范.md)
+- [机器可读模块模板](docs/tasks/module_tab_templates.json)
+
+后续新增页面、资源采集、数据库扩展、知识卡、表达工具或训练流程，先按统一索引判断目标、边界、模板和验证方式。
 
 ## 🎯 核心功能
 

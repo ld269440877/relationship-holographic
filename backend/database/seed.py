@@ -3,15 +3,24 @@
 """
 import json
 import uuid
-from pathlib import Path
+from datetime import datetime
 
 from loguru import logger
 from sqlmodel import Session
 
 from backend.database.connection import engine
 from backend.models.emotion import EmotionSpectrum, MixedEmotion
+from backend.models.evolution import (
+    AnnotationJob,
+    EvolutionItem,
+    EvolutionReport,
+    EvolutionSource,
+    RawContentItem,
+    SourceRegistry,
+    TrainingAssetVersion,
+)
+from backend.models.resource import ResourceLibrary, ResponseStrategy
 from backend.models.sample import InteractionSample
-from backend.models.resource import ResourceLibrary
 from backend.models.user import UserProfile
 
 
@@ -232,7 +241,7 @@ def init_emotion_spectrum(session: Session) -> None:
             session.add(emotion)
 
     session.commit()
-    logger.info(f"情绪谱系初始化完成: 7谱系 × 10强度 = 70条")
+    logger.info("情绪谱系初始化完成: 7谱系 × 10强度 = 70条")
 
 
 def init_mixed_emotions(session: Session) -> None:
@@ -450,7 +459,21 @@ def init_resources(session: Session) -> None:
 
     existing = session.query(ResourceLibrary).first()
     if existing:
-        logger.info("资源库已存在，跳过")
+        updated = 0
+        for resource in session.query(ResourceLibrary).all():
+            target_status = "published" if (resource.effectiveness_rating or 0) >= 8 else "reviewed"
+            if resource.review_status == target_status and resource.reviewed_at is not None:
+                continue
+            resource.review_status = target_status
+            resource.reviewed_at = resource.reviewed_at or datetime.now()
+            resource.published_at = datetime.now() if target_status == "published" else resource.published_at
+            session.add(resource)
+            updated += 1
+        if updated:
+            session.commit()
+            logger.info(f"资源库已存在，已回填状态 {updated} 条")
+        else:
+            logger.info("资源库已存在，跳过")
         return
 
     resources_data = [
@@ -549,14 +572,58 @@ def init_resources(session: Session) -> None:
     ]
 
     for data in resources_data:
+        review_status = "published" if data.get("effectiveness_rating", 0) >= 8 else "reviewed"
         resource = ResourceLibrary(
             resource_uuid=str(uuid.uuid4()),
+            review_status=review_status,
+            reviewed_at=datetime.now(),
+            published_at=datetime.now() if review_status == "published" else None,
             **data
         )
         session.add(resource)
 
     session.commit()
     logger.info(f"资源库初始化完成: {len(resources_data)}条")
+
+
+def init_response_strategies(session: Session) -> None:
+    """初始化回应策略库。"""
+    logger.info("正在初始化回应策略...")
+
+    strategies_data = [
+        {
+            "name": "共情反射",
+            "principle": "先接情绪，再处理事情",
+            "definition": "用自己的话准确反射对方的情绪和处境，降低防御。",
+            "example_json": '["听起来你今天真的撑了很久。", "你不是想抱怨，你是想被理解。"]',
+            "applicable_situation": "低落、委屈、冲突初期",
+            "effectiveness": 9,
+        },
+        {
+            "name": "轻验证",
+            "principle": "大胆假设，小心求证",
+            "definition": "把判断变成可被修正的问题，避免武断读心。",
+            "example_json": '["我不确定理解得对不对，你是有点失落吗？", "这更像是累，还是被忽略？"]',
+            "applicable_situation": "信号模糊、情绪混合、边界试探",
+            "effectiveness": 9,
+        },
+        {
+            "name": "边界表达",
+            "principle": "亲密不等于融合",
+            "definition": "清楚表达自己的限制，同时保留尊重和连接。",
+            "example_json": '["我愿意听你说，但我不能接受被羞辱。", "我想靠近，但如果你需要空间我尊重。"]',
+            "applicable_situation": "高强度冲突、越界请求、压力场景",
+            "effectiveness": 8,
+        },
+    ]
+    for data in strategies_data:
+        existing = session.query(ResponseStrategy).where(ResponseStrategy.name == data["name"]).first()
+        if existing:
+            continue
+        session.add(ResponseStrategy(**data))
+
+    session.commit()
+    logger.info(f"回应策略初始化完成: {len(strategies_data)}条")
 
 
 def init_user_profile(session: Session) -> None:
@@ -588,21 +655,313 @@ def init_user_profile(session: Session) -> None:
     logger.info("用户画像初始化完成")
 
 
+def init_evolution_pipeline(session: Session) -> None:
+    """初始化进化中心流水线示例状态。"""
+    logger.info("正在初始化进化流水线...")
+
+    existing = session.query(EvolutionItem).first()
+    if existing:
+        logger.info("进化流水线已存在，跳过")
+        return
+
+    sources_data = [
+        {
+            "name": "Gottman Institute 研究摘要",
+            "source_type": "gottman",
+            "url": "https://www.gottman.com/",
+            "trust_score": 0.93,
+            "update_frequency": "weekly",
+        },
+        {
+            "name": "旧版互动手册迁移",
+            "source_type": "json_import",
+            "trust_score": 0.74,
+            "update_frequency": "manual",
+        },
+        {
+            "name": "训练错题复盘",
+            "source_type": "social_case",
+            "trust_score": 0.82,
+            "update_frequency": "daily",
+        },
+        {
+            "name": "人工评审补录",
+            "source_type": "manual",
+            "trust_score": 0.88,
+            "update_frequency": "ad_hoc",
+        },
+    ]
+    sources: list[EvolutionSource] = []
+    for data in sources_data:
+        source = EvolutionSource(**data)
+        session.add(source)
+        sources.append(source)
+    session.commit()
+    for source in sources:
+        session.refresh(source)
+
+    items_data = [
+        {
+            "source": sources[0],
+            "title": "冲突修复优先检测软启动",
+            "content": "当对话出现指责或退缩信号时，训练样本应优先练习承认感受、降低防御和提出小范围修复。",
+            "summary": "把冲突中的第一步从解释改为情绪承认。",
+            "category": "research",
+            "tags": ["修复", "冲突", "软启动"],
+            "quality_score": 92,
+            "status": "published",
+        },
+        {
+            "source": sources[2],
+            "title": "错题集中暴露情绪词贫乏",
+            "content": "多次训练记录显示，用户容易用“还好”“随便”回应复杂情绪，下一批样本应增加混合情绪命名。",
+            "summary": "训练中心需要把混合情绪词库接到错题复盘。",
+            "category": "case",
+            "tags": ["错题", "情绪命名", "训练反馈"],
+            "quality_score": 86,
+            "status": "reviewed",
+        },
+        {
+            "source": sources[1],
+            "title": "旧手册话术需降操控表述",
+            "content": "历史内容中部分推拉话术容易被误用为操控，需要改写为边界清晰、尊重选择的表达模板。",
+            "summary": "迁移内容需要安全重写后再发布。",
+            "category": "warning",
+            "tags": ["安全", "旧内容", "反操控"],
+            "quality_score": 58,
+            "status": "draft",
+        },
+        {
+            "source": sources[3],
+            "title": "约会后确认样本可直接发布",
+            "content": "约会后双方都表达开心时，高质量回应应同时包含自我感受、具体记忆点和下一次轻邀请。",
+            "summary": "新增约会后确认场景的训练原则。",
+            "category": "technique",
+            "tags": ["约会后", "确认", "轻邀请"],
+            "quality_score": 81,
+            "status": "published",
+        },
+        {
+            "source": sources[1],
+            "title": "夸张式冷读模板拒绝入库",
+            "content": "该模板缺少证据来源，并且鼓励对用户进行人格猜测，不符合安全边界。",
+            "summary": "证据不足且有操控风险，拒绝。",
+            "category": "warning",
+            "tags": ["拒绝", "冷读", "安全"],
+            "quality_score": 34,
+            "status": "rejected",
+        },
+    ]
+    for data in items_data:
+        source = data.pop("source")
+        tags = data.pop("tags")
+        status = data["status"]
+        session.add(EvolutionItem(
+            source_id=source.id,
+            tags_json=json.dumps(tags, ensure_ascii=False),
+            published_at=datetime.now() if status == "published" else None,
+            **data,
+        ))
+
+    session.add(EvolutionReport(
+        period_type="weekly",
+        title="进化流水线启动周报",
+        summary="本周建立来源、候选、发布、拒绝四段状态，进化中心从条目陈列升级为可观察流水线。",
+        new_items_count=len(items_data),
+        promoted_samples_count=2,
+        key_insights_json=json.dumps([
+            "优先把冲突修复、情绪命名和反操控安全边界接入训练样本。",
+            "旧 JSON/手册内容只作为历史来源，发布前必须经过质量分与人工评审。",
+            "错题复盘可以成为每日进化输入源。",
+        ], ensure_ascii=False),
+    ))
+    session.commit()
+    logger.info(f"进化流水线初始化完成: {len(sources_data)} 个来源, {len(items_data)} 条进化项")
+
+
+def init_evolution_metadata_pipeline(session: Session) -> None:
+    """初始化合规来源登记和训练资产版本流水线。"""
+    logger.info("正在初始化进化元数据流水线...")
+
+    existing = session.query(SourceRegistry).first()
+    if existing:
+        logger.info("进化元数据流水线已存在，跳过")
+        return
+
+    sources_data = [
+        {
+            "source_uuid": "src_gottman_turn_toward",
+            "name": "Gottman Institute - Turn Toward Instead of Away",
+            "source_type": "expert_blog",
+            "url": "https://www.gottman.com/blog/turn-toward-instead-of-away/",
+            "trust_score": 0.95,
+            "update_frequency": "monthly",
+        },
+        {
+            "source_uuid": "src_esther_perel_podcast",
+            "name": "Esther Perel Official Podcast",
+            "source_type": "podcast",
+            "url": "https://www.estherperel.com/podcast",
+            "trust_score": 0.9,
+            "update_frequency": "weekly",
+        },
+        {
+            "source_uuid": "src_nist_genai_rmf",
+            "name": "NIST Generative AI Risk Management Profile",
+            "source_type": "safety_framework",
+            "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+            "trust_score": 0.96,
+            "update_frequency": "quarterly",
+        },
+        {
+            "source_uuid": "src_learning_scientists",
+            "name": "The Learning Scientists - Effective Study",
+            "source_type": "learning_science",
+            "url": "https://www.learningscientists.org/",
+            "trust_score": 0.88,
+            "update_frequency": "monthly",
+        },
+    ]
+
+    sources: list[SourceRegistry] = []
+    for data in sources_data:
+        source = SourceRegistry(
+            allowed_use_json=json.dumps(["summary", "metadata", "derived_training_pattern"], ensure_ascii=False),
+            disallowed_use_json=json.dumps(["full_text_republication", "identifiable_private_dialogue"], ensure_ascii=False),
+            last_checked_at=datetime.now(),
+            **data,
+        )
+        session.add(source)
+        sources.append(source)
+    session.commit()
+    for source in sources:
+        session.refresh(source)
+
+    raw_items = [
+        RawContentItem(
+            raw_uuid="raw_gottman_bid_turning_001",
+            source_id=sources[0].id,
+            title="Turning toward bids as a relationship primitive",
+            url=sources[0].url,
+            content_hash="sha256:seed-gottman-turn-toward",
+            raw_storage_policy="metadata_only",
+            privacy_risk=0.0,
+            copyright_risk=0.2,
+            consent_status="public_summary_allowed",
+            processing_status="annotated",
+        ),
+        RawContentItem(
+            raw_uuid="raw_perel_desire_distance_001",
+            source_id=sources[1].id,
+            title="Desire, distance and relational meaning",
+            url=sources[1].url,
+            content_hash="sha256:seed-perel-distance",
+            raw_storage_policy="metadata_only",
+            privacy_risk=0.0,
+            copyright_risk=0.2,
+            consent_status="public_summary_allowed",
+            processing_status="reviewed",
+        ),
+        RawContentItem(
+            raw_uuid="raw_nist_safety_guardrails_001",
+            source_id=sources[2].id,
+            title="AI risk controls for harmful relationship advice",
+            url=sources[2].url,
+            content_hash="sha256:seed-nist-guardrails",
+            raw_storage_policy="metadata_only",
+            privacy_risk=0.0,
+            copyright_risk=0.1,
+            consent_status="public_summary_allowed",
+            processing_status="published",
+        ),
+    ]
+    for item in raw_items:
+        session.add(item)
+    session.commit()
+    for item in raw_items:
+        session.refresh(item)
+
+    jobs = [
+        AnnotationJob(
+            target_type="raw_content",
+            target_id=raw_items[0].id or 0,
+            annotator_type="rule",
+            annotator_version="seed-v1",
+            schema_version="relationship-primitives-v1",
+            result_json=json.dumps({
+                "primitive": "connection_bid",
+                "signals": ["attention_request", "turn_toward"],
+                "training_value": 0.92,
+            }, ensure_ascii=False),
+            confidence=0.86,
+            status="reviewed",
+        ),
+        AnnotationJob(
+            target_type="raw_content",
+            target_id=raw_items[2].id or 0,
+            annotator_type="rule",
+            annotator_version="seed-v1",
+            schema_version="safety-guardrail-v1",
+            result_json=json.dumps({
+                "primitive": "safety_boundary",
+                "blocks": ["coercion", "stalking", "manipulation"],
+                "training_value": 0.95,
+            }, ensure_ascii=False),
+            confidence=0.9,
+            status="reviewed",
+        ),
+    ]
+    for job in jobs:
+        session.add(job)
+    session.commit()
+
+    assets = [
+        TrainingAssetVersion(
+            asset_type="curriculum",
+            asset_id=1,
+            version="2026.05.seed.connection_bid",
+            source_trace_json=json.dumps({"source_uuids": [sources[0].source_uuid], "raw_uuids": [raw_items[0].raw_uuid]}, ensure_ascii=False),
+            quality_json=json.dumps({"relationship_realism": 0.86, "annotation_confidence": 0.86, "safety_score": 0.96}, ensure_ascii=False),
+            review_status="published",
+            published_at=datetime.now(),
+        ),
+        TrainingAssetVersion(
+            asset_type="evaluation",
+            asset_id=1,
+            version="2026.05.seed.safety_guardrail",
+            source_trace_json=json.dumps({"source_uuids": [sources[2].source_uuid], "raw_uuids": [raw_items[2].raw_uuid]}, ensure_ascii=False),
+            quality_json=json.dumps({"safety_score": 0.99, "regression_value": 0.9}, ensure_ascii=False),
+            review_status="published",
+            published_at=datetime.now(),
+        ),
+    ]
+    for asset in assets:
+        session.add(asset)
+
+    session.commit()
+    logger.info(f"进化元数据流水线初始化完成: {len(sources)} 个来源, {len(raw_items)} 个候选, {len(assets)} 个资产版本")
+
+
 def seed_all() -> None:
     """执行所有数据初始化"""
     logger.info("开始数据初始化...")
-    
+
     # 先创建数据库表
     from backend.database.connection import create_db_and_tables
     create_db_and_tables()
-    
+
     with Session(engine) as session:
         init_emotion_spectrum(session)
         init_mixed_emotions(session)
         init_samples(session)
         init_resources(session)
+        init_response_strategies(session)
         init_user_profile(session)
-    
+        init_evolution_pipeline(session)
+        init_evolution_metadata_pipeline(session)
+        from backend.database.expression_seed import seed_expression_tools
+        seed_expression_tools(session)
+
     logger.info("数据初始化全部完成！")
 
 

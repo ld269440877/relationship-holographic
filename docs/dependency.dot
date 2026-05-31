@@ -1,0 +1,42 @@
+digraph relationship_training {
+  rankdir=LR;
+  node [shape=box, style="rounded"];
+
+  SQLite -> SQLModel;
+  SQLModel -> "FastAPI Routers";
+  "FastAPI Routers" -> "Vue Pages";
+  "Vue Pages" -> "World Smoke";
+
+  "Safety Guardian" -> "AI Orchestrator";
+  "AI Orchestrator" -> "TrainerAI";
+  "Safety Guardian" -> "Safety Events";
+  "Safety Events" -> "Analytics";
+  "Safety Events" -> "Audit Center";
+
+  "Source Registry" -> "Raw Content";
+  "Raw Content" -> "Annotation Jobs";
+  "Annotation Jobs" -> "Training Asset Versions";
+  "Training Asset Versions" -> "Reviewed Assets";
+  "Reviewed Assets" -> "Resources";
+  "Reviewed Assets" -> "Knowledge";
+  "Reviewed Assets" -> "Samples";
+
+  "Interaction Samples" -> "Training Attempts";
+  "Training Attempts" -> "Compare Reports";
+  "Compare Reports" -> "Mistake Log";
+  "Training Attempts" -> "Ability Snapshots";
+  "Ability Snapshots" -> "Dashboard";
+  "Mistake Log" -> "Mistakes";
+
+  "Expression Tools" -> "Resource Tags";
+  "Expression Tools" -> "Trainer Scoring";
+  "Expression Tools" -> "Mistake Rewrite";
+  "Expression Tools" -> "AI Expression Chain";
+
+  "Resource Sources" -> "Link Health";
+  "Link Health" -> "ResourceSurf";
+  "Link Health" -> "Resource Visibility";
+
+  "Module DAG" -> "Commander";
+  "Commander" -> "Regression Audit";
+}

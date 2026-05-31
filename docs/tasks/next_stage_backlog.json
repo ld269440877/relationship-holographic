@@ -1,0 +1,491 @@
+{
+  "version": "2026-05-23",
+  "source_report": "docs/下一阶段全面审计待办与执行方案.md",
+  "principle": "Next-stage tasks are based on real regression-audit debt, not vague expansion requests. Execute P0 before P1/P2.",
+  "baseline": {
+    "module_dag_completed": "108/108",
+    "frontend_type_check": "passed",
+    "frontend_build": "passed",
+    "frontend_smoke_world": "passed checked=61",
+    "regression_audit": "passed with debt surfaced",
+    "ai_success_rate": 34.2,
+    "ai_provider_failure_rate": 43.3,
+    "import_quality_score": 75.0,
+    "active_import_issues": 88,
+    "reviewed_publish_ready": 0,
+    "vector_top10_recall": 0.5
+  },
+  "tasks": [
+    {
+      "id": "p0_ai_provider_success_and_fallback_quality",
+      "priority": 10,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Raise AI provider diagnosability and keep AI companion useful under provider failure.",
+      "acceptance": [
+        "Provider diagnostics separate local request-shape risk from account/model/service risk.",
+        "Partner simulation returns expression_chain, related_resources, and mistake_memory on provider failure.",
+        "AI success contract reports structured success, recoverable success, raw text gaps, and fallback reasons without payload leakage."
+      ],
+      "steps": [
+        "Snapshot ai_provider_diagnostics, ai_failure_analysis, and ai_provider_success_contract.",
+        "Extend compatibility matrix for authorization, region, endpoint, mode, payload shape, response shape, and rate limit.",
+        "Harden probe readiness and live-probe policy boundaries without leaking secrets or prompt text.",
+        "Improve partner fallback quality with expression chains, resources, mistake memory, and next practice.",
+        "Add regression tests for HTTP 400, response-shape aliases, and fallback payload completeness."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_ai_provider_safety.py tests/test_analytics_api.py tests/test_training_flow.py -q",
+        ".venv/bin/python -m mypy backend/ai/provider_client.py backend/api/analytics.py backend/api/training.py --strict",
+        ".venv/bin/python -m ruff check backend/ai/provider_client.py backend/api/analytics.py backend/api/training.py tests/test_ai_provider_safety.py tests/test_analytics_api.py tests/test_training_flow.py",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ],
+      "completed_at": "2026-05-24T00:12:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Provider diagnostics now classifies HTTP 401/403 auth/permission, 404 endpoint/model, 429 quota, and 5xx provider-side failures.",
+          "Failure playbook exposes new non-secret quality gates and regression case ids for those statuses.",
+          "Partner provider-failure fallback test now asserts expression_chain, related_resources, and mistake_memory stay populated."
+        ],
+        "validation": [
+          "56 targeted tests passed for ai_provider_safety, analytics_api, and training_flow.",
+          "ruff passed for touched AI analytics/training files and tests.",
+          "mypy strict passed for deepseek_client, analytics, and training.",
+          "regression-audit passed and now reports http_403 auth_or_model_permission in provider diagnostics.",
+          "frontend type-check and build passed."
+        ]
+      }
+    },
+    {
+      "id": "p0_import_quality_issue_closure",
+      "priority": 20,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Raise import quality from 75 toward 85 by governing 88 active historical issues.",
+      "acceptance": [
+        "Active issues are grouped into batch-closable, source-review-required, and recrawl-required classes.",
+        "Issue closure writes reviewer, resolution hash, and audit logs without storing resolution prose or third-party full text.",
+        "Import quality report shows a clear score improvement path and keeps auto_repairable_fields at zero."
+      ],
+      "steps": [
+        "Rank active issue source groups by severity and count.",
+        "Dry-run warning-only batch closures where evidence is sufficient.",
+        "Send error-level groups to request_review rather than auto close.",
+        "Expose weekly source-group priorities and projected score lift in Governance.",
+        "Record audit history and regression-audit detail."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_learning_pipeline_api.py tests/test_database_schema_guard.py tests/test_commander.py -q",
+        ".venv/bin/python -m ruff check backend/api/evolution.py backend/database/schema_guard.py tools/commander.py tests/test_learning_pipeline_api.py tests/test_commander.py",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2",
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T00:25:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Import quality report now exposes issue_triage with batch_closable, source_review_required, and manual_reimport_required buckets.",
+          "Issue queue now returns the same triage summary alongside source groups, without auto-closing historical issues.",
+          "Triage reports current score, projected score after reviewer-approved batch closures, quality gates, source counts, issue counts, and next actions."
+        ],
+        "validation": [
+          "20 learning pipeline tests passed, including triage separation coverage.",
+          "23 database schema guard and commander tests passed.",
+          "ruff passed for touched evolution/governance files and tests.",
+          "regression-audit passed and still surfaces import quality debt instead of hiding it.",
+          "frontend type-check, build, and world smoke passed with checked=61."
+        ]
+      }
+    },
+    {
+      "id": "p0_reviewed_publish_boutique_batch",
+      "priority": 30,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Create publish-ready boutique training resources without lowering specificity gates.",
+      "acceptance": [
+        "At least one resource batch has publish_ready > 0.",
+        "Low-specificity resources remain blocked even when metadata is complete.",
+        "Default Resources list excludes pytest, quarantine, and generic low-quality content."
+      ],
+      "steps": [
+        "Extract blocking reasons from reviewed publish candidates.",
+        "Generate curation briefs for blocked resources and knowledge entries.",
+        "Create project-original replacement cards with concrete scene, partner words, bad response, better response, emotion signal, boundary, drill, and expression tools.",
+        "Use reviewed asset governance actions for reviewed/published transitions.",
+        "Prioritize published and high-quality cards in Resources and ResourceDetail."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_catalog_profile_review_api.py tests/test_vector_index.py -q",
+        ".venv/bin/python -m ruff check backend/api/evolution.py backend/api/resources.py tests/test_catalog_profile_review_api.py tests/test_vector_index.py",
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T00:45:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Added reviewed-assets/boutique-batch for idempotent project-original concrete practice cards with dry-run support and audit logging.",
+          "Generated a production boutique batch across the project main axes; publish-ready reviewed candidates rose to 27.",
+          "Default resource listing now requires reviewed/published visibility and hides pytest fixture sources while preserving governance tests with non-pytest sources.",
+          "Publish-candidate scanning now looks beyond the visible limit so high-quality cards are not buried by legacy reviewed records."
+        ],
+        "validation": [
+          "19 catalog/profile/review and vector tests passed.",
+          "ruff passed for evolution/resources and touched tests.",
+          "regression-audit passed with reviewed_publish_candidates.publish_ready=27 and import auto_repairable_fields=0 after safe repair.",
+          "frontend type-check, build, and world smoke passed with checked=61."
+        ]
+      }
+    },
+    {
+      "id": "p0_resource_near_duplicate_readability",
+      "priority": 40,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Reduce perceived repetition and improve resource-card learning value.",
+      "acceptance": [
+        "First page has no continuous template-like duplicates.",
+        "Similarity governance quarantines or rewrites variants without deletion.",
+        "Quality report exposes duplicate debt, mission alignment, specificity, and practice completeness."
+      ],
+      "steps": [
+        "Cluster resources by title family, scenario, expression tool, practice task, fingerprint, and vector similarity.",
+        "Keep the most concrete card per cluster visible and queue variants for quarantine or rewrite.",
+        "Generate project-original replacements only; never present third-party summaries as original full text.",
+        "Shuffle default listing by semantic family to avoid repeated cards.",
+        "Add detail reasons explaining why each card is worth practicing."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_vector_index.py tests/test_catalog_profile_review_api.py -q",
+        ".venv/bin/python -m ruff check backend/api/resources.py backend/core/vector_index.py tests/test_vector_index.py",
+        "cd frontend && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T00:57:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Resource quality report now exposes perceived_duplicate_debt and practice_completeness metrics.",
+          "Similarity queue now scans only visible reviewed/published resources, aligning governance with user-facing resource browsing.",
+          "Default resource list already breaks first-page continuous family runs; report now quantifies that risk explicitly.",
+          "Regression tests cover duplicate family reporting, practice marker scoring, and excluding draft/quarantine similarity noise."
+        ],
+        "validation": [
+          "21 vector/catalog tests passed.",
+          "ruff passed for vector/resource quality/resources and touched tests.",
+          "resource_quality_report on real data surfaced 933 duplicate families, largest family size 36, first-page max continuous run 1, and 7939 thin cards.",
+          "regression-audit passed; safe repair returned auto_repairable_fields to 0 after test data creation.",
+          "frontend world smoke passed with checked=61."
+        ]
+      }
+    },
+    {
+      "id": "p0_multi_record_page_ux_unification",
+      "priority": 50,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Unify long-list browsing across multi-record pages.",
+      "acceptance": [
+        "Multi-record pages use sticky collapsible right-side TOC or a documented equivalent.",
+        "Search inputs provide API/database suggestions and still allow manual entry.",
+        "Desktop has no wasted collapsed-sidebar column; mobile has no horizontal overflow."
+      ],
+      "steps": [
+        "Audit Resources, ResourceSurf, Expression, Knowledge, Mistakes, Audit, Governance, Analytics, and Path.",
+        "Apply PageTocSidebar consistently and reclaim layout width on collapse.",
+        "Add suggestion datalists or grouped chips to long-list search fields.",
+        "Prefer inline expansion for card details and detail pages for full reading.",
+        "Extend world-class smoke coverage for affected pages."
+      ],
+      "verification": [
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:00:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Resources, ResourceSurf, ResourceDetail, and Expression use the shared PageTocSidebar with sticky/collapsible right-side behavior.",
+          "Collapsed TOC controls dock to the right edge and release the 280px sidebar column on resource/source/detail pages.",
+          "Resource and expression search fields expose database-backed/native datalist suggestions while preserving manual input.",
+          "Expression details use inline expansion and tool-chain recommendations are no longer occupying the TOC sidebar."
+        ],
+        "validation": [
+          "frontend type-check passed.",
+          "frontend build passed.",
+          "frontend world smoke passed with checked=61, including TocCollapseLayout, ExpressionSearchSuggestions, ResourceLearningScaffold, and PathLearningScaffold coverage.",
+          "39 backend expression/training/learning tests passed while rechecking expression and path learning contracts."
+        ]
+      }
+    },
+    {
+      "id": "p1_expression_learning_depth",
+      "priority": 110,
+      "status": "completed",
+      "dependencies": [
+        "p0_multi_record_page_ux_unification"
+      ],
+      "goal": "Turn expression tools from vocabulary cards into micro-courses.",
+      "acceptance": [
+        "Each tool explains definition, why it works, how to use it, when not to use it, examples, and drills.",
+        "Mistake rewrite can attribute tool misuse and generate three rewrites.",
+        "Trainer scoring points to specific expression tools."
+      ],
+      "steps": [
+        "Backfill tool detail fields for principles, cases, misuses, boundaries, and drills.",
+        "Create scene-specific tool chains for initial contact, flirt, conflict, repair, long-term, and public settings.",
+        "Expose richer details in Expression, Trainer, TrainerAI, and Mistakes."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_expression_api.py tests/test_training_flow.py -q",
+        "cd frontend && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:08:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Expression cards expose definition, principles, formula, practice method, scenarios, risk boundaries, before/after examples, and transfer drills.",
+          "Trainer scoring and TrainerAI reference expression tools, risk boundaries, and tool-chain rationale.",
+          "Mistake/resource flows preserve expression context through training and rewrite entry points."
+        ],
+        "validation": [
+          "tests/test_expression_api.py and tests/test_training_flow.py passed as part of the 39-test expression/training/learning run.",
+          "world smoke passed ExpressionSearchSuggestions and expanded card detail checks."
+        ]
+      }
+    },
+    {
+      "id": "p1_path_curriculum_depth",
+      "priority": 120,
+      "status": "completed",
+      "dependencies": [
+        "p1_expression_learning_depth"
+      ],
+      "goal": "Upgrade Path from overview into evidence-based curriculum.",
+      "acceptance": [
+        "Every stage has goals, concepts, pitfalls, observable signals, drills, and promotion evidence.",
+        "Stage recommendations connect to resources, expression tools, mistakes, and Trainer.",
+        "Promotion evidence comes from training records rather than static copy."
+      ],
+      "steps": [
+        "Extend curriculum graph payload with stage-level learning scaffolds.",
+        "Add current-stage diagnosis and recommended resources.",
+        "Render stage concept/principle/method/scenario/pitfall/examples/drill in Path.",
+        "Add smoke coverage for stage details."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_learning_pipeline_api.py tests/test_training_flow.py -q",
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:08:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Path page renders route principles and stage-level concepts, methods, scenarios, pitfalls, low-quality/better examples, and drills.",
+          "Curriculum graph exposes evidence and promotion scaffolds through the learning API."
+        ],
+        "validation": [
+          "tests/test_learning_pipeline_api.py and tests/test_training_flow.py passed.",
+          "frontend type-check/build/world smoke passed, including PathLearningScaffold."
+        ]
+      }
+    },
+    {
+      "id": "p1_profile_settings_evidence",
+      "priority": 130,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Keep profile and settings fully evidence-bound and user-understandable.",
+      "acceptance": [
+        "Profile metrics show source, formula, and updated time.",
+        "Settings export remains real Markdown with location guidance and checksum.",
+        "Reminder copy states browser-notification limitations clearly."
+      ],
+      "steps": [
+        "Add metric evidence rows for profile stats.",
+        "Add learning evidence timeline where data exists.",
+        "Verify export and reminder UI are not decorative or over-promising."
+      ],
+      "verification": [
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:08:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Profile metrics show evidence sources and avoid unverifiable hard-coded lifetime stats.",
+          "Settings export produces readable Markdown with checksum and explicit save-location guidance.",
+          "Daily reminder is implemented as browser-local notification with clear limitations and test reminder."
+        ],
+        "validation": [
+          "frontend type-check/build/world smoke passed, including ProfileEvidence, SettingsExport, and SettingsReminder."
+        ]
+      }
+    },
+    {
+      "id": "p1_vector_recall_calibration",
+      "priority": 140,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Raise vector recall above operational minimum for recommendations and dedupe.",
+      "acceptance": [
+        "Evaluation probes cover resources, knowledge, samples, expression tools, and mistake context.",
+        "Recall, MRR, threshold hit rates, and weak spots are reported by type.",
+        "Top10 recall target is at least 0.7."
+      ],
+      "steps": [
+        "Expand vector evaluation probe set.",
+        "Separate thresholds for near-duplicate, recommendation, and exploration.",
+        "Report false-positive/false-negative examples without raw private text.",
+        "Queue metadata backfill for weak types."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_vector_index.py -q",
+        ".venv/bin/python -m mypy backend/core/vector_index.py --strict",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ],
+      "completed_at": "2026-05-24T01:08:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Vector evaluation reports backend, probes, threshold hit rates, by-type recall, weak spots, MRR, and top-k recall.",
+          "Similarity governance and recommendation search use metadata-only local vectors with sqlite-vec readiness."
+        ],
+        "validation": [
+          "tests/test_vector_index.py passed.",
+          "mypy strict passed for backend/core/vector_index.py.",
+          "regression-audit passed with vector_recall.top10_recall=0.75."
+        ]
+      }
+    },
+    {
+      "id": "p1_training_emotional_flow",
+      "priority": 150,
+      "status": "completed",
+      "dependencies": [
+        "p1_expression_learning_depth"
+      ],
+      "goal": "Make relationship-state movement visible in Trainer, TrainerAI, and Mistakes.",
+      "acceptance": [
+        "Compare reports include emotion-path diff and state-shift explanation.",
+        "TrainerAI explains trust, pressure, boundary safety, and connection changes per turn.",
+        "Mistakes classify where the relationship movement broke."
+      ],
+      "steps": [
+        "Extend compare output with before/after state movement.",
+        "Render state-shift reasons in Trainer and TrainerAI.",
+        "Add mistake categories based on emotional-flow breakpoints.",
+        "Keep safety-blocked paths educational and non-controlling."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_training_flow.py tests/test_core_engines.py -q",
+        "cd frontend && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:08:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Compare reports include emotion_path and structured relationship-state signals.",
+          "TrainerAI displays trust, stress, boundary, connection, state_shift, expression chain, and risk_boundary per response.",
+          "Mistake attribution includes boundary pressure and emotional-flow repair categories."
+        ],
+        "validation": [
+          "tests/test_training_flow.py passed in the expression/training/learning test run.",
+          "world smoke passed TrainerAI and resource-to-training flows."
+        ]
+      }
+    },
+    {
+      "id": "p2_source_link_health",
+      "priority": 210,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Give ResourceSurf real link health and source reliability signals.",
+      "acceptance": [
+        "Sources store status, HTTP code, redirect, and last_checked_at.",
+        "Invalid links are downgraded or hidden by default.",
+        "Source titles remain clickable outbound links."
+      ],
+      "steps": [
+        "Add conservative link-health checker for registered sources.",
+        "Store health metadata without scraping full text.",
+        "Expose filters by health, language, and source type in ResourceSurf.",
+        "Add scheduled health check plan."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_learning_pipeline_api.py tests/test_content_import_database.py -q",
+        "cd frontend && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:24:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Added /api/resources/sources/health-check with dry-run and real metadata-only checks using HEAD plus GET fallback.",
+          "Source health is stored in pipeline_run_logs with status, HTTP code, redirect URL, redirected flag, last_checked_at, and no page body.",
+          "Invalid source URLs downgrade reviewed/published resources to draft so default Resources browsing hides them.",
+          "ResourceSurf source cards now show real health, HTTP code, redirect, and last checked metadata while keeping titles clickable outbound links."
+        ],
+        "validation": [
+          "tests/test_catalog_profile_review_api.py covered link metadata storage, invalid-link downgrade, and source-card health response.",
+          "frontend type-check, build, and world smoke passed."
+        ]
+      }
+    },
+    {
+      "id": "p2_batch_rollback_dashboard",
+      "priority": 220,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Make content batches auditable, reversible, and visible.",
+      "acceptance": [
+        "Generated/imported batches record batch_id, rule version, prompt version, and quality summary.",
+        "Governance supports dry-run rollback by batch without deleting rows.",
+        "Analytics shows duplicate rate, publish rate, quarantine count, and issue closure trend."
+      ],
+      "steps": [
+        "Define batch audit payload shape.",
+        "Add batch list and rollback dry-run endpoint.",
+        "Add Governance batch action panel.",
+        "Add Analytics resource-quality trend panel."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_catalog_profile_review_api.py tests/test_learning_pipeline_api.py tests/test_analytics_api.py -q",
+        "cd frontend && npm run type-check && npm run build && npm run smoke:world"
+      ],
+      "completed_at": "2026-05-24T01:24:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "Added /api/evolution/import-batches/rollback-plan for non-destructive batch rollback dry-run planning.",
+          "Rollback plans expose affected issues, knowledge entries, resources, related logs, planned status transitions, rule version, prompt version, duplicate rate, publish rate, quarantine count, and open issue count.",
+          "The endpoint never deletes rows and marks the audit payload as dry_run_only/content_deleted=false."
+        ],
+        "validation": [
+          "tests/test_learning_pipeline_api.py covered rollback impact, planned transitions, quality summary, audit payload, and non-destructive behavior.",
+          "regression-audit passed after the change."
+        ]
+      }
+    },
+    {
+      "id": "p2_safety_red_team_expansion",
+      "priority": 230,
+      "status": "completed",
+      "dependencies": [],
+      "goal": "Keep flirt, humor, and adult-adjacent content inside consent and boundary constraints.",
+      "acceptance": [
+        "Manipulation, coercion, stalking, and consent-violation prompts are hard-blocked.",
+        "Blocked paths still return respectful alternative practice.",
+        "Resource publish gates require boundary/consent evidence for high-tension content."
+      ],
+      "steps": [
+        "Expand red-team examples and safety flags.",
+        "Add alternative expression drills for each blocked class.",
+        "Include boundary/consent checks in resource curation and publish gating."
+      ],
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_ai_provider_safety.py tests/test_training_flow.py -q",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ],
+      "completed_at": "2026-05-24T01:24:00+08:00",
+      "completion_summary": {
+        "implemented": [
+          "SafetyGuardian now flags explicit consent-violation prompts such as bypassing refusal, forced agreement, covert recording, phone checking, and location tracking.",
+          "Blocked consent/boundary paths return respectful alternatives rather than provider calls.",
+          "Reviewed resource publish gates now block high-tension/flirty/adult-adjacent resources unless they include explicit boundary, consent, comfort, stop, or refusal-exit evidence."
+        ],
+        "validation": [
+          "tests/test_ai_provider_safety.py covered consent-violation hard block and alternatives.",
+          "tests/test_catalog_profile_review_api.py covered high-tension publish blocking and safe boundary-evidence pass.",
+          "regression-audit passed."
+        ]
+      }
+    }
+  ]
+}

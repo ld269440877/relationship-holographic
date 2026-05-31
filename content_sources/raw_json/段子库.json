@@ -1,0 +1,1562 @@
+{
+  "metadata": {
+    "name": "微观关系动力学全息系统 - 段子库",
+    "version": "1.0.0",
+    "totalItems": 109,
+    "lastUpdated": "2026-05-20"
+  },
+  "categories": [
+    {
+      "name": "破冰",
+      "description": "初次见面时的开场白",
+      "icon": "🧊",
+      "count": 42
+    },
+    {
+      "name": "暖场",
+      "description": "气氛稍暖后的话题开启",
+      "icon": "🔥",
+      "count": 25
+    },
+    {
+      "name": "幽默",
+      "description": "轻松幽默的调侃",
+      "icon": "😄",
+      "count": 20
+    },
+    {
+      "name": "调情",
+      "description": "推进关系的暧昧话语",
+      "icon": "💕",
+      "count": 22
+    }
+  ],
+  "items": [
+    {
+      "id": "ice_001",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "我觉得你说话的方式很特别，像是在演一出小剧。",
+      "trigger_situation": "好奇引发对话",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_002",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "你这种气场，让我想到一个故事…想听吗？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_003",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "我发现我们有个共同点，你知道是什么吗？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_004",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "如果你是一本书，你觉得自己是什么类型的书？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_005",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "你身上有个小细节我很好奇…算了，还是不说了（欲擒故纵）。",
+      "trigger_situation": "好奇引发对话",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_006",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "你相信缘分吗？我觉得我们能认识就不是偶然。",
+      "trigger_situation": "好奇引发对话",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_007",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "我刚才在想一个奇怪的问题，你一般几点会想我？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_008",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "如果明天是世界末日，你今天会做什么？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_009",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "你觉得人和人之间最神奇的连接是什么？",
+      "trigger_situation": "好奇引发对话",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_010",
+      "category": "破冰",
+      "subcategory": "好奇类",
+      "content": "我刚刚认识你三分钟，但我有种认识了很久的感觉。",
+      "trigger_situation": "好奇引发对话",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "好奇类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_011",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "我平时不太会搭讪女生的，但我还是决定来和你说句话。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_012",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "我刚才站在这里纠结了五分钟才敢走过来。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_013",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "我朋友说我太闷了，但我跟你说话的时候好像话变多了。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_014",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "如果我说错话了你记得提醒我，我这个人有时候脑子比嘴慢。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_015",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "我承认我对你好奇很久了，今天终于鼓起勇气。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_016",
+      "category": "破冰",
+      "subcategory": "自嘲类",
+      "content": "你知道我为什么在看你吗？因为我在想一个开场白。",
+      "trigger_situation": "自嘲缓解尴尬",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自嘲类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_017",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我叫…，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_018",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我刚搬来这边不久，对这附近不太熟，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_019",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是做…的，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_020",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我今天本来约了朋友，但他临时放我鸽子，所以我就一个人来了。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_021",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是第一次参加这种活动，有点紧张，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_022",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我平时话不多，但遇到想说话的人就会变得很能聊。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_023",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我姓…名…，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_024",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我刚从一个有趣的旅行回来，你最近有去哪里玩吗？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_025",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个闲不住的人，周末总想往外跑，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_026",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个夜猫子，晚上十点之后才是我最精神的时候。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_027",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我不太擅长主动社交，但今天我想认识你。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_028",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我老家是…的，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_029",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个爱操心的人，总是想把事情安排得妥妥的。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_030",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我最近在学…，特别有意思，你有没有在学什么？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_031",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个美食爱好者，吃到好吃的心情就会变好，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_032",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我正在挑战自己每周学一样新东西，上周学的是咖啡拉花。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_033",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我平时喜欢…，你呢有什么爱好？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_034",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我其实有点社恐，但对着你好像不怕了。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_035",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个早起困难户，但周末会为了吃早茶早起。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_036",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是一个对世界充满好奇的人，你呢？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_037",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我第一次来这边，朋友推荐我来的，你是怎么知道这里的？",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_038",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是个喜欢安静的人，但也会偶尔出来凑热闹。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_039",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我平时喜欢一个人待着，但遇到有趣的人就想多聊几句。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 5,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_040",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我最近在思考一个问题，想听听你的看法。",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_041",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我是水瓶座的，你呢？（星座破冰）",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 4,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "ice_042",
+      "category": "破冰",
+      "subcategory": "自我介绍类",
+      "content": "我MBTI是…，你呢？（性格测试破冰）",
+      "trigger_situation": "初次见面/社交场合",
+      "rating": 3,
+      "tags": [
+        "破冰",
+        "自我介绍类",
+        "破冰",
+        "开场白"
+      ]
+    },
+    {
+      "id": "warm_001",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得什么样的聊天氛围最让人舒服？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_002",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你上一次笑得很开心是什么时候？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_003",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "如果可以和一个历史人物共进晚餐，你会选谁？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_004",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得人和人之间最难得的品质是什么？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_005",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你做过最疯狂的一件事是什么？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_006",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "如果可以改变你人生中的某一件事，你会选什么？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_007",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你相信世界上有纯粹的巧合吗？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_008",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得自己是感性的人还是理性的人？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_009",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "什么事情会让你突然对一个人产生好感？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_010",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你更在乎被喜欢还是被尊重？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_011",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你理想中的生活是什么样的？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_012",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "什么事情是你一直想做但还没做的？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_013",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得在关系里最重要的是什么？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_014",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你更看重承诺还是感觉？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_015",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "如果明天中了一百万，你会怎么花？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_016",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你有没有一些只有自己知道的奇怪小习惯？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_017",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你更喜欢主动还是被动地和人建立关系？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_018",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得什么是真正的自信？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_019",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "什么情况下你会觉得一个人很有魅力？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_020",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你相信一见钟情吗？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_021",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你更在乎过程还是结果？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 3,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_022",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "什么事情能让你立刻心情变好？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 4,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_023",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你觉得自己像什么动物？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_024",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "如果只能选一个，你更想有钱还是更想有爱？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "warm_025",
+      "category": "暖场",
+      "subcategory": "话题类",
+      "content": "你最想拥有哪种能力？",
+      "trigger_situation": "气氛稍微熟络后深聊",
+      "rating": 5,
+      "tags": [
+        "暖场",
+        "话题类",
+        "暖场",
+        "话题开启"
+      ]
+    },
+    {
+      "id": "humor_001",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我刚在想，如果我的猫看到你，它可能会吃醋，因为它从来没见过这么好看的人。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_002",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "你笑起来的时候，我突然明白为什么有人喜欢收藏艺术品了。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 5,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_003",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我朋友说我在喜欢的人面前会变笨，所以我现在已经在变笨了。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_004",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "你别误会，我不是油嘴滑舌，我只是忍不住。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_005",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我刚才在想，你说话这么有趣，是不是因为上天觉得你太好看所以给补偿。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 5,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_006",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我有个朋友说你很特别，我还不信，现在我信了。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_007",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "你说话的方式让我想起一个我很欣赏的人——我自己。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 5,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_008",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我不确定这算不算搭讪，但我确实在想怎么跟你说话才不像是第一次搭讪。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_009",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我本来想了很多开场白，结果看到你就忘了。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 5,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_010",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我猜你一定听过很多夸你的话，那我就换一种——你是那种让人想认识的人。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_011",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我通常不太相信星座，但你是狮子座对吧？自带光环那种。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_012",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我刚跟我自己打了个赌，如果我跟你说话你就笑了，结果我赢了。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_013",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我知道我长得不帅，但我很真诚，你要不赌一把？",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_014",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "你说我该怎么介绍自己呢？\"你好，我是一个会让朋友担心我终身大事的人\"？",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_015",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "说实话，我刚才纠结了很久要不要过来，后来我想通了，不过来我一定会后悔。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 5,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_016",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "如果你不想继续聊了可以告诉我，我会假装没来过（开玩笑）。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_017",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我妈要是知道我在这里跟人搭讪，她一定会很欣慰。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 4,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_018",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我不擅长聊天，但我擅长在聊天中变得更加不擅长。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_019",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "你让我想到一个词，但那个词我还没想好是什么意思。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "humor_020",
+      "category": "幽默",
+      "subcategory": "调侃类",
+      "content": "我刚意识到我已经盯着你看了很久，希望没吓到你。",
+      "trigger_situation": "气氛轻松时的幽默调侃",
+      "rating": 3,
+      "tags": [
+        "幽默",
+        "调侃类",
+        "幽默",
+        "调侃"
+      ]
+    },
+    {
+      "id": "flirt_001",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我发现我在想你的时候，时间好像过得特别慢。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_002",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你说话的时候，我发现自己会忘记原本想说什么。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_003",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我不太会说好听的话，但我很擅长记住一个人。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_004",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你知道吗，和你聊天有种很奇怪的感觉——像是认识了很久，但又说不清。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_005",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我很少主动加陌生人微信，但今天我破例了。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_006",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你让我有点紧张，通常我不会这样的。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_007",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我在想，如果下次还能遇到你，我就请你喝咖啡。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_008",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你身上有个味道，让我想起一些很美好的事情。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_009",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我本来还有别的事要做的，但你来了我就忘了。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_010",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你是我今天遇到的最想认识的人。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_011",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我不知道这算不算搭讪成功，但我决定告诉你：你很特别。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_012",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我觉得有些人认识很久也不了解，有些人刚认识就觉得很懂。你是哪一种？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_013",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你知道为什么我选择来这里吗？因为有人说这里会有惊喜。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 3,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_014",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "我正在努力想一个不无聊的搭讪方式，但我发现对着你反而变得笨拙了。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_015",
+      "category": "调情",
+      "subcategory": "含蓄类",
+      "content": "你愿不愿意告诉我，下次见面你会记得我吗？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "含蓄类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_016",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我想认识你，你叫什么名字？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_017",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我觉得你很好看，想多聊几句，可以吗？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_018",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我对你很好奇，可以加个微信吗？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_019",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我很少这么直接，但我很想认识你。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_020",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我觉得和你聊天很舒服，我们可以交换联系方式吗？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_021",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "你介意我问你一个问题吗？你有男朋友了吗？",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 5,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    },
+    {
+      "id": "flirt_022",
+      "category": "调情",
+      "subcategory": "直接类",
+      "content": "我对你很有兴趣，但我不确定你对我有没有兴趣，所以我来确认一下。",
+      "trigger_situation": "双方有好感时推进关系",
+      "rating": 4,
+      "tags": [
+        "调情",
+        "直接类",
+        "调情",
+        "推进关系"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "generated_at": "2026-05-24T01:40:45.754Z",
+  "results": [
+    {
+      "route": "Dashboard",
+      "path": "/",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "仪表盘 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Trainer",
+      "path": "/trainer",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerAI",
+      "path": "/trainer-ai",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Path",
+      "path": "/path",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "八阶路径 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Mistakes",
+      "path": "/mistakes",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "错题本 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Resources",
+      "path": "/resources",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "资源海洋 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceDetail",
+      "path": "/resources/1?q=边界&category=冲突修复&page=2",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "资源详情 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Expression",
+      "path": "/expression#expression-tool-expr_tool_015",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "表达工具箱 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceSurf",
+      "path": "/surf",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "浏览冲浪 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Profile",
+      "path": "/profile",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "我的档案 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Knowledge",
+      "path": "/knowledge",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "知识中枢 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Evolution",
+      "path": "/evolution",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "进化中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Framework",
+      "path": "/framework",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "元基础 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Analytics",
+      "path": "/analytics",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "分析中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Audit",
+      "path": "/audit",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "审计中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Governance",
+      "path": "/governance",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "发布治理 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Settings",
+      "path": "/settings",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerAIInteraction",
+      "path": "/trainer-ai",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasPartnerReply": true,
+      "hasSessionReview": true,
+      "hasScore": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerResourceContext",
+      "path": "/trainer?resource_id=1",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "hasResourceContext": true,
+      "hasPrefill": true,
+      "resourceHref": "/resources/1",
+      "clearedResourceContext": true,
+      "keptFilterQuery": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "MistakeResourceContext",
+      "path": "/mistakes?resource_id=1",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "错题本 - 关系动力学全息",
+      "hasResourceMistakeContext": true,
+      "hasGuidance": true,
+      "resourceHref": "/resources/1",
+      "trainerHref": "/trainer?resource_id=1&q=%E5%A4%B1%E6%9C%9B%E5%90%8E%E7%9A%84%E9%87%8D%E6%96%B0%E7%BA%A6%E5%AE%9A%EF%BD%9C%E4%B8%89%E6%AD%A5%E8%AE%AD%E7%BB%83%EF%BD%9C%E5%AE%89%E5%85%A8%E5%9E%8BD3",
+      "clearedResourceContext": true,
+      "keptSearchQuery": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "SettingsExport",
+      "path": "/settings",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "hasExportPanel": true,
+      "hasCoverage": true,
+      "hasMarkdownFormat": true,
+      "hasLocationHint": true,
+      "downloadHrefIsBlob": true,
+      "downloadName": "relationship-training-export-2026-05-24.md",
+      "runtimeErrors": []
+    },
+    {
+      "route": "SettingsReminder",
+      "path": "/settings",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "hasReminderSection": true,
+      "hasLocalBoundary": true,
+      "hasPermissionBoundary": true,
+      "hasTestButton": true,
+      "reminderTime": "20:00",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ExpressionSearchSuggestions",
+      "path": "/expression",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "表达工具箱 - 关系动力学全息",
+      "hasDatalistInput": true,
+      "optionCount": 38,
+      "hasToolSuggestion": true,
+      "hasGuidance": true,
+      "hasSuggestionGroups": true,
+      "hasSearchWorkbench": true,
+      "hasChainAboveList": true,
+      "filteredToTool": true,
+      "hasActiveSearchChip": true,
+      "hasLearningDetails": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "PathLearningScaffold",
+      "path": "/path",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "八阶路径 - 关系动力学全息",
+      "hasLearningOverview": true,
+      "hasStageScaffold": true,
+      "hasExamples": true,
+      "hasConcreteStage": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceLearningScaffold",
+      "path": "/resources",
+      "viewport": "desktop",
+      "list": {
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "hasHeading": true,
+        "title": "资源海洋 - 关系动力学全息"
+      },
+      "detail": {
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "hasHeading": true,
+        "title": "资源详情 - 关系动力学全息"
+      },
+      "hasListScaffold": true,
+      "hasListComparison": true,
+      "hasSourceBoundary": true,
+      "hasDetailScaffold": true,
+      "hasDetailExamples": true,
+      "hasCopyrightBoundary": true,
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "ProfileEvidence",
+      "path": "/profile",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "我的档案 - 关系动力学全息",
+      "hasProfileHeading": true,
+      "hasRadar": true,
+      "hasRealStats": true,
+      "hasMockValues": true,
+      "hasEvidence": true,
+      "removedHardcodedStats": true,
+      "removedStaticAwareness": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TocCollapseLayout",
+      "path": "/resources",
+      "viewport": "desktop",
+      "before": {
+        "wideColumns": [
+          "816px 280px"
+        ],
+        "buttonRight": 41
+      },
+      "after": {
+        "wideColumns": [],
+        "buttonRight": 25,
+        "hasExpandButton": true,
+        "horizontalOverflow": 0
+      },
+      "releasedSidebarColumn": true,
+      "fixedToRight": true,
+      "noOverflow": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TocCollapseLayout",
+      "path": "/surf",
+      "viewport": "desktop",
+      "before": {
+        "wideColumns": [
+          "820px 280px"
+        ],
+        "buttonRight": 41
+      },
+      "after": {
+        "wideColumns": [],
+        "buttonRight": 25,
+        "hasExpandButton": true,
+        "horizontalOverflow": 0
+      },
+      "releasedSidebarColumn": true,
+      "fixedToRight": true,
+      "noOverflow": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TocCollapseLayout",
+      "path": "/resources/1",
+      "viewport": "desktop",
+      "before": {
+        "wideColumns": [
+          "816px 280px"
+        ],
+        "buttonRight": 41
+      },
+      "after": {
+        "wideColumns": [],
+        "buttonRight": 25,
+        "hasExpandButton": true,
+        "horizontalOverflow": 0
+      },
+      "releasedSidebarColumn": true,
+      "fixedToRight": true,
+      "noOverflow": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerCompareFailure",
+      "path": "/trainer",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "hasSubmitError": true,
+      "preservedResponse": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "[API Error] smoke compare failure",
+        "submitComparison failed Error: smoke compare failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.post (http://127.0.0.1:4174/src/utils/api.ts:35:22)\n    at async Proxy.submitComparison (http://127.0.0.1:4174/src/stores/training.ts:87:30)\n    at async submit (http://127.0.0.1:4174/src/pages/Trainer.vue:109:22)"
+      ]
+    },
+    {
+      "route": "TrainerAIPartnerFailure",
+      "path": "/trainer-ai",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasFallbackNotice": true,
+      "hasFallbackReply": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+        "[API Error] smoke partner failure",
+        "simulatePartner failed Error: smoke partner failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.post (http://127.0.0.1:4174/src/utils/api.ts:35:22)\n    at async requestPartnerResponse (http://127.0.0.1:4174/src/pages/TrainerAI.vue:229:16)\n    at async sendMessage (http://127.0.0.1:4174/src/pages/TrainerAI.vue:196:33)"
+      ]
+    },
+    {
+      "route": "TrainerAIReviewFailure",
+      "path": "/trainer-ai",
+      "viewport": "desktop",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasReviewError": true,
+      "hasRetryReview": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+        "[API Error] smoke review failure",
+        "partnerSessionReview failed Error: smoke review failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.get (http://127.0.0.1:4174/src/utils/api.ts:31:22)\n    at async refreshSessionReview (http://127.0.0.1:4174/src/pages/TrainerAI.vue:311:31)\n    at async sendMessage (http://127.0.0.1:4174/src/pages/TrainerAI.vue:199:9)"
+      ]
+    },
+    {
+      "route": "Dashboard",
+      "path": "/",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "仪表盘 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Trainer",
+      "path": "/trainer",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerAI",
+      "path": "/trainer-ai",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Path",
+      "path": "/path",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "八阶路径 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Mistakes",
+      "path": "/mistakes",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "错题本 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Resources",
+      "path": "/resources",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "资源海洋 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceDetail",
+      "path": "/resources/1?q=边界&category=冲突修复&page=2",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "资源详情 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Expression",
+      "path": "/expression#expression-tool-expr_tool_015",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "表达工具箱 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceSurf",
+      "path": "/surf",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "浏览冲浪 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Profile",
+      "path": "/profile",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "我的档案 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Knowledge",
+      "path": "/knowledge",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "知识中枢 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Evolution",
+      "path": "/evolution",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "进化中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Framework",
+      "path": "/framework",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "元基础 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Analytics",
+      "path": "/analytics",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "分析中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Audit",
+      "path": "/audit",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "审计中心 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Governance",
+      "path": "/governance",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "发布治理 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "Settings",
+      "path": "/settings",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerAIInteraction",
+      "path": "/trainer-ai",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasPartnerReply": true,
+      "hasSessionReview": true,
+      "hasScore": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerResourceContext",
+      "path": "/trainer?resource_id=1",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "hasResourceContext": true,
+      "hasPrefill": true,
+      "resourceHref": "/resources/1",
+      "clearedResourceContext": true,
+      "keptFilterQuery": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "MistakeResourceContext",
+      "path": "/mistakes?resource_id=1",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "错题本 - 关系动力学全息",
+      "hasResourceMistakeContext": true,
+      "hasGuidance": true,
+      "resourceHref": "/resources/1",
+      "trainerHref": "/trainer?resource_id=1&q=%E5%A4%B1%E6%9C%9B%E5%90%8E%E7%9A%84%E9%87%8D%E6%96%B0%E7%BA%A6%E5%AE%9A%EF%BD%9C%E4%B8%89%E6%AD%A5%E8%AE%AD%E7%BB%83%EF%BD%9C%E5%AE%89%E5%85%A8%E5%9E%8BD3",
+      "clearedResourceContext": true,
+      "keptSearchQuery": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "SettingsExport",
+      "path": "/settings",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "hasExportPanel": true,
+      "hasCoverage": true,
+      "hasMarkdownFormat": true,
+      "hasLocationHint": true,
+      "downloadHrefIsBlob": true,
+      "downloadName": "relationship-training-export-2026-05-24.md",
+      "runtimeErrors": []
+    },
+    {
+      "route": "SettingsReminder",
+      "path": "/settings",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "设置 - 关系动力学全息",
+      "hasReminderSection": true,
+      "hasLocalBoundary": true,
+      "hasPermissionBoundary": true,
+      "hasTestButton": true,
+      "reminderTime": "20:00",
+      "runtimeErrors": []
+    },
+    {
+      "route": "ExpressionSearchSuggestions",
+      "path": "/expression",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "表达工具箱 - 关系动力学全息",
+      "hasDatalistInput": true,
+      "optionCount": 38,
+      "hasToolSuggestion": true,
+      "hasGuidance": true,
+      "hasSuggestionGroups": true,
+      "hasSearchWorkbench": true,
+      "hasChainAboveList": true,
+      "filteredToTool": true,
+      "hasActiveSearchChip": true,
+      "hasLearningDetails": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "PathLearningScaffold",
+      "path": "/path",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "八阶路径 - 关系动力学全息",
+      "hasLearningOverview": true,
+      "hasStageScaffold": true,
+      "hasExamples": true,
+      "hasConcreteStage": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "ResourceLearningScaffold",
+      "path": "/resources",
+      "viewport": "mobile",
+      "list": {
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "hasHeading": true,
+        "title": "资源海洋 - 关系动力学全息"
+      },
+      "detail": {
+        "horizontalOverflow": 0,
+        "overlaps": [],
+        "hasHeading": true,
+        "title": "资源详情 - 关系动力学全息"
+      },
+      "hasListScaffold": true,
+      "hasListComparison": true,
+      "hasSourceBoundary": true,
+      "hasDetailScaffold": true,
+      "hasDetailExamples": true,
+      "hasCopyrightBoundary": true,
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "ProfileEvidence",
+      "path": "/profile",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "我的档案 - 关系动力学全息",
+      "hasProfileHeading": true,
+      "hasRadar": true,
+      "hasRealStats": true,
+      "hasMockValues": true,
+      "hasEvidence": true,
+      "removedHardcodedStats": true,
+      "removedStaticAwareness": true,
+      "runtimeErrors": []
+    },
+    {
+      "route": "TrainerCompareFailure",
+      "path": "/trainer",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "训练中心 - 关系动力学全息",
+      "hasSubmitError": true,
+      "preservedResponse": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 500 (Internal Server Error)",
+        "[API Error] smoke compare failure",
+        "submitComparison failed Error: smoke compare failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.post (http://127.0.0.1:4174/src/utils/api.ts:35:22)\n    at async Proxy.submitComparison (http://127.0.0.1:4174/src/stores/training.ts:87:30)\n    at async submit (http://127.0.0.1:4174/src/pages/Trainer.vue:109:22)"
+      ]
+    },
+    {
+      "route": "TrainerAIPartnerFailure",
+      "path": "/trainer-ai",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasFallbackNotice": true,
+      "hasFallbackReply": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+        "[API Error] smoke partner failure",
+        "simulatePartner failed Error: smoke partner failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.post (http://127.0.0.1:4174/src/utils/api.ts:35:22)\n    at async requestPartnerResponse (http://127.0.0.1:4174/src/pages/TrainerAI.vue:229:16)\n    at async sendMessage (http://127.0.0.1:4174/src/pages/TrainerAI.vue:196:33)"
+      ]
+    },
+    {
+      "route": "TrainerAIReviewFailure",
+      "path": "/trainer-ai",
+      "viewport": "mobile",
+      "horizontalOverflow": 0,
+      "overlaps": [],
+      "hasHeading": true,
+      "title": "AI训练伴侣 - 关系动力学全息",
+      "hasReviewError": true,
+      "hasRetryReview": true,
+      "hasInputUnlocked": true,
+      "runtimeErrors": [
+        "Failed to load resource: the server responded with a status of 503 (Service Unavailable)",
+        "[API Error] smoke review failure",
+        "partnerSessionReview failed Error: smoke review failure\n    at http://127.0.0.1:4174/src/utils/api.ts:26:27\n    at async Axios.request (http://127.0.0.1:4174/node_modules/.vite/deps/axios.js?v=437a5092:2666:14)\n    at async Object.get (http://127.0.0.1:4174/src/utils/api.ts:31:22)\n    at async refreshSessionReview (http://127.0.0.1:4174/src/pages/TrainerAI.vue:311:31)\n    at async sendMessage (http://127.0.0.1:4174/src/pages/TrainerAI.vue:199:9)"
+      ]
+    }
+  ]
+}

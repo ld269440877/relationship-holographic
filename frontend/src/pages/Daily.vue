@@ -31,9 +31,9 @@
 
       <!-- 热量指示 -->
       <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-        <span>🔥 今日热量: {{ calories }}</span>
+        <span>🔥 今日能量: {{ trainingEnergy }}</span>
         <span>⚡ 连续训练: {{ streak }} 天</span>
-        <span>🏆 今日排名: #{{ rank }}</span>
+        <span>📚 未掌握: {{ openMistakesCount }} 题</span>
       </div>
     </div>
 
@@ -119,7 +119,7 @@
         <div class="progress-bar">
           <div
             class="progress-bar-fill"
-            :style="{ width: (completedCount / dailyTasks.length * 100) + '%' }"
+            :style="{ width: safeDailyProgressWidth }"
           ></div>
         </div>
       </div>
@@ -145,8 +145,8 @@
     <div class="card bg-gradient-to-r from-orange-500 to-red-500 text-white">
       <div class="flex items-center justify-between">
         <div>
-          <h3 class="text-xl font-bold mb-1">🔥 连续打卡 {{ streak }} 天</h3>
-          <p class="text-sm opacity-80">再坚持 {{ 7 - (streak % 7) }} 天即可获得额外奖励！</p>
+          <h3 class="text-xl font-bold mb-1">🔥 最近 7 天训练 {{ streak }} 天</h3>
+          <p class="text-sm opacity-80">{{ weeklyHint }}</p>
         </div>
         <div class="text-4xl">
           {{ streakEmoji }}
@@ -270,7 +270,7 @@
               <div v-if="showResponseResult && comparisonResult" class="space-y-4">
                 <div class="text-center p-4 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white">
                   <p class="text-sm opacity-80">得分</p>
-                  <p class="text-4xl font-bold">{{ Math.round(comparisonResult.score) }}</p>
+                  <p class="text-4xl font-bold">{{ rounded(comparisonResult.score) }}</p>
                 </div>
 
                 <div class="p-4 rounded-xl bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800">
@@ -297,7 +297,21 @@ import { useRouter } from 'vue-router'
 import { CheckIcon, RefreshCw, X } from 'lucide-vue-next'
 import { useTrainingStore } from '@/stores/training'
 import { useToast } from '@/utils/toast'
+import { rounded, safeBarWidth } from '@/utils/format'
 import type { InteractionSample, ComparisonResult } from '@/utils/api'
+
+type TaskType = 'emotion' | 'response' | 'review'
+type TrainingMode = Exclude<TaskType, 'review'>
+type DailyTask = {
+  id: string
+  type: TaskType
+  icon: string
+  title: string
+  description: string
+  duration: number
+  xp: number
+  completed: boolean
+}
 
 const router = useRouter()
 const store = useTrainingStore()
@@ -310,13 +324,9 @@ const currentDate = new Date().toLocaleDateString('zh-CN', {
   weekday: 'long'
 })
 
-const trainingProgress = ref(0)
-const calories = ref(0)
-const streak = ref(7)
-const rank = ref(42)
 const refreshing = ref(false)
 
-const dailyTasks = ref([
+const dailyTasks = ref<DailyTask[]>([
   {
     id: 'emotion-1',
     type: 'emotion',
@@ -356,7 +366,7 @@ const quickModes = [
 ]
 
 const showTrainingPanel = ref(false)
-const trainingMode = ref<'emotion' | 'response' | null>(null)
+const trainingMode = ref<TrainingMode | null>(null)
 const currentTaskTitle = ref('')
 const currentTaskDescription = ref('')
 
@@ -377,6 +387,23 @@ const thermometerColor = computed(() => {
   return 'bg-green-500'
 })
 
+const todaySummary = computed(() => store.todaySummary)
+const weekSummary = computed(() => store.weekSummary)
+const openMistakesCount = computed(() => todaySummary.value?.mistakes_open ?? store.mistakes.length)
+const streak = computed(() => weekSummary.value?.active_days ?? 0)
+const trainingEnergy = computed(() => {
+  const attempts = todaySummary.value?.attempts_count ?? 0
+  const dueReviews = store.dueReviews.length
+  return attempts * 50 + dueReviews * 20 + completedCount.value * 10
+})
+const trainingProgress = computed(() => {
+  const taskRatio = dailyTasks.value.length ? completedCount.value / dailyTasks.value.length : 0
+  const backendProgress = Math.min(100, ((todaySummary.value?.attempts_count ?? 0) / 1) * 50 + taskRatio * 50)
+  return rounded(backendProgress)
+})
+const safeDailyProgressWidth = computed(() => safeBarWidth(dailyTasks.value.length ? (completedCount.value / dailyTasks.value.length) * 100 : 0))
+const weeklyHint = computed(() => weekSummary.value?.streak_hint || '完成一次真实训练后，将生成连续训练提示。')
+
 const thermometerTextColor = computed(() => {
   if (trainingProgress.value < 30) return 'text-red-500'
   if (trainingProgress.value < 70) return 'text-yellow-500'
@@ -394,29 +421,18 @@ const streakEmoji = computed(() => {
   return '👑'
 })
 
-const trainingProgressValue = computed(() => {
-  return (completedCount.value / dailyTasks.value.length) * 100
-})
-
-onMounted(() => {
-  updateProgress()
-})
-
-function updateProgress() {
-  trainingProgress.value = Math.round(trainingProgressValue.value)
-  calories.value = completedCount.value * 50
-}
+onMounted(refreshTasks)
 
 async function refreshTasks() {
   refreshing.value = true
-  await new Promise(resolve => setTimeout(resolve, 500))
+  await Promise.all([store.fetchSummaries(), store.fetchDueReviews(), store.fetchMistakes(), store.fetchNextTraining()])
+  syncTaskCompletionFromBackend()
   refreshing.value = false
-  toast.success('任务已刷新')
+  toast.success('已同步今日真实训练状态')
 }
 
 function toggleTask(task: typeof dailyTasks.value[0]) {
   task.completed = !task.completed
-  updateProgress()
   if (task.completed) {
     toast.success(`🎉 任务「${task.title}」已完成！获得 ${task.xp} XP`)
   }
@@ -446,7 +462,7 @@ function resetTrainingState() {
 }
 
 async function loadSample() {
-  await store.fetchRandomSample()
+  await store.fetchNextTraining()
   currentSample.value = store.currentSample
 }
 
@@ -461,13 +477,13 @@ function toggleEmotionSelection(emotion: string) {
 
 async function submitEmotionAnswer() {
   submitting.value = true
-  await new Promise(resolve => setTimeout(resolve, 800))
-  const correct = Math.random() > 0.3
+  const expected = parseEmotionTags(currentSample.value?.emotion_tags_json)
+  const correct = expected.some(word => selectedEmotions.value.includes(word))
   emotionResult.value = {
     correct,
     feedback: correct
-      ? '你准确地识别出了情绪标签！继续加油！'
-      : '建议关注对话中的语气和上下文线索，再试试看！'
+      ? `你命中了关键情绪：${expected.join('、') || '情绪线索'}。继续保持对微弱信号的敏感。`
+      : `这题更接近：${expected.join('、') || '隐藏情绪'}。建议结合语气、上下文和隐藏需求一起判断。`
   }
   showEmotionResult.value = true
   submitting.value = false
@@ -476,8 +492,17 @@ async function submitEmotionAnswer() {
     const task = dailyTasks.value.find(t => t.type === 'emotion')
     if (task && !task.completed) {
       task.completed = true
-      updateProgress()
     }
+  }
+}
+
+function parseEmotionTags(jsonText?: string): string[] {
+  if (!jsonText) return []
+  try {
+    const tags = JSON.parse(jsonText) as Array<{ word?: string }>
+    return tags.map(tag => tag.word).filter(Boolean) as string[]
+  } catch {
+    return []
   }
 }
 
@@ -494,7 +519,6 @@ async function submitResponseAnswer() {
         const task = dailyTasks.value.find(t => t.type === 'response')
         if (task && !task.completed) {
           task.completed = true
-          updateProgress()
           toast.success(`🎉 任务「${task.title}」已完成！获得 ${task.xp} XP`)
         }
       }
@@ -513,9 +537,16 @@ function startQuickTraining(mode: string) {
   }
   currentTaskTitle.value = quickModes.find(m => m.id === mode)?.name || ''
   currentTaskDescription.value = quickModes.find(m => m.id === mode)?.description || ''
-  trainingMode.value = mode as 'emotion' | 'response'
+  trainingMode.value = mode as TrainingMode
   showTrainingPanel.value = true
   loadSample()
+}
+
+function syncTaskCompletionFromBackend() {
+  const responseTask = dailyTasks.value.find(t => t.type === 'response')
+  if (responseTask) responseTask.completed = (todaySummary.value?.attempts_count ?? 0) > 0
+  const reviewTask = dailyTasks.value.find(t => t.type === 'review')
+  if (reviewTask) reviewTask.completed = store.dueReviews.length === 0 && openMistakesCount.value > 0
 }
 </script>
 

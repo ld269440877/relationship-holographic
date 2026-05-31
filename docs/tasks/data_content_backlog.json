@@ -1,0 +1,120 @@
+{
+  "version": "2026-05-24",
+  "principle": "剩余任务只保留真实未完成的数据与内容建设目标，不把旧文档中过时的工程项重复排队。",
+  "source": "docs/tasks.md",
+  "tasks": [
+    {
+      "id": "content_samples_reviewed_300",
+      "priority": 10,
+      "status": "completed",
+      "goal": "把互动样本从当前 362 条总量治理为至少 300 条 reviewed/published 可训练样本。",
+      "acceptance": [
+        "review_status in reviewed/published/gold 的互动样本数量 >= 300。",
+        "每条样本有来源、风险/质量、5W2H 或多粒度标注字段。",
+        "默认训练推荐不使用 draft/低质样本。"
+      ],
+      "execution_steps": [
+        "审计现有 interaction_samples 的 review_status 分布。",
+        "对已有 draft 样本执行字段补全、风险检查、去重和 reviewed 回填。",
+        "对缺乏具体场景/原话/理想回应的样本保持 draft，不强行发布。",
+        "补充项目原创样本时必须覆盖八阶路径、依恋类型、边界风险和表达工具。"
+      ],
+      "completion_evidence": {
+        "completed_at": "2026-05-24T01:47:02+08:00",
+        "actual_reviewed_samples": 304,
+        "actual_total_candidates": 1008,
+        "governance_entry": "backend.database.data_content_governance"
+      },
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_training_flow.py tests/test_learning_pipeline_api.py -q",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ]
+    },
+    {
+      "id": "content_samples_candidates_1000",
+      "priority": 20,
+      "status": "completed",
+      "goal": "建立 1000 条候选互动样本池，每条具备来源、风险、标注置信度和审核状态。",
+      "acceptance": [
+        "interaction_samples 或 raw_content_items 中候选样本总数 >= 1000。",
+        "候选不默认进入训练推荐，必须经过 reviewed/published/gold 门禁。",
+        "候选生成不复制第三方全文，不保存可识别私聊原文。"
+      ],
+      "execution_steps": [
+        "优先从本地原创场景模板生成候选。",
+        "按场景、阶段、情绪、需求、边界、表达工具做均衡覆盖。",
+        "写入 source_trace、quality、review_status=draft。",
+        "运行去重与质量报告，薄卡进入重写队列。"
+      ],
+      "completion_evidence": {
+        "completed_at": "2026-05-24T01:47:02+08:00",
+        "actual_total_candidates": 1008,
+        "draft_candidates_hidden_from_training": true,
+        "third_party_full_text_saved": false
+      },
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_content_import_database.py tests/test_vector_index.py -q",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ]
+    },
+    {
+      "id": "resource_connection_material_library",
+      "priority": 30,
+      "status": "completed",
+      "goal": "把话术库重构为连接素材库，覆盖破冰观察、温和幽默、欣赏表达、修复句式、边界表达、退路式邀请。",
+      "acceptance": [
+        "资源卡片按连接动作分型，而不是只按 joke/story/flirty 粗分。",
+        "每类连接素材有场景、TA说、低质回应、更好回应、边界说明、练习任务。",
+        "资源海洋和表达工具箱能按连接动作检索。"
+      ],
+      "execution_steps": [
+        "定义连接动作分类和资源字段映射。",
+        "将现有话术类资源批量标注 speech_act、expression_goal、mistake_pattern。",
+        "对缺少练习结构的内容生成 project_original 重写补位。",
+        "更新资源筛选建议和质量报告。"
+      ],
+      "completion_evidence": {
+        "completed_at": "2026-05-24T01:47:02+08:00",
+        "connection_action_counts": {
+          "破冰观察": 7537,
+          "温和幽默": 888,
+          "欣赏表达": 18,
+          "修复句式": 1706,
+          "边界表达": 2148,
+          "退路式邀请": 3
+        }
+      },
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_catalog_profile_review_api.py tests/test_vector_index.py -q",
+        "cd frontend && npm run smoke:world"
+      ]
+    },
+    {
+      "id": "gold_samples_100",
+      "priority": 40,
+      "status": "completed",
+      "goal": "建立 100 条 Gold samples，用于校准规则评分和 DeepSeek 深评。",
+      "acceptance": [
+        "is_gold_sample=true 或 gold_label_json 完整的样本 >= 100。",
+        "Gold 样本具备专家/规则/共识版本和可审计 review_status。",
+        "Gold interrater 报告继续通过质量门禁。"
+      ],
+      "execution_steps": [
+        "优先从高质量 reviewed/published 样本中选择候选。",
+        "补齐 gold_label_json、annotation version、quality、safety 信息。",
+        "通过 gold review queue 和 conflict resolution 维护一致性。",
+        "不把未经复核的生成样本直接标成 gold。"
+      ],
+      "completion_evidence": {
+        "completed_at": "2026-05-24T01:47:02+08:00",
+        "actual_gold_samples": 104,
+        "actual_gold_annotation_versions": 230,
+        "governance_entry": "backend.database.data_content_governance"
+      },
+      "verification": [
+        ".venv/bin/python -m pytest tests/test_catalog_profile_review_api.py tests/test_training_flow.py -q",
+        ".venv/bin/python -m tools.commander regression-audit --batch-limit 2"
+      ]
+    }
+  ]
+}

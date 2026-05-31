@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
+import { hasCompletedOnboarding } from '@/utils/onboarding'
 
 // 路由名称映射
 const routes: RouteRecordRaw[] = [
@@ -40,6 +41,36 @@ const routes: RouteRecordRaw[] = [
     meta: { title: '资源海洋' }
   },
   {
+    path: '/resources/:id',
+    name: 'ResourceDetail',
+    component: () => import('@/pages/ResourceDetail.vue'),
+    meta: { title: '资源详情' }
+  },
+  {
+    path: '/expression',
+    name: 'Expression',
+    component: () => import('@/pages/Expression.vue'),
+    meta: { title: '表达工具箱' }
+  },
+  {
+    path: '/surf',
+    name: 'ResourceSurf',
+    component: () => import('@/pages/ResourceSurf.vue'),
+    meta: { title: '浏览冲浪' }
+  },
+  {
+    path: '/knowledge',
+    name: 'Knowledge',
+    component: () => import('@/pages/Knowledge.vue'),
+    meta: { title: '知识中枢' }
+  },
+  {
+    path: '/framework',
+    name: 'LearningFramework',
+    component: () => import('@/pages/LearningFramework.vue'),
+    meta: { title: '元基础' }
+  },
+  {
     path: '/path',
     name: 'Path',
     component: () => import('@/pages/Path.vue'),
@@ -62,6 +93,30 @@ const routes: RouteRecordRaw[] = [
     name: 'Settings',
     component: () => import('@/pages/Settings.vue'),
     meta: { title: '设置' }
+  },
+  {
+    path: '/evolution',
+    name: 'Evolution',
+    component: () => import('@/pages/Evolution.vue'),
+    meta: { title: '进化中心' }
+  },
+  {
+    path: '/analytics',
+    name: 'Analytics',
+    component: () => import('@/pages/Analytics.vue'),
+    meta: { title: '分析中心' }
+  },
+  {
+    path: '/audit',
+    name: 'Audit',
+    component: () => import('@/pages/Audit.vue'),
+    meta: { title: '审计中心' }
+  },
+  {
+    path: '/governance',
+    name: 'Governance',
+    component: () => import('@/pages/Governance.vue'),
+    meta: { title: '发布治理' }
   },
   {
     path: '/onboarding',
@@ -88,8 +143,7 @@ router.beforeEach((to, _from, next) => {
   document.title = title ? `${title} - 关系动力学全息` : '关系动力学全息'
 
   // 检查是否需要引导
-  const hasCompletedOnboarding = localStorage.getItem('hasCompletedOnboarding')
-  if (to.path !== '/onboarding' && !hasCompletedOnboarding) {
+  if (to.path !== '/onboarding' && !hasCompletedOnboarding()) {
     next({ name: 'Onboarding' })
     return
   }
